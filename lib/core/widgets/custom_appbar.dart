@@ -1,19 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppbar({required this.title,required this.tabs, super.key});
 
-import '../constants/app_colors.dart';
-import '../styles/text_styles.dart';
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  CustomAppBar({required this.title, super.key});
-final String title;
+  final String title;
+  final List<Tab> tabs;
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      iconTheme: const IconThemeData(
+        color: AppColors.kGoldenColor, //change your color here
+      ),
       backgroundColor: AppColors.kPrimaryColor,
-      title: Center(child: Text(title,style: Styles.textStyle18Godlen,),),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(child: Text(title,style: Styles.textStyle18Godlen.copyWith(overflow: TextOverflow.ellipsis),)),
+          SvgPicture.asset(AppAssets.logoApp)
+        ],
+      ),
+      bottom: TabBar(
+        dividerColor: AppColors.kGoldenColor,
+        labelColor: AppColors.kGoldenColor,
+        indicatorColor: AppColors.kGreenColor,
+        isScrollable: true,
+        tabs: tabs,
+      ),
     );
   }
 
   @override
-  // TODO: implement preferredSize
-  Size get preferredSize => throw UnimplementedError();
+  Size get preferredSize => const Size.fromHeight(100);
 }

@@ -12,7 +12,9 @@ class HomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.toNamed(homeCardData.targetScreen),
+      onTap: () => Get.toNamed(homeCardData.targetScreen,arguments:{
+        'title' : homeCardData.title
+      }),
       child: Container(
         height: Get.height * 0.1,
         decoration: const BoxDecoration(
@@ -31,7 +33,7 @@ class HomeCard extends StatelessWidget {
                 children: [
                   SvgPicture.asset(
                     homeCardData.iconPath,
-                    width: 30,
+                    width: 23,
                   ),
                   const VerticalDivider(
                     color: AppColors.kWhiteColor,

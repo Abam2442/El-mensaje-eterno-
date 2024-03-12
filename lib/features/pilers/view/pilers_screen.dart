@@ -1,56 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
-import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/custom_appbar.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/primary_shimmer.dart';
 import 'package:hiwayda_oracion_islamica/features/pilers/controller/pilers_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/pilers/view/pilers_course_Screen.dart';
 
-import '../../../core/constants/app_colors.dart';
-import 'pilers_course_Screen.dart';
-
-class PilersScreen extends StatelessWidget {
-  PilersScreen({super.key});
-
-  final PilersController pilersController = Get.put(PilersController());
+class PilersScreen extends GetView<PilersController> {
+  const PilersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
-      child: Obx(() => pilersController.isLoading.value
-          ? const Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
+      child: Obx(() => controller.isLoading.value
+          ? Scaffold(
+              appBar: CustomAppbar(title: Get.arguments['title'], tabs: const [
+                Tab(
+                  text: '',
+                ),
+                Tab(text: ''),
+                Tab(text: ''),
+              ]),
+              body: ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                shrinkWrap: true,
+                itemBuilder: (context, index) => PrimaryShimmer.rectangle(
+                  height: Get.height * 0.09,
+                  color: AppColors.kGreenColor,
+                  border: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                ),
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 15,
+                ),
+                itemCount: 8,
               ),
             )
           : Scaffold(
-              appBar: AppBar(
-                backgroundColor: AppColors.kPrimaryColor,
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Pilers Lessons',
-                      style: Styles.textStyle18Godlen,
-                    ),
-                    SvgPicture.asset(AppAssets.logoApp)
-                  ],
-                ),
-                bottom: TabBar(
-                  tabs: [
-                    Tab(
-                        child: Text(
-                      pilersController.pilersModel.courses![0].title!,
-                      style: Styles.textStyle14Green,
-                    )),
-                    Tab(child: Text(pilersController.pilersModel.courses![1].title!, style: Styles.textStyle14Green)),
-                    Tab(child: Text(pilersController.pilersModel.courses![2].title!, style: Styles.textStyle14Green)),
-                  ],
-                ),
+              appBar: CustomAppbar(
+                title: Get.arguments['title'],
+                tabs: controller.tabs,
               ),
               backgroundColor: AppColors.kWhiteColor,
               body: TabBarView(
-                children: [PilersCourseScreen(index: 0), PilersCourseScreen(index: 1), PilersCourseScreen(index: 2)],
+                children: [
+                  PilersCourseScreen(index: 0),
+                  PilersCourseScreen(index: 1),
+                  PilersCourseScreen(index: 2),
+                ],
               ),
             )),
     );

@@ -34,7 +34,7 @@ class Item_GridView extends StatelessWidget {
               ),
               controller.selectedPart == index
                   ? Container(
-                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      margin: const EdgeInsets.symmetric(vertical: 5),
                       width: controller.titlePart[index].toString().length*7.0,
                       height: 2,
                       color: AppColors.kGoldenColor,

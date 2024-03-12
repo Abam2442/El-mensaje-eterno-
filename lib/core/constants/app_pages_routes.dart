@@ -18,7 +18,9 @@ import 'package:hiwayda_oracion_islamica/features/newLife/view/newLife_screen.da
 import 'package:hiwayda_oracion_islamica/features/newMuslims/view/newMuslims_course_Screen.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/non_muslim_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/screens/non_muslim_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/pilers/pilers_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/pilers/view/pilers_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/prophet/prophet_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/prophet/view/prophet_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/screens/quran_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/screens/surah_screen.dart';
@@ -173,6 +175,7 @@ abstract class AppPagesRoutes {
     GetPage(
       name: pilersScreen,
       page: () => PilersScreen(),
+      binding: PilersBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(
@@ -187,8 +190,9 @@ abstract class AppPagesRoutes {
     ),
     GetPage(
       name: prophetScreen,
-      page: () => ProphetScreen(),
+      page: () => const ProphetScreen(),
       transition: Transition.cupertino,
+      binding: ProphetBindings(),
     ),
     GetPage(
       name: islamicCenterScreen,
