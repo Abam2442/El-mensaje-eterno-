@@ -1,16 +1,35 @@
 import 'dart:convert';
 
+import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
+import 'package:hiwayda_oracion_islamica/core/services/easy_loader_service.dart';
 import 'package:hiwayda_oracion_islamica/features/prophet/model/prophetModel.dart';
+import 'package:logger/logger.dart';
 
-class ProphetController extends GetxController{
+class ProphetController extends GetxController with GetSingleTickerProviderStateMixin{
 
   RxBool isLoading = true.obs;
+
+  late TabController tabController;
+
+  late List<Tab> tabs;
+  StateType getLessonsState = StateType.init;
   @override
-  void onInit() {
-    loadJsonFile();
+  void onInit() async {
+    Get.find<Logger>().i("Start onInit ProphetController");
     super.onInit();
+    await loadJsonFile();
+    tabs = [
+      Tab(text: prophetModel.courses![0].title!,),
+      Tab(text: prophetModel.courses![1].title!),
+    ];
+    tabController = TabController(length: 2, vsync: this);
+    Get.find<Logger>().w("End onInit ProphetController");
+    getLessonsState = StateType.success;
+
   }
   late ProphetModel prophetModel;
   Future<void> loadJsonFile()async{
