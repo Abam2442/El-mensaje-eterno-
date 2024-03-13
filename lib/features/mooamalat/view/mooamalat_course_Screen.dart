@@ -5,6 +5,7 @@ import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/features/mooamalat/controller/mooamalat_controller.dart';
 
+import 'description_screen.dart';
 import 'mooamalat_lesson_Screen.dart';
 import '../../../core/widgets/custom_listTile.dart';
 class MooamalatCourseScreen extends StatelessWidget {
@@ -19,7 +20,15 @@ class MooamalatCourseScreen extends StatelessWidget {
               padding: 10.aEdge,
               child: Column(
                 children: [
-                  Text('${mooamalatController.mooamalatModel.courses![index].description}',style: Styles.textStyle16Golden,textAlign: TextAlign.center),
+                  if('${mooamalatController.mooamalatModel.courses![index].description}' != '')
+                  CustomListTile(
+                    title: 'Description',
+                    onTap: () {
+                      Get.to(() => DescriptionScreen(
+                        des: '${mooamalatController.mooamalatModel.courses![index].description}',
+                      ));
+                    },
+                  ),
                   Expanded(
                     child: ListView.builder(
                         itemCount: mooamalatController.mooamalatModel.courses![index].lessons!.length,

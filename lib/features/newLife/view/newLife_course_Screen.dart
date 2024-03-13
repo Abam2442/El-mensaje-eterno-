@@ -5,6 +5,7 @@ import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/features/newLife/controller/newLife_controller.dart';
 
+import 'description_screen.dart';
 import 'newLife_lesson_Screen.dart';
 import '../../../core/widgets/custom_listTile.dart';
 class NewLifeCourseScreen extends StatelessWidget {
@@ -19,7 +20,15 @@ class NewLifeCourseScreen extends StatelessWidget {
           padding: 10.aEdge,
           child: Column(
             children: [
-              Text('${newLifeController.newLifeModel.courses![index].description}',style: Styles.textStyle16Golden,textAlign: TextAlign.center),
+              if('${newLifeController.newLifeModel.courses![index].description}' != '')
+              CustomListTile(
+                title: 'Description',
+                onTap: () {
+                  Get.to(() => DescriptionScreen(
+                    des: '${newLifeController.newLifeModel.courses![index].description}',
+                  ));
+                },
+              ),
               Expanded(
                 child: ListView.builder(
                     itemCount: newLifeController.newLifeModel.courses![index].lessons!.length,

@@ -4,6 +4,7 @@ import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_pages_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
@@ -65,7 +66,7 @@ class HomeController extends GetxController {
     HomeCardData(
       title: "Pureza y las 5 oraciones",
       description: "El segundo pilar del Islam",
-      iconPath: AppSvgs.learnIslam,
+      iconPath: AppAssets.prayer,
       targetScreen: AppPagesRoutes.learnSalah,
     ),
     HomeCardData(

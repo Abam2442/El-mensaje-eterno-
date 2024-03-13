@@ -22,6 +22,7 @@ class FaithCourseScreen extends StatelessWidget {
           padding: 10.aEdge,
           child: Column(
             children: [
+              if('${faithController.faithModel.courses![index].description}' != '')
               CustomListTile(
                 title: 'Description',
                 onTap: () {

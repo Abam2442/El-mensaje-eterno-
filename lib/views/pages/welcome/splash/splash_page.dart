@@ -1,4 +1,6 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
@@ -37,7 +39,7 @@ class _SplashBodyState extends State<SplashBody>
 
   void loadData() async {
     AppPublicVar.taharaLessons = await TaharaLessonFromJson.getData();
-    goToNextView();
+   goToNextView();
   }
   void goToNextView() {
     Future.delayed(const Duration(seconds: 1), () {
@@ -61,21 +63,10 @@ class _SplashBodyState extends State<SplashBody>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 125,
-                width: 125,
-                margin: 10.aEdge,
-                padding: 15.aEdge,
-                decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(AppImages.logo
-                        //fit: BoxFit.fitWidth,
-                        ),
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-                  // color: AppColors.kWhiteColor.withOpacity(0.6),
-                ),
+               SvgPicture.asset(
+                   AppAssets.logoApp,
+                height: 100,
+                //fit: BoxFit.fitWidth,
               ),
               Container(
                 padding: 10.aEdge,
