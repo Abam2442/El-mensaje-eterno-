@@ -74,10 +74,10 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasu
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/romance_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminolgy_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/woman_screen.dart';
-import 'package:hiwayda_oracion_islamica/views/pages/LearnSalah/learn_salah.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/learn_salah.dart';
 
 import '../../features/azkar_doaa/presentation/screens/content_azkar_doaa_screen.dart';
-import '../../views/pages/LearnSalah/LearnSalah/learn_salah_page.dart';
+import '../../features/salah/view/learn_salah_page.dart';
 
 abstract class AppPagesRoutes {
   // Tabs Screens

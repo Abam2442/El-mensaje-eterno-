@@ -6,13 +6,13 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/views/pages/LearnSalah/PracticalLearn/practical_learn_page.dart';
-import 'package:hiwayda_oracion_islamica/views/pages/Qibla/qibla_compass.dart';
-import 'package:hiwayda_oracion_islamica/views/widgets/platform_alert_dialog.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/Qibla/qibla_compass.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/practical_learn_page.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/platform_alert_dialog.dart';
 
-import '../../../features/home/presentation/widgets/section_item_homeP_page_widget.dart';
-import '../PrayerTimes/prayer_times_page.dart';
-import 'LearnTahara/base_learn.dart';
+import '../../home/presentation/widgets/section_item_homeP_page_widget.dart';
+import 'prayer_times_page.dart';
+import 'base_learn.dart';
 
 class LearnSalah extends StatelessWidget {
   const LearnSalah({super.key});

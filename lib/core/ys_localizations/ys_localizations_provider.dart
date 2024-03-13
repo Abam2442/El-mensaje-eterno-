@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hiwayda_oracion_islamica/views/pages/welcome/splash/splash_page.dart';
+import 'package:hiwayda_oracion_islamica/splash_page.dart';
 import 'package:provider/provider.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/functions/navigation_service.dart';
 import 'package:hiwayda_oracion_islamica/core/ys_localizations/saved_language_code.dart';

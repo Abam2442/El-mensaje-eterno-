@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
-import 'package:hiwayda_oracion_islamica/views/widgets/video_palyer_widget.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_palyer_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 

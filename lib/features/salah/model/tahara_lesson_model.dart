@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
-class TaharaLesson {
+class TaharaLessonModel {
   final String title;
   final List<LessonDetail> lessonDetail;
 
-  const TaharaLesson({required this.title, required this.lessonDetail});
+  const TaharaLessonModel({required this.title, required this.lessonDetail});
 
-  static TaharaLesson fromjson(json) => TaharaLesson(
+  static TaharaLessonModel fromjson(json) => TaharaLessonModel(
       title: json['title'] ?? '',
       lessonDetail: json['lessons'].map<LessonDetail>((x) => LessonDetail.fromJson(x)).toList());
 }
@@ -33,7 +33,7 @@ class LessonDetail {
 }
 
 class TaharaLessonFromJson {
-  static Future<List<TaharaLesson>> getData() async {
+  static Future<List<TaharaLessonModel>> getData() async {
     String data = await rootBundle.loadString('assets/json/Drossalaa.json');
     final body;
     try {
@@ -42,7 +42,7 @@ class TaharaLessonFromJson {
       print('e ${e.toString()}');
       return [];
     }
-    List<TaharaLesson> d = await body.map<TaharaLesson>(TaharaLesson.fromjson).toList();
+    List<TaharaLessonModel> d = await body.map<TaharaLessonModel>(TaharaLessonModel.fromjson).toList();
     print('d.lengh ${d.length}');
     return d;
   }

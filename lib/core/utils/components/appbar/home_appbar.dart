@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
-import '../../../../views/pages/LearnSalah/salah_importance_page.dart';
+import '../../../../features/salah/view/salah_importance_page.dart';
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
 

@@ -2,15 +2,15 @@ import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/views/pages/LearnSalah/LearnTahara/lesson_details_page.dart';
-import 'package:hiwayda_oracion_islamica/core/tahara/tahara_lesson.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/model/tahara_lesson_model.dart';
 import 'package:flutter/material.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/lesson_details_page.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/lessons_details_page.dart';
 
-import '../../../../core/styles/text_styles.dart';
-import '../../../../core/constants/app_public_var.dart';
-import '../../../../core/constants/app_svgs.dart';
-import '../../../../features/home/presentation/widgets/section_item_homeP_page_widget.dart';
-import 'lessons_details_page.dart';
+import '../../../core/styles/text_styles.dart';
+import '../../../core/constants/app_public_var.dart';
+import '../../../core/constants/app_svgs.dart';
+import '../../home/presentation/widgets/section_item_homeP_page_widget.dart';
 class BaseLearn extends StatelessWidget {
   final bool isBasic;
 

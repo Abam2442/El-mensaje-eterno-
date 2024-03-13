@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/data/local/local_data.dart';
-import 'package:hiwayda_oracion_islamica/views/pages/welcome/splash/splash_page.dart';
+import 'package:hiwayda_oracion_islamica/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_themes.dart';
 import 'package:hiwayda_oracion_islamica/core/ys_localizations/ys_localizations.dart';

@@ -4,15 +4,15 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_strings.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
-import 'package:hiwayda_oracion_islamica/core/salah_practical_steps/salah_practical_step.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/model/salah_practical_model.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/views/widgets/audio_icon.dart';
-import 'package:hiwayda_oracion_islamica/views/widgets/call_me.dart';
-import 'package:hiwayda_oracion_islamica/views/widgets/video_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/audio_icon.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/call_me.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_icon.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 
-import '../../../../core/styles/text_styles.dart';
+import '../../../core/styles/text_styles.dart';
 
 class SalahPracticalPage extends StatefulWidget {
   String jsonFile;
@@ -24,7 +24,7 @@ class SalahPracticalPage extends StatefulWidget {
 }
 
 class _SalahPracticalPageState extends State<SalahPracticalPage> {
-  late List<SalahPracticalStep> steps;
+  late List<SalahPracticalModel> steps;
   late int selectedPage;
   late int porquselectedPage;
   late var firstPageData;
@@ -55,7 +55,7 @@ class _SalahPracticalPageState extends State<SalahPracticalPage> {
     lastPageData = body.last;
     body.removeRange(0, 2);
     body.removeLast();
-    steps =  body.map<SalahPracticalStep>(SalahPracticalStep.fromJson).toList();
+    steps =  body.map<SalahPracticalModel>(SalahPracticalModel.fromJson).toList();
     setState(() {
       isLoading = false;
     });
@@ -349,7 +349,7 @@ class _SalahPracticalPageState extends State<SalahPracticalPage> {
 
 class StepPage extends StatelessWidget {
   StepPage({required this.salahPracticalStep, Key? key}) : super(key: key);
-  SalahPracticalStep salahPracticalStep;
+  SalahPracticalModel salahPracticalStep;
 
   @override
   Widget build(BuildContext context) {
@@ -491,7 +491,7 @@ class _TopicPageState extends State<TopicPage> {
 }
 
 class swap extends StatefulWidget {
-  SalahPracticalStep salahPracticalStep;
+  SalahPracticalModel salahPracticalStep;
 
   @override
   State<swap> createState() => _swapState();

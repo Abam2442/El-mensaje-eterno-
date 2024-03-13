@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 
-class SalahPracticalStep{
+class SalahPracticalModel{
   final String rakaa;
   final String stepName;
   final String image;
@@ -17,7 +17,7 @@ class SalahPracticalStep{
   final List<Topic> topics;
 
 
-  SalahPracticalStep(
+  SalahPracticalModel(
       {
         required this.rakaa,
         required this.stepName,
@@ -33,8 +33,8 @@ class SalahPracticalStep{
         required this.descriptionaudio,
         required this.topics
         });
-  static SalahPracticalStep fromJson(json){
-    return SalahPracticalStep(
+  static SalahPracticalModel fromJson(json){
+    return SalahPracticalModel(
       rakaa: json['Rakaa'] ?? '',
       stepName: json['StepName'] ?? '',
       image: json['image'] ?? '',

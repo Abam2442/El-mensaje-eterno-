@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
-import 'package:hiwayda_oracion_islamica/core/tahara/tahara_lesson.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/model/tahara_lesson_model.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/lessons_details_page.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/options.dart';
 
-import '../../../widgets/options.dart';
 
-class LearnSalahPage extends StatelessWidget {
-  const LearnSalahPage({Key? key}) : super(key: key);
+class OtherLessonsPage extends StatelessWidget {
+  const OtherLessonsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +29,10 @@ class LearnSalahPage extends StatelessWidget {
                       Container(
                         height: context.height * 0.2,
                         child: Hero(
-                          tag: 'salah',
+                          tag: AppSvgs.otherLessons,
                           child: Options(
-                            label: 'Learn Salah',
-                            image: AppSvgs.salahrokoa,
+                            label: 'Other Lessons',
+                            image: AppSvgs.otherLessons,
                             onTap: () {},
                           ),
                         ),
@@ -39,7 +40,7 @@ class LearnSalahPage extends StatelessWidget {
                       20.hSize,
                       SizedBox(
                         height: context.height * 0.5,
-                        child: FutureBuilder<List<TaharaLesson>>(
+                        child: FutureBuilder<List<TaharaLessonModel>>(
                           future: TaharaLessonFromJson.getData(),
                           builder: (context, snapshot) {
                             final taharaLessons = snapshot.data;
@@ -70,24 +71,32 @@ class LearnSalahPage extends StatelessWidget {
         ));
   }
 
-  Widget buildLessons(List<TaharaLesson> lessons) => ListView.builder(
+  Widget buildLessons(List<TaharaLessonModel> lessons) => ListView.builder(
       physics: BouncingScrollPhysics(),
       itemCount: lessons.length,
       itemBuilder: (context, index) {
-        final lesson = lessons[index];
-        return ListTile(
-          leading: Text(
-            '${index + 1}',
-            style: AppTextColors.textStyle,
-          ),
-          title: Text(lesson.title, style: AppTextColors.textStyle),
-          onTap: () {
-            //Get.to(LessonsDetailsPage(lesson.lessonDetail,lesson.title));
-          },
-          trailing: Icon(
-            Icons.arrow_forward_ios_outlined,
-            color: Colors.white,
-          ),
-        );
+        if (index > 1) {
+          final lesson = lessons[index];
+          return ListTile(
+            leading: Text(
+              '${index - 1}',
+              style: AppTextColors.textStyle,
+            ),
+            title: Text(lesson.title, style: AppTextColors.textStyle),
+            onTap: () {
+              Get.to(LessonsDetailsPage(
+                list: lesson.lessonDetail,
+                title: lesson.title,
+                icon: AppSvgs.otherLessons,
+              ));
+            },
+            trailing: Icon(
+              Icons.arrow_forward_ios_outlined,
+              color: Colors.white,
+            ),
+          );
+        } else {
+          return Container();
+        }
       });
 }

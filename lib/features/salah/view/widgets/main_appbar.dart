@@ -3,7 +3,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
-import 'package:hiwayda_oracion_islamica/views/widgets/main_text.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/main_text.dart';
 
 class MainAppBar extends StatelessWidget {
   const MainAppBar({

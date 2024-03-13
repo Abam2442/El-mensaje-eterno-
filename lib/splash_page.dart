@@ -5,11 +5,11 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/core/tahara/tahara_lesson.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/model/tahara_lesson_model.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/app_public_var.dart';
+import 'core/constants/app_public_var.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});

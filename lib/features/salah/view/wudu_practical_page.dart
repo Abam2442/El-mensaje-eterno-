@@ -3,11 +3,11 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
-import 'package:hiwayda_oracion_islamica/core/wudu_practical_step/wudu_practical_step.dart';
-import 'package:hiwayda_oracion_islamica/views/widgets/audio_icon.dart';
-import 'package:hiwayda_oracion_islamica/views/widgets/video_icon.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/model/wudu_practical_model.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/audio_icon.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_icon.dart';
 
-import '../../../../core/styles/text_styles.dart';
+import '../../../core/styles/text_styles.dart';
 
 class WuduPracticalPage extends StatefulWidget {
   String jsonFile;
@@ -19,7 +19,7 @@ class WuduPracticalPage extends StatefulWidget {
 }
 
 class _WuduPracticalPageState extends State<WuduPracticalPage> {
-  late WuduPracticalStep wuduPracticalStep;
+  late WuduPracticalModel wuduPracticalStep;
   late int selectedPage;
   bool isLoading = true;
 
@@ -64,7 +64,7 @@ class _WuduPracticalPageState extends State<WuduPracticalPage> {
 
 class StepPage extends StatelessWidget {
   StepPage({required this.wuduPracticalStep, Key? key}) : super(key: key);
-  WuduPracticalStep wuduPracticalStep;
+  WuduPracticalModel wuduPracticalStep;
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +167,7 @@ class _TopicPageState extends State<TopicPage> {
                 widget.topic.description,
                 style: AppTextStyles.h5,
               )),
-              if (widget.topic.transliteration == '0' || widget.topic.transliteration == null)
+              if (widget.topic.transliteration == '0')
                 AudioIcon(audioPath: widget.topic.audio)
             ],
           ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/views/widgets/main_appbar.dart';
-import 'package:hiwayda_oracion_islamica/views/widgets/main_nav_bar.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/main_appbar.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/main_nav_bar.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({

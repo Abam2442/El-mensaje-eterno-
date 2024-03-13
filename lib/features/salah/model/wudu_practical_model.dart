@@ -2,14 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-class WuduPracticalStep {
+class WuduPracticalModel {
   final String header;
   final List<NestedTopics> topics;
 
-  WuduPracticalStep({required this.header, required this.topics});
+  WuduPracticalModel({required this.header, required this.topics});
 
-  static WuduPracticalStep fromJson(json) {
-    return WuduPracticalStep(
+  static WuduPracticalModel fromJson(json) {
+    return WuduPracticalModel(
         header: json['header'] ?? '',
         topics: json['nestedTopics'].map<NestedTopics>((x) => NestedTopics.fromJson(x)).toList());
   }
@@ -49,7 +49,7 @@ class NestedTopics {
 }
 
 class WuduStepsFromJson {
-  static Future<WuduPracticalStep> getData(BuildContext context, String jsonFile) async {
+  static Future<WuduPracticalModel> getData(BuildContext context, String jsonFile) async {
     final assetBunlde = DefaultAssetBundle.of(context);
     String data = await assetBunlde.loadString(jsonFile);
     final body;
@@ -58,9 +58,9 @@ class WuduStepsFromJson {
       print(body);
     } catch (e) {
       print('error ${e.toString()}');
-      return WuduPracticalStep(topics: [], header: '');
+      return WuduPracticalModel(topics: [], header: '');
     }
-    WuduPracticalStep d = WuduPracticalStep(
+    WuduPracticalModel d = WuduPracticalModel(
         header: body[0]['header'],
         topics: body[0]['nestedTopics'].map<NestedTopics>((x) => NestedTopics.fromJson(x)).toList());
     //print('d ${d.length}');

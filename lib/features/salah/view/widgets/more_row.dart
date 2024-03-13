@@ -1,7 +1,7 @@
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:hiwayda_oracion_islamica/views/widgets/main_text.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/main_text.dart';
 
 class MoreRow extends StatelessWidget {
   const MoreRow({

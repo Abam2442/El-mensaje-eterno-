@@ -6,8 +6,8 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
-import 'package:hiwayda_oracion_islamica/views/pages/LearnSalah/PracticalLearn/salah_practical_page.dart';
-import 'package:hiwayda_oracion_islamica/views/pages/LearnSalah/PracticalLearn/wudu_practical_page.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/salah_practical_page.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/wudu_practical_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
