@@ -5,6 +5,7 @@ import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/screens/advanced_sites.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/azkar_doaa_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/presentation/screens/azkar_doaa_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/faith/faith_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/faith/view/faith_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/hadith_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/book_hadithes_screen.dart';
@@ -168,6 +169,7 @@ abstract class AppPagesRoutes {
       name: faithScreen,
       page: () => FaithScreen(),
       transition: Transition.cupertino,
+      binding: FaithBindings()
     ),
     GetPage(
       name: learnSalah,
