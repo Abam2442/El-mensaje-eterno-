@@ -1,60 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/custom_appbar.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/primary_shimmer.dart';
 import 'package:hiwayda_oracion_islamica/features/newLife/controller/newLife_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/newLife/view/newLife_course_Screen.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_images.dart';
-import 'newLife_course_Screen.dart';
-
-class NewLifeScreen extends StatelessWidget {
-  NewLifeScreen({super.key});
-
-  final NewLifeController newLifeController = Get.put(NewLifeController());
+class NewLifeScreen extends GetView<NewLifeController> {
+  const NewLifeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
-      child: Obx(()=>
-      newLifeController.isLoading.value?
-      const Scaffold(body: Center(child: CircularProgressIndicator(),),):
-      Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.kPrimaryColor,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('NewLife Lessons',style: Styles.textStyle18Godlen,),
-              ClipRRect(
-                  borderRadius: 10.cBorder,
-                  child: SizedBox.fromSize(
-                      size: const Size(40 ,40),
-                      child: Image.asset(AppImages.logo,fit: BoxFit.fill,)))
-            ],
+      child: Obx(() => controller.isLoading.value
+          ? Scaffold(
+        appBar: CustomAppbar(title: Get.arguments['title'], tabs: const [
+          Tab(text: ''),
+          Tab(text: ''),
+          Tab(text: ''),
+          Tab(text: ''),
+        ]),
+        body: ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
+          padding:
+          const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+          shrinkWrap: true,
+          itemBuilder: (context, index) => PrimaryShimmer.rectangle(
+            height: Get.height * 0.09,
+            color: AppColors.kGreenColor,
+            border: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
+            ),
           ),
-          bottom: TabBar(
-            tabs: [
-              Tab(child: Text(newLifeController.newLifeModel.courses![0].title!,style: Styles.textStyle14Green,)),
-              Tab(child: Text(newLifeController.newLifeModel.courses![1].title!,style: Styles.textStyle14Green)),
-              Tab(child: Text(newLifeController.newLifeModel.courses![2].title!,style: Styles.textStyle14Green)),
-              Tab(child: Text(newLifeController.newLifeModel.courses![3].title!,style: Styles.textStyle14Green)),
-            ],
+          separatorBuilder: (context, index) => const SizedBox(
+            height: 15,
           ),
+          itemCount: 8,
+        ),
+      )
+          : Scaffold(
+        appBar: CustomAppbar(
+          title: Get.arguments['title'],
+          tabs: controller.tabs,
         ),
         backgroundColor: AppColors.kWhiteColor,
         body: TabBarView(
           children: [
-            NewLifeCourseScreen(index:0),
-            NewLifeCourseScreen(index:1),
-            NewLifeCourseScreen(index:2),
-            NewLifeCourseScreen(index:3)
+            NewLifeCourseScreen(index: 0),
+            NewLifeCourseScreen(index: 1),
+            NewLifeCourseScreen(index: 2),
+            NewLifeCourseScreen(index: 3),
           ],
         ),
       )),
     );
   }
 }
-
-

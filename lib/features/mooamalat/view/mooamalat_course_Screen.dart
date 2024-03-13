@@ -13,37 +13,29 @@ class MooamalatCourseScreen extends StatelessWidget {
   MooamalatController mooamalatController = Get.find();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('${mooamalatController.mooamalatModel.courses![index].title}'),
-        ),
-        body: Container(
+    return Container(
           color: AppColors.kPrimaryColor,
           child: Padding(
               padding: 10.aEdge,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Text('${mooamalatController.mooamalatModel.courses![index].description}',style: Styles.textStyle16Golden,textAlign: TextAlign.center),
-                    SizedBox(
-                      height: context.height*0.8,
-                      child: ListView.builder(
-                          itemCount: mooamalatController.mooamalatModel.courses![index].lessons!.length,
-                          itemBuilder: (context, i) =>
-                              CustomListTile(
-                                index: i,
-                                title:'${mooamalatController.mooamalatModel.courses![index].lessons![i].title}',
-                                onTap: (){
-                                  Get.to(()=> MooamalatLessonScreen(courseIndex: index,lessonIndex: i));
-                                },
-                              )
-                      ),
-                    )
-                  ],
-                ),
+              child: Column(
+                children: [
+                  Text('${mooamalatController.mooamalatModel.courses![index].description}',style: Styles.textStyle16Golden,textAlign: TextAlign.center),
+                  Expanded(
+                    child: ListView.builder(
+                        itemCount: mooamalatController.mooamalatModel.courses![index].lessons!.length,
+                        itemBuilder: (context, i) =>
+                            CustomListTile(
+                              index: i,
+                              title:'${mooamalatController.mooamalatModel.courses![index].lessons![i].title}',
+                              onTap: (){
+                                Get.to(()=> MooamalatLessonScreen(courseIndex: index,lessonIndex: i));
+                              },
+                            )
+                    ),
+                  )
+                ],
               )
           ),
-        )
     );
   }
 }

@@ -13,7 +13,9 @@ import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/ha
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/sub_category_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/islamicCenters/view/islamic_center_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/main/main_bindings.dart';
+import 'package:hiwayda_oracion_islamica/features/mooamalat/mooamalat_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/mooamalat/view/mooamalat_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/newLife/newLife_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/newLife/view/newLife_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/newMuslims/view/newMuslims_course_Screen.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/non_muslim_bindings.dart';
@@ -174,19 +176,21 @@ abstract class AppPagesRoutes {
     ),
     GetPage(
       name: pilersScreen,
-      page: () => PilersScreen(),
+      page: () => const PilersScreen(),
       binding: PilersBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(
       name: mooamalatScreen,
-      page: () => MooamalatScreen(),
+      page: () => const MooamalatScreen(),
       transition: Transition.cupertino,
+      binding: MooamalatBindings()
     ),
     GetPage(
       name: newLifeScreen,
-      page: () => NewLifeScreen(),
+      page: () => const NewLifeScreen(),
       transition: Transition.cupertino,
+      binding: NewLifeBindings()
     ),
     GetPage(
       name: prophetScreen,
