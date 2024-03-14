@@ -232,10 +232,13 @@ class _SalahPracticalPageState extends State<SalahPracticalPage> {
                           }),
                         ) );
                       }, child: const Icon(Icons.question_mark,size: 100,color: Colors.green,))),
+                    Text('Para las mujeres, ¿cómo usar el Hijab (el velo) 🧕?',style: AppTextStyles.h5,),
+                    Center(child: VideoIcon(videoPath: 'https://youtu.be/mj2nI1amAWg?si=-JYpZP3Db1qkR16B')),
                     Text(
                       firstPageData['description7'],
                       style: AppTextStyles.h5,
-                    ),Text(
+                    ),
+                    Text(
                       firstPageData['description8'],
                       style: AppTextStyles.h5,
                     ),

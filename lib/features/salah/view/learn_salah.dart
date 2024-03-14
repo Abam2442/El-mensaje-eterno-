@@ -6,9 +6,9 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/custom_appbar.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/Qibla/qibla_compass.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/practical_learn_page.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/platform_alert_dialog.dart';
 
 import '../../home/presentation/widgets/section_item_homeP_page_widget.dart';
 import 'prayer_times_page.dart';
@@ -19,17 +19,8 @@ class LearnSalah extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: true,
-      onPopInvoked: (didPop) async => await showDialog(
-          context: context,
-          builder: (BuildContext context) => const PlatformAlertDialog(
-                title: 'Salida?',
-                content: 'Quieres salir?',
-                defaultActionText: 'ok',
-                cancelActionText: 'Cancelar',
-              )),
-      child: Scaffold(
+    return Scaffold(
+      appBar: AppBar(title: Text('Learn Salah'),),
         backgroundColor: AppColors.kPrimaryColor,
         body: SafeArea(
           child: Column(
@@ -144,7 +135,6 @@ class LearnSalah extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

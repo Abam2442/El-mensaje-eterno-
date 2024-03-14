@@ -19,14 +19,16 @@ class NewMuslimsNestedTopicsScreen extends StatelessWidget {
         ),
       ),
       body:
-      Container(
-        color: AppColors.kPrimaryColor,
-        child: Padding(
-            padding: 20.aEdge,
-            child: Text(
-              '${newMuslimsController.newMuslimsModel.courses![courseIndex].lessons![lessonIndex].nestedTopics![nestedTopicsIndex].body}',
-              style: Styles.textStyle18Golden,
-            )),
+      SingleChildScrollView(
+        child: Container(
+          color: AppColors.kPrimaryColor,
+          child: Padding(
+              padding: 20.aEdge,
+              child: Text(
+                '${newMuslimsController.newMuslimsModel.courses![courseIndex].lessons![lessonIndex].nestedTopics![nestedTopicsIndex].body}',
+                style: Styles.textStyle18Golden,
+              )),
+        ),
       ),
 
     );

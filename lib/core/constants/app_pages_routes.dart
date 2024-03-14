@@ -167,7 +167,7 @@ abstract class AppPagesRoutes {
     ),
     GetPage(
       name: faithScreen,
-      page: () => FaithScreen(),
+      page: () => const FaithScreen(),
       transition: Transition.cupertino,
       binding: FaithBindings()
     ),
