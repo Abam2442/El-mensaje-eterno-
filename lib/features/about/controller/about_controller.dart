@@ -18,28 +18,28 @@ class AboutController extends GetxController {
         whatsapp: 'https://wa.me/963993879192'
     ),
     DeveloperModel(
-        name:'Rami',
+        name:'Eng. Rami',
         whatsapp: '',
         facebook: '',
         gmail: 'mohammedrdaly@gmail.com',
         linkedin: ''
     ),
     DeveloperModel(
-        name:'Aisha',
+        name:'Eng. Aisha',
         whatsapp: '',
         facebook: '',
         gmail: 'ite.ai.aisha@gmail.com',
         linkedin: ''
     ),
     DeveloperModel(
-        name:'Husein',
+        name:'Eng. Husein',
         whatsapp: '',
         facebook: '',
         gmail: 'dev.husein@gmail.com',
         linkedin: ''
     ),
     DeveloperModel(
-        name:'Mohammed Alsamet',
+        name:'Eng. Mohammed Alsamet',
         whatsapp: '',
         facebook: '',
         gmail: 'algharrpy2022@gmail.com',
@@ -53,7 +53,7 @@ class AboutController extends GetxController {
         linkedin: ''
     ),
     DeveloperModel(
-        name:'Bassem Ahmed',
+        name:'Dr. Bassem Ahmed',
         whatsapp: '',
         facebook: '',
         gmail: 'bassemahmed4444@gmail.com',
