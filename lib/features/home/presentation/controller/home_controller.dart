@@ -4,7 +4,6 @@ import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_pages_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
@@ -21,42 +20,37 @@ class HomeController extends GetxController {
 
   List<HomeCardData> homeCardsData = [
     HomeCardData(
-      title: "Quran",
-      description: "Learn , Read all the Quran",
+      title: "El Corán",
+      description: "El libro sagrado de Al-láh",
       iconPath: AppAssets.quran,
       targetScreen: AppPagesRoutes.quranScreen,
     ),
+    HomeCardData(
+      title: " El Hadith",
+      description: "Hadiths y dichos del Profeta",
+      iconPath: AppAssets.hadith,
+      targetScreen: AppPagesRoutes.hadithScreen,
+    ),
+    HomeCardData(
+      title: "Equipaje del nuevo musulmán",
+      description: "Aprende el nuevo musulmán en pasos ordenados.",
+      iconPath: AppAssets.prayer,
+      targetScreen: AppPagesRoutes.muslimScreen,
+    ),
+    HomeCardData(
+      title: "La educación avanzada",
+      description: "Lecciones avanzadas para el musulmán y el buscador de la verdad.",
+      iconPath: AppAssets.azkar,
+      targetScreen: AppPagesRoutes.advanced_learning,
+    ),
+  ];
+  List<HomeCardData> newMuslimHomeCardsData = [
     HomeCardData(
       title: "Azkar",
       description: "Learn how to pray,Qiblah",
       iconPath: AppAssets.azkar,
       targetScreen: AppPagesRoutes.azkarDoaaScreen,
     ),
-    HomeCardData(
-      title: "Hadith",
-      description: "Learn how to pray,Qiblah",
-      iconPath: AppAssets.hadith,
-      targetScreen: AppPagesRoutes.hadithScreen,
-    ),
-    HomeCardData(
-      title: "Advanced Learning",
-      description: "Learn how to pray,Qiblah",
-      iconPath: AppAssets.azkar,
-      targetScreen: AppPagesRoutes.advanced_learning,
-    ),
-    HomeCardData(
-      title: "Courses for Muslim",
-      description: "Learn how to pray,Qiblah",
-      iconPath: AppAssets.prayer,
-      targetScreen: AppPagesRoutes.muslimScreen,
-    ),
-    HomeCardData(
-      title: "Courses for Non Muslim",
-      description: "Learn how to pray,Qiblah",
-      iconPath: AppAssets.prayer,
-      targetScreen: AppPagesRoutes.nonMuslimScreen,
-    ),
-    //
     HomeCardData(
       title: "La fe islámica",
       description: "El primer pilar del Islam",

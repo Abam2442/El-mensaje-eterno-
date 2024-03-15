@@ -116,4 +116,10 @@ abstract class Styles {
     fontSize: 14,
     fontWeight: FontWeight.w500,
   );
+
+  static const textStyle14primary = TextStyle(
+    color: AppColors.kPrimaryColor,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  );
 }

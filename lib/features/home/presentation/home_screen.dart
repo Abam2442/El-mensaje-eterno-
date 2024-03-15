@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
               height: 12,
             ),
             PrayTimeWidgetSectionHomeScreen(),
-            SectionswidgetsHomeScreen(),
+            SectionswidgetsHomeScreen(data: homeController.homeCardsData),
           ],
         ),
       ),

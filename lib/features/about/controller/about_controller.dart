@@ -1,0 +1,68 @@
+import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/about/model/developer_model.dart';
+
+class AboutController extends GetxController {
+  List<DeveloperModel> developerData = [
+    DeveloperModel(
+        name:'Eng. Osama Abd Almalik',
+        gmail: 'osamaaabdalmalik@gmail.com',
+        facebook: 'https://www.facebook.com/osamaaabdalmalik',
+        linkedin: 'https://www.linkedin.com/in/osamaaabdalmalik/',
+        whatsapp: 'https://wa.me/963996697253'
+    ),
+    DeveloperModel(
+        name:'Eng. Mahmoud Soufan',
+        gmail: 'Mahmoud.Soufan313@gmail.com',
+        facebook: 'https://www.facebook.com/mhmoud313',
+        linkedin: 'linkedin.com/in/MahmoudSoufan',
+        whatsapp: 'https://wa.me/963993879192'
+    ),
+    DeveloperModel(
+        name:'Rami',
+        whatsapp: '',
+        facebook: '',
+        gmail: 'mohammedrdaly@gmail.com',
+        linkedin: ''
+    ),
+    DeveloperModel(
+        name:'Aisha',
+        whatsapp: '',
+        facebook: '',
+        gmail: 'ite.ai.aisha@gmail.com',
+        linkedin: ''
+    ),
+    DeveloperModel(
+        name:'Husein',
+        whatsapp: '',
+        facebook: '',
+        gmail: 'dev.husein@gmail.com',
+        linkedin: ''
+    ),
+    DeveloperModel(
+        name:'Mohammed Alsamet',
+        whatsapp: '',
+        facebook: '',
+        gmail: 'algharrpy2022@gmail.com',
+        linkedin: ''
+    ),
+    DeveloperModel(
+        name:'UI',
+        whatsapp: '',
+        facebook: '',
+        gmail: 'm29026753@gmail.com',
+        linkedin: ''
+    ),
+    DeveloperModel(
+        name:'Bassem Ahmed',
+        whatsapp: '',
+        facebook: '',
+        gmail: 'bassemahmed4444@gmail.com',
+        linkedin: ''
+    ),
+  ];
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+}

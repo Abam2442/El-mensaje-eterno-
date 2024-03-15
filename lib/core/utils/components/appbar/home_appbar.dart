@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/about/about_binding.dart';
+import 'package:hiwayda_oracion_islamica/features/about/view/about_screen.dart';
 
 import '../../../../features/salah/view/salah_importance_page.dart';
 import '../../../constants/app_assets.dart';
@@ -42,13 +44,15 @@ class CustomPopupMenuButton extends StatelessWidget {
       onSelected: (value) {
       },
       itemBuilder: (BuildContext context) => [
-        _buildPopupMenuItem('Language', FontAwesomeIcons.language, 'Language'),
+        _buildPopupMenuItem('Language', FontAwesomeIcons.language, 'Language',null),
         _buildPopupMenuItem(
-            'Report a problem', FontAwesomeIcons.info, 'Report a Problem'),
-        _buildPopupMenuItem('Theme', FontAwesomeIcons.paintbrush, 'Theme'),
-        _buildPopupMenuItem('Country', FontAwesomeIcons.globe, 'Country'),
+            'Report a problem', FontAwesomeIcons.info, 'Report a Problem',null),
+        _buildPopupMenuItem('Theme', FontAwesomeIcons.paintbrush, 'Theme',null),
+        _buildPopupMenuItem('Country', FontAwesomeIcons.globe, 'Country',null),
         _buildPopupMenuItem('About the developers', FontAwesomeIcons.user,
-            'About the Developers'),
+            'About the Developers',(){
+          Get.to(()=> const AboutScreen(),binding: AboutBinding());
+            }),
       ],
       splashRadius: 1,
       shape: RoundedRectangleBorder(
@@ -73,8 +77,9 @@ class CustomPopupMenuButton extends StatelessWidget {
     );
   }
 
-  _buildPopupMenuItem(String value, IconData icon, String text) {
+  _buildPopupMenuItem(String value, IconData icon, String text,VoidCallback? onTap) {
     return PopupMenuItem<String>(
+      onTap: onTap,
       value: value,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
