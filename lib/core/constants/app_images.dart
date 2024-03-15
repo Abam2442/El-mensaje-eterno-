@@ -12,7 +12,7 @@ class AppImages {
   static const String facebook = 'assets/images/icon-facebook.png';
   static const String facebookMessenger = 'assets/images/icon-facebook-messenger.png';
   static const String whatsapp = 'assets/images/icon-whatsapp.png';
-  static const String linkedin = 'assets/images/linkedin.png';
+  static const String linkedin = 'assets/images/linkedin.jpg';
   static const String youtube = 'assets/images/icon-youtube.png';
   static const String logo = 'assets/images/logo.png';
 }

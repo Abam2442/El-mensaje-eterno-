@@ -13,6 +13,16 @@ class SalahImportancePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.kPrimaryColor,
+        appBar: AppBar(
+          title: const Text(
+            "La importancia de la oración.",
+            style: Styles.textStyle20Golden,
+          ),
+          backgroundColor: AppColors.kPrimaryColor,
+          iconTheme: const IconThemeData(
+            color: AppColors.kGoldenColor,
+          ),
+        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -23,7 +33,6 @@ class SalahImportancePage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('La importancia de la oración.', style: Styles.textStyle24Golden),
                       10.hSize,
                       InkWell(
                         onTap: () {

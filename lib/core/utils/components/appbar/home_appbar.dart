@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/about/about_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/about/view/about_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/copy_right_page.dart';
 
-import '../../../../features/salah/view/salah_importance_page.dart';
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
 
@@ -19,9 +18,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.kPrimaryColor,
-      title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: SvgPicture.asset(AppAssets.logoApp)),
+      title: Padding(padding: const EdgeInsets.symmetric(horizontal: 12), child: SvgPicture.asset(AppAssets.logoApp)),
       actions: const [
         CustomPopupMenuButton(),
       ],
@@ -41,43 +38,33 @@ class CustomPopupMenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      onSelected: (value) {
-      },
+      onSelected: (value) {},
       itemBuilder: (BuildContext context) => [
-        _buildPopupMenuItem('Language', FontAwesomeIcons.language, 'Language',null),
-        _buildPopupMenuItem(
-            'Report a problem', FontAwesomeIcons.info, 'Report a Problem',null),
-        _buildPopupMenuItem('Theme', FontAwesomeIcons.paintbrush, 'Theme',null),
-        _buildPopupMenuItem('Country', FontAwesomeIcons.globe, 'Country',null),
-        _buildPopupMenuItem('About the developers', FontAwesomeIcons.user,
-            'About the Developers',(){
-          Get.to(()=> const AboutScreen(),binding: AboutBinding());
-            }),
+        _buildPopupMenuItem('Fuentes', FontAwesomeIcons.copyright, 'Fuentes', () {
+          Get.to(() => const CopyRightPage());
+        }),
+        _buildPopupMenuItem('Developers', FontAwesomeIcons.user, 'Developers', () {
+          Get.to(() => const AboutScreen(), binding: AboutBinding());
+        }),
       ],
       splashRadius: 1,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18),
       ),
-      offset: const Offset(200, 60),
+      offset: const Offset(0, 30),
       elevation: 0,
       color: AppColors.kGreenColor,
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: SvgPicture.asset(AppAssets.menuIcon),
-          ),
-          IconButton(onPressed: (){
-            Get.to(()=>SalahImportancePage());
-          }, icon: const Icon(Icons.info_outline,color: AppColors.kGoldenColor,))
-        ],
-      )
-
-
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Transform.flip(
+          flipX: true,
+          child: SvgPicture.asset(AppAssets.menuIcon),
+        ),
+      ),
     );
   }
 
-  _buildPopupMenuItem(String value, IconData icon, String text,VoidCallback? onTap) {
+  _buildPopupMenuItem(String value, IconData icon, String text, VoidCallback? onTap) {
     return PopupMenuItem<String>(
       onTap: onTap,
       value: value,
