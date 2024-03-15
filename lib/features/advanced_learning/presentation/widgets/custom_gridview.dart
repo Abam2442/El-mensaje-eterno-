@@ -14,7 +14,7 @@ class Item_GridView extends StatelessWidget {
         Get.put(Advanced_LearningController());
     return ListView.builder(
       scrollDirection: Axis.horizontal,
-      itemCount: 6,
+      itemCount: 5,
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {

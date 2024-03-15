@@ -13,40 +13,40 @@ class Advanced_LearningController extends GetxController {
     'AL-LÁH y su mensajero',
     'Guía al islam',
     'Temas islámicos',
-    'Canales de telegram',
+    // 'Canales de telegram',
   ];
 
   List<List<Map>> page = [
     [
       {
-        "title": "El buscador de la verdad",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
+        "title": "¿Qué es el Islam?",
+        "description": "Los Fundamentos del Islam",
+        "targetScreen": AppPagesRoutes.nonMuslimTopicsScreen,
       },
       {
-        "title": "El buscador de la verdad",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
+        "title": "Cristianismo",
+        "description": "La corrupción de la Biblia",
+        "targetScreen": AppPagesRoutes.nonMuslimTopicsScreen,
       },
       {
-        "title": "El buscador de la verdad",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
+        "title": "El Islam es la religión de verdad",
+        "description": "Pruebas de existencia de Dios",
+        "targetScreen": AppPagesRoutes.nonMuslimTopicsScreen,
       },
       {
-        "title": "El buscador de la verdad",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
+        "title": "Objeciones sobre el Islam",
+        "description": "Dudas sobre el Islam",
+        "targetScreen": AppPagesRoutes.nonMuslimTopicsScreen,
       },
       {
-        "title": "El buscador de la verdad",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
+        "title": "Preguntas sobre el Islam",
+        "description": "temas islámicos",
+        "targetScreen": AppPagesRoutes.nonMuslimTopicsScreen,
       },
       {
-        "title": "El buscador de la verdad",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
+        "title": "Responder a las sectas",
+        "description": "Learn more about sectas",
+        "targetScreen": AppPagesRoutes.nonMuslimTopicsScreen,
       },
     ],
     [
@@ -82,11 +82,11 @@ class Advanced_LearningController extends GetxController {
       },
     ],
     [
-      {
-        "title": "Knowing allah",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
-      },
+      // {
+      //   "title": "Knowing allah",
+      //   "description": "Learn more about islam",
+      //   "targetScreen": AppPagesRoutes.quranScreen,
+      // },
       {
         "title": "Rasul allah",
         "description": "Learn more about islam",
@@ -217,33 +217,33 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.terminology,
       },
     ],
-    [
-      {
-        "title": "Canales de telegram",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
-      },
-      {
-        "title": "Canales de telegram",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
-      },
-      {
-        "title": "Canales de telegram",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
-      },
-      {
-        "title": "Canales de telegram",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
-      },
-      {
-        "title": "Canales de telegram",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
-      },
-    ],
+    // [
+    //   {
+    //     "title": "Canales de telegram",
+    //     "description": "Learn more about islam",
+    //     "targetScreen": AppPagesRoutes.quranScreen,
+    //   },
+    //   {
+    //     "title": "Canales de telegram",
+    //     "description": "Learn more about islam",
+    //     "targetScreen": AppPagesRoutes.quranScreen,
+    //   },
+    //   {
+    //     "title": "Canales de telegram",
+    //     "description": "Learn more about islam",
+    //     "targetScreen": AppPagesRoutes.quranScreen,
+    //   },
+    //   {
+    //     "title": "Canales de telegram",
+    //     "description": "Learn more about islam",
+    //     "targetScreen": AppPagesRoutes.quranScreen,
+    //   },
+    //   {
+    //     "title": "Canales de telegram",
+    //     "description": "Learn more about islam",
+    //     "targetScreen": AppPagesRoutes.quranScreen,
+    //   },
+    // ],
   ];
 
   changeSelectedPart(val) {

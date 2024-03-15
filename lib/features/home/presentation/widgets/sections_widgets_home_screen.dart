@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/widgets/home_card.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../controller/home_controller.dart';
 
 class SectionswidgetsHomeScreen extends StatelessWidget {
-  SectionswidgetsHomeScreen({
-    super.key,
-  });
+  final List<HomeCardData> data;
 
-  HomeController homeController = Get.put(HomeController());
+  const SectionswidgetsHomeScreen({
+    super.key,
+    required this.data,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +25,9 @@ class SectionswidgetsHomeScreen extends StatelessWidget {
       ),
       child: Column(children: [
         ...List.generate(
-          homeController.homeCardsData.length,
+          data.length,
           (index) => HomeCard(
-            homeCardData: homeController.homeCardsData[index],
+            homeCardData: data[index],
           ),
         ),
       ]),

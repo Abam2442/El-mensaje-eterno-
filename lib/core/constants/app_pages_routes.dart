@@ -19,8 +19,10 @@ import 'package:hiwayda_oracion_islamica/features/mooamalat/view/mooamalat_scree
 import 'package:hiwayda_oracion_islamica/features/newLife/newLife_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/newLife/view/newLife_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/newMuslims/view/newMuslims_course_Screen.dart';
+import 'package:hiwayda_oracion_islamica/features/newMuslims/view/new_muslim_home_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/non_muslim_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/screens/non_muslim_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/screens/non_muslim_topic_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/pilers/pilers_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/pilers/view/pilers_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/prophet/prophet_bindings.dart';
@@ -102,6 +104,7 @@ abstract class AppPagesRoutes {
 
   static const String muslimScreen = "/muslimScreen";
   static const String nonMuslimScreen = "/nonMuslimScreen";
+  static const String nonMuslimTopicsScreen = "/nonMuslimTopicsScreen";
   static const String surahScreen = "/surahScreen";
   static const String telawaScreen = "/telawaScreen";
   static const String contentAzkarScreen = "/content_azkar_screen";
@@ -235,6 +238,16 @@ abstract class AppPagesRoutes {
       name: nonMuslimScreen,
       page: () => const NonMuslimSectionScreen(),
       binding: NonMuslimBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: nonMuslimTopicsScreen,
+      page: () => const NonMuslimTopicsScreen(topics: [], title: ""),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: muslimScreen,
+      page: () => NewMuslimHomeScreen(),
       transition: Transition.cupertino,
     ),
     GetPage(
