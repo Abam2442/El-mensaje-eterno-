@@ -1,7 +1,7 @@
 name: hiwayda_oracion_islamica
 description: this app used to learn muslims how to pray
 publish_to: 'none'
-version: 1.0.0+3
+version: 1.0.0+4
 
 environment:
   sdk: '>=2.18.2 <4.0.0'
