@@ -41,7 +41,7 @@ class SalahImportancePage extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               'Click To Watch a Video',
                               style: TextStyle(fontSize: 14, color: Colors.white),
                             ),
@@ -51,7 +51,7 @@ class SalahImportancePage extends StatelessWidget {
                         ),
                       ),
                       10.hSize,
-                      Text(
+                      const Text(
                         'oración, que significa rezar, hacer la ibada (adoración), pedir ser perdonado y suplicar a Allah, se expresa con la palabra “salat” en árabe. Rezar significa al mismo tiempo inclinarse ante la grandiosidad de Allah, mostrar la servidumbre y como palabra significa el lazo. La oración (salat) es considerada en el Islam como el miraj del musulmán, es decir el camino de acercarse al Gran Creador y el camino para ascender ante Su presencia. Por eso, la oración es considera como la ibada más importante. El musulmán vive el placer espiritual y el bienestar de estar ante de la presencia de Allah en la oración y mostrar su servidumbre. Se eleva espiritualmente alojándose de todos los trabajos y pensamientos mundanos. Por eso, la oración es la forma más concreta d la orientación de todos los profetas hacia Allah.'
                         '\n\n\n'
                         'Rezamos para mejorarnos, para recordar siempre que hay gran Dios (Alá) que nos ayuda. La oración nos recuerda cinco veces al día que hay gran creador que va a juzgarnos por eso no debemos cometer injusticia contra los demás. La oración nos da la paz interior. Porque nos recuerda que cualquier problema tiene solución por que Alá controla el mundo.'

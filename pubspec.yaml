@@ -1,7 +1,7 @@
 name: hiwayda_oracion_islamica
 description: this app used to learn muslims how to pray
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.0+3
 
 environment:
   sdk: '>=2.18.2 <4.0.0'
@@ -47,11 +47,20 @@ dependencies:
   jhijri: ^0.0.1
   timer_builder: ^2.0.0
   flutter_archive:
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.jpg"
+  min_sdk_android: 21
+
 
 flutter:
 

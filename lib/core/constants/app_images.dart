@@ -14,5 +14,4 @@ class AppImages {
   static const String whatsapp = 'assets/images/icon-whatsapp.png';
   static const String linkedin = 'assets/images/linkedin.jpg';
   static const String youtube = 'assets/images/icon-youtube.png';
-  static const String logo = 'assets/images/logo.png';
 }

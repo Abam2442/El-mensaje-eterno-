@@ -1,4 +1,4 @@
-package com.soufan.hiwayda_oracion_islamica
+package com.mensaje.eterno
 
 import io.flutter.embedding.android.FlutterActivity
 
