@@ -66,9 +66,9 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.islamMessage,
       },
       {
-        "title": "Islamqa",
+        "title": "Islam Q&A",
         "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
+        "targetScreen": AppPagesRoutes.islamQA,
       },
       {
         "title": "Islam religion",
@@ -152,12 +152,12 @@ class Advanced_LearningController extends GetxController {
       {
         "title": "The key to islam_1",
         "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
+        "targetScreen": AppPagesRoutes.theKeyToIslam,
       },
       {
         "title": "The key to islam_2",
         "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
+        "targetScreen": AppPagesRoutes.theKeyToIslam2,
       },
       {
         "title": "Saber el islam",
