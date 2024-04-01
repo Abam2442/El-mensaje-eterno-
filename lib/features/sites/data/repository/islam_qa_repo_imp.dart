@@ -10,7 +10,7 @@ import '../data_source/islam_qa_local_datasorce.dart';
 import '../models/islam_qa.dart';
 
 class IslamQARepositoryImp extends IslamQARepository {
-  final IslamQALocalDataSource islamQALocalDataSource;
+  final IslamqaLocalDataSource islamQALocalDataSource;
   IslamQARepositoryImp({
     required this.islamQALocalDataSource,
   });

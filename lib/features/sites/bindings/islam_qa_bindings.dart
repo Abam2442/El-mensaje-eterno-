@@ -9,7 +9,7 @@ import '../presentation/controller/islam_qa_controller.dart';
 class IslamQABindings extends Bindings {
   @override
   dependencies() async {
-    Get.put<IslamQALocalDataSource>(
+    Get.put<IslamqaLocalDataSource>(
       IslamQALocalDataSourceImpl(
         sharedPreferencesService: Get.find(),
         archiveService:

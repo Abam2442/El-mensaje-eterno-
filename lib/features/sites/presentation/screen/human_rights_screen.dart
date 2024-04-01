@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controller/jesus_muslim_controller.dart';
+import '../controller/human_rights_controller.dart';
 import '../widget/app_bar_custom.dart';
-import '../widget/artical_with_image.dart';
+import '../widget/artical_custom.dart';
 import '../widget/inkwell_custom.dart';
 
-class JesusMuslimScreen extends StatelessWidget {
-  const JesusMuslimScreen({super.key});
+class HumanRightsScreen extends StatelessWidget {
+  const HumanRightsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(JesusMuslimControllerImp());
+    Get.put(HumanRightsControllerImp());
     return Scaffold(
-      appBar:
-          const AppBarCustom(title: "Jesus is muslim").customAppBar(context),
-      body: GetBuilder<JesusMuslimControllerImp>(
+      appBar: const AppBarCustom(title: 'Human Rights').customAppBar(context),
+      body: GetBuilder<HumanRightsControllerImp>(
           builder: (controller) => Container(
               margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
               child: ListView.builder(
@@ -23,12 +22,10 @@ class JesusMuslimScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return InkwellCustom(
                       catigory: false,
-                      dataText: controller.articals[index].name,
+                      dataText: controller.articals[index].name.trim(),
                       onTap: () {
-                        Get.to(() => ArticalImageCustom(
-                              dataText: controller.articals[index].content,
-                              imageLink: controller.articals[index].imageLink,
-                            ));
+                        Get.to(() => ArticalCustom(
+                            dataText: controller.articals[index].content));
                       },
                     );
                   }))),

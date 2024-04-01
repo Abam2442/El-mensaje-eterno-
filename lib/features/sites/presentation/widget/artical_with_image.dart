@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/app_bar_custom.dart';
 import '../../../../core/constants/app_colors.dart';
 
 class ArticalImageCustom extends StatelessWidget {
@@ -14,13 +15,13 @@ class ArticalImageCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.kWhiteColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.kPrimaryColor,
-      ),
+      appBar: const AppBarCustom(title: '').customAppBar(context),
       body: Container(
         margin: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
         child: ListView(children: [
-          Image.network(imageLink),
+          Image.network(
+            imageLink,
+          ),
           SelectableText(
             dataText,
             textAlign: TextAlign.start,

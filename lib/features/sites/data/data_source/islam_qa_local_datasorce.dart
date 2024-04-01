@@ -7,11 +7,11 @@ import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
 import '../models/islam_qa.dart';
 
-abstract class IslamQALocalDataSource {
+abstract class IslamqaLocalDataSource {
   Future<List<Islamqa>> getArtical();
 }
 
-class IslamQALocalDataSourceImpl extends IslamQALocalDataSource {
+class IslamQALocalDataSourceImpl extends IslamqaLocalDataSource {
   final SharedPreferencesService sharedPreferencesService;
   final ArchiveService archiveService;
 

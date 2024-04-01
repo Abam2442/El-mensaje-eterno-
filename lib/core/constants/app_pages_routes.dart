@@ -57,8 +57,11 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/begi
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/bidaa_in_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/explore_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/first_steps_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/hisnul_mumin_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/human_rights_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam%20_religion/islam_religion_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_for_christians/islam_for_christians_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_guide_1_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_main.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/islam_land_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/islam_message_main_screen.dart';
@@ -83,7 +86,10 @@ import 'package:hiwayda_oracion_islamica/features/salah/view/learn_salah.dart';
 import '../../features/azkar_doaa/presentation/screens/content_azkar_doaa_screen.dart';
 import '../../features/salah/view/learn_salah_page.dart';
 import '../../features/sites/bindings/guid_to_islam_binding.dart';
+import '../../features/sites/bindings/hisnul_mumin_binding.dart';
+import '../../features/sites/bindings/human_rights_binding.dart';
 import '../../features/sites/bindings/islam_faith_binding.dart';
+import '../../features/sites/bindings/islam_guide_1_binding.dart';
 import '../../features/sites/bindings/islam_qa_bindings.dart';
 import '../../features/sites/bindings/the_key_to_islam_2_binding.dart';
 import '../../features/sites/bindings/the_key_to_islam_binding.dart';
@@ -149,6 +155,9 @@ abstract class AppPagesRoutes {
   static const String islamQA = "/islamQA";
   static const String islamFaith = "/Islam_faith";
   static const String guideToIslam = "/guid_to_islam";
+  static const String islamGuide1 = "/islam_guide_1";
+  static const String hisnulMumin = "/hisnul_mumin";
+  static const String huminRight = "/humin_right";
 
   static List<GetPage<dynamic>> appPages = [
     GetPage(
@@ -254,6 +263,24 @@ abstract class AppPagesRoutes {
       name: guideToIslam,
       page: () => const GuideToIslamMainScreen(),
       binding: GuideToIslamBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamGuide1,
+      page: () => const IslamGuide1Screen(),
+      binding: IslamGuide1Bindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: hisnulMumin,
+      page: () => const HisnulMuminScreen(),
+      binding: HisnulMuminBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: huminRight,
+      page: () => const HumanRightsScreen(),
+      binding: HumanRightsBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(
