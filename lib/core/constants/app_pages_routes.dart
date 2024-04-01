@@ -82,9 +82,13 @@ import 'package:hiwayda_oracion_islamica/features/salah/view/learn_salah.dart';
 
 import '../../features/azkar_doaa/presentation/screens/content_azkar_doaa_screen.dart';
 import '../../features/salah/view/learn_salah_page.dart';
+import '../../features/sites/bindings/guid_to_islam_binding.dart';
+import '../../features/sites/bindings/islam_faith_binding.dart';
 import '../../features/sites/bindings/islam_qa_bindings.dart';
 import '../../features/sites/bindings/the_key_to_islam_2_binding.dart';
 import '../../features/sites/bindings/the_key_to_islam_binding.dart';
+import '../../features/sites/presentation/screen/giude_to_islam/guid_to_islam_main.dart';
+import '../../features/sites/presentation/screen/islam_faith_screen.dart';
 import '../../features/sites/presentation/screen/the_key_to_islam_2_screen.dart';
 
 abstract class AppPagesRoutes {
@@ -143,6 +147,8 @@ abstract class AppPagesRoutes {
   static const String theKeyToIslam = "/the_key_to_islam";
   static const String theKeyToIslam2 = "/the_key_to_islam2";
   static const String islamQA = "/islamQA";
+  static const String islamFaith = "/Islam_faith";
+  static const String guideToIslam = "/guid_to_islam";
 
   static List<GetPage<dynamic>> appPages = [
     GetPage(
@@ -236,6 +242,18 @@ abstract class AppPagesRoutes {
       name: islamQA,
       page: () => const IslamQAScreen(),
       binding: IslamQABindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamFaith,
+      page: () => const IslamFaithScreen(),
+      binding: IslamFaithBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: guideToIslam,
+      page: () => const GuideToIslamMainScreen(),
+      binding: GuideToIslamBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(
