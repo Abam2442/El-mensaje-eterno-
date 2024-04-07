@@ -87,10 +87,11 @@ class TelegramChannelsScreen extends StatelessWidget {
                         controller.channelsNames[index],
                         style: Styles.textStyle18Golden,
                       ),
-                      leading: const CircleAvatar(
+                      leading: CircleAvatar(
                         backgroundImage:
-                            AssetImage('assets/svg/images/zaghrafa.png'),
+                            const AssetImage('assets/svg/images/zaghrafa.png'),
                         backgroundColor: AppColors.kGreenColor,
+                        child: Text('${index+1}')
                       ),
                       subtitle: Text(
                         '${controller.channelMessagesList[index].messages.values.toList().last} Messages',

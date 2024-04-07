@@ -46,12 +46,6 @@ class HomeController extends GetxController {
   ];
   List<HomeCardData> newMuslimHomeCardsData = [
     HomeCardData(
-      title: "Azkar",
-      description: "Learn how to pray,Qiblah",
-      iconPath: AppAssets.azkar,
-      targetScreen: AppPagesRoutes.azkarDoaaScreen,
-    ),
-    HomeCardData(
       title: "La fe islámica",
       description: "El primer pilar del Islam",
       iconPath: AppSvgs.learnIslam,
@@ -98,6 +92,12 @@ class HomeController extends GetxController {
       description: "Un plan de estudios integral para el nuevo musulmán",
       iconPath: AppSvgs.salahrokoa,
       targetScreen: AppPagesRoutes.newMuslimsCourseScreen,
+    ),
+    HomeCardData(
+      title: "Azkar y Do'aa",
+      description: "Las Suplicas diarias",
+      iconPath: AppAssets.azkar,
+      targetScreen: AppPagesRoutes.azkarDoaaScreen,
     ),
   ];
 

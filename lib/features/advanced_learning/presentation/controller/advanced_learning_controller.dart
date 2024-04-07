@@ -13,7 +13,7 @@ class Advanced_LearningController extends GetxController {
     'AL-LÁH y su mensajero',
     'Guía al islam',
     'Temas islámicos',
-    // 'Canales de telegram',
+    'Canales de telegram',
   ];
 
   List<List<Map>> page = [
@@ -217,33 +217,13 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.terminology,
       },
     ],
-    // [
-    //   {
-    //     "title": "Canales de telegram",
-    //     "description": "Learn more about islam",
-    //     "targetScreen": AppPagesRoutes.quranScreen,
-    //   },
-    //   {
-    //     "title": "Canales de telegram",
-    //     "description": "Learn more about islam",
-    //     "targetScreen": AppPagesRoutes.quranScreen,
-    //   },
-    //   {
-    //     "title": "Canales de telegram",
-    //     "description": "Learn more about islam",
-    //     "targetScreen": AppPagesRoutes.quranScreen,
-    //   },
-    //   {
-    //     "title": "Canales de telegram",
-    //     "description": "Learn more about islam",
-    //     "targetScreen": AppPagesRoutes.quranScreen,
-    //   },
-    //   {
-    //     "title": "Canales de telegram",
-    //     "description": "Learn more about islam",
-    //     "targetScreen": AppPagesRoutes.quranScreen,
-    //   },
-    // ],
+    [
+      {
+        "title": "Canales de telegram",
+        "description": "Learn more about islam",
+        "targetScreen": AppPagesRoutes.telegram,
+      }
+    ],
   ];
 
   changeSelectedPart(val) {
