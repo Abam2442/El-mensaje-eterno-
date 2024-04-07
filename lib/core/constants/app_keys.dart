@@ -49,7 +49,8 @@ class AppKeys {
   static const String learningIslam = 'learning_islam.json';
   static const String loveInIslam = 'love_in_islam.json';
   static const String messageOfIslam = 'message_of_islam.json';
-  static const String muhammadTheMessengerOfGod = 'muhammad_the_messenger_of_God.json';
+  static const String muhammadTheMessengerOfGod =
+      'muhammad_the_messenger_of_God.json';
   static const String rasuluAllah = 'rasulu_allah.json';
   static const String romanceInIslam = 'romance_in_islam.json';
   static const String saberElIslam = 'saber_el_islam.json';
@@ -59,4 +60,8 @@ class AppKeys {
   static const String thePurity = 'the_purity.json';
   static const String womanInIslam = 'woman_in_islam.json';
   static const String telegram = 'telegram.json';
+  static const String alduaa = 'Alduaa.json';
+  static const String goldNote = 'Gold-note.json';
+  static const String copyRights = 'Copy-Rights.json';
+  static const String sonan = 'Sonan.json';
 }
