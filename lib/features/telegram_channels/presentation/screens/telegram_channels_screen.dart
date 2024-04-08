@@ -9,6 +9,7 @@ import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TelegramChannelsScreen extends StatelessWidget {
   const TelegramChannelsScreen({super.key});
@@ -83,9 +84,19 @@ class TelegramChannelsScreen extends StatelessWidget {
                     color: AppColors.kGreenColor,
                     child: ListTile(
                       //  isThreeLine: true,
-                      title: Text(
-                        controller.channelsNames[index],
-                        style: Styles.textStyle18Golden,
+                      title: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              controller.channelsNames[index],
+                              style: Styles.textStyle18Golden,
+                            ),
+                          ),
+                          IconButton(
+                              icon:Icon(Icons.info),onPressed:(){
+                                  launchUrl(Uri.parse('https://t.me/${controller.channelsNames[index]}'));
+                          }),
+                        ],
                       ),
                       leading: CircleAvatar(
                         backgroundImage:
@@ -93,11 +104,11 @@ class TelegramChannelsScreen extends StatelessWidget {
                         backgroundColor: AppColors.kGreenColor,
                         child: Text('${index+1}')
                       ),
-                      subtitle: Text(
-                        '${controller.channelMessagesList[index].messages.values.toList().last} Messages',
-                        maxLines: 2,
-                        style: const TextStyle(color: Colors.white),
-                      ),
+                      // subtitle: Text(
+                      //   '${controller.channelMessagesList[index].messages.values.toList().last} Messages',
+                      //   maxLines: 2,
+                      //   style: const TextStyle(color: Colors.white),
+                      // ),
                       trailing: Container(
                         height: 20,
                         width: 35,
@@ -106,10 +117,11 @@ class TelegramChannelsScreen extends StatelessWidget {
                           color: AppColors.kPrimaryColor,
                         ),
                         child: Center(
-                          child: Text(
-                            '${controller.channelMessagesList[index].messages.length}',
-                            style: const TextStyle(color: Colors.white),
-                          ),
+                          child:
+                            Text(
+                              '${controller.channelMessagesList[index].messages.length}',
+                              style: const TextStyle(color: Colors.white),
+                            ),
                         ),
                       ),
                     ),
