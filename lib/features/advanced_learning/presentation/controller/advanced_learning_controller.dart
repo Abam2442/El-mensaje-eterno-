@@ -56,9 +56,14 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.islamHouse,
       },
       {
-        "title": "Islam web",
+        "title": "Islam land",
         "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.islamWeb,
+        "targetScreen": AppPagesRoutes.islamLand,
+      },
+      {
+        "title": "Islam religion",
+        "description": "Learn more about islam",
+        "targetScreen": AppPagesRoutes.islamReligion,
       },
       {
         "title": "Islam message",
@@ -71,26 +76,26 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.islamQA,
       },
       {
-        "title": "Islam religion",
+        "title": "Islam web",
         "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.islamReligion,
-      },
-      {
-        "title": "Islam land",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.islamLand,
+        "targetScreen": AppPagesRoutes.islamWeb,
       },
     ],
     [
-      // {
-      //   "title": "Knowing allah",
-      //   "description": "Learn more about islam",
-      //   "targetScreen": AppPagesRoutes.quranScreen,
-      // },
+      {
+        "title": "Knowing allah",
+        "description": "Learn more about islam",
+        "targetScreen": AppPagesRoutes.knowingAllah,
+      },
       {
         "title": "Rasul allah",
         "description": "Learn more about islam",
         "targetScreen": AppPagesRoutes.rasulullah,
+      },
+      {
+        "title": "Muhammad the messanger of god",
+        "description": "Learn more about islam",
+        "targetScreen": AppPagesRoutes.muhammadTheMessangerOfGod,
       },
       {
         "title": "Jesus is muslim",
@@ -110,44 +115,24 @@ class Advanced_LearningController extends GetxController {
     ],
     [
       {
-        "title": "Islam port",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.islamPort,
-      },
-      {
-        "title": "Islam universe",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.islamUniverse,
-      },
-      {
-        "title": "Explore islam",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.exploreIslam,
-      },
-      {
-        "title": "Learning islam",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.learningIslam,
-      },
-      {
-        "title": "Islam faith",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.islamFaith,
-      },
-      {
         "title": "Islam guide_1",
         "description": "Learn more about islam",
         "targetScreen": AppPagesRoutes.islamGuide1,
       },
       {
-        "title": "Islam guide_2",
+        "title": "Guide to islam",
+        "description": "Learn more about islam",
+        "targetScreen": AppPagesRoutes.guideToIslam,
+      },
+      {
+        "title": "Saber el islam",
         "description": "Learn more about islam",
         "targetScreen": AppPagesRoutes.quranScreen,
       },
       {
-        "title": "Guide to islam",
+        "title": "Islam faith",
         "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.guideToIslam,
+        "targetScreen": AppPagesRoutes.islamFaith,
       },
       {
         "title": "The key to islam_1",
@@ -160,10 +145,31 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.theKeyToIslam2,
       },
       {
-        "title": "Saber el islam",
+        "title": "Message of islam",
         "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.quranScreen,
+        "targetScreen": AppPagesRoutes.messageOfIslam,
       },
+      {
+        "title": "Islam universe",
+        "description": "Learn more about islam",
+        "targetScreen": AppPagesRoutes.islamUniverse,
+      },
+      {
+        "title": "Explore islam",
+        "description": "Learn more about islam",
+        "targetScreen": AppPagesRoutes.exploreIslam,
+      },
+      {
+        "title": "Islam port",
+        "description": "Learn more about islam",
+        "targetScreen": AppPagesRoutes.islamPort,
+      },
+
+      // {
+      //   "title": "Islam guide_2",
+      //   "description": "Learn more about islam",
+      //   "targetScreen": AppPagesRoutes.quranScreen,
+      // },
     ],
     [
       {
@@ -172,24 +178,9 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.islamReligionOfPace,
       },
       {
-        "title": "Message of islam",
+        "title": "Humin Right",
         "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.messageOfIslam,
-      },
-      {
-        "title": "Muhammad the messanger of god",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.muhammadTheMessangerOfGod,
-      },
-      {
-        "title": "Romance in islam",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.romanceInIslam,
-      },
-      {
-        "title": "Beginning and end",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.beginningAndEnd,
+        "targetScreen": AppPagesRoutes.huminRight,
       },
       {
         "title": "Women in islam",
@@ -197,14 +188,14 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.womenInIslam,
       },
       {
+        "title": "Romance in islam",
+        "description": "Learn more about islam",
+        "targetScreen": AppPagesRoutes.romanceInIslam,
+      },
+      {
         "title": "Love in islam",
         "description": "Learn more about islam",
         "targetScreen": AppPagesRoutes.loveInIslam,
-      },
-      {
-        "title": "First steps",
-        "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.firstSteps,
       },
       {
         "title": "Bidaa in islam",
@@ -212,9 +203,9 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.bidaaInIslam,
       },
       {
-        "title": "Terminology",
+        "title": "Beginning and end",
         "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.terminology,
+        "targetScreen": AppPagesRoutes.beginningAndEnd,
       },
       {
         "title": "Hisnul Mumin",
@@ -222,9 +213,19 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.hisnulMumin,
       },
       {
-        "title": "Humin Right",
+        "title": "Learning islam",
         "description": "Learn more about islam",
-        "targetScreen": AppPagesRoutes.huminRight,
+        "targetScreen": AppPagesRoutes.learningIslam,
+      },
+      {
+        "title": "First steps",
+        "description": "Learn more about islam",
+        "targetScreen": AppPagesRoutes.firstSteps,
+      },
+      {
+        "title": "Terminology",
+        "description": "Learn more about islam",
+        "targetScreen": AppPagesRoutes.terminology,
       },
     ],
     // [

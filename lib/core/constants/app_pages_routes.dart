@@ -45,6 +45,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_universe_
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_web_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/jesus_muslim_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/jesuse_quran_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/learning_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/love_in_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/message_of_islam_banding.dart';
@@ -95,6 +96,7 @@ import '../../features/sites/bindings/the_key_to_islam_2_binding.dart';
 import '../../features/sites/bindings/the_key_to_islam_binding.dart';
 import '../../features/sites/presentation/screen/giude_to_islam/guid_to_islam_main.dart';
 import '../../features/sites/presentation/screen/islam_faith_screen.dart';
+import '../../features/sites/presentation/screen/knowing_allah/knowing_allah_screen.dart';
 import '../../features/sites/presentation/screen/the_key_to_islam_2_screen.dart';
 
 abstract class AppPagesRoutes {
@@ -158,6 +160,7 @@ abstract class AppPagesRoutes {
   static const String islamGuide1 = "/islam_guide_1";
   static const String hisnulMumin = "/hisnul_mumin";
   static const String huminRight = "/humin_right";
+  static const String knowingAllah = "/knowing_allah";
 
   static List<GetPage<dynamic>> appPages = [
     GetPage(
@@ -281,6 +284,12 @@ abstract class AppPagesRoutes {
       name: huminRight,
       page: () => const HumanRightsScreen(),
       binding: HumanRightsBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: knowingAllah,
+      page: () => const KnowingAllahScreen(),
+      binding: KnowingAllahBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(
