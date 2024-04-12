@@ -5,7 +5,13 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/constants/app_colors.dart';
 
 class PubUpCustom extends StatelessWidget {
-  const PubUpCustom({super.key});
+  final String body;
+  final String link;
+  const PubUpCustom(
+      {super.key,
+      this.body =
+          'The rights are reserved to the owners of the site and this application to easily browse information, copy and search within the content. If you want to search for more information, please go to the original site.',
+      this.link = '"https://rasoulallah.net/es/"'});
 
   @override
   Widget build(BuildContext context) {
@@ -25,27 +31,29 @@ class PubUpCustom extends StatelessWidget {
               ))
         ],
         title: const Text("Note"),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              child: Text(
-                "The rights are reserved to the owners of the site and this application to easily browse information, copy and search within the content. If you want to search for more information, please go to the original site.",
-                style: TextStyle(fontSize: 18),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Text(
+                  body,
+                  style: const TextStyle(fontSize: 18),
+                ),
               ),
-            ),
-            InkWell(
-              onTap: () async {
-                await launchUrl(Uri.parse("https://rasoulallah.net/es/"));
-              },
-              child: const Text(
-                "https://rasoulallah.net/es/",
-                style: TextStyle(
-                    decoration: TextDecoration.underline, fontSize: 16),
-              ),
-            )
-          ],
+              InkWell(
+                onTap: () async {
+                  await launchUrl(Uri.parse(link));
+                },
+                child: Text(
+                  link,
+                  style: const TextStyle(
+                      decoration: TextDecoration.underline, fontSize: 16),
+                ),
+              )
+            ],
+          ),
         ));
   }
 }

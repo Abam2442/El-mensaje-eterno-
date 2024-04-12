@@ -14,7 +14,8 @@ class SubCategorySelectSliver extends GetView<HadithController> {
     return SliverToBoxAdapter(
       child: GetBuilder<HadithController>(
         builder: (controller) {
-          List<String>? getCategorySubCategoriesName = controller.getCategorySubCategoriesName ?? [];
+          List<String>? getCategorySubCategoriesName =
+              controller.getCategorySubCategoriesName ?? [];
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -42,12 +43,14 @@ class SubCategorySelectSliver extends GetView<HadithController> {
                                         AppPagesRoutes.bookHadithesScreen,
                                         arguments: {
                                           "title": subCategoryName,
-                                          "categoryName": Get.arguments['title'],
+                                          "categoryName":
+                                              Get.arguments['title'],
                                           "webside": "hadithenc",
                                         },
                                       );
                                     },
-                                    itemName: subCategoryName,
+                                    es: subCategoryName,
+                                    ar: '',
                                     itemNumber: index + 1,
                                     isSaved: false,
                                   );

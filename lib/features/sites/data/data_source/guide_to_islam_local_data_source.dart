@@ -32,23 +32,24 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
 
       List<FixedEntities> articals = [];
       if (islamHouseJson != null) {
-        var jsonData = json.decode(islamHouseJson);
+        var jsonData = json.decode(islamHouseJson) as Map;
+        var jsonguide = jsonData['guide-to-islam'] as Map;
         // print(jsonData['guide-to-islam'][0]['Articles']);
-        jsonData['guide-to-islam'][0]['videos'].forEach((key, value) {
+        jsonguide['videos'].forEach((key, value) {
           videos.add(FixedEntities(
             name: key,
             content: value,
           ));
         });
 
-        jsonData['guide-to-islam'][0]['auidos'].forEach((key, value) {
+        jsonguide['auidos'].forEach((key, value) {
           audios.add(FixedEntities(
             name: key,
             content: value,
           ));
         });
 
-        jsonData['guide-to-islam'][0]['books'].forEach((key, value) {
+        jsonguide['books'].forEach((key, value) {
           books.add(FixedEntities(
             name: key,
             content: value,
@@ -62,7 +63,7 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
         //   ));
         // });
 
-        jsonData['guide-to-islam'][0]['Articles'].forEach((key, value) {
+        jsonguide['Articles'].forEach((key, value) {
           articals.add(FixedEntities(
             name: key,
             content: value,

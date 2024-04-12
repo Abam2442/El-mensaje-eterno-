@@ -79,9 +79,22 @@ class AdvancedSites extends StatelessWidget {
                                 }
                               },
                               child: Item_Card(
-                                  titleSite:
-                                      controller.page[controller.selectedPart]
-                                          [index]['title']),
+                                hasCopyRights:
+                                    controller.selectedPart == 0 ? false : true,
+                                titleSite:
+                                    controller.page[controller.selectedPart]
+                                        [index]['title'],
+                                subtitle:
+                                    controller.page[controller.selectedPart]
+                                        [index]['description'],
+                                copyRights:
+                                    controller.page[controller.selectedPart]
+                                            [index]['copyRight'] ??
+                                        '',
+                                link: controller.page[controller.selectedPart]
+                                        [index]['link'] ??
+                                    '',
+                              ),
                             );
                           },
                         ),

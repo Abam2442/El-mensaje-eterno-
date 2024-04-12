@@ -54,8 +54,9 @@ class BodySunnahScreen extends GetView<HadithController> {
                           },
                         );
                       },
-                      itemName: bookName,
+                      es: bookName,
                       itemNumber: index + 1,
+                      ar: '',
                       isSaved: false,
                     );
                   },

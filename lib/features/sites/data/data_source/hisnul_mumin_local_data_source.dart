@@ -23,7 +23,7 @@ class HisnulMuminLocalDataSourceImp extends HisnulMuminLocalDataSource {
     Get.find<Logger>()
         .i("Start `getArtical` in |HisnulMuminLocalDataSourceImp|");
     String? fileContent =
-        await archiveService.readFile(name: AppKeys.hisnulMumin);
+        await archiveService.readFile(name: AppKeys.hisnulmumin);
     List<FixedEntities> articals = [];
     if (fileContent != null) {
       Map jsonData = json.decode(fileContent);

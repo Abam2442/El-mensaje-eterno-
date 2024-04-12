@@ -8,8 +8,8 @@ class AppKeys {
   // For Main Files
   static const String quran = 'quran.json';
   static const String hadith = 'hadith.json';
-  static const String azkarDua = 'azkar_doaa.json';
-  static const String doaa = 'doaa.json';
+  static const String azkarDua = 'Azkar_hisnulmuslim_new.json';
+  static const String doaa = 'new-douaa.json';
   static const String muslims = 'muslims.json';
   static const String nonMuslims = 'non_muslims.json';
   static const String sites = 'sites.json';
@@ -60,5 +60,9 @@ class AppKeys {
   static const String thePurity = 'the_purity.json';
   static const String womanInIslam = 'woman_in_islam.json';
   static const String telegram = 'telegram.json';
-  static const String hisnulMumin = 'hisnul_mumin.json';
+  static const String hisnulmumin = 'hisnul_mumin.json';
+  static const String alduaa = 'Alduaa.json';
+  static const String goldNote = 'Gold-note.json';
+  static const String copyRights = 'Copy-Rights.json';
+  static const String sonan = 'Sonan.json';
 }

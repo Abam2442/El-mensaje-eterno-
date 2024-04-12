@@ -55,7 +55,8 @@ class BodyAzkarScreen extends GetView<AzkarDoaaController> {
                           },
                         );
                       },
-                      itemName: azkar.categoryNameEs ?? "",
+                      es: azkar.categoryNameEs ?? "",
+                      ar: '',
                       itemNumber: index + 1,
                       isSaved: false,
                     );
@@ -70,4 +71,3 @@ class BodyAzkarScreen extends GetView<AzkarDoaaController> {
     );
   }
 }
-

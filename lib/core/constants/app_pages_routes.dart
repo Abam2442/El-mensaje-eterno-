@@ -83,6 +83,8 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/term
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/the_key_to_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/woman_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/learn_salah.dart';
+import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation/screens/telegram_channels_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation/telegram_channels_bindings.dart';
 
 import '../../features/azkar_doaa/presentation/screens/content_azkar_doaa_screen.dart';
 import '../../features/salah/view/learn_salah_page.dart';
@@ -152,6 +154,7 @@ abstract class AppPagesRoutes {
   static const String firstSteps = "/first_steps_screen";
   static const String bidaaInIslam = "/bidaa_in_islam_screen";
   static const String terminology = "/terminology_screen";
+  static const String telegram = "/telegram_channels_screen";
   static const String theKeyToIslam = "/the_key_to_islam";
   static const String theKeyToIslam2 = "/the_key_to_islam2";
   static const String islamQA = "/islamQA";
@@ -473,6 +476,13 @@ abstract class AppPagesRoutes {
       binding: Advanced_LearningBindings(),
       transition: Transition.cupertino,
     ),
+    GetPage(
+      name: telegram,
+      page: () => const TelegramChannelsScreen(),
+      binding: TelegramChannelsBindings(),
+      transition: Transition.cupertino,
+    ),
+
     /*
 
     GetPage(

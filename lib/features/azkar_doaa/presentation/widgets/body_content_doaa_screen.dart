@@ -1,6 +1,7 @@
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+import 'package:hiwayda_oracion_islamica/features/azkar_doaa/data/models/doaa_model/doaa_model.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/presentation/controller/azkar_doaa_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,14 +16,14 @@ class BodyContentDoaaScreen extends GetView<AzkarDoaaController> {
 
   @override
   Widget build(BuildContext context) {
-    List doaas = Get.arguments['data'];
+    List<SingleDoaa> doaas = Get.arguments['data'];
     return SliverToBoxAdapter(
       child: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(height: 12),
             SizedBox(
-              height: Get.height * 0.6,
+              height: Get.height * 0.65,
               child: PageView.builder(
                 controller: controller.pageController,
                 itemCount: doaas.length,
@@ -49,74 +50,59 @@ class BodyContentDoaaScreen extends GetView<AzkarDoaaController> {
                               vertical: 8,
                             ),
                             child: Text(
-                              doaa.content[0].replaceAll(':', ''),
+                              doaa.arabic,
                               style: Styles.textStyle18Godlen,
                             ),
                           ),
                           const SizedBox(height: 12),
-                          ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: doaa.content.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              var content = doaa.content[index];
-                              return index != 0
-                                  ? Column(
-                                      children: [
-                                        Container(
-                                          margin: const EdgeInsets.symmetric(
-                                              horizontal: 16),
-                                          padding: const EdgeInsets.all(10),
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            color: AppColors.kGreenColor,
-                                          ),
-                                          alignment: Alignment.center,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              SizedBox(
-                                                width: 300,
-                                                child: Container(
-                                                  constraints: BoxConstraints(
-                                                      maxWidth:
-                                                          MediaQuery.sizeOf(
-                                                                      context)
-                                                                  .width -
-                                                              50),
-                                                  child: Text(
-                                                    content,
-                                                    style: Styles
-                                                        .textStyle18Godlen,
-                                                    textDirection:
-                                                        TextDirection.ltr,
-                                                  ),
-                                                ),
-                                              ),
-                                              InkWell(
-                                                onTap: () async {
-                                                  var data = ClipboardData(
-                                                      text: content);
-                                                  await Clipboard.setData(data);
-                                                  EasyLoaderService.showToast(
-                                                      message: "Copied");
-                                                },
-                                                child: SvgPicture.asset(
-                                                  AppAssets.kCopyIcon,
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
+                          Column(
+                            children: [
+                              Container(
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                padding: const EdgeInsets.all(10),
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: AppColors.kGreenColor,
+                                ),
+                                alignment: Alignment.center,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: 300,
+                                      child: Container(
+                                        constraints: BoxConstraints(
+                                            maxWidth: MediaQuery.sizeOf(context)
+                                                    .width -
+                                                50),
+                                        child: Text(
+                                          doaa.espanule,
+                                          style: Styles.textStyle18Godlen,
+                                          textDirection: TextDirection.ltr,
                                         ),
-                                        const SizedBox(height: 12),
-                                      ],
-                                    )
-                                  : const SizedBox.shrink();
-                            },
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () async {
+                                        var data =
+                                            ClipboardData(text: doaa.espanule);
+                                        await Clipboard.setData(data);
+                                        EasyLoaderService.showToast(
+                                            message: "Copied");
+                                      },
+                                      child: SvgPicture.asset(
+                                        AppAssets.kCopyIcon,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(height: 12),
+                            ],
                           ),
                         ],
                       ),
@@ -125,7 +111,7 @@ class BodyContentDoaaScreen extends GetView<AzkarDoaaController> {
                 },
               ),
             ),
-            SizedBox(height: 80.h),
+            SizedBox(height: 8.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -190,9 +176,12 @@ class BodyContentDoaaScreen extends GetView<AzkarDoaaController> {
           borderRadius: BorderRadius.circular(5.sp),
           color: AppColors.kGreenColor,
         ),
-        child: Icon(
-          icon,
-          color: AppColors.kGoldenColor,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(
+            icon,
+            color: AppColors.kGoldenColor,
+          ),
         ),
       ),
     );
