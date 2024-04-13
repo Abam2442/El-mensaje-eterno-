@@ -4,14 +4,16 @@ import '../constants/app_colors.dart';
 
 class PrimaryListTile extends StatelessWidget {
   final int itemNumber;
-  final String itemName;
+  final String es;
+  final String ar;
   final bool isSaved;
   final VoidCallback onTap;
 
   const PrimaryListTile({
     super.key,
     required this.itemNumber,
-    required this.itemName,
+    required this.es,
+    required this.ar,
     required this.isSaved,
     required this.onTap,
   });
@@ -28,6 +30,7 @@ class PrimaryListTile extends StatelessWidget {
           color: AppColors.kGreenColor,
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               '$itemNumber',
@@ -41,15 +44,30 @@ class PrimaryListTile extends StatelessWidget {
               width: 20,
             ),
             Expanded(
-              child: Text(
-                itemName,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                style: const TextStyle(
-                  color: AppColors.kGoldenColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    es,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: const TextStyle(
+                      color: AppColors.kGoldenColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  Text(
+                    ar,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: const TextStyle(
+                      color: AppColors.kWhiteColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

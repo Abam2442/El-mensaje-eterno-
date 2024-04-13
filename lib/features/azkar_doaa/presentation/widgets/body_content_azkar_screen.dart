@@ -28,7 +28,7 @@ class BodyContentAzkarScreen extends GetView<AzkarDoaaController> {
             children: [
               const SizedBox(height: 12),
               SizedBox(
-                height: Get.height * 0.6,
+                height: Get.height * 0.65,
                 child: PageView.builder(
                   controller: controller.pageController,
                   itemCount: azkar.length,
@@ -42,7 +42,8 @@ class BodyContentAzkarScreen extends GetView<AzkarDoaaController> {
                           children: [
                             CircleAvatar(
                               backgroundColor: AppColors.transparent,
-                              backgroundImage: const AssetImage(AppAssets.kZaghrafaIcon),
+                              backgroundImage:
+                                  const AssetImage(AppAssets.kZaghrafaIcon),
                               child: Text(
                                 (index + 1).toString(),
                                 style: Styles.textStyle14Golden,
@@ -54,14 +55,17 @@ class BodyContentAzkarScreen extends GetView<AzkarDoaaController> {
                             ),
                             const SizedBox(height: 12),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
                                     padding: const EdgeInsets.only(left: 12),
                                     constraints: BoxConstraints(
-                                      maxWidth: MediaQuery.sizeOf(context).width - 70,
+                                      maxWidth:
+                                          MediaQuery.sizeOf(context).width - 70,
                                     ),
                                     child: Text(
                                       zikr.espaniol ?? "",
@@ -71,9 +75,11 @@ class BodyContentAzkarScreen extends GetView<AzkarDoaaController> {
                                   ),
                                   InkWell(
                                     onTap: () async {
-                                      var data = ClipboardData(text: zikr.espaniol ?? "");
+                                      var data = ClipboardData(
+                                          text: zikr.espaniol ?? "");
                                       await Clipboard.setData(data);
-                                      EasyLoaderService.showToast(message: "Copied");
+                                      EasyLoaderService.showToast(
+                                          message: "Copied");
                                     },
                                     child: SvgPicture.asset(
                                       AppAssets.kCopyIcon,
@@ -89,7 +95,7 @@ class BodyContentAzkarScreen extends GetView<AzkarDoaaController> {
                   },
                 ),
               ),
-              SizedBox(height: 80.h),
+              SizedBox(height: 8.h),
               Container(
                 width: Get.width,
                 height: 50.sp,
@@ -165,6 +171,9 @@ class BodyContentAzkarScreen extends GetView<AzkarDoaaController> {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 10,
+              )
             ],
           ),
         ),
@@ -181,9 +190,12 @@ class BodyContentAzkarScreen extends GetView<AzkarDoaaController> {
           borderRadius: BorderRadius.circular(5.sp),
           color: AppColors.kGreenColor,
         ),
-        child: Icon(
-          icon,
-          color: AppColors.kGoldenColor,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(
+            icon,
+            color: AppColors.kGoldenColor,
+          ),
         ),
       ),
     );

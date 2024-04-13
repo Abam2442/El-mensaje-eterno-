@@ -23,7 +23,7 @@ class AdvancedSites extends StatelessWidget {
         slivers: [
           const Custom_AppBar(
             title: 'Advanced Sites',
-            isSearch: true,
+            isSearch: false,
             isPinned: true,
           ),
           GetBuilder<Advanced_LearningController>(
@@ -49,26 +49,52 @@ class AdvancedSites extends StatelessWidget {
                         ),
                         child: ListView.builder(
                           shrinkWrap: true,
-                          padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 60),
-                          itemCount: controller.page[controller.selectedPart].length,
+                          padding: EdgeInsets.only(
+                              left: 10,
+                              right: 10,
+                              top: 10,
+                              bottom: Get.height / 4.5),
+                          itemCount:
+                              controller.page[controller.selectedPart].length,
                           itemBuilder: (context, index) {
                             return InkWell(
                               onTap: () {
                                 if (controller.selectedPart == 0) {
                                   Get.to(
                                     () => NonMuslimTopicsScreen(
-                                      topics: Get.find<NonMuslimController>().hadithes[index].topics,
-                                      title: Get.find<NonMuslimController>().hadithes[index].sectionName,
+                                      topics: Get.find<NonMuslimController>()
+                                          .hadithes[index]
+                                          .topics,
+                                      title: Get.find<NonMuslimController>()
+                                          .hadithes[index]
+                                          .sectionName,
                                     ),
                                     transition: Transition.cupertino,
                                   );
                                 } else {
                                   Get.toNamed(
-                                    controller.page[controller.selectedPart][index]['targetScreen'],
+                                    controller.page[controller.selectedPart]
+                                        [index]['targetScreen'],
                                   );
                                 }
                               },
-                              child: Item_Card(titleSite: controller.page[controller.selectedPart][index]['title']),
+                              child: Item_Card(
+                                hasCopyRights:
+                                    controller.selectedPart == 0 ? false : true,
+                                titleSite:
+                                    controller.page[controller.selectedPart]
+                                        [index]['title'],
+                                subtitle:
+                                    controller.page[controller.selectedPart]
+                                        [index]['description'],
+                                copyRights:
+                                    controller.page[controller.selectedPart]
+                                            [index]['copyRight'] ??
+                                        '',
+                                link: controller.page[controller.selectedPart]
+                                        [index]['link'] ??
+                                    '',
+                              ),
                             );
                           },
                         ),

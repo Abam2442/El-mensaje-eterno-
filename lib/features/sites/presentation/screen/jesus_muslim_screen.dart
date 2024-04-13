@@ -25,10 +25,10 @@ class JesusMuslimScreen extends StatelessWidget {
                       catigory: false,
                       dataText: controller.articals[index].name,
                       onTap: () {
-                        Get.to(ArticalImageCustom(
-                          dataText: controller.articals[index].content,
-                          imageLink: controller.articals[index].imageLink,
-                        ));
+                        Get.to(() => ArticalImageCustom(
+                              dataText: controller.articals[index].content,
+                              imageLink: controller.articals[index].imageLink,
+                            ));
                       },
                     );
                   }))),

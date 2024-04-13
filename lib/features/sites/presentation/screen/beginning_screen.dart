@@ -25,7 +25,7 @@ class BeginningScreen extends StatelessWidget {
                       catigory: false,
                       dataText: controller.articals[index].name,
                       onTap: () {
-                        Get.to(ArticalCustom(
+                        Get.to(() => ArticalCustom(
                             dataText: controller.articals[index].content));
                       },
                     );

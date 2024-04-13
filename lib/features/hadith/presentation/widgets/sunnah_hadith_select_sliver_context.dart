@@ -34,8 +34,7 @@ class SunnahBookSelectSliver extends GetView<HadithController> {
                               ...List.generate(
                                 bookHadithesName.length,
                                 (index) {
-                                  String hadithName =
-                                      bookHadithesName[index];
+                                  String hadithName = bookHadithesName[index];
                                   return PrimaryListTile(
                                     onTap: () {
                                       Get.toNamed(
@@ -47,7 +46,8 @@ class SunnahBookSelectSliver extends GetView<HadithController> {
                                         },
                                       );
                                     },
-                                    itemName: hadithName,
+                                    ar: '',
+                                    es: hadithName,
                                     itemNumber: index + 1,
                                     isSaved: false,
                                   );

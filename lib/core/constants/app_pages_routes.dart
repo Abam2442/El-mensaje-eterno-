@@ -45,6 +45,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_universe_
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_web_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/jesus_muslim_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/jesuse_quran_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/learning_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/love_in_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/message_of_islam_banding.dart';
@@ -57,12 +58,16 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/begi
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/bidaa_in_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/explore_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/first_steps_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/hisnul_mumin_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/human_rights_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam%20_religion/islam_religion_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_for_christians/islam_for_christians_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_guide_1_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_main.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/islam_land_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/islam_message_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_port_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_qa_home_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_religion_of_pace_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_universe_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_web_main_screen.dart';
@@ -75,6 +80,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/moha
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/rasul_uallah_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/romance_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminolgy_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/the_key_to_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/woman_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/learn_salah.dart';
 import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation/screens/telegram_channels_screen.dart';
@@ -82,6 +88,18 @@ import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation
 
 import '../../features/azkar_doaa/presentation/screens/content_azkar_doaa_screen.dart';
 import '../../features/salah/view/learn_salah_page.dart';
+import '../../features/sites/bindings/guid_to_islam_binding.dart';
+import '../../features/sites/bindings/hisnul_mumin_binding.dart';
+import '../../features/sites/bindings/human_rights_binding.dart';
+import '../../features/sites/bindings/islam_faith_binding.dart';
+import '../../features/sites/bindings/islam_guide_1_binding.dart';
+import '../../features/sites/bindings/islam_qa_bindings.dart';
+import '../../features/sites/bindings/the_key_to_islam_2_binding.dart';
+import '../../features/sites/bindings/the_key_to_islam_binding.dart';
+import '../../features/sites/presentation/screen/giude_to_islam/guid_to_islam_main.dart';
+import '../../features/sites/presentation/screen/islam_faith_screen.dart';
+import '../../features/sites/presentation/screen/knowing_allah/knowing_allah_screen.dart';
+import '../../features/sites/presentation/screen/the_key_to_islam_2_screen.dart';
 
 abstract class AppPagesRoutes {
   // Tabs Screens
@@ -127,7 +145,8 @@ abstract class AppPagesRoutes {
   static const String learningIslam = "/learning_islam_screen";
   static const String islamReligionOfPace = "/islam_religion_of_pace_screen";
   static const String messageOfIslam = "/message_of_islam_screen";
-  static const String muhammadTheMessangerOfGod = "/muhammad_the_messanger_of_god_screen";
+  static const String muhammadTheMessangerOfGod =
+      "/muhammad_the_messanger_of_god_screen";
   static const String romanceInIslam = "/romance_in_islam_screen";
   static const String beginningAndEnd = "/beginning_and_end_screen";
   static const String womenInIslam = "/women_in_islam_screen";
@@ -136,8 +155,15 @@ abstract class AppPagesRoutes {
   static const String bidaaInIslam = "/bidaa_in_islam_screen";
   static const String terminology = "/terminology_screen";
   static const String telegram = "/telegram_channels_screen";
-
-
+  static const String theKeyToIslam = "/the_key_to_islam";
+  static const String theKeyToIslam2 = "/the_key_to_islam2";
+  static const String islamQA = "/islamQA";
+  static const String islamFaith = "/Islam_faith";
+  static const String guideToIslam = "/guid_to_islam";
+  static const String islamGuide1 = "/islam_guide_1";
+  static const String hisnulMumin = "/hisnul_mumin";
+  static const String huminRight = "/humin_right";
+  static const String knowingAllah = "/knowing_allah";
 
   static List<GetPage<dynamic>> appPages = [
     GetPage(
@@ -174,11 +200,10 @@ abstract class AppPagesRoutes {
       transition: Transition.cupertino,
     ),
     GetPage(
-      name: faithScreen,
-      page: () => const FaithScreen(),
-      transition: Transition.cupertino,
-      binding: FaithBindings()
-    ),
+        name: faithScreen,
+        page: () => const FaithScreen(),
+        transition: Transition.cupertino,
+        binding: FaithBindings()),
     GetPage(
       name: learnSalah,
       page: () => const LearnSalah(),
@@ -191,17 +216,15 @@ abstract class AppPagesRoutes {
       transition: Transition.cupertino,
     ),
     GetPage(
-      name: mooamalatScreen,
-      page: () => const MooamalatScreen(),
-      transition: Transition.cupertino,
-      binding: MooamalatBindings()
-    ),
+        name: mooamalatScreen,
+        page: () => const MooamalatScreen(),
+        transition: Transition.cupertino,
+        binding: MooamalatBindings()),
     GetPage(
-      name: newLifeScreen,
-      page: () => const NewLifeScreen(),
-      transition: Transition.cupertino,
-      binding: NewLifeBindings()
-    ),
+        name: newLifeScreen,
+        page: () => const NewLifeScreen(),
+        transition: Transition.cupertino,
+        binding: NewLifeBindings()),
     GetPage(
       name: prophetScreen,
       page: () => const ProphetScreen(),
@@ -216,6 +239,60 @@ abstract class AppPagesRoutes {
     GetPage(
       name: newMuslimsCourseScreen,
       page: () => NewMuslimsCourseScreen(index: 0),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: theKeyToIslam,
+      page: () => const TheKeyToIslamScreen(),
+      binding: TheKeyToIslamBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: theKeyToIslam2,
+      page: () => const TheKeyToIslam2Screen(),
+      binding: TheKeyToIslam2Bindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamQA,
+      page: () => const IslamQAScreen(),
+      binding: IslamQABindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamFaith,
+      page: () => const IslamFaithScreen(),
+      binding: IslamFaithBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: guideToIslam,
+      page: () => const GuideToIslamMainScreen(),
+      binding: GuideToIslamBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamGuide1,
+      page: () => const IslamGuide1Screen(),
+      binding: IslamGuide1Bindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: hisnulMumin,
+      page: () => const HisnulMuminScreen(),
+      binding: HisnulMuminBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: huminRight,
+      page: () => const HumanRightsScreen(),
+      binding: HumanRightsBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: knowingAllah,
+      page: () => const KnowingAllahScreen(),
+      binding: KnowingAllahBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(

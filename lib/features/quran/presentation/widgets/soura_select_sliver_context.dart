@@ -37,8 +37,9 @@ class SurahSelectSliver extends StatelessWidget {
                 child: Stack(
                   children: [
                     ClipRRect(
-                      borderRadius:
-                          const BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(25),
+                          topRight: Radius.circular(25)),
                       child: Container(
                         decoration: const BoxDecoration(
                           color: AppColors.kWhiteColor,
@@ -46,21 +47,24 @@ class SurahSelectSliver extends StatelessWidget {
                           //     topLeft: Radius.circular(100),
                           //     topRight: Radius.circular(100)),
                         ),
-                        child: HandleStatesWidget(    
+                        child: HandleStatesWidget(
                           stateType: controller.getSurahsState,
                           hasShimmer: true,
                           shimmerChild: ListView.separated(
                             physics: const NeverScrollableScrollPhysics(),
-                            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 10),
                             shrinkWrap: true,
-                            itemBuilder: (context, index) => PrimaryShimmer.rectangle(
+                            itemBuilder: (context, index) =>
+                                PrimaryShimmer.rectangle(
                               height: Get.height * 0.09,
                               color: AppColors.kGreenColor,
                               border: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25),
                               ),
                             ),
-                            separatorBuilder: (context, index) => const SizedBox(
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(
                               height: 15,
                             ),
                             itemCount: 8,

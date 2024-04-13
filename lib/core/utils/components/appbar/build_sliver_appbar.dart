@@ -35,17 +35,11 @@ class SliverAppBarWidget extends StatelessWidget {
           : DirectionAware(
               // من شان تدوير الايقونة بزاوية 90
               //DirectionAware for rotate the icon to other side rtl or ltr
-              child: GestureDetector(
-                onTap: () => Get.back(),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 10,
-                    right: 25,
-                  ),
-                  child: SvgPicture.asset(
-                    AppAssets.kBackIcon,
-                    color: iconColor,
-                  ),
+              child: IconButton(
+                onPressed: () => Get.back(),
+                icon: SvgPicture.asset(
+                  AppAssets.kBackIcon,
+                  color: iconColor,
                 ),
               ),
             ),
@@ -54,7 +48,7 @@ class SliverAppBarWidget extends StatelessWidget {
         title,
         style: Styles.textStyle18Godlen,
       ),
-      actions: [
+      actions: const [
         // isSearch == true
         //     ? Padding(
         //         padding: const EdgeInsets.only(right: 20),

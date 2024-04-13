@@ -60,7 +60,8 @@ class BodyHadithencScreen extends GetView<HadithController> {
                         //   },
                         // );
                       },
-                      itemName: categoryName,
+                      es: categoryName,
+                      ar: '',
                       itemNumber: index + 1,
                       isSaved: false,
                     );
