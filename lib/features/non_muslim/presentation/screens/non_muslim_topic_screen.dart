@@ -71,10 +71,10 @@ class NonMuslimTopicsScreen extends GetView<NonMuslimController> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(
-                              Icons.info,
-                              color: AppColors.white,
-                            ),
+                            // const Icon(
+                            //   Icons.info,
+                            //   color: AppColors.white,
+                            // ),
                             Container(
                               width: 10,
                             ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/services/easy_loader_service.dart';
 import 'app_bar_custom.dart';
 
 class ListViewCustom extends StatelessWidget {
@@ -15,7 +17,18 @@ class ListViewCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarCustom(title: "").customAppBar(context),
+      appBar: AppBarCustom(title: "", actions: [
+        IconButton(
+            onPressed: () async {
+              var data = ClipboardData(text: answer);
+              await Clipboard.setData(data);
+              EasyLoaderService.showToast(message: "Copied");
+            },
+            icon: const Icon(
+              Icons.copy,
+              color: AppColors.kWhiteColor,
+            )),
+      ]).customAppBar(context),
       body: ListView(
         children: [
           const Padding(

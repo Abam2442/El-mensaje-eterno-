@@ -6,6 +6,7 @@ import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/contro
 import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/screens/non_muslim_topic_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/artical_custom.dart';
 
 class NonMuslimSubTopicsScreen extends GetView<NonMuslimController> {
   final List<IslamNestedTopic> topic;
@@ -44,9 +45,9 @@ class NonMuslimSubTopicsScreen extends GetView<NonMuslimController> {
                     child: ListTile(
                       onTap: () {
                         Get.to(
-                            () => NonMuslimTopicView(
-                                  header: topic[index].title,
-                                  body: topic[index].body,
+                            () => ArticalCustom(
+                                  title: topic[index].title,
+                                  dataText: topic[index].body,
                                 ),
                             transition: Transition.cupertino);
                       },
@@ -70,10 +71,10 @@ class NonMuslimSubTopicsScreen extends GetView<NonMuslimController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(
-                            Icons.info,
-                            color: AppColors.white,
-                          ),
+                          // const Icon(
+                          //   Icons.info,
+                          //   color: AppColors.white,
+                          // ),
                           Container(
                             width: 10,
                           ),

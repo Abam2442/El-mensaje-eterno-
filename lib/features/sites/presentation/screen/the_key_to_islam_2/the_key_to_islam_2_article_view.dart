@@ -1,10 +1,12 @@
 // import 'package:elresala/core/constants/app_colors.dart';
 // import 'package:elresala/features/sites/data/models/the_key_to_islam_2_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/services/easy_loader_service.dart';
 import '../../../data/models/the_key_to_islam_2_model.dart';
 import '../../widget/app_bar_custom.dart';
 
@@ -17,7 +19,18 @@ class TheKeyToIslam2ArticalView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarCustom(title: title).customAppBar(context),
+        appBar: AppBarCustom(title: title, actions: [
+          IconButton(
+              onPressed: () async {
+                var data = ClipboardData(text: theKeyToIslam2.pageText);
+                await Clipboard.setData(data);
+                EasyLoaderService.showToast(message: "Copied");
+              },
+              icon: const Icon(
+                Icons.copy,
+                color: AppColors.kWhiteColor,
+              )),
+        ]).customAppBar(context),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView(

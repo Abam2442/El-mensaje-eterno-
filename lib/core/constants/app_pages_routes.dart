@@ -94,11 +94,13 @@ import '../../features/sites/bindings/human_rights_binding.dart';
 import '../../features/sites/bindings/islam_faith_binding.dart';
 import '../../features/sites/bindings/islam_guide_1_binding.dart';
 import '../../features/sites/bindings/islam_qa_bindings.dart';
+import '../../features/sites/bindings/saber_el_islam_binding.dart';
 import '../../features/sites/bindings/the_key_to_islam_2_binding.dart';
 import '../../features/sites/bindings/the_key_to_islam_binding.dart';
 import '../../features/sites/presentation/screen/giude_to_islam/guid_to_islam_main.dart';
 import '../../features/sites/presentation/screen/islam_faith_screen.dart';
 import '../../features/sites/presentation/screen/knowing_allah/knowing_allah_screen.dart';
+import '../../features/sites/presentation/screen/saber_el_islam/saber_el_islam_screen.dart';
 import '../../features/sites/presentation/screen/the_key_to_islam_2_screen.dart';
 
 abstract class AppPagesRoutes {
@@ -164,6 +166,7 @@ abstract class AppPagesRoutes {
   static const String hisnulMumin = "/hisnul_mumin";
   static const String huminRight = "/humin_right";
   static const String knowingAllah = "/knowing_allah";
+  static const String saberElIslam = "/saber_el_islam";
 
   static List<GetPage<dynamic>> appPages = [
     GetPage(
@@ -293,6 +296,12 @@ abstract class AppPagesRoutes {
       name: knowingAllah,
       page: () => const KnowingAllahScreen(),
       binding: KnowingAllahBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: saberElIslam,
+      page: () => const SaberElIslamScreen(),
+      binding: SaberElIslamBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(

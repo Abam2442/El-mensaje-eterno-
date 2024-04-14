@@ -4,7 +4,6 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/number_symbols_data.dart';
 import '../controller/advanced_learning_controller.dart';
 import 'pub_up_custom.dart';
 
@@ -21,7 +20,7 @@ class Item_Card extends StatelessWidget {
     this.subtitle = 'Learning Islam',
     this.copyRights = '',
     this.link = '',
-    this.hasCopyRights = true,
+    this.hasCopyRights = false,
   });
 
   @override

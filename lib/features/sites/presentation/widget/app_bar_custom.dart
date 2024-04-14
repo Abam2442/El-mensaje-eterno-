@@ -7,14 +7,17 @@ import '../../../../core/utils/components/appbar/direction_aware.dart';
 
 class AppBarCustom {
   final String title;
+  final List<Widget>? actions;
   const AppBarCustom({
     required this.title,
+    this.actions,
   });
 
   AppBar customAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.kPrimaryColor,
       centerTitle: true,
+      actions: actions,
       leading: !Navigator.canPop(context)
           ? null
           : DirectionAware(

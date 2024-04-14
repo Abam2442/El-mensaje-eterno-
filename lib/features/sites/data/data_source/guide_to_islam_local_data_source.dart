@@ -24,16 +24,15 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
     try {
       Get.find<Logger>()
           .i("Start `getContect` in |GuideToIslamLocalDataSourceImpl|");
-      String? islamHouseJson =
+      String? guideToIslam =
           await archiveService.readFile(name: AppKeys.guideToIslam);
       List<FixedEntities> videos = [];
       List<FixedEntities> audios = [];
       List<FixedEntities> books = [];
-
       List<FixedEntities> articals = [];
-      if (islamHouseJson != null) {
-        var jsonData = json.decode(islamHouseJson) as Map;
-        var jsonguide = jsonData['guide-to-islam'] as Map;
+      if (guideToIslam != null) {
+        var jsonData = json.decode(guideToIslam) as Map;
+        var jsonguide = jsonData['guide-to-islam'][0] as Map;
         // print(jsonData['guide-to-islam'][0]['Articles']);
         jsonguide['videos'].forEach((key, value) {
           videos.add(FixedEntities(

@@ -53,14 +53,14 @@ class AppKeys {
       'muhammad_the_messenger_of_God.json';
   static const String rasuluAllah = 'rasulu_allah.json';
   static const String romanceInIslam = 'romance_in_islam.json';
-  static const String saberElIslam = 'saber_el_islam.json';
+  static const String saberElIslam = 'new-saber-islam.json';
   static const String terminology = 'terminology.json';
   static const String theKeyToIslam1 = 'the_key_to_islam_1.json';
   static const String theKeyToIslam2 = 'the_key_to__islam_2.json';
   static const String thePurity = 'the_purity.json';
   static const String womanInIslam = 'woman_in_islam.json';
   static const String telegram = 'telegram.json';
-  static const String hisnulmumin = 'hisnul_mumin.json';
+  static const String hisnulmumin = 'hisnul-mumin.json';
   static const String alduaa = 'Alduaa.json';
   static const String goldNote = 'Gold-note.json';
   static const String copyRights = 'Copy-Rights.json';
