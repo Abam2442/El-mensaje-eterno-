@@ -12,7 +12,7 @@ class DayNightSonanScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarCustom(title: 'أذكار اليوم والليلة')
+      appBar: const AppBarCustom(title: 'Súplicas de día y de noche')
           .customAppBar(context),
       body: GetBuilder<AzkarDoaaController>(builder: (c) {
         if (c.sonan == null) {

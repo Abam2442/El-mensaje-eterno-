@@ -12,7 +12,8 @@ class TimedSonanScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarCustom(title: 'سنن موقوتة').customAppBar(context),
+      appBar: const AppBarCustom(title: 'Súplicas específicas')
+          .customAppBar(context),
       body: GetBuilder<AzkarDoaaController>(builder: (c) {
         if (c.sonan == null) {
           return const Center(

@@ -16,7 +16,7 @@ class BodySonanScreen extends StatelessWidget {
         InkwellCustom(
           catigory: false,
           // iconData: controller.icons[index],
-          dataText: 'أذكار اليوم والليلة',
+          dataText: 'Súplicas de día y de noche',
           onTap: () {
             Get.to(() => const DayNightSonanScreen());
           },
@@ -24,7 +24,7 @@ class BodySonanScreen extends StatelessWidget {
         InkwellCustom(
           catigory: false,
           // iconData: controller.icons[index],
-          dataText: 'سنن موقوتة',
+          dataText: 'Súplicas específicas',
           onTap: () {
             Get.to(() => const TimedSonanScreen());
           },
@@ -32,7 +32,7 @@ class BodySonanScreen extends StatelessWidget {
         InkwellCustom(
           catigory: false,
           // iconData: controller.icons[index],
-          dataText: 'سنن غير موقوتة',
+          dataText: 'Súplicas generales',
           onTap: () {
             Get.to(() => const UnTimedSonanScreen());
           },
