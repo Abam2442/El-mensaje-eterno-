@@ -18,6 +18,7 @@ void main() async {
   await YsLocalizations.init();
   runApp(const MyApp());
 }
+
 void initLang() {
   // String? sharedPrefLang = Get.find<SharedPreferences>().getString(AppKeys.lang);
   ThemeData appTheme = AppThemes.themeEnglish;
@@ -41,6 +42,7 @@ void initLang() {
   Get.put(appTheme);
   // Get.find<SharedPreferences>().setString(AppKeys.lang, Get.deviceLocale!.languageCode);
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -52,12 +54,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => RemoteData()),
       ],
       child: const YsMaterialApp(
-        title: 'app_name',
+        title: 'El Mensaje Eterno',
         home:
-          //TestConnection()
-          SplashPage(),
+            //TestConnection()
+            SplashPage(),
         //PrayerTimesPage()
-            //LearnSalah()
+        //LearnSalah()
         //FajrPracticalPage()
         //const PracticalLearnPage()
         //const HomePage(),
