@@ -26,11 +26,11 @@ class TheKeyToIslam2Screen extends StatelessWidget {
                   onTap: () {
                     Get.to(() => TheKeyToIslam2ArticalView(
                           theKeyToIslam2: c.articals[index],
-                          title: 'Article No ${index + 1}',
+                          title: 'número de artículo ${index + 1}',
                         ));
                   },
                   child: Item_Card(
-                    titleSite: 'Article No ${index + 1}',
+                    titleSite: 'número de artículo ${index + 1}',
                     // subtitle: '',
                   ),
                 );

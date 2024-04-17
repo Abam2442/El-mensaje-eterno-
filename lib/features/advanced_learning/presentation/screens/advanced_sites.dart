@@ -22,7 +22,7 @@ class AdvancedSites extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           const Custom_AppBar(
-            title: 'Advanced Sites',
+            title: 'La educación avanzada',
             isSearch: false,
             isPinned: true,
           ),

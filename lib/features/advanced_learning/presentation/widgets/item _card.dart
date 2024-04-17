@@ -17,7 +17,7 @@ class Item_Card extends StatelessWidget {
   const Item_Card({
     super.key,
     required this.titleSite,
-    this.subtitle = 'Learning Islam',
+    this.subtitle = '',
     this.copyRights = '',
     this.link = '',
     this.hasCopyRights = false,
