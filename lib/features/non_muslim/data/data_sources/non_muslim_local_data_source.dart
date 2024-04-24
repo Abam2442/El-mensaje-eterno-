@@ -23,13 +23,12 @@ class NonMuslimLocalDataSourceImpl extends NonMuslimLocalDataSource {
   @override
   Future<List<NonMuslimModel>> getCourses() async {
     try {
-      Get.find<Logger>().i("Start `getCourses` in |NonMuslimLocalDataSourceImpl|");
+      Get.find<Logger>()
+          .i("Start `getCourses` in |NonMuslimLocalDataSourceImpl|");
       // String? fileContent = await firebaseStorageService.readFile(name: AppKeys.muslims);
-      String? fileContent = await archiveService.readFile(name: AppKeys.nonMuslims);
+      String? fileContent =
+          await archiveService.readFile(name: AppKeys.nonMuslims);
 
-      /// TODO get data from file depend on content and convert to models
-      /// example:
-      // / `
       List<NonMuslimModel> hadithes = [];
       if (fileContent != null) {
         var jsonData = json.decode(fileContent);
@@ -40,7 +39,8 @@ class NonMuslimLocalDataSourceImpl extends NonMuslimLocalDataSource {
             .toList();
       }
       // /  `
-      Get.find<Logger>().w("End `getCourses` in |NonMuslimLocalDataSourceImpl|");
+      Get.find<Logger>()
+          .w("End `getCourses` in |NonMuslimLocalDataSourceImpl|");
       return Future.value(hadithes /** hadithes **/);
     } catch (e) {
       Get.find<Logger>().e(
