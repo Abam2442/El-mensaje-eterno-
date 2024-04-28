@@ -4,6 +4,7 @@ import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_mode
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:number_paginator/number_paginator.dart';
 
 import '../../domain/usecases/get_hadithenc_hadithes_use_case.dart';
 import '../../domain/usecases/get_sunnah_hadithes_use_case.dart';
@@ -24,6 +25,17 @@ class HadithController extends GetxController
   // Primitive
   String validationMessage = '';
 
+  //Searching
+  var isSearching = false.obs;
+  var searchTextController = TextEditingController();
+  var searchFocusNode  = FocusNode();
+  RxBool isBack = true.obs;
+
+  //Pagination
+  var pageNumber = 0;
+   final NumberPaginatorController pageController = NumberPaginatorController();
+  var bookHadithesNameForList = <String>[].obs;
+  var subCategoryHadithesNameForList = <String>[].obs;
   // Tab Bar
   late TabController tabController;
   final List<Tab> tabs = <Tab>[
@@ -69,12 +81,21 @@ class HadithController extends GetxController
   }
 
   List<String>? get getbookHadithesName {
+    print("getData");
     List<String>? bookHadithesName = [];
     sunnahHadithes?.sunnahHadithes.forEach(
       (key, value) {
         if (key == Get.arguments['title']) {
           value.forEach((key, value) {
-            bookHadithesName.add(key);
+            if(isSearching.value){
+              if(value!=null) {
+                if (value.toString().contains(searchTextController.text)) {
+                  bookHadithesName.add(key);
+                }
+              }
+            } else {
+              bookHadithesName.add(key);
+            }
           });
         }
       },
@@ -129,6 +150,7 @@ class HadithController extends GetxController
   }
 
   List<String>? get getCategorySubCategoriesName {
+
     List<String>? categorySubCategoryName = [];
     hadithencHadithes?.hadithencHadithes.forEach(
       (key, value) {
@@ -150,7 +172,17 @@ class HadithController extends GetxController
           value.forEach((key, value) {
             if (key == Get.arguments['title']) {
               value.forEach((key, value) {
-                subCategoryHadithesName.add(key);
+                if(isSearching.value){
+                  if(value != null) {
+                    print(value.toString());
+                    if (value.toString().contains(searchTextController.text)) {
+                      subCategoryHadithesName.add(key);
+                    }
+                  }
+                } else {
+                  subCategoryHadithesName.add(key);
+                }
+
               });
             }
           });

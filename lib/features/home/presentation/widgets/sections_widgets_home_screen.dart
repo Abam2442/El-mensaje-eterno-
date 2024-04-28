@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/widgets/home_card.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../controller/home_controller.dart';
 
 class SectionswidgetsHomeScreen extends StatelessWidget {
-  final List<HomeCardData> data;
+  final RxList<HomeCardData> data;
 
   const SectionswidgetsHomeScreen({
     super.key,
@@ -24,12 +26,15 @@ class SectionswidgetsHomeScreen extends StatelessWidget {
         ),
       ),
       child: Column(children: [
-        ...List.generate(
-          data.length,
-          (index) => HomeCard(
+        Obx(()=>data.isEmpty?Container(height: Get.height*0.6,child: Center(child: Text(
+          "neniuj rezultoj",style: TextStyle(color: Colors.black,fontSize: 18),
+        ),),):ListView.builder(itemCount: data.length,shrinkWrap: true,physics: ScrollPhysics()
+            ,itemBuilder: (context,index){
+          return HomeCard(
             homeCardData: data[index],
-          ),
-        ),
+          );
+        }))
+
       ]),
     );
   }

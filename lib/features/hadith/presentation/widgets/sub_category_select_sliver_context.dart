@@ -39,13 +39,18 @@ class SubCategorySelectSliver extends GetView<HadithController> {
                                       getCategorySubCategoriesName[index];
                                   return PrimaryListTile(
                                     onTap: () {
+                                      controller.pageNumber = 0;
+                                      controller.getSubCategoryHadithesName?.clear();
+                                      controller.update();
                                       Get.toNamed(
                                         AppPagesRoutes.bookHadithesScreen,
                                         arguments: {
+                                      "isHadithenc":"true",
                                           "title": subCategoryName,
                                           "categoryName":
                                               Get.arguments['title'],
                                           "webside": "hadithenc",
+
                                         },
                                       );
                                     },
