@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import '../../controller/saber_el_islam_controller.dart';
 import '../../widget/app_bar_custom.dart';
-import '../../widget/artical_custom.dart';
 import '../../widget/inkwell_custom.dart';
 import 'saber_el_islam_artical_list.dart';
 

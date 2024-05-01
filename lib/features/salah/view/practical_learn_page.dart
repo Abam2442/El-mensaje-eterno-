@@ -1,18 +1,20 @@
+import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_jsons.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_practical_page.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/view/wudu_practical_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/wudu_practical_page.dart';
+import 'package:hiwayda_oracion_islamica/features/ui_rone_screen/ui_rone_screen.dart';
 
 class PracticalLearnPage extends StatefulWidget {
-  const PracticalLearnPage({Key? key}) : super(key: key);
+  PracticalLearnPage({Key? key, required this.level}) : super(key: key);
+  final int level;
 
   @override
   State<PracticalLearnPage> createState() => _PracticalLearnPageState();
@@ -30,8 +32,8 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
         body: SafeArea(
           child: Container(
             padding: 10.hEdge,
-            margin: EdgeInsets.only(top: context.height * 0.05),
-            width: context.width,
+            margin: EdgeInsets.only(top: Get.height * 0.05),
+            width: Get.width,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(topLeft: Radius.circular(100)),
               color: AppColors.kWhiteColor,
@@ -56,7 +58,7 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                 borderRadius: BorderRadius.circular(15),
                                 color: AppColors.kWhiteColor.withOpacity(0.4),
                               ),
-                              width: context.width,
+                              width: Get.width,
                               child: Text(
                                 'De Ubada ibn Al Sámit que el Mensajero de Allah ﷺ dijo:\n'
                                     '\n'
@@ -79,135 +81,110 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                 mainAxisSpacing: 5,
                               ),
                               children: [
-                                ItsOptions(
-                                  label: 'Wudu',
-                                  image: AppSvgs.wudoa,
-                                  onTap: () {
-                                    AppRoutes.routeTo(
-                                        context,
-                                        WuduPracticalPage(
-                                            jsonFile: AppJsons.wudu));
-                                  },
-                                ),
+                                // ItsOptions(
+                                //   label: 'Wudu',
+                                //   image: AppSvgs.wudoa,
+                                //   onTap: () {
+                                //     Get.to(()=>WuduPracticalPage(
+                                //         jsonFile: AppJsons.wudu));
+                                //     //Get.to(()=> UiRoneScreen());
+                                //   },
+                                // ),
                                 ItsOptions(
                                   label: 'FAJR',
                                   image: AppSvgs.fajr,
                                   onTap: () {
-                                    print('in fajr');
-                                    AppRoutes.routeTo(
-                                        context,
-                                        SalahPracticalPage(
-                                            jsonFile: AppJsons.fajr));
+                                    switch(widget.level){
+                                      case 0:
+                                         Get.to(()=>SalahPracticalPage(jsonFile: AppJsons.fajr));
+                                        break;
+                                      case 1:
+                                    Get.to(()=>UiRoneScreen(),arguments: {'file':AppJsons.fajrIntermediate});
+                                        break;
+                                      case 2:
+
+                                        break;
+                                    }
+
                                   },
                                 ),
                                 ItsOptions(
                                   label: 'DUHR',
                                   image: AppSvgs.duhr,
                                   onTap: () {
-                                    AppRoutes.routeTo(
-                                        context,
-                                        SalahPracticalPage(
-                                            jsonFile: AppJsons.duhr));
+
+
+                                    switch(widget.level){
+                                      case 0:
+                                        Get.to(()=>SalahPracticalPage(
+                                    jsonFile: AppJsons.duhr));
+                                        break;
+                                      case 1:
+                                        Get.to(()=>UiRoneScreen(),arguments: {'file':AppJsons.ishaIntermediate});
+                                        break;
+                                      case 2:
+
+                                        break;
+                                    }
                                   },
                                 ),
                                 ItsOptions(
                                   label: 'ASR',
                                   image: AppSvgs.asr,
                                   onTap: () {
-                                    AppRoutes.routeTo(
-                                        context,
-                                        SalahPracticalPage(
+
+                                    switch(widget.level){
+                                      case 0:
+                                        Get.to(()=>SalahPracticalPage(
                                             jsonFile: AppJsons.asr));
+                                        break;
+                                      case 1:
+                                        Get.to(()=>UiRoneScreen(),arguments: {'file':AppJsons.ishaIntermediate});
+                                        break;
+                                      case 2:
+
+                                        break;
+                                    }
                                   },
                                 ),
                                 ItsOptions(
                                   label: 'MAGHRIB',
                                   image: AppSvgs.maghrib,
                                   onTap: () {
-                                    AppRoutes.routeTo(
-                                        context,
-                                        SalahPracticalPage(
+                                    switch(widget.level){
+                                      case 0:
+                                        Get.to(()=>SalahPracticalPage(
                                             jsonFile: AppJsons.magrib));
+                                        break;
+                                      case 1:
+                                        Get.to(()=>UiRoneScreen(),arguments: {'file':AppJsons.maghribIntermediate});
+                                        break;
+                                      case 2:
+
+                                        break;
+                                    }
                                   },
                                 ),
                                 ItsOptions(
                                   label: 'ISHA',
                                   image: AppSvgs.isha,
                                   onTap: () {
-                                    AppRoutes.routeTo(
-                                        context,
-                                        SalahPracticalPage(
+                                    switch(widget.level){
+                                      case 0:
+                                        Get.to(()=>SalahPracticalPage(
                                             jsonFile: AppJsons.isha));
+                                        break;
+                                      case 1:
+                                        Get.to(()=>UiRoneScreen(),arguments: {'file':AppJsons.ishaIntermediate});
+                                        break;
+                                      case 2:
+
+                                        break;
+                                    }
                                   },
                                 ),
                               ],
                             ),
-
-/*
-                            _builSalahTime(
-                                image: AppSvgs.wudoa,
-                                title: 'WUDU',
-                                onTap: () {
-                                  AppRoutes.routeTo(
-                                      context,
-                                      SalahPracticalPage(
-                                          jsonFile: AppJsons.fajr));
-                                },
-                                color: wudoColor),
-                            _builSalahTime(
-                                image: AppSvgs.fajr,
-                                title: 'FAJR',
-                                onTap: () {
-                                  AppRoutes.routeTo(
-                                      context,
-                                      SalahPracticalPage(
-                                          jsonFile: AppJsons.fajr));
-                                },
-                                color: fajrColor),
-                            _builSalahTime(
-                                image: AppSvgs.duhr,
-                                title: 'DUHR',
-                                onTap: () {
-                                  AppRoutes.routeTo(
-                                      context,
-                                      SalahPracticalPage(
-                                        jsonFile: AppJsons.duhr,
-                                      ));
-                                },
-                                color: duhrColor),
-                            _builSalahTime(
-                                image: AppSvgs.asr,
-                                title: 'ASR',
-                                onTap: () {
-                                  AppRoutes.routeTo(
-                                      context,
-                                      SalahPracticalPage(
-                                        jsonFile: AppJsons.asr,
-                                      ));
-                                },
-                                color: asrColor),
-                            _builSalahTime(
-                                image: AppSvgs.maghrib,
-                                title: 'MAGHRIB',
-                                onTap: () {
-                                  AppRoutes.routeTo(
-                                      context,
-                                      SalahPracticalPage(
-                                        jsonFile: AppJsons.magreb,
-                                      ));
-                                },
-                                color: maghribColor),
-                            _builSalahTime(
-                                image: AppSvgs.isha,
-                                title: 'ISHA',
-                                onTap: () {
-                                  AppRoutes.routeTo(
-                                      context,
-                                      SalahPracticalPage(
-                                        jsonFile: AppJsons.isha,
-                                      ));
-                                },
-                                color: ishaColor),*/
                           ],
                         ),
                       ),
@@ -216,118 +193,6 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                 )),
           ),
 
-          /*
-          SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: (context.height * 0.08).toInt().vEdge,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Center(child: Text('Practico Aprende a orar',style: TextStyle(color: Colors.white,fontSize: 24),)),
-                      */
-          /*Container(
-                        width: context.width,
-                        height: context.height,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.transparent
-                          //selectedBackColor,
-                        ),
-                      ),*/
-          /*
-                      */
-          /*Padding(
-                        padding: EdgeInsets.only(
-                            top: context.height * 0.7, right: 0, left: 0),
-                        child: InkWell(
-                          onTap: () {
-                            if(wudoColor == selectedBackColor){
-                              Get.to(WuduPracticalPage(jsonFile: AppJsons.wudu));
-                            }
-                            else if(fajrColor == selectedBackColor){
-                              Get.to(SalahPracticalPage(jsonFile: AppJsons.fajr));
-                            }else if(duhrColor == selectedBackColor){
-                              Get.to(SalahPracticalPage(jsonFile: AppJsons.duhr,));
-                            }else if(asrColor == selectedBackColor){
-                              Get.to(SalahPracticalPage(jsonFile: AppJsons.asr,));
-                            }else if(maghribColor == selectedBackColor){
-                              Get.to(SalahPracticalPage(jsonFile: AppJsons.magreb,));
-                            }else if(ishaColor == selectedBackColor){
-                              Get.to(SalahPracticalPage(jsonFile: AppJsons.isha,));
-                            }
-                          },
-                          child: Stack(children: [
-                            Center(
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: AppColors.kWhiteColor,
-                                    ),
-                                    child: SvgPicture.asset(AppSvgs.button))),
-                            Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 10, left: 15),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
-                                      Text('Start Learn '),
-                                      Icon(Icons.arrow_forward),
-                                    ],
-                                  ),
-                                )),
-                          ]),
-                        ),
-                      ),*/
-          /*
-                      */
-          /*if((wudoColor==null))
-                      Positioned(
-                          right: context.width * 0.25,
-                          top: context.height * 0.15,
-                          child: SvgPicture.asset(prayerImage)),*/
-          /*
-                      */
-          /*if((wudoColor==null))
-                      Positioned(
-                          right: context.width * 0.1,
-                          top: context.height * 0.1,
-                          child: SvgPicture.asset(AppSvgs.clouds)),*/
-          /*
-                     */
-          /* Center(
-                          child: SizedBox(
-                            height: context.height*0.5,
-                              width: context.width*0.5,
-                              child: SvgPicture.asset((wudoColor!=null)? AppSvgs.wudoa:AppSvgs.SagedMan))),*/
-          /*
-                      Padding(
-                        padding: (context.height * 0.08).toInt().vEdge,
-                        child: Container(
-                          width: context.width * 0.8,
-                          height: context.height * 0.8,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            //color: AppColors.kWhiteColor,
-                            color: Colors.transparent,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-
-                            ],
-                          ),
-                        ),
-                      ),
-
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),*/
         ));
   }
 

@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import '../../../../core/helpers/get_failure_from_exception.dart';
 import '../../domain/entities/fixed_entities.dart';
-import '../../domain/repository/fixed_repository.dart';
 import '../../domain/repository/hisnul_mumin_repository.dart';
 import '../data_source/hisnul_mumin_local_data_source.dart';
 // import '../data_source/HisnulMumin_local_data_source.dart';

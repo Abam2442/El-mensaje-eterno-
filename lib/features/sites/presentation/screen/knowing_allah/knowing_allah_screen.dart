@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import '../../../../../core/constants/app_colors.dart';
 import '../../controller/knowing_allah_controller.dart';
-import '../../controller/rasulullah_controller.dart';
 import '../../widget/app_bar_custom.dart';
 import '../../widget/inkwell_custom.dart';
 

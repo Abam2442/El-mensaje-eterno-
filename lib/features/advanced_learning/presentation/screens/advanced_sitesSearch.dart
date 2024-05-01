@@ -4,7 +4,6 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../widgets/custom_appBar.dart';
-import '../widgets/custom_gridview.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/item _card.dart';
 

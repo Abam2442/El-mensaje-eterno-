@@ -66,4 +66,20 @@ abstract class AppAssets {
   static const String rootSvgImages = 'assets/svg/images';
   static const String kSoudisIcon = '$rootSvgImages/soudis.png';
   static const String choseImage = '$rootSvgImages/chose_image.svg';
+
+
+// UI ROne images
+  static String imgRectangle1 = '$rootImages/img_rectangle_1.png';
+
+  static String imgEyeSvgrepoCom = '$rootImages/img_eye_svgrepo_com.svg';
+
+  static String imgInfoSquareSvgrepoCom =
+      '$rootImages/img_info_square_svgrepo_com.svg';
+
+  static String imgUserSpeakSvgrepoCom =
+      '$rootImages/img_user_speak_svgrepo_com.svg';
+
+  static String imgIcons8Salat64 = '$rootImages/img_icons8_salat_64.svg';
+
+  static String imageNotFound = 'assets/images/image_not_found.png';
 }

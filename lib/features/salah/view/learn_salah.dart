@@ -10,6 +10,8 @@ import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/Qibla/qibla_compass.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/practical_learn_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_importance_page.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/tahara_page.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/salah_page.dart';
 
 import '../../home/presentation/widgets/section_item_homeP_page_widget.dart';
 import 'base_learn.dart';
@@ -23,23 +25,13 @@ class LearnSalah extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Learn Salah',
+          'Aprender el salah',
           style: Styles.textStyle20Golden,
         ),
         iconTheme: const IconThemeData(
           color: AppColors.kGoldenColor,
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Get.to(() => const SalahImportancePage());
-            },
-            icon: const Icon(
-              Icons.info_outline,
-              color: AppColors.kGoldenColor,
-            ),
-          )
-        ],
+
         backgroundColor: AppColors.kPrimaryColor,
       ),
       backgroundColor: AppColors.kPrimaryColor,
@@ -110,30 +102,37 @@ class LearnSalah extends StatelessWidget {
                     children: [
                       SectionItemHomePageWidget(
                           onTap: () {
-                            Get.to(const BaseLearn(isBasic: true));
+                            Get.to(const TaharaPage());
                           },
-                          sectionIcon: AppSvgs.salahrokoa,
-                          sectionName: 'Educación teórica básica.',
-                          sectionSubtitle: ''),
-                      SectionItemHomePageWidget(
-                        onTap: () {
-                          Get.to(() => const PracticalLearnPage());
-                        },
-                        sectionIcon: AppSvgs.learnSalah,
-                        sectionName: 'Practico Aprende a orar',
-                        sectionSubtitle: '',
+                          sectionIcon: AppSvgs.wudoa,
+                          sectionName: 'Aprender Purificacion',
+                          sectionSubtitle: '',
+                        isInfo: false,
                       ),
                       SectionItemHomePageWidget(
-                          onTap: () {
-                            AppRoutes.routeTo(
-                                context,
-                                const BaseLearn(
-                                  isBasic: false,
-                                ));
-                          },
-                          sectionIcon: AppSvgs.salahrokoa,
-                          sectionName: 'Educación avanzada',
-                          sectionSubtitle: ''),
+                        onTap: () {
+                          Get.to(const SalahPage());
+                        },
+                        sectionIcon: AppSvgs.learnSalah,
+                        sectionName: 'Aprender Oracion',
+                        sectionSubtitle: '',
+                        isInfo: true,
+                      ),
+                      // SectionItemHomePageWidget(
+                      //     onTap: () {
+                      //       Get.to(const BaseLearn(isBasic: true));
+                      //     },
+                      //     sectionIcon: AppSvgs.salahrokoa,
+                      //     sectionName: 'Educación teórica básica.',
+                      //     sectionSubtitle: ''),
+                      //
+                      // SectionItemHomePageWidget(
+                      //     onTap: () {
+                      //       Get.to(()=> const BaseLearn(isBasic: false));
+                      //     },
+                      //     sectionIcon: AppSvgs.salahrokoa,
+                      //     sectionName: 'Educación avanzada',
+                      //     sectionSubtitle: ''),
                       SectionItemHomePageWidget(
                           onTap: () {
                             Get.to(() => const PermissionprayerPage());

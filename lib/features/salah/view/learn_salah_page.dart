@@ -25,7 +25,7 @@ class LearnSalahPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                         height: context.height * 0.2,
                         child: Hero(
                           tag: 'salah',
@@ -45,7 +45,7 @@ class LearnSalahPage extends StatelessWidget {
                             final taharaLessons = snapshot.data;
                             switch (snapshot.connectionState) {
                               case ConnectionState.waiting:
-                                return Center(
+                                return const Center(
                                   child: CircularProgressIndicator(),
                                 );
                               default:
@@ -71,7 +71,7 @@ class LearnSalahPage extends StatelessWidget {
   }
 
   Widget buildLessons(List<TaharaLessonModel> lessons) => ListView.builder(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       itemCount: lessons.length,
       itemBuilder: (context, index) {
         final lesson = lessons[index];
@@ -84,7 +84,7 @@ class LearnSalahPage extends StatelessWidget {
           onTap: () {
             //Get.to(LessonsDetailsPage(lesson.lessonDetail,lesson.title));
           },
-          trailing: Icon(
+          trailing: const Icon(
             Icons.arrow_forward_ios_outlined,
             color: Colors.white,
           ),

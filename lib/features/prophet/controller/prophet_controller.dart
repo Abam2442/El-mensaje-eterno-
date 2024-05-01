@@ -1,11 +1,9 @@
 import 'dart:convert';
 
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
-import 'package:hiwayda_oracion_islamica/core/services/easy_loader_service.dart';
 import 'package:hiwayda_oracion_islamica/features/prophet/model/prophetModel.dart';
 import 'package:logger/logger.dart';
 

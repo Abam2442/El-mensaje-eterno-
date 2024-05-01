@@ -515,7 +515,7 @@ class _swapState extends State<swap> {
   }
 
   void extraImage(String? path,int index){
-    if(path == null || path == ''){
+    if(path == null || path == '' || path == 'null'){
       switch(index){
         case 3:if(pages.length>3){
           pages.removeAt(3);

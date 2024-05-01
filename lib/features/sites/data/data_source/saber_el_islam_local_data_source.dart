@@ -4,7 +4,6 @@ import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import '../../domain/entities/fixed_entities.dart';
 import '../models/saber_el_islam_model.dart';
 
 abstract class SaberElIslamLocalDataSource {

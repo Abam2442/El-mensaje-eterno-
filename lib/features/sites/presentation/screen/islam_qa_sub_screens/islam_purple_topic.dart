@@ -6,7 +6,6 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/isla
 import '../../../../advanced_learning/presentation/widgets/item _card.dart';
 import '../../../data/models/islam_qa.dart';
 import '../../widget/app_bar_custom.dart';
-import 'islam_fluffy_topic_view.dart';
 import 'islam_purple_topic_view.dart';
 
 class IslamPurpleTopic extends StatelessWidget {

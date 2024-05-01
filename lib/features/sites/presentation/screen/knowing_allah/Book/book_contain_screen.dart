@@ -4,7 +4,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../domain/entities/fixed_entities.dart';
 import '../../../controller/knowing_allah_controller.dart';
-import '../../../controller/rasulullah_controller.dart';
 import '../../../widget/app_bar_custom.dart';
 import '../../../widget/inkwell_custom.dart';
 
