@@ -17,7 +17,25 @@ import '../../../../data/local/local_data.dart';
 class HomeController extends GetxController {
   JHijri hijriNow = JHijri.now();
   DateTime now = DateTime.now().toLocal();
+  RxList<HomeCardData> newMuslimHomeCardsDataNewList = <HomeCardData> [].obs;
 
+  void filterNewMuslimHomeCardsData(String searchText){
+    newMuslimHomeCardsDataNewList.clear();
+    for (var element in newMuslimHomeCardsData) {
+      if(searchText.isEmpty) {
+        newMuslimHomeCardsDataNewList.add(element);
+      } else {
+        if (element.description.contains(searchText) ||
+            element.title.contains(searchText)) {
+          newMuslimHomeCardsDataNewList.add(element);
+        }
+      }
+    }
+  }
+  //Searching
+  var isSearching = false.obs;
+  var searchTextController = TextEditingController();
+  var searchFocusNode  = FocusNode();
   List<HomeCardData> homeCardsData = [
     HomeCardData(
       title: "El Corán Sagrado",
@@ -196,6 +214,7 @@ class HomeController extends GetxController {
     storedLocation = LocalData.getString('prayerTime');
     calcPrayerTimes();
     startTimer();
+    newMuslimHomeCardsDataNewList = newMuslimHomeCardsData.obs;
     Get.put(
       ArchiveService(sharedPreferencesService: Get.find()),
     );

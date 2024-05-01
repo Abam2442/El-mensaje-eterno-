@@ -42,14 +42,14 @@ class BodyHadithencScreen extends GetView<HadithController> {
                 ...List.generate(
                   controller.hadithencHadithes?.categoriesName.length ?? 0,
                   (index) {
-                    String categoryName =
-                        controller.hadithencHadithes!.categoriesName[index];
+                    // String categoryName =
+                    //     controller.hadithencHadithes!.categoriesName[index];
                     return PrimaryListTile(
                       onTap: () {
                         Get.toNamed(
                           AppPagesRoutes.subCategoryScreen,
                           arguments: {
-                            "title": categoryName,
+                            "title": controller.hadithencHadithes!.categoriesName[index],
                           },
                         );
                         // Get.toNamed(
@@ -60,7 +60,7 @@ class BodyHadithencScreen extends GetView<HadithController> {
                         //   },
                         // );
                       },
-                      es: categoryName,
+                      es: controller.hadithencHadithes!.categoriesName[index],
                       ar: '',
                       itemNumber: index + 1,
                       isSaved: false,
