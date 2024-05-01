@@ -79,14 +79,14 @@ class SectionItemHomePageWidget extends StatelessWidget {
                     Get.to(() => const SalahImportancePage());
                   }else{
                     String text =
-                        'La importancia de la Purificación en el Islam, y es una condición que se debe cumplir antes de realizar la oración'
+                        'La importancia de la Purificación en el Islam, y es una condición que se debe cumplir antes de realizar la oración\n\n'
 
-                    'De Ibn Umar que dijo:'
+                    'De Ibn Umar que dijo:\n'
 
                     'Que fue a lo de Ibn ‘Amir (para conocer su estado de salud) ya que estaba enfermo y le dijo (Ibn ‘Amir) “Ibn ‘Umar ¿por qué no ruegas a Allah por mí?”.'
-                  'Él contestó: “Escuché al Mensajero de Allah ﷺ decir: “Ninguna oración es aceptada sin la purificación previa,........ Muslim'
+                  'Él contestó: “Escuché al Mensajero de Allah ﷺ decir: “Ninguna oración es aceptada sin la purificación previa,........ Muslim\n\n\n'
 
-                  'De Abu Málik Al Hariz Ibn Asim Al Asharí, Allah esté complacido con él que el Mensajero de Allah ﷺ dijo'
+                  'De Abu Málik Al Hariz Ibn Asim Al Asharí, Allah esté complacido con él que el Mensajero de Allah ﷺ dijo\n'
 
                   '“La purificación es la mitad del imán (de la fe)....... Muslim'
                   ;
