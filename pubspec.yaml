@@ -49,6 +49,8 @@ dependencies:
   timer_builder: ^2.0.0
   flutter_archive:
   flutter_launcher_icons: ^0.13.1
+  flutter_linkify: ^6.0.0
+  # share_plus: ^9.0.0
 
 dev_dependencies:
   flutter_test:

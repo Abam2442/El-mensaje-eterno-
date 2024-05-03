@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/core/helpers/get_state_from_failure.dart';
+import 'package:hiwayda_oracion_islamica/core/services/easy_loader_service.dart';
 import 'package:hiwayda_oracion_islamica/features/telegram_channels/data/models/telegram_channels_model.dart';
 import 'package:hiwayda_oracion_islamica/features/telegram_channels/domain/usecases/get_telegram_channels_usecases.dart';
 import 'package:get/get.dart';
@@ -12,6 +15,13 @@ class TelegramChannelsController extends GetxController {
   List<TelegramChannel> channelMessagesList = [];
   // States
   StateType getTelegramChannelsState = StateType.init;
+
+  /// multi message selection state,, use CrossFadeState.showSecond to activate multiSelection
+  CrossFadeState multiSelectState = CrossFadeState.showFirst;
+
+  /// list of all seleted messages index
+  Set<int> selectedMessagesIndexes = {};
+
   // Primitive
   String validationMessage = '';
 
@@ -51,5 +61,25 @@ class TelegramChannelsController extends GetxController {
     );
     Get.find<Logger>().w(
         "End `getTelegramChannels` in |TelegramChannelsController| $getTelegramChannelsState");
+  }
+
+  addOrDeleteSelectedMessage(int index) {
+    if (multiSelectState == CrossFadeState.showFirst) {
+      multiSelectState = CrossFadeState.showSecond;
+    }
+    if (selectedMessagesIndexes.contains(index)) {
+      selectedMessagesIndexes.remove(index);
+    } else {
+      selectedMessagesIndexes.add(index);
+    }
+    update();
+  }
+
+  clearSelectedMessages() {
+    selectedMessagesIndexes.clear();
+    if (multiSelectState == CrossFadeState.showSecond) {
+      multiSelectState = CrossFadeState.showFirst;
+    }
+    update();
   }
 }

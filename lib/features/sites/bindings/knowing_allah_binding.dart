@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import '../../../core/services/archive_service.dart';
 import '../data/data_source/knowing_allah_local_data_source.dart';
-import '../data/repository/knowing-Allah_repo_imp.dart';
+import '../data/repository/knowing-allah_repo_imp.dart';
 import '../domain/repository/knowing_allah_repository.dart';
 import '../presentation/controller/knowing_allah_controller.dart';
 

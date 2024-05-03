@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 
 import '../constants/app_colors.dart';
@@ -100,7 +99,6 @@ abstract class Styles {
     fontWeight: FontWeight.w400,
   );
 
-
   static const textStyle18Green = TextStyle(
     color: AppColors.kGreenColor,
     fontSize: 18,
@@ -132,4 +130,10 @@ abstract class Styles {
     fontSize: 14,
     fontWeight: FontWeight.w500,
   );
+
+  static const telegramMessagesLinksStyle = TextStyle(
+      color: AppColors.blueAccent,
+      fontSize: 15,
+      decoration: TextDecoration.underline,
+      decorationColor: AppColors.blueAccent);
 }

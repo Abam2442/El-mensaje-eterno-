@@ -26,6 +26,7 @@ class AppColors {
   static const Color white = Colors.white;
   static const Color transparent = Colors.transparent;
   static const Color brown = Colors.brown;
+  static const Color blueAccent = Colors.blueAccent;
 
   static const Color amber = Colors.amber;
   static const Color gray = Colors.grey;
