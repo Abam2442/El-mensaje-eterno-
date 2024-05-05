@@ -14,6 +14,7 @@ class Advanced_LearningController extends GetxController {
     'Guía al islam',
     'Temas islámicos',
     'Canales de telegram',
+    'la biblioteca'
   ];
 
   List<List<Map>> page = [

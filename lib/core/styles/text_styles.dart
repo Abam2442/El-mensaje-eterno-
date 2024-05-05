@@ -132,8 +132,8 @@ abstract class Styles {
   );
 
   static const telegramMessagesLinksStyle = TextStyle(
-      color: AppColors.blueAccent,
+      color: AppColors.kGoldenColor,
       fontSize: 15,
       decoration: TextDecoration.underline,
-      decorationColor: AppColors.blueAccent);
+      decorationColor: AppColors.kGoldenColor);
 }
