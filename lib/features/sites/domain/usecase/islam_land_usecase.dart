@@ -20,4 +20,8 @@ class IslamLandUseCase {
     Get.find<Logger>().i("Call IslamLandUseCase");
     return islamLandRepository.getFatwa();
   }
+
+  Future<Either<Failure, Map<String, List<FixedEntities>>>> callBooks() async {
+    return islamLandRepository.getBooks();
+  }
 }

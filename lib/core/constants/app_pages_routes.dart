@@ -37,6 +37,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/first_step_band
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_for_christian_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_message_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_port_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_religion_banding.dart';
@@ -64,6 +65,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/isla
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_for_christians/islam_for_christians_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_guide_1_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_main.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/islam_land_books_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/islam_land_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/islam_message_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_port_screen.dart';
@@ -137,6 +139,7 @@ abstract class AppPagesRoutes {
   static const String islamMessage = "/islam_message_screen";
   static const String islamReligion = "/islam_religion_screen";
   static const String islamLand = "/islam_land_screen";
+  static const String islamLandBooks = "/islam_land_books_screen";
   static const String rasulullah = "/rasulullah_screen";
   static const String jesusIsMuslim = "/jesus_is_muslim_screen";
   static const String jesusInQuran = "/jesus_in_quran_screen";
@@ -369,6 +372,12 @@ abstract class AppPagesRoutes {
       name: islamLand,
       page: () => const IslamLandMainScreen(),
       binding: IslamLandBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamLandBooks,
+      page: () => const IslamLandBooksMainScreen(),
+      binding: IslamLandBooksBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(

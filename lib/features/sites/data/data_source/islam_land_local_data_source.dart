@@ -10,6 +10,7 @@ import '../../domain/entities/islam_land_entities.dart';
 abstract class IslamLandLocalDataSource {
   Future<List<List<FixedEntities>>> getContent();
   Future<List<IslamLandFatwaEntities>> getFatwa();
+  Future<Map<String, List<FixedEntities>>> getBooks();
 }
 
 class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
@@ -74,6 +75,37 @@ class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
     } catch (e) {
       Get.find<Logger>().e(
         "End `getContent` in |IslamLandLocalDataSourceImpl| Exception: ${e.runtimeType}",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<Map<String, List<FixedEntities>>> getBooks() async {
+    try {
+      Get.find<Logger>()
+          .i("Start `getBooks` in |IslamLandLocalDataSourceImpl|");
+      Map<String, List<FixedEntities>> result = {};
+      String? islamLandJson =
+          await archiveService.readFile(name: AppKeys.islamLandBooks);
+      if (islamLandJson != null) {
+        Map<String, dynamic> decoded = jsonDecode(islamLandJson);
+
+        decoded.forEach((bookCategory, value) {
+          result[bookCategory] = [];
+          for (Map booksMap in value) {
+            booksMap.forEach((bookName, content) {
+              FixedEntities bookEnitie =
+                  FixedEntities(name: bookName, content: content);
+              result[bookCategory]!.add(bookEnitie);
+            });
+          }
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getBooks` in |IslamLandLocalDataSourceImpl| Exception: ${e.runtimeType} $e",
       );
       rethrow;
     }

@@ -32,7 +32,7 @@ class IslamLandRepositoryImp extends IslamLandRepository {
 
   @override
   Future<Either<Failure, List<List<FixedEntities>>>> getContent() async {
-    await islamLandLocalDataSource.getContent();
+    // await islamLandLocalDataSource.getContent();
     try {
       Get.find<Logger>().i("Start `getContent` in |IslamLandRepositoryImp|");
       var content = await islamLandLocalDataSource.getContent();
@@ -42,6 +42,21 @@ class IslamLandRepositoryImp extends IslamLandRepository {
     } catch (e) {
       Get.find<Logger>().e(
           "End `getContent` in |IslamLandRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Map<String, List<FixedEntities>>>> getBooks() async {
+    try {
+      Get.find<Logger>().i("Start `getBooks` in |IslamLandRepositoryImp|");
+      var data = await islamLandLocalDataSource.getBooks();
+      Get.find<Logger>()
+          .w("End `getBooks` in |IslamLandRepositoryImp| ${data.length}");
+      return Right(data);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getBooks` in |IslamLandRepositoryImp| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }

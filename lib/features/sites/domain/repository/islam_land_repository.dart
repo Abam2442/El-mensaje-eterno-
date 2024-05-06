@@ -5,5 +5,6 @@ import '../entities/islam_land_entities.dart';
 
 abstract class IslamLandRepository {
   Future<Either<Failure, List<List<FixedEntities>>>> getContent();
+  Future<Either<Failure, Map<String, List<FixedEntities>>>> getBooks();
   Future<Either<Failure, List<IslamLandFatwaEntities>>> getFatwa();
 }
