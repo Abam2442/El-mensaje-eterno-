@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
@@ -87,6 +88,17 @@ class ViewOrDownloadInkwell extends StatelessWidget {
   _view() {
     launchUrl(Uri.parse(url));
   }
+
+  // _listen() async {
+  //   final player = AudioPlayer();
+  //   await player.play(UrlSource(url));
+  //   player.state == PlayerState.
+  // }
 }
 
-enum MediaLinkType { downloadOnly, viewOnly, viewAndDownload }
+enum MediaLinkType {
+  downloadOnly,
+  viewOnly,
+  viewAndDownload,
+  downloadAndListen
+}

@@ -17,7 +17,7 @@ class DownloadServices extends GetxService {
   /// file downloaded data size
   final RxDouble received = 0.0.obs;
 
-  final CancelToken _cancelToken = CancelToken();
+  CancelToken _cancelToken = CancelToken();
 
   Future<String> _getDownloadDirectory() async {
     Directory? directory = Directory('/storage/emulated/0/Download');
@@ -29,7 +29,8 @@ class DownloadServices extends GetxService {
 
   Dio _createDio({required String baseUrl}) {
     // initialize dio
-    final dio = Dio()..options.baseUrl = baseUrl;
+    final dio =
+        Dio(BaseOptions(baseUrl: baseUrl, headers: {'accept-encoding': "*"}));
 
     // allow self-signed certificate
     (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
@@ -71,22 +72,30 @@ class DownloadServices extends GetxService {
           final path = await _getDownloadDirectory();
 
           final Dio dio = _createDio(baseUrl: baseUrl);
-
+          int i = 0;
           dio.download(urlFileName, "$path/$fileName",
               onReceiveProgress: (rec, tot) {
-            received.value = rec / 1000;
-            total.value = tot / 1000;
+            if (i < 10) {
+              print("tot $tot, rec $rec");
+              i++;
+            }
+            received.value = rec.toDouble();
+            total.value = tot.toDouble();
           }, cancelToken: _cancelToken).then((value) {
-            isDownloading.toggle();
             if (Get.isDialogOpen == true) {
               Get.back();
             }
             DownloadDialog.showSuccessDialog(fileName, "$path/$fileName");
-            isDownloading.toggle();
+            isDownloading.value = false;
+            ;
           }).onError((error, stackTrace) {
+            print('#eeror $error, $stackTrace');
+            if (Get.isDialogOpen == true) {
+              Get.back();
+            }
             DownloadDialog.showErrorDialog(
                 fileName, () => download(url: url, fileName: fileName));
-            isDownloading.toggle();
+            isDownloading.value = false;
           });
           DownloadDialog.showDownloadProgress(fileName, () {
             Get.back();
@@ -94,6 +103,7 @@ class DownloadServices extends GetxService {
             total.value = 0;
             received.value = 0;
             isDownloading.value = false;
+            _cancelToken = CancelToken();
           });
         }
       } else {
@@ -102,6 +112,7 @@ class DownloadServices extends GetxService {
         }
       }
     } catch (e) {
+      print('#eeror $e');
       isDownloading.value = false;
     }
   }

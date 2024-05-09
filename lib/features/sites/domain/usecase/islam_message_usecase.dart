@@ -22,7 +22,7 @@ class IslamMessageUseCase {
     return await islamMessageRepository.getBook();
   }
 
-  Future<Either<Failure, List<IslamMessageAudioEntities>>> callAudio() async {
+  Future<Either<Failure, List<MediaEntity>>> callAudio() async {
     Get.find<Logger>().i("Call LearningIslamUseCase");
     return await islamMessageRepository.getAudio();
   }
