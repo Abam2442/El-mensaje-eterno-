@@ -66,7 +66,7 @@ class ViewOrDownloadInkwell extends StatelessWidget {
                     color: Colors.white,
                   )),
             if (mediaLinkType == MediaLinkType.viewAndDownload ||
-                mediaLinkType == MediaLinkType.viewAndDownload)
+                mediaLinkType == MediaLinkType.viewOnly)
               IconButton(
                   onPressed: _view,
                   icon: const Icon(

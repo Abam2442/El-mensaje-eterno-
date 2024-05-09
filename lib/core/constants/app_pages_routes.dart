@@ -36,6 +36,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/explore_islam_b
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/first_step_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_for_christian_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_message_banding.dart';
@@ -65,6 +66,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/huma
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam%20_religion/islam_religion_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_for_christians/islam_for_christians_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_guide_1_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_books_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_main.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/islam_land_books_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/islam_land_main_screen.dart';
@@ -137,6 +139,7 @@ abstract class AppPagesRoutes {
 
   ///////////////////////// name routs site ////////////////////////
   static const String islamHouse = "/islam_house_screen";
+  static const String islamHouseBooks = "/islam_house_books_screen";
   static const String islamWeb = "/islam_web_screen";
   static const String islamMessage = "/islam_message_screen";
   static const String islamMessageBooks = "/islam_message_books_screen";
@@ -351,6 +354,12 @@ abstract class AppPagesRoutes {
       name: islamHouse,
       page: () => const IslamHouseMainScreen(),
       binding: IslamHouseBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamHouseBooks,
+      page: () => const IslamHouseBooksMainScreen(),
+      binding: IslamHouseBooksBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(
