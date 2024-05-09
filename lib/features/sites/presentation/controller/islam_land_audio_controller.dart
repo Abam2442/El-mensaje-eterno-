@@ -4,8 +4,8 @@ import '../../../../core/constants/app_enums.dart';
 import '../../../../core/helpers/get_state_from_failure.dart';
 import '../../domain/usecase/islam_land_usecase.dart';
 
-class IslamLandBooksControllerImp extends GetxController {
-  Map<String, List<MediaEntity>> data = {};
+class IslamLandAudioControllerImp extends GetxController {
+  List<MediaEntity> data = [];
 
   // States
   StateType getDataState = StateType.init;
@@ -15,7 +15,7 @@ class IslamLandBooksControllerImp extends GetxController {
 
   Future<void> getContent() async {
     IslamLandUseCase islamLandUseCase = IslamLandUseCase(Get.find());
-    var result = await islamLandUseCase.callBooks();
+    var result = await islamLandUseCase.callAudios();
     result.fold(
       (l) async {
         getDataState = getStateFromFailure(l);

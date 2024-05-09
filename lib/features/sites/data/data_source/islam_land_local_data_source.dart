@@ -12,6 +12,7 @@ abstract class IslamLandLocalDataSource {
   Future<List<List<FixedEntities>>> getContent();
   Future<List<IslamLandFatwaEntities>> getFatwa();
   Future<Map<String, List<MediaEntity>>> getBooks();
+  Future<List<MediaEntity>> getAudio();
 }
 
 class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
@@ -134,6 +135,29 @@ class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
     } catch (e) {
       Get.find<Logger>().e(
         "End `getFatwa` in |IslamLandLocalDataSourceImpl| Exception: ${e.runtimeType}",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaEntity>> getAudio() async {
+    try {
+      Get.find<Logger>().i("Start `getAudio` in |islamLandDataSourceImpl|");
+      List<MediaEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.islamLandAudios);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+
+        (decoded['islam-Land']['Audios'] as Map).forEach((name, url) {
+          result.add(MediaEntity(name: name, url: url));
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getAudio` in |islamLandDataSourceImpl| Exception: ${e.runtimeType} $e",
       );
       rethrow;
     }

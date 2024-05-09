@@ -9,13 +9,14 @@ class ViewOrDownloadInkwell extends StatelessWidget {
       {super.key,
       required this.url,
       required this.name,
-      required this.fileType,
+      this.fileType = '',
       this.mediaLinkType = MediaLinkType.viewAndDownload}) {
     if (mediaLinkType == MediaLinkType.downloadOnly ||
         mediaLinkType == MediaLinkType.viewAndDownload) {
       _downloadServices = Get.find();
     }
   }
+
   final MediaLinkType mediaLinkType;
   final String url;
   final String name;
@@ -84,7 +85,7 @@ class ViewOrDownloadInkwell extends StatelessWidget {
   }
 
   _view() {
-    launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+    launchUrl(Uri.parse(url));
   }
 }
 
