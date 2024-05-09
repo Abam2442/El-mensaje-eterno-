@@ -49,6 +49,7 @@ class AppKeys {
   static const String jesusMuslim = 'jesus_muslim.json';
   static const String jesusQuran = 'jesus_quran.json';
   static const String knowingAllah = 'knowing_allah.json';
+  static const String knowingAllahBooks = 'book-knowing_allah.json';
   static const String learningIslam = 'learning_islam.json';
   static const String loveInIslam = 'love_in_islam.json';
   static const String messageOfIslam = 'message_of_islam.json';

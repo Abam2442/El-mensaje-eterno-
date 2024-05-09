@@ -1,39 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/knowing_allah_books_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/view_or_download_inkwell.dart';
 
-import '../../../controller/knowing_allah_controller.dart';
 import '../../../widget/app_bar_custom.dart';
-import '../../../widget/inkwell_custom.dart';
-import 'book_contain_screen.dart';
 
 class KnowingAllahBookScreen extends StatelessWidget {
   const KnowingAllahBookScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(KnowingAllahControllerImp());
     return Scaffold(
         appBar: const AppBarCustom(title: 'Knowing Allah book')
             .customAppBar(context),
-        body: GetBuilder<KnowingAllahControllerImp>(
+        body: GetBuilder<KnowingAllahBooksControllerImp>(
             builder: (controller) => Container(
                 margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                 child: ListView.builder(
                     padding: const EdgeInsets.all(5),
-                    itemCount: controller.knowingAllah!.books.length,
+                    itemCount: controller.data.length,
                     itemBuilder: (context, index) {
-                      return InkwellCustom(
-                        catigory: false,
-                        dataText: controller.knowingAllah!.books[index].name,
-                        onTap: () {
-                          Get.to(KnowingAllahBookContainScreen(
-                            dataText: controller
-                                .knowingAllah!.books[index].subcategories,
-                            itemCount: controller.knowingAllah!.books[index]
-                                .subcategories.length,
-                          ));
-                        },
+                      return ViewOrDownloadInkwell(
+                        fileType: 'pdf',
+                        name: controller.data[index].name,
+                        url: controller.data[index].url,
+                        mediaLinkType: MediaLinkType.viewOnly,
                       );
+                      ;
                     }))));
   }
 }

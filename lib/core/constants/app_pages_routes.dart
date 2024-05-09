@@ -49,6 +49,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_web_bandi
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/jesus_muslim_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/jesuse_quran_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah_binding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah_books_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/learning_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/love_in_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/message_of_islam_banding.dart';
@@ -79,6 +80,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/isla
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_web_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/jesus_muslim_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/jesus_quran_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Book/book_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/learning_islam/learning_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/love_in_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/massage_of_islam_screen.dart';
@@ -175,6 +177,7 @@ abstract class AppPagesRoutes {
   static const String hisnulMumin = "/hisnul_mumin";
   static const String huminRight = "/humin_right";
   static const String knowingAllah = "/knowing_allah";
+  static const String knowingAllahBooks = "/knowing_allah_books";
   static const String saberElIslam = "/saber_el_islam";
 
   static List<GetPage<dynamic>> appPages = [
@@ -305,6 +308,12 @@ abstract class AppPagesRoutes {
       name: knowingAllah,
       page: () => const KnowingAllahScreen(),
       binding: KnowingAllahBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: knowingAllahBooks,
+      page: () => const KnowingAllahBookScreen(),
+      binding: KnowingAllahBooksBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(
