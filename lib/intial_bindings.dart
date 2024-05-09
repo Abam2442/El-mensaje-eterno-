@@ -1,5 +1,5 @@
-
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/services/download_services.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:logger/logger.dart';
@@ -23,5 +23,6 @@ class InitialBindings extends Bindings {
         networkInfo: Get.find(),
       ),
     );
+    Get.lazyPut(() => DownloadServices());
   }
 }

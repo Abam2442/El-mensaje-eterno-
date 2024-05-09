@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import 'package:logger/logger.dart';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
@@ -10,7 +11,7 @@ import '../../domain/entities/islam_land_entities.dart';
 abstract class IslamLandLocalDataSource {
   Future<List<List<FixedEntities>>> getContent();
   Future<List<IslamLandFatwaEntities>> getFatwa();
-  Future<Map<String, List<FixedEntities>>> getBooks();
+  Future<Map<String, List<MediaEntity>>> getBooks();
 }
 
 class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
@@ -81,11 +82,11 @@ class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
   }
 
   @override
-  Future<Map<String, List<FixedEntities>>> getBooks() async {
+  Future<Map<String, List<MediaEntity>>> getBooks() async {
     try {
       Get.find<Logger>()
           .i("Start `getBooks` in |IslamLandLocalDataSourceImpl|");
-      Map<String, List<FixedEntities>> result = {};
+      Map<String, List<MediaEntity>> result = {};
       String? islamLandJson =
           await archiveService.readFile(name: AppKeys.islamLandBooks);
       if (islamLandJson != null) {
@@ -95,8 +96,8 @@ class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
           result[bookCategory] = [];
           for (Map booksMap in value) {
             booksMap.forEach((bookName, content) {
-              FixedEntities bookEnitie =
-                  FixedEntities(name: bookName, content: content);
+              MediaEntity bookEnitie =
+                  MediaEntity(name: bookName, url: content);
               result[bookCategory]!.add(bookEnitie);
             });
           }

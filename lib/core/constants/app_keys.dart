@@ -33,6 +33,7 @@ class AppKeys {
   static const String islamLand = 'islam_Land.json';
   static const String islamLandBooks = 'Book-islamland.json';
   static const String islamMessage = 'islam_message.json';
+  static const String islamMessageBooks = 'book-islam_message.json';
   static const String islamPort = 'islam_port.json';
   static const String islamReligion = 'islam_Religion.json';
   static const String islamReligionOfPeace = 'islam_religion_of_peace.json';

@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_land_books_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_message_books_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/media_files_list_view.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/view_or_download_inkwell.dart';
-import '../../controller/islam_land_controller.dart';
 import '../../widget/app_bar_custom.dart';
 import '../../widget/inkwell_custom.dart';
 
-class IslamLandBooksMainScreen extends GetView<IslamLandBooksControllerImp> {
-  const IslamLandBooksMainScreen({super.key});
+class IslamMessageBooksMainScreen
+    extends GetView<IslamMessageBooksControllerImp> {
+  const IslamMessageBooksMainScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          const AppBarCustom(title: "Islam Land Books").customAppBar(context),
-      body: GetBuilder<IslamLandBooksControllerImp>(builder: (controller) {
+      appBar: const AppBarCustom(title: "Islam Message Books")
+          .customAppBar(context),
+      body: GetBuilder<IslamMessageBooksControllerImp>(builder: (controller) {
         if (controller.getDataState == StateType.loading) {
           return const Center(
             child: CircularProgressIndicator(),
@@ -29,16 +31,14 @@ class IslamLandBooksMainScreen extends GetView<IslamLandBooksControllerImp> {
                 itemCount: controller.data.length,
                 itemBuilder: (context, index) {
                   return InkwellCustom(
-                    // iconData: controller.icons[index],
                     catigory: false,
-                    dataText: controller.data.keys.elementAt(index),
+                    dataText: controller.data.elementAt(index).category,
                     onTap: () {
-                      final name = controller.data.keys.elementAt(index);
                       Get.to(MediaFilesListView(
-                        title: name,
-                        data: controller.data[name] ?? [],
+                        data: controller.data[index].data,
                         fileType: 'pdf',
-                        mediaLinkType: MediaLinkType.downloadOnly,
+                        title: controller.data[index].category,
+                        mediaLinkType: MediaLinkType.viewAndDownload,
                       ));
                     },
                   );

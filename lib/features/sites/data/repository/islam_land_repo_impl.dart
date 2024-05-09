@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import '../../../../core/errors/failures.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
@@ -47,7 +48,7 @@ class IslamLandRepositoryImp extends IslamLandRepository {
   }
 
   @override
-  Future<Either<Failure, Map<String, List<FixedEntities>>>> getBooks() async {
+  Future<Either<Failure, Map<String, List<MediaEntity>>>> getBooks() async {
     try {
       Get.find<Logger>().i("Start `getBooks` in |IslamLandRepositoryImp|");
       var data = await islamLandLocalDataSource.getBooks();

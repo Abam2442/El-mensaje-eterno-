@@ -7,6 +7,7 @@ class InkwellCustom extends StatelessWidget {
   final bool catigory;
   final String dataText;
   final IconData? iconData;
+
   const InkwellCustom({
     super.key,
     required this.onTap,
