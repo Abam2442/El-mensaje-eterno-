@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 1.0.0+4
 
 environment:
-  sdk: '>=3.3.2 <4.0.0'
+  sdk: '>=3.2.5 <4.0.0'
 
 dependencies:
   flutter:
@@ -41,8 +41,8 @@ dependencies:
   timezone:
   connectivity_plus: ^2.3.9
   geolocator: ^9.0.2
-#  #flutter_qiblah: ^2.0.0
-#  #location:
+##  #flutter_qiblah: ^2.0.0
+##  #location:
   location: ^5.0.3
   flutter_compass:
   jhijri: ^0.0.1
@@ -50,7 +50,8 @@ dependencies:
   flutter_archive:
   flutter_launcher_icons: ^0.13.1
   flutter_linkify: ^6.0.0
-  # share_plus: ^9.0.0
+  photo_view: ^0.15.0
+#  # share_plus: ^9.0.0
 
 dev_dependencies:
   flutter_test:
