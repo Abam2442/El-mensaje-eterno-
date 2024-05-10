@@ -41,7 +41,7 @@ class SliverAppBarWidget extends StatelessWidget {
                 onPressed: () => Get.back(),
                 icon: SvgPicture.asset(
                   AppAssets.kBackIcon,
-                  color: iconColor,
+                  // color: iconColor,
                 ),
               ),
             ),

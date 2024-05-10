@@ -169,7 +169,7 @@ class UiRoneScreen extends StatelessWidget {
               children: [
                 CustomImageView(
                   onTap: (){
-                    print(controller.list[index].images!.image5.toString()??'ss');
+                    print(controller.list[index].images!.image5.toString());
                     Get.defaultDialog(
                       title: 'galería',
                         content: swap(
