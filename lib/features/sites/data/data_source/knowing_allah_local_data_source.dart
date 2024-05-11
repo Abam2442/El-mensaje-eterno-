@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
+
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
@@ -9,6 +11,7 @@ import '../models/knowing_allah_model.dart';
 
 abstract class KnowingAllahLocalDataSource {
   Future<KnowingAllahModel> getContent();
+  Future<List<MediaEntity>> getBooks();
 }
 
 class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
@@ -106,5 +109,28 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
     Get.find<Logger>()
         .w("End `getContent` in |KnowingAllahLocalDataSourceImp|");
     return Future.value(knowingAllah);
+  }
+
+  @override
+  Future<List<MediaEntity>> getBooks() async {
+    try {
+      Get.find<Logger>().i("Start `getBooks` in |KnowingAllahDataSourceImpl|");
+      List<MediaEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.knowingAllahBooks);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+
+        (decoded['knowing-Allah']['Books'] as Map).forEach((name, url) {
+          result.add(MediaEntity(name: name, url: url));
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getBooks` in |KnowingAllahDataSourceImpl| Exception: ${e.runtimeType} $e",
+      );
+      rethrow;
+    }
   }
 }

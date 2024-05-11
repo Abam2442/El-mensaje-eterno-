@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import '../../../../core/errors/failures.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
@@ -32,7 +33,7 @@ class IslamLandRepositoryImp extends IslamLandRepository {
 
   @override
   Future<Either<Failure, List<List<FixedEntities>>>> getContent() async {
-    await islamLandLocalDataSource.getContent();
+    // await islamLandLocalDataSource.getContent();
     try {
       Get.find<Logger>().i("Start `getContent` in |IslamLandRepositoryImp|");
       var content = await islamLandLocalDataSource.getContent();
@@ -42,6 +43,36 @@ class IslamLandRepositoryImp extends IslamLandRepository {
     } catch (e) {
       Get.find<Logger>().e(
           "End `getContent` in |IslamLandRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Map<String, List<MediaEntity>>>> getBooks() async {
+    try {
+      Get.find<Logger>().i("Start `getBooks` in |IslamLandRepositoryImp|");
+      var data = await islamLandLocalDataSource.getBooks();
+      Get.find<Logger>()
+          .w("End `getBooks` in |IslamLandRepositoryImp| ${data.length}");
+      return Right(data);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getBooks` in |IslamLandRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getAudio() async {
+    try {
+      Get.find<Logger>().i("Start `getAudio` in |IslamLandRepositoryImp|");
+      var data = await islamLandLocalDataSource.getAudio();
+      Get.find<Logger>()
+          .w("End `getAudio` in |IslamLandRepositoryImp| ${data.length}");
+      return Right(data);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getAudio` in |IslamLandRepositoryImp| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }

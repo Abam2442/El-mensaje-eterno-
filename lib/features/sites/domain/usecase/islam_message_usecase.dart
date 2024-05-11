@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import '../../../../core/errors/failures.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
@@ -16,7 +17,7 @@ class IslamMessageUseCase {
     return await islamMessageRepository.getArtical();
   }
 
-  Future<Either<Failure, List<IslamMessageBookEntities>>> callBook() async {
+  Future<Either<Failure, List<MediaCategoryEntity>>> callBook() async {
     Get.find<Logger>().i("Call LearningIslamUseCase");
     return await islamMessageRepository.getBook();
   }

@@ -14,7 +14,7 @@ class Item_GridView extends StatelessWidget {
         Get.put(Advanced_LearningController());
     return ListView.builder(
       scrollDirection: Axis.horizontal,
-      itemCount: 6,
+      itemCount: controller.titlePart.length,
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
@@ -35,7 +35,8 @@ class Item_GridView extends StatelessWidget {
               controller.selectedPart == index
                   ? Container(
                       margin: const EdgeInsets.symmetric(vertical: 5),
-                      width: controller.titlePart[index].toString().length*7.0,
+                      width:
+                          controller.titlePart[index].toString().length * 7.0,
                       height: 2,
                       color: AppColors.kGoldenColor,
                     )

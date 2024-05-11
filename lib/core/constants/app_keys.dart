@@ -31,7 +31,10 @@ class AppKeys {
   static const String guideToIslam = 'guidetoislam.json';
   static const String humanRights = 'humanRights.json';
   static const String islamLand = 'islam_Land.json';
+  static const String islamLandBooks = 'Book-islamland.json';
+  static const String islamLandAudios = 'audio-islam_Land.json';
   static const String islamMessage = 'islam_message.json';
+  static const String islamMessageBooks = 'book-islam_message.json';
   static const String islamPort = 'islam_port.json';
   static const String islamReligion = 'islam_Religion.json';
   static const String islamReligionOfPeace = 'islam_religion_of_peace.json';
@@ -41,11 +44,13 @@ class AppKeys {
   static const String islamGuide1 = 'islamguide_1.json';
   static const String islamGuide2 = 'islamguide_2.json';
   static const String islamHouse = 'islamhouse.json';
+  static const String islamHouseBooks = 'book-islamhouse.json';
   static const String islamQA = 'islamqa.json';
   static const String islamWeb = 'islamweb.json';
   static const String jesusMuslim = 'jesus_muslim.json';
   static const String jesusQuran = 'jesus_quran.json';
   static const String knowingAllah = 'knowing_allah.json';
+  static const String knowingAllahBooks = 'book-knowing_allah.json';
   static const String learningIslam = 'learning_islam.json';
   static const String loveInIslam = 'love_in_islam.json';
   static const String messageOfIslam = 'message_of_islam.json';

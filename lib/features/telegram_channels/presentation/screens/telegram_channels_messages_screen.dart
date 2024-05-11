@@ -96,13 +96,13 @@ class TelegramChannelsMessagesScreen
                           AppAssets.kCopyIcon,
                         ),
                       ),
-                      IconButton(
-                        onPressed: controller.clearSelectedMessages,
-                        icon: const Icon(
-                          Icons.clear,
-                          color: AppColors.amber,
-                        ),
-                      )
+                      // IconButton(
+                      //   onPressed: controller.clearSelectedMessages,
+                      //   icon: const Icon(
+                      //     Icons.clear,
+                      //     color: AppColors.amber,
+                      //   ),
+                      // )
                     ],
                   ),
                   crossFadeState: controller.multiSelectState,
@@ -158,7 +158,7 @@ class TelegramChannelsMessagesScreen
                               child: Linkify(
                                 onOpen: _opnenLink,
                                 text: message,
-                                style: Styles.textStyle14Golden,
+                                style: Styles.textStyle14White,
                                 linkStyle: Styles.telegramMessagesLinksStyle,
                               ),
                             ),
@@ -176,9 +176,9 @@ class TelegramChannelsMessagesScreen
                                     AppAssets.kCopyIcon,
                                   ),
                                 ),
-                                ShareIconButton(
-                                  data: message,
-                                )
+                                // ShareIconButton(
+                                //   data: message,
+                                // )
                               ],
                             )
                           ],
@@ -208,8 +208,10 @@ class TelegramChannelsMessagesScreen
   Future<bool?> _pop(TelegramChannelsController controller, bool _) async {
     if (controller.multiSelectState == CrossFadeState.showSecond) {
       controller.clearSelectedMessages();
+      return Future.value(false);
+    } else {
+      Get.back();
+      return Future.value(_);
     }
-    Get.back();
-    return Future.value(_);
   }
 }

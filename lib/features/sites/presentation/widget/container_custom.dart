@@ -5,6 +5,7 @@ class ContainerCustom extends StatelessWidget {
   final bool catigory;
   final IconData? iconData;
   final String dataText;
+
   const ContainerCustom({
     super.key,
     required this.catigory,
@@ -36,13 +37,15 @@ class ContainerCustom extends StatelessWidget {
                   width: 1,
                   height: 40,
                 ),
-                Text(
-                  dataText,
-                  style: const TextStyle(
-                      color: AppColors.kGoldenColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
+                Expanded(
+                  child: Text(
+                    dataText,
+                    style: const TextStyle(
+                        color: AppColors.kGoldenColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ],
             )

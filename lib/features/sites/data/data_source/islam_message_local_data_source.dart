@@ -1,5 +1,8 @@
 import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/data/models/books_list_model.dart'
+    as models;
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import 'package:logger/logger.dart';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
@@ -8,7 +11,7 @@ import '../models/islam_message_model.dart';
 
 abstract class IslamMessageLocalDataSource {
   Future<List<IslamMessageArticalModel>> getArtical();
-  Future<List<IslamMessageBookModel>> getBook();
+  Future<List<MediaCategoryEntity>> getBook();
   Future<List<IslamMessageAudioModel>> getAudio();
 }
 
@@ -76,24 +79,25 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
   }
 
   @override
-  Future<List<IslamMessageBookModel>> getBook() async {
+  Future<List<MediaCategoryEntity>> getBook() async {
     try {
       Get.find<Logger>()
           .i("Start `getBook` in |IslamMessageLocalDataSourceImpl|");
       String? islamMessageJson =
-          await archiveService.readFile(name: AppKeys.islamMessage);
-      List<IslamMessageBookModel> books = [];
+          await archiveService.readFile(name: AppKeys.islamMessageBooks);
+      List<models.IslamMessageBookModel> books = [];
       if (islamMessageJson != null) {
         var jsonData = json.decode(islamMessageJson);
         books = jsonData['islam-message']['booksCategories']
-            .map<IslamMessageBookModel>(
-              (book) => IslamMessageBookModel.fromJson(book),
+            .map<models.IslamMessageBookModel>(
+              (bookListJson) =>
+                  models.IslamMessageBookModel.fromJson(bookListJson),
             )
             .toList();
       }
       Get.find<Logger>()
           .w("End `getBook` in |IslamMessageLocalDataSourceImpl|");
-      return Future.value(books);
+      return books;
     } catch (e) {
       Get.find<Logger>().e(
         "End `getBook` in |IslamMessageLocalDataSourceImpl| Exception: ${e.runtimeType}",
