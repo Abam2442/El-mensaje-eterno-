@@ -78,7 +78,7 @@ class DeveloperCard extends StatelessWidget {
           if (await canLaunchUrl(uri)) {
             await launchUrl(uri);
           } else {
-            throw 'Could not launch ${path}';
+            throw 'Could not launch $path';
           }
         }
       },
@@ -93,7 +93,7 @@ class DeveloperCard extends StatelessWidget {
       final result = await InternetAddress.lookup('example.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
         if (!await launchUrl(Uri.parse(url))) {
-          Get.snackbar('info', 'Could not launch ${url}');
+          Get.snackbar('info', 'Could not launch $url');
         }
       }
     } on SocketException catch (e) {

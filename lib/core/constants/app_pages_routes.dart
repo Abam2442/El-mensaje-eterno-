@@ -85,6 +85,9 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/woma
 import 'package:hiwayda_oracion_islamica/features/salah/view/learn_salah.dart';
 import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation/screens/telegram_channels_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation/telegram_channels_bindings.dart';
+import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/screens/details_channels_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/screens/youtube_channels_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/youtube_channels_bindings.dart';
 
 import '../../features/azkar_doaa/presentation/screens/content_azkar_doaa_screen.dart';
 import '../../features/salah/view/learn_salah_page.dart';
@@ -157,6 +160,7 @@ abstract class AppPagesRoutes {
   static const String bidaaInIslam = "/bidaa_in_islam_screen";
   static const String terminology = "/terminology_screen";
   static const String telegram = "/telegram_channels_screen";
+  static const String youtube = "/youtube_channels_screen";
   static const String theKeyToIslam = "/the_key_to_islam";
   static const String theKeyToIslam2 = "/the_key_to_islam2";
   static const String islamQA = "/islamQA";
@@ -167,7 +171,7 @@ abstract class AppPagesRoutes {
   static const String huminRight = "/humin_right";
   static const String knowingAllah = "/knowing_allah";
   static const String saberElIslam = "/saber_el_islam";
-
+  static const String detailsChannelsScreen = "/DetailsChannelsScreen";
   static List<GetPage<dynamic>> appPages = [
     GetPage(
       name: mainScreen,
@@ -489,6 +493,17 @@ abstract class AppPagesRoutes {
       name: telegram,
       page: () => const TelegramChannelsScreen(),
       binding: TelegramChannelsBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: youtube,
+      page: () => const YoutubeChannelsScreen(),
+      binding: YoutubeChannelsBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: detailsChannelsScreen,
+      page: () =>  DetailsChannelsScreen(data: Get.arguments[0]['data'],),
       transition: Transition.cupertino,
     ),
 

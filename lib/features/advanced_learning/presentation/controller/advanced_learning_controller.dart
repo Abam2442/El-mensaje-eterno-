@@ -332,7 +332,13 @@ class Advanced_LearningController extends GetxController {
         "title": "Canales de telegram",
         "description": "",
         "targetScreen": AppPagesRoutes.telegram,
+      },
+      {
+        "title": "Youtube",
+        "description": "",
+        "targetScreen": AppPagesRoutes.youtube,
       }
+
     ],
   ];
 
