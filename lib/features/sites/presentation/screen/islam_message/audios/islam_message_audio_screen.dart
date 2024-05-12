@@ -33,7 +33,7 @@ class IslamMessageAudiosMainScreen
                     url: ele.url,
                     name: ele.name,
                     fileType: ele.url.split('.').last,
-                    mediaLinkType: MediaLinkType.downloadOnly,
+                    mediaLinkType: MediaLinkType.downloadAndListen,
                   );
                 }));
       }),
