@@ -14,4 +14,13 @@ class AppImages {
   static const String whatsapp = 'assets/images/icon-whatsapp.png';
   static const String linkedin = 'assets/images/linkedin.jpg';
   static const String youtube = 'assets/images/icon-youtube.png';
+  static const String advancedFajr = 'assets/images/Adv-fajr-1.png';
+  static const String advancedFajr1 = 'assets/images/Adv-fajr-2.png';
+  static const String advancedDAI1 = 'assets/images/Adv-Duhr-asr-ishaa-1.png';
+  static const String advancedDAI2 = 'assets/images/Adv-Duhr-asr-ishaa-2.png';
+  static const String advancedDAI3 = 'assets/images/Adv-Duhr-asr-ishaa-3.png';
+  static const String advancedDAI4 = 'assets/images/Adv-Duhr-asr-ishaa-4.png';
+  static const String advancedMagh1 = 'assets/images/Adv-maghreb-1.png';
+  static const String advancedMagh2 = 'assets/images/Adv-maghreb-2.png';
+  static const String advancedMagh3 = 'assets/images/Adv-maghreb-3.png';
 }

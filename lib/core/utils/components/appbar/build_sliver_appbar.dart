@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/primary_select_item.dart';
+import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
@@ -39,7 +41,7 @@ class SliverAppBarWidget extends StatelessWidget {
                 onPressed: () => Get.back(),
                 icon: SvgPicture.asset(
                   AppAssets.kBackIcon,
-                  color: iconColor,
+                  // color: iconColor,
                 ),
               ),
             ),
@@ -48,7 +50,7 @@ class SliverAppBarWidget extends StatelessWidget {
         title,
         style: Styles.textStyle18Godlen,
       ),
-      actions: const [
+      actions: [
         // isSearch == true
         //     ? Padding(
         //         padding: const EdgeInsets.only(right: 20),
@@ -58,7 +60,7 @@ class SliverAppBarWidget extends StatelessWidget {
         //         ),
         //       )
         //     : const SizedBox(),
-        /*if (hasTranslator)
+        if (hasTranslator)
           SizedBox(
             width: 0.5 * Get.width,
             child: GetBuilder<QuranController>(
@@ -87,7 +89,7 @@ class SliverAppBarWidget extends StatelessWidget {
                 selectedItem: controller.selectedTranslator,
               ),
             ),
-          ),*/
+          ),
       ],
       floating: true,
       snap: true,

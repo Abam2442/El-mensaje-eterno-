@@ -7,6 +7,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/custom_appbar.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/model/salah_practical_model.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_practical_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/custom_image_view.dart';
@@ -16,24 +17,25 @@ import 'package:video_player/video_player.dart';
 import 'controller/ui_rone_controller.dart'; // ignore_for_file: must_be_immutable
 
 class UiRoneScreen extends StatelessWidget {
-  UiRoneScreen({Key? key})
+  UiRoneScreen({Key? key, required this.title})
       : super(
           key: key,
         );
   UiRoneController controller = Get.put(UiRoneController());
   PageController pageController = PageController();
   late VideoPlayerController videoPlayerController;
-
+  final String title;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: SalahAppbar(title: title),
         backgroundColor: AppColors.yLightGreyColor,
         body: Container(
           width: double.maxFinite,
           padding: EdgeInsets.symmetric(
-            horizontal: 24.h,
-            vertical: 47.v,
+            horizontal: 15.h,
+            vertical: 10.v,
           ),
           child: Obx(
             () => controller.isLoading.value
@@ -168,7 +170,7 @@ class UiRoneScreen extends StatelessWidget {
               children: [
                 CustomImageView(
                   onTap: (){
-                    print(controller.list[index].images!.image5.toString()??'ss');
+                    print(controller.list[index].images!.image5.toString());
                     Get.defaultDialog(
                       title: 'galería',
                         content: swap(

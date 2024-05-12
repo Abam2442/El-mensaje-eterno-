@@ -14,6 +14,8 @@ class Advanced_LearningController extends GetxController {
     'Guía al islam',
     'Temas islámicos',
     'Canales de telegram',
+    'la biblioteca',
+    'audios'
   ];
 
   List<List<Map>> page = [
@@ -340,6 +342,74 @@ class Advanced_LearningController extends GetxController {
       }
 
     ],
+    [
+      {
+        "title": "Islam Messege (Mensaje del Islam)",
+        "copyRight":
+            'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+        "link": 'http://www.Islammessage.org',
+        "description": "Contenido islámico integrado",
+        "targetScreen": AppPagesRoutes.islamMessageBooks,
+      },
+      {
+        "title": "Islam Land (Tierra del Islam)",
+        "copyRight":
+            'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+        "link": 'http://www.Islamland.com',
+        "description": "Contenido islámico integrado",
+        "targetScreen": AppPagesRoutes.islamLandBooks,
+      },
+      {
+        "title": "Islam House (Casa del Islam)",
+        "copyRight":
+            'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+        "link": 'http://www.Islamhouse.com',
+        "description": "Contenido islámico integrado",
+        "targetScreen": AppPagesRoutes.islamHouseBooks,
+      },
+      {
+        "title": "Knowing Allah (Conociendo a Al-láh)",
+        "copyRight":
+            'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+        "link": 'http://www.knowingallah.com',
+        "description": "sobre nuestra creencia en Dios",
+        "targetScreen": AppPagesRoutes.knowingAllahBooks,
+      },
+    ],
+    [
+      {
+        "title": "Islam Messege (Mensaje del Islam)",
+        "copyRight":
+            'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+        "link": 'http://www.Islammessage.org',
+        "description": "Contenido islámico integrado",
+        "targetScreen": AppPagesRoutes.islamMessageBooks,
+      },
+      {
+        "title": "Islam Land (Tierra del Islam)",
+        "copyRight":
+            'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+        "link": 'http://www.Islamland.com',
+        "description": "Contenido islámico integrado",
+        "targetScreen": AppPagesRoutes.islamLandAudio,
+      },
+      {
+        "title": "Islam House (Casa del Islam)",
+        "copyRight":
+            'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+        "link": 'http://www.Islamhouse.com',
+        "description": "Contenido islámico integrado",
+        "targetScreen": AppPagesRoutes.islamHouseBooks,
+      },
+      {
+        "title": "Knowing Allah (Conociendo a Al-láh)",
+        "copyRight":
+            'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+        "link": 'http://www.knowingallah.com',
+        "description": "sobre nuestra creencia en Dios",
+        "targetScreen": AppPagesRoutes.knowingAllahBooks,
+      },
+    ]
   ];
 
   changeSelectedPart(val) {

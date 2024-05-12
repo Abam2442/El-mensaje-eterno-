@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import 'package:logger/logger.dart';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
@@ -8,6 +9,7 @@ import '../../domain/entities/fixed_entities.dart';
 
 abstract class IslamHouseLocalDataSource {
   Future<List<List<FixedEntities>>> getContect();
+  Future<List<MediaEntity>> getBooks();
 }
 
 class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
@@ -74,6 +76,30 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
     } catch (e) {
       Get.find<Logger>().e(
         "End `getContect` in |IslamHouseLocalDataSourceImpl| Exception: ${e.runtimeType}",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaEntity>> getBooks() async {
+    try {
+      Get.find<Logger>()
+          .i("Start `getBooks` in |IslamHouseLocalDataSourceImpl|");
+      List<MediaEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.islamHouseBooks);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+
+        (decoded['islam-house']['Books'] as Map).forEach((name, url) {
+          result.add(MediaEntity(name: name, url: url));
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getBooks` in |IslamLandHouseDataSourceImpl| Exception: ${e.runtimeType} $e",
       );
       rethrow;
     }

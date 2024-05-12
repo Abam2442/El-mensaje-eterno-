@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import 'package:logger/logger.dart';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
@@ -10,6 +11,8 @@ import '../../domain/entities/islam_land_entities.dart';
 abstract class IslamLandLocalDataSource {
   Future<List<List<FixedEntities>>> getContent();
   Future<List<IslamLandFatwaEntities>> getFatwa();
+  Future<Map<String, List<MediaEntity>>> getBooks();
+  Future<List<MediaEntity>> getAudio();
 }
 
 class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
@@ -80,6 +83,37 @@ class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
   }
 
   @override
+  Future<Map<String, List<MediaEntity>>> getBooks() async {
+    try {
+      Get.find<Logger>()
+          .i("Start `getBooks` in |IslamLandLocalDataSourceImpl|");
+      Map<String, List<MediaEntity>> result = {};
+      String? islamLandJson =
+          await archiveService.readFile(name: AppKeys.islamLandBooks);
+      if (islamLandJson != null) {
+        Map<String, dynamic> decoded = jsonDecode(islamLandJson);
+
+        decoded.forEach((bookCategory, value) {
+          result[bookCategory] = [];
+          for (Map booksMap in value) {
+            booksMap.forEach((bookName, content) {
+              MediaEntity bookEnitie =
+                  MediaEntity(name: bookName, url: content);
+              result[bookCategory]!.add(bookEnitie);
+            });
+          }
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getBooks` in |IslamLandLocalDataSourceImpl| Exception: ${e.runtimeType} $e",
+      );
+      rethrow;
+    }
+  }
+
+  @override
   Future<List<IslamLandFatwaEntities>> getFatwa() async {
     try {
       Get.find<Logger>()
@@ -101,6 +135,29 @@ class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
     } catch (e) {
       Get.find<Logger>().e(
         "End `getFatwa` in |IslamLandLocalDataSourceImpl| Exception: ${e.runtimeType}",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaEntity>> getAudio() async {
+    try {
+      Get.find<Logger>().i("Start `getAudio` in |islamLandDataSourceImpl|");
+      List<MediaEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.islamLandAudios);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+
+        (decoded['islam-Land']['Audios'] as Map).forEach((name, url) {
+          result.add(MediaEntity(name: name, url: url));
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getAudio` in |islamLandDataSourceImpl| Exception: ${e.runtimeType} $e",
       );
       rethrow;
     }

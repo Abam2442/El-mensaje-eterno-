@@ -26,7 +26,7 @@ class IslamMessageControllerImp extends GetxController {
   List<IslamMessageAudioEntities> audios = [];
   // States
   StateType getArticalsState = StateType.init;
-  StateType getBooksState = StateType.init;
+  // StateType getBooksState = StateType.init;
   StateType getAudiosState = StateType.init;
 
   // Primitive
@@ -46,26 +46,6 @@ class IslamMessageControllerImp extends GetxController {
       (r) {
         getArticalsState = StateType.success;
         articals = r;
-
-        update();
-      },
-    );
-  }
-
-  Future<void> getBook() async {
-    IslamMessageUseCase islamMessageUseCase = IslamMessageUseCase(Get.find());
-    var result = await islamMessageUseCase.callBook();
-    result.fold(
-      (l) async {
-        getBooksState = getStateFromFailure(l);
-        validationMessage = l.message;
-        update();
-        await Future.delayed(const Duration(milliseconds: 50));
-        getBooksState = StateType.init;
-      },
-      (r) {
-        getBooksState = StateType.success;
-        books = r;
 
         update();
       },
@@ -97,6 +77,6 @@ class IslamMessageControllerImp extends GetxController {
     super.onInit();
     await getArtical();
     await getAudio();
-    await getBook();
+    // await getBook();
   }
 }
