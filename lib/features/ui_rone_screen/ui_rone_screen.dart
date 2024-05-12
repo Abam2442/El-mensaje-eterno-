@@ -1,4 +1,4 @@
-import 'package:assets_audio_player/assets_audio_player.dart';
+//import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
@@ -12,6 +12,7 @@ import 'package:hiwayda_oracion_islamica/features/salah/model/salah_practical_mo
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_practical_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/custom_image_view.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_palyer_widget.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:video_player/video_player.dart';
 import 'controller/ui_rone_controller.dart'; // ignore_for_file: must_be_immutable
 
@@ -263,10 +264,12 @@ class UiRoneScreen extends StatelessWidget {
                   ),
                   CustomImageView(
                       onTap: () {
-                        if (!AppPublicVar.assetsAudioPlayer.isPlaying.value) {
-                          AppPublicVar.assetsAudioPlayer.open(Audio(
-                            audioPath,
-                          ));
+                        if (!AppPublicVar.assetsAudioPlayer.playing) {
+                          AppPublicVar.assetsAudioPlayer.setAsset(audioPath);
+                        AppPublicVar.assetsAudioPlayer.play();
+                          // open(Audio(
+                          //   audioPath,
+                          // ));
                         } else {
                           AppPublicVar.assetsAudioPlayer.stop();
                         }
