@@ -50,6 +50,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_universe_
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_web_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/jesus_muslim_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/jesuse_quran_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah_audios_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah_books_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/learning_islam_banding.dart';
@@ -84,6 +85,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/isla
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_web_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/jesus_muslim_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/jesus_quran_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Audio/audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Book/book_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/learning_islam/learning_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/love_in_islam_screen.dart';
@@ -188,6 +190,7 @@ abstract class AppPagesRoutes {
   static const String huminRight = "/humin_right";
   static const String knowingAllah = "/knowing_allah";
   static const String knowingAllahBooks = "/knowing_allah_books";
+  static const String knowingAllahAudios = "/knowing_allah_audios";
   static const String saberElIslam = "/saber_el_islam";
   static const String detailsChannelsScreen = "/DetailsChannelsScreen";
   static List<GetPage<dynamic>> appPages = [
@@ -324,6 +327,12 @@ abstract class AppPagesRoutes {
       name: knowingAllahBooks,
       page: () => const KnowingAllahBookScreen(),
       binding: KnowingAllahBooksBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: knowingAllahAudios,
+      page: () => const KnowingAllahAudiosScreen(),
+      binding: KnowingAllahAudiosBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(
@@ -557,7 +566,9 @@ abstract class AppPagesRoutes {
     ),
     GetPage(
       name: detailsChannelsScreen,
-      page: () =>  DetailsChannelsScreen(data: Get.arguments[0]['data'],),
+      page: () => DetailsChannelsScreen(
+        data: Get.arguments[0]['data'],
+      ),
       transition: Transition.cupertino,
     ),
 

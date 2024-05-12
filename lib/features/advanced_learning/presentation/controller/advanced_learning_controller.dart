@@ -340,7 +340,6 @@ class Advanced_LearningController extends GetxController {
         "description": "",
         "targetScreen": AppPagesRoutes.youtube,
       }
-
     ],
     [
       {
@@ -407,7 +406,7 @@ class Advanced_LearningController extends GetxController {
             'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
         "link": 'http://www.knowingallah.com',
         "description": "sobre nuestra creencia en Dios",
-        "targetScreen": AppPagesRoutes.knowingAllahBooks,
+        "targetScreen": AppPagesRoutes.knowingAllahAudios,
       },
     ]
   ];

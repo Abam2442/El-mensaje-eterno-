@@ -45,4 +45,19 @@ class KnowingAllahRepositoryImp extends KnowingAllahRepository {
       return Left(getFailureFromException(e));
     }
   }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getAudios() async {
+    try {
+      Get.find<Logger>().i("Start `getArtical` in |KnowingAllahRepositoryImp|");
+      var artical = await knowingAllahLocalDataSource.getAudios();
+      Get.find<Logger>().w(
+          "End `getArtical` in |KnowingAllahRepositoryImp| ${artical.length}");
+      return Right(artical);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getArtical` in |KnowingAllahRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
 }
