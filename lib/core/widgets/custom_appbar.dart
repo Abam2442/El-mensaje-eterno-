@@ -35,3 +35,25 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(100);
 }
+
+class SalahAppbar extends StatelessWidget implements PreferredSizeWidget{
+  final String title;
+
+  SalahAppbar({super.key, required this.title});
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Text(
+        title,
+        style: Styles.textStyle20Golden,
+      ),
+      iconTheme: const IconThemeData(
+        color: AppColors.kGoldenColor,
+      ),
+
+      backgroundColor: AppColors.kPrimaryColor,
+    );
+  }
+  @override
+  Size get preferredSize => const Size.fromHeight(60);
+}

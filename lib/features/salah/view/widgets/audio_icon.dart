@@ -1,4 +1,5 @@
-import 'package:assets_audio_player/assets_audio_player.dart';
+//import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
@@ -27,10 +28,12 @@ class AudioIcon extends StatelessWidget {
               children: [
                 InkWell(
                     onTap: () {
-                      if (!AppPublicVar.assetsAudioPlayer.isPlaying.value) {
-                        AppPublicVar.assetsAudioPlayer.open(Audio(
-                          audioPath,
-                        ));
+                      if (!AppPublicVar.assetsAudioPlayer.playing) {
+                        AppPublicVar.assetsAudioPlayer.setAsset(audioPath);
+                        AppPublicVar.assetsAudioPlayer.play();
+                        // open(Audio(
+                        //   audioPath,
+                        // ));
                       }
                     },
                     child: const Icon(
@@ -65,7 +68,7 @@ class AudioIcon extends StatelessWidget {
                       : Text((index! + 1).toString()),
                 ),
               ),
-              trailing: Container(
+              trailing: SizedBox(
                   width: context.width * 0.15,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,10 +78,12 @@ class AudioIcon extends StatelessWidget {
                         child: InkWell(
                             onTap: () {
                               if (!AppPublicVar
-                                  .assetsAudioPlayer.isPlaying.value) {
-                                AppPublicVar.assetsAudioPlayer.open(Audio(
-                                  audioPath,
-                                ));
+                                  .assetsAudioPlayer.playing) {
+                                AppPublicVar.assetsAudioPlayer.setAsset(audioPath);
+                        AppPublicVar.assetsAudioPlayer.play();
+                                // .open(Audio(
+                                //  audioPath,
+                                // )); 
                               }
                             },
                             child: const Icon(

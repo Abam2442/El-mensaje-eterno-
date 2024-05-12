@@ -26,15 +26,25 @@ class SectionswidgetsHomeScreen extends StatelessWidget {
         ),
       ),
       child: Column(children: [
-        Obx(()=>data.isEmpty?Container(height: Get.height*0.6,child: Center(child: Text(
-          "neniuj rezultoj",style: TextStyle(color: Colors.black,fontSize: 18),
-        ),),):ListView.builder(itemCount: data.length,shrinkWrap: true,physics: ScrollPhysics()
-            ,itemBuilder: (context,index){
-          return HomeCard(
-            homeCardData: data[index],
-          );
-        }))
-
+        Obx(() => data.isEmpty
+            ? SizedBox(
+                height: Get.height * 0.6,
+                child: const Center(
+                  child: Text(
+                    "neniuj rezultoj",
+                    style: TextStyle(color: Colors.black, fontSize: 18),
+                  ),
+                ),
+              )
+            : ListView.builder(
+                itemCount: data.length,
+                shrinkWrap: true,
+                physics: const ScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return HomeCard(
+                    homeCardData: data[index],
+                  );
+                }))
       ]),
     );
   }

@@ -43,8 +43,11 @@ class BodyDoaaScreen extends GetView<AzkarDoaaController> {
           child: ListView.builder(
             itemCount: controller.doaas.length,
             itemBuilder: (c, i) {
-              return buildCustomListTile(controller.doaas[i].listOfDoaa,
-                  controller.doaas[i].es, controller.doaas[i].ar, i + 1);
+              return buildCustomListTile(
+                  controller.doaas[i].listOfDoaa,
+                  controller.doaas[i].title,
+                  controller.doaas[i].noOfPages.toString(),
+                  i + 1);
 
               // const SizedBox(height: 20),
             },

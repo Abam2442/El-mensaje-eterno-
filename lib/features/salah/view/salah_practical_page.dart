@@ -1,3 +1,4 @@
+
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
@@ -356,6 +357,7 @@ class StepPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(salahPracticalStep.descriptionaudio);
     return Container(
       padding: 15.hEdge,
       //margin: EdgeInsets.only(top: context.height * 0.05),
@@ -419,7 +421,7 @@ class StepPage extends StatelessWidget {
 }
 
 class TopicPage extends StatefulWidget {
-  TopicPage({required this.topic, required this.index, Key? key})
+  const TopicPage({required this.topic, required this.index, Key? key})
       : super(key: key);
   final Topic topic;
   final int index;
@@ -438,7 +440,8 @@ class _TopicPageState extends State<TopicPage> {
 
   @override
   void dispose() {
-    if (AppPublicVar.assetsAudioPlayer.isPlaying.value) {
+    
+    if (AppPublicVar.assetsAudioPlayer.playing) {
       AppPublicVar.assetsAudioPlayer.stop();
     }
     super.dispose();
@@ -498,7 +501,7 @@ class swap extends StatefulWidget {
 
   @override
   State<swap> createState() => _swapState();
-  swap(this.salahPracticalStep);
+  swap(this.salahPracticalStep, {super.key});
 }
 
 class _swapState extends State<swap> {
@@ -614,7 +617,7 @@ class _swapState extends State<swap> {
                 body: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
+                    SizedBox(
                       width: context.width,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
@@ -659,7 +662,7 @@ class _swapState extends State<swap> {
 }
 
 class DotsIndicator extends StatelessWidget {
-  DotsIndicator({
+  DotsIndicator({super.key, 
     required this.pageController,
     required this.length,
     required this.selectedPage,

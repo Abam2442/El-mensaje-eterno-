@@ -16,7 +16,7 @@ class BodyContentDoaaScreen extends GetView<AzkarDoaaController> {
 
   @override
   Widget build(BuildContext context) {
-    List<SingleDoaa> doaas = Get.arguments['data'];
+    List<String> doaas = Get.arguments['data'];
     return SliverToBoxAdapter(
       child: SingleChildScrollView(
         child: Column(
@@ -44,16 +44,16 @@ class BodyContentDoaaScreen extends GetView<AzkarDoaaController> {
                               style: Styles.textStyle14Golden,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 13,
-                              vertical: 8,
-                            ),
-                            child: Text(
-                              doaa.arabic,
-                              style: Styles.textStyle18Godlen,
-                            ),
-                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.symmetric(
+                          //     horizontal: 13,
+                          //     vertical: 8,
+                          //   ),
+                          //   child: Text(
+                          //     doaa,
+                          //     style: Styles.textStyle18Godlen,
+                          //   ),
+                          // ),
                           const SizedBox(height: 12),
                           Column(
                             children: [
@@ -79,7 +79,7 @@ class BodyContentDoaaScreen extends GetView<AzkarDoaaController> {
                                                     .width -
                                                 50),
                                         child: Text(
-                                          doaa.espanule,
+                                          doaa,
                                           style: Styles.textStyle18Godlen,
                                           textDirection: TextDirection.ltr,
                                         ),
@@ -87,8 +87,7 @@ class BodyContentDoaaScreen extends GetView<AzkarDoaaController> {
                                     ),
                                     InkWell(
                                       onTap: () async {
-                                        var data =
-                                            ClipboardData(text: doaa.espanule);
+                                        var data = ClipboardData(text: doaa);
                                         await Clipboard.setData(data);
                                         EasyLoaderService.showToast(
                                             message: "Copied");

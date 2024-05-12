@@ -61,7 +61,7 @@ class ContentAzkarDoaasScreen extends StatelessWidget {
               slivers: [
                 SliverAppBarWidget(
                   title: title,
-                  backgroundColor: AppColors.kWhiteColor,
+                  backgroundColor: AppColors.kPrimaryColor,
                   iconColor: const Color.fromRGBO(42, 44, 65, 1),
                 ),
                 Get.arguments['label'] == "azkar"

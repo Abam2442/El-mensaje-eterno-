@@ -1,15 +1,15 @@
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_jsons.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/advanced_salah_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_practical_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/view/wudu_practical_page.dart';
 import 'package:hiwayda_oracion_islamica/features/ui_rone_screen/ui_rone_screen.dart';
 
 class PracticalLearnPage extends StatefulWidget {
@@ -61,12 +61,11 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                               width: Get.width,
                               child: Text(
                                 'De Ubada ibn Al Sámit que el Mensajero de Allah ﷺ dijo:\n'
-                                    '\n'
-                                    '"Hay cinco oraciones que Allah ha prescrito para los hombres. Quien los cumpla con la atención que requieren sin faltar a ninguno de sus pilares obtiene la promesa de Allah de hacerle entrar en el Paraíso.\n'
-                                    'Quien no los cumpla no tiene ninguna promesa de Allah. Si quiere lo atormentará y si quiere lo hará entrar en el Paraíso.”\n'
-                                    '\n'
-                                    'Al Albáni clasificó este hadiz como autentico.'
-                                ,
+                                '\n'
+                                '"Hay cinco oraciones que Allah ha prescrito para los hombres. Quien los cumpla con la atención que requieren sin faltar a ninguno de sus pilares obtiene la promesa de Allah de hacerle entrar en el Paraíso.\n'
+                                'Quien no los cumpla no tiene ninguna promesa de Allah. Si quiere lo atormentará y si quiere lo hará entrar en el Paraíso.”\n'
+                                '\n'
+                                'Al Albáni clasificó este hadiz como autentico.',
                                 style: AppTextStyles.h5,
                               ),
                             ),
@@ -74,7 +73,8 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                             GridView(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 1,
                                 childAspectRatio: 4,
                                 crossAxisSpacing: 5,
@@ -94,36 +94,43 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                   label: 'FAJR',
                                   image: AppSvgs.fajr,
                                   onTap: () {
-                                    switch(widget.level){
+                                    switch (widget.level) {
                                       case 0:
-                                         Get.to(()=>SalahPracticalPage(jsonFile: AppJsons.fajr));
+                                        Get.to(() => SalahPracticalPage(
+                                            jsonFile: AppJsons.fajr));
                                         break;
                                       case 1:
-                                    Get.to(()=>UiRoneScreen(),arguments: {'file':AppJsons.fajrIntermediate});
+                                        Get.to(() => UiRoneScreen(title: 'Salat Fajr'),
+                                            arguments: {
+                                              'file': AppJsons.fajrIntermediate
+                                            });
                                         break;
                                       case 2:
-
+                                        Get.to(()=> AdvancedSalahPage(title: 'Salat Fajr',imgList:const [AppImages.advancedFajr, AppImages.advancedFajr1]));
                                         break;
                                     }
-
                                   },
                                 ),
                                 ItsOptions(
                                   label: 'DUHR',
                                   image: AppSvgs.duhr,
                                   onTap: () {
-
-
-                                    switch(widget.level){
+                                    switch (widget.level) {
                                       case 0:
-                                        Get.to(()=>SalahPracticalPage(
-                                    jsonFile: AppJsons.duhr));
+                                        Get.to(() => SalahPracticalPage(
+                                            jsonFile: AppJsons.duhr));
                                         break;
                                       case 1:
-                                        Get.to(()=>UiRoneScreen(),arguments: {'file':AppJsons.ishaIntermediate});
+                                        Get.to(() => UiRoneScreen(title: 'Salat Duhr'),
+                                            arguments: {
+                                              'file': AppJsons.ishaIntermediate
+                                            });
                                         break;
                                       case 2:
-
+                                        Get.to(()=> AdvancedSalahPage(title: 'Salat Duhr',imgList:
+                                        const [AppImages.advancedDAI1, AppImages.advancedDAI2,
+                                          AppImages.advancedDAI3, AppImages.advancedDAI4,
+                                        ]));
                                         break;
                                     }
                                   },
@@ -132,17 +139,22 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                   label: 'ASR',
                                   image: AppSvgs.asr,
                                   onTap: () {
-
-                                    switch(widget.level){
+                                    switch (widget.level) {
                                       case 0:
-                                        Get.to(()=>SalahPracticalPage(
+                                        Get.to(() => SalahPracticalPage(
                                             jsonFile: AppJsons.asr));
                                         break;
                                       case 1:
-                                        Get.to(()=>UiRoneScreen(),arguments: {'file':AppJsons.ishaIntermediate});
+                                        Get.to(() => UiRoneScreen(title: 'Salat Asr'),
+                                            arguments: {
+                                              'file': AppJsons.ishaIntermediate
+                                            });
                                         break;
                                       case 2:
-
+                                        Get.to(()=> AdvancedSalahPage(title: 'Salat Asr',imgList:
+                                        const [AppImages.advancedDAI1, AppImages.advancedDAI2,
+                                          AppImages.advancedDAI3, AppImages.advancedDAI4,
+                                        ]));
                                         break;
                                     }
                                   },
@@ -151,16 +163,24 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                   label: 'MAGHRIB',
                                   image: AppSvgs.maghrib,
                                   onTap: () {
-                                    switch(widget.level){
+                                    switch (widget.level) {
                                       case 0:
-                                        Get.to(()=>SalahPracticalPage(
+                                        Get.to(() => SalahPracticalPage(
                                             jsonFile: AppJsons.magrib));
                                         break;
                                       case 1:
-                                        Get.to(()=>UiRoneScreen(),arguments: {'file':AppJsons.maghribIntermediate});
+                                        Get.to(() => UiRoneScreen(title: 'Salat Magrib',),
+                                            arguments: {
+                                              'file':
+                                                  AppJsons.maghribIntermediate
+                                            });
                                         break;
                                       case 2:
-
+                                        Get.to(()=> AdvancedSalahPage(
+                                          title: 'Salat Magrib',
+                                            imgList: const [AppImages.advancedMagh1, AppImages.advancedMagh2,
+                                          AppImages.advancedMagh3
+                                        ]));
                                         break;
                                     }
                                   },
@@ -169,16 +189,22 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                   label: 'ISHA',
                                   image: AppSvgs.isha,
                                   onTap: () {
-                                    switch(widget.level){
+                                    switch (widget.level) {
                                       case 0:
-                                        Get.to(()=>SalahPracticalPage(
+                                        Get.to(() => SalahPracticalPage(
                                             jsonFile: AppJsons.isha));
                                         break;
                                       case 1:
-                                        Get.to(()=>UiRoneScreen(),arguments: {'file':AppJsons.ishaIntermediate});
+                                        Get.to(() => UiRoneScreen(title: 'Salat Isha'),
+                                            arguments: {
+                                              'file': AppJsons.ishaIntermediate
+                                            });
                                         break;
                                       case 2:
-
+                                        Get.to(()=> AdvancedSalahPage(title: 'Salat Isha',imgList:
+                                        const [AppImages.advancedDAI1, AppImages.advancedDAI2,
+                                          AppImages.advancedDAI3, AppImages.advancedDAI4,
+                                        ]));
                                         break;
                                     }
                                   },
@@ -192,7 +218,6 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                   ],
                 )),
           ),
-
         ));
   }
 
@@ -204,10 +229,7 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
     maghribColor = null;
     ishaColor = null;
   }
-
-
 }
-
 
 class ItsOptions extends StatelessWidget {
   const ItsOptions({
@@ -227,13 +249,11 @@ class ItsOptions extends StatelessWidget {
       width: 100,
       height: 100,
       child: InkWell(
-
         onTap: onTap,
         child: Container(
-           height: 10,
-           width: 10,
+          height: 10,
+          width: 10,
           decoration: BoxDecoration(
-
             borderRadius: BorderRadius.circular(20),
             color: AppColors.kGreenColor,
           ),
