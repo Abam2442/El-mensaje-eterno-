@@ -57,6 +57,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/learning_islam_
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/love_in_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/message_of_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/mohammad_messanger_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah_audios_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/romance_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/terminology_banding.dart';
@@ -91,6 +92,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/lear
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/love_in_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/massage_of_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/mohammad_messanger_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Audio/rasul_uallah_audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/rasul_uallah_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/romance_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminolgy_screen.dart';
@@ -160,6 +162,7 @@ abstract class AppPagesRoutes {
   static const String islamLandBooks = "/islam_land_books_screen";
   static const String islamLandAudio = "/islam_land_audio_screen";
   static const String rasulullah = "/rasulullah_screen";
+  static const String rasulullahAudios = "/rasulullah_screen_audios";
   static const String jesusIsMuslim = "/jesus_is_muslim_screen";
   static const String jesusInQuran = "/jesus_in_quran_screen";
   static const String islamForChristians = "/islam_for_christians_screen";
@@ -442,6 +445,12 @@ abstract class AppPagesRoutes {
       name: rasulullah,
       page: () => const RasuluallahScreen(),
       binding: RasuluallhBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: rasulullahAudios,
+      page: () => const RasuluallahAudiosScreen(),
+      binding: RasuluallhAudiosBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(

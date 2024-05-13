@@ -3,6 +3,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_en
 import '../../../../core/errors/failures.dart';
 import '../entities/islam_religion_entities.dart';
 
-abstract class IslamReligionRepository {
+abstract class RasuluallhRepository {
   Future<Either<Failure, List<IslamReligionEntities>>> getContent();
+  Future<Either<Failure, List<MediaEntity>>> getAudios();
 }

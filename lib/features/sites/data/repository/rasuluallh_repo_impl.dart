@@ -1,13 +1,14 @@
 import 'package:dartz/dartz.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/repository/rasuluallh_repository_repository.dart';
 import '../../../../core/errors/failures.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import '../../../../core/helpers/get_failure_from_exception.dart';
 import '../../domain/entities/islam_religion_entities.dart';
-import '../../domain/repository/islam_religion_repository.dart';
 import '../data_source/rasuluallah_local_data_source.dart';
 
-class RasuluallhRepositoryImp extends IslamReligionRepository {
+class RasuluallhRepositoryImp extends RasuluallhRepository {
   final RasuluallhLocalDataSource rasuluallhLocalDataSource;
   RasuluallhRepositoryImp({
     required this.rasuluallhLocalDataSource,
@@ -24,6 +25,21 @@ class RasuluallhRepositoryImp extends IslamReligionRepository {
     } catch (e) {
       Get.find<Logger>().e(
           "End `getContent` in |RasuluallhRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getAudios() async {
+    try {
+      Get.find<Logger>().i("Start `getAudios` in |RasuluallhRepositoryImp|");
+      var artical = await rasuluallhLocalDataSource.getAudios();
+      Get.find<Logger>()
+          .w("End `getAudios` in |RasuluallhRepositoryImp| ${artical.length}");
+      return Right(artical);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getAudios` in |RasuluallhRepositoryImp| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }
