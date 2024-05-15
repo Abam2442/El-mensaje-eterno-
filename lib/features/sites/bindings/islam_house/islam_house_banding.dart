@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import '../../../core/services/archive_service.dart';
-import '../data/data_source/islam_house_local_data_source.dart';
-import '../data/repository/islam_house_repo_impl.dart';
-import '../domain/repository/islam_house_repository.dart';
-import '../presentation/controller/islam_house_controller.dart';
+import '../../../../core/services/archive_service.dart';
+import '../../data/data_source/islam_house_local_data_source.dart';
+import '../../data/repository/islam_house_repo_impl.dart';
+import '../../domain/repository/islam_house_repository.dart';
+import '../../presentation/controller/islam_house_controller.dart';
 
 class IslamHouseBindings extends Bindings {
   @override
