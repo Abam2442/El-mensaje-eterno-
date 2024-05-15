@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/screens/advanced_site_media_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/controller/non_muslim_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/screens/non_muslim_topic_screen.dart';
 
@@ -72,10 +73,17 @@ class AdvancedSites extends StatelessWidget {
                                     transition: Transition.cupertino,
                                   );
                                 } else {
-                                  Get.toNamed(
-                                    controller.page[controller.selectedPart]
-                                        [index]['targetScreen'],
-                                  );
+                                  if (controller.page[controller.selectedPart]
+                                      [index]['targetScreen'] is String) {
+                                    Get.toNamed(
+                                      controller.page[controller.selectedPart]
+                                          [index]['targetScreen'],
+                                    );
+                                  } else {
+                                    Get.to(AdvancedSiteMediaMainScreen(
+                                        controller.page[controller.selectedPart]
+                                            [index]));
+                                  }
                                 }
                               },
                               child: Item_Card(
