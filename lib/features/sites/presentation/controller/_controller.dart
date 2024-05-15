@@ -19,7 +19,7 @@ class RasuluallhControllerImp extends GetxController {
   ];
   List<Widget> page = [
     const AudioScreen(),
-    const VideoScreen(),
+    const RasulutallahVideosScreen(),
     const BookScreen(),
     const ArticalScreen(),
   ];

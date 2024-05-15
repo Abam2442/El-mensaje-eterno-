@@ -43,4 +43,19 @@ class RasuluallhRepositoryImp extends RasuluallhRepository {
       return Left(getFailureFromException(e));
     }
   }
+
+  @override
+  Future<Either<Failure, List<MediaCategoryEntity>>> getVideos() async {
+    try {
+      Get.find<Logger>().i("Start `getVideos` in |RasuluallhRepositoryImp|");
+      var artical = await rasuluallhLocalDataSource.getVideos();
+      Get.find<Logger>()
+          .w("End `getVideos` in |RasuluallhRepositoryImp| ${artical.length}");
+      return Right(artical);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getVideos` in |RasuluallhRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
 }

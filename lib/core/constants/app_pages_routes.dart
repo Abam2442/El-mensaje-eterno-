@@ -62,8 +62,9 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/learning_islam_
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/love_in_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/message_of_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/mohammad_messanger_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah_audios_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_audios_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_video_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/romance_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/terminology_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/women_banding.dart';
@@ -104,6 +105,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/love
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/massage_of_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/mohammad_messanger_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Audio/rasul_uallah_audios_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Video/video_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/rasul_uallah_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/romance_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminolgy_screen.dart';
@@ -175,6 +177,7 @@ abstract class AppPagesRoutes {
   static const String islamLandVideos = "/islam_land_videos_screen";
   static const String rasulullah = "/rasulullah_screen";
   static const String rasulullahAudios = "/rasulullah_screen_audios";
+  static const String rasulullahVideos = "/rasulullah_screen_videos";
   static const String jesusIsMuslim = "/jesus_is_muslim_screen";
   static const String jesusInQuran = "/jesus_in_quran_screen";
   static const String islamForChristians = "/islam_for_christians_screen";
@@ -497,6 +500,12 @@ abstract class AppPagesRoutes {
       name: rasulullahAudios,
       page: () => const RasuluallahAudiosScreen(),
       binding: RasuluallhAudiosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: rasulullahVideos,
+      page: () => const RasulutallahVideosScreen(),
+      binding: RasuluallhVideosBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(

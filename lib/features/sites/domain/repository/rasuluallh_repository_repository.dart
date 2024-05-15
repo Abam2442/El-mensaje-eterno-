@@ -6,4 +6,5 @@ import '../entities/islam_religion_entities.dart';
 abstract class RasuluallhRepository {
   Future<Either<Failure, List<IslamReligionEntities>>> getContent();
   Future<Either<Failure, List<MediaEntity>>> getAudios();
+  Future<Either<Failure, List<MediaCategoryEntity>>> getVideos();
 }

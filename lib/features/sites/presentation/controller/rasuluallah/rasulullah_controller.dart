@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Video/video_screen.dart';
 
-import '../../../../core/constants/app_enums.dart';
-import '../../../../core/helpers/get_state_from_failure.dart';
-import '../../domain/entities/islam_religion_entities.dart';
-import '../../domain/usecase/islam_religion_usecase.dart';
-import '../screen/rasul_uallah/Artical/artical_screen.dart';
-import '../screen/rasul_uallah/Audio/audio_screen.dart';
-import '../screen/rasul_uallah/Book/book_screen.dart';
-import '../screen/rasul_uallah/Video/video_screen.dart';
+import '../../../../../core/constants/app_enums.dart';
+import '../../../../../core/helpers/get_state_from_failure.dart';
+import '../../../domain/entities/islam_religion_entities.dart';
+import '../../../domain/usecase/islam_religion_usecase.dart';
+import '../../screen/rasul_uallah/Artical/artical_screen.dart';
+import '../../screen/rasul_uallah/Audio/audio_screen.dart';
+import '../../screen/rasul_uallah/Book/book_screen.dart';
 
 class RasuluallhControllerImp extends GetxController {
   List<IconData> icons = [
@@ -19,7 +19,7 @@ class RasuluallhControllerImp extends GetxController {
   ];
   List<Widget> page = [
     const AudioScreen(),
-    const VideoScreen(),
+    const RasulutallahVideosScreen(),
     const BookScreen(),
     const ArticalScreen(),
   ];

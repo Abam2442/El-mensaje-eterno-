@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/repository/rasuluallh_repository_repository.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/rasulullah_audios_controller.dart';
-import '../../../core/services/archive_service.dart';
-import '../data/data_source/rasuluallah_local_data_source.dart';
-import '../data/repository/rasuluallh_repo_impl.dart';
+import '../../../../core/services/archive_service.dart';
+import '../../data/data_source/rasuluallah_local_data_source.dart';
+import '../../data/repository/rasuluallh_repo_impl.dart';
+import '../../presentation/controller/rasuluallah/rasulullah_controller.dart';
 
-class RasuluallhAudiosBindings extends Bindings {
+class RasuluallhBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<RasuluallhLocalDataSource>(
@@ -21,6 +21,6 @@ class RasuluallhAudiosBindings extends Bindings {
       ),
     );
 
-    Get.put(RasuluallhAudiosControllerImp());
+    Get.put(RasuluallhControllerImp());
   }
 }

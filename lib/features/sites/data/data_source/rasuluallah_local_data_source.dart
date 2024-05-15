@@ -13,6 +13,7 @@ import '../../domain/entities/islam_religion_entities.dart';
 abstract class RasuluallhLocalDataSource {
   Future<List<IslamReligionEntities>> getContent();
   Future<List<MediaEntity>> getAudios();
+  Future<List<MediaCategoryEntity>> getVideos();
 }
 
 class RasuluallhLocalDataSourceImp extends RasuluallhLocalDataSource {
@@ -77,6 +78,34 @@ class RasuluallhLocalDataSourceImp extends RasuluallhLocalDataSource {
     } catch (e) {
       Get.find<Logger>().e(
         "End `getAudio` in |RasuluallhLocalDataSourceImp| Exception: ${e.runtimeType}",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaCategoryEntity>> getVideos() async {
+    try {
+      Get.find<Logger>()
+          .i("Start `getVideos` in |RasuluallhLocalDataSourceImp|");
+      List<MediaCategoryEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.rasuluAllahVideos);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+
+        (decoded['RasuluAllah']['Videos'] as Map).forEach((category, dataMap) {
+          List<MediaEntity> data = [];
+          (dataMap as Map).forEach((name, url) {
+            data.add(MediaEntity(name: name, url: url));
+          });
+          result.add(MediaCategoryEntity(category: category, data: data));
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getVideos` in |RasuluallhLocalDataSourceImp| Exception: ${e.runtimeType} $e",
       );
       rethrow;
     }
