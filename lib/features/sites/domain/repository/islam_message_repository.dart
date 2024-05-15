@@ -6,5 +6,5 @@ import '../entities/islam_message_entities.dart';
 abstract class IslamMessageRepository {
   Future<Either<Failure, List<IslamMessageArticalEntities>>> getArtical();
   Future<Either<Failure, List<MediaCategoryEntity>>> getBook();
-  Future<Either<Failure, List<IslamMessageAudioEntities>>> getAudio();
+  Future<Either<Failure, List<MediaEntity>>> getAudio();
 }

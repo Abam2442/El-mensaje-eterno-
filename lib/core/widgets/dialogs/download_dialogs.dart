@@ -36,6 +36,9 @@ class DownloadDialog {
             children: [
               Text('Se está descargando el archivo "$fileName"'),
               Obx(() {
+                if (downloadServices.total.value <= 0) {
+                  return const Text("Descargando...");
+                }
                 return LinearPercentIndicator(
                   // animation: true,
                   barRadius: const Radius.circular(10),
@@ -111,8 +114,15 @@ class DownloadDialog {
   }
 
   static showNotCompeletedDownloadSnakbar(String fileName) {
-    Get.snackbar('', "La descarga actual debe finalizar primero",
-        icon: const Icon(Icons.download));
+    Get.snackbar('aviso', "La descarga actual debe finalizar primero",
+        backgroundColor: AppColors.black,
+        icon: const Icon(
+          Icons.download,
+          color: Colors.white,
+        ),
+        colorText: Colors.white,
+        margin: const EdgeInsets.all(10),
+        snackPosition: SnackPosition.BOTTOM);
   }
 }
 

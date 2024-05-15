@@ -6,4 +6,5 @@ import '../../../../core/errors/failures.dart';
 abstract class KnowingAllahRepository {
   Future<Either<Failure, KnowingAllahModel>> getArtical();
   Future<Either<Failure, List<MediaEntity>>> getBooks();
+  Future<Either<Failure, List<MediaEntity>>> getAudios();
 }

@@ -12,6 +12,7 @@ import '../models/knowing_allah_model.dart';
 abstract class KnowingAllahLocalDataSource {
   Future<KnowingAllahModel> getContent();
   Future<List<MediaEntity>> getBooks();
+  Future<List<MediaEntity>> getAudios();
 }
 
 class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
@@ -129,6 +130,29 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
     } catch (e) {
       Get.find<Logger>().e(
         "End `getBooks` in |KnowingAllahDataSourceImpl| Exception: ${e.runtimeType} $e",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaEntity>> getAudios() async {
+    try {
+      Get.find<Logger>().i("Start `getAudios` in |KnowingAllahDataSourceImpl|");
+      List<MediaEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.knowingAllahAudios);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+
+        (decoded['knowing-Allah']['Audios'] as Map).forEach((name, url) {
+          result.add(MediaEntity(name: name, url: url));
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getAudios` in |KnowingAllahDataSourceImpl| Exception: ${e.runtimeType} $e",
       );
       rethrow;
     }
