@@ -1,43 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../controller/knowing_allah_controller.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/knowing_allah/knowing_allah_books_videos_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/media_files_list_view.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/view_or_download_inkwell.dart';
 import '../../../widget/app_bar_custom.dart';
 import '../../../widget/inkwell_custom.dart';
-import 'video_contain_screen.dart';
 
 class KnowingAllahVideoScreen extends StatelessWidget {
   const KnowingAllahVideoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(KnowingAllahControllerImp());
     return Scaffold(
-        appBar: const AppBarCustom(title: 'Knowing Allah video')
-            .customAppBar(context),
-        body: GetBuilder<KnowingAllahControllerImp>(
-            builder: (controller) => Container(
-                margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                child: ListView.builder(
-                    padding: const EdgeInsets.all(5),
-                    itemCount: controller.knowingAllah!.videos.length,
-                    itemBuilder: (context, index) {
-                      return controller
-                              .knowingAllah!.videos[index].subcategories.isEmpty
-                          ? Container()
-                          : InkwellCustom(
-                              catigory: false,
-                              dataText:
-                                  controller.knowingAllah!.videos[index].name,
-                              onTap: () {
-                                Get.to(KnowingAllahVideoContainScreen(
-                                  dataText: controller.knowingAllah!
-                                      .videos[index].subcategories,
-                                  itemCount: controller.knowingAllah!
-                                      .videos[index].subcategories.length,
-                                ));
-                              },
-                            );
-                    }))));
+      appBar: const AppBarCustom(title: "Knowing Allah Videos")
+          .customAppBar(context),
+      body: GetBuilder<KnowingAllahVideosControllerImp>(builder: (controller) {
+        if (controller.getDataState == StateType.loading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        return Container(
+            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+            child: ListView.builder(
+                padding: const EdgeInsets.all(5),
+                itemCount: controller.data.length,
+                itemBuilder: (context, index) {
+                  return InkwellCustom(
+                    catigory: false,
+                    dataText: controller.data.elementAt(index).category,
+                    onTap: () {
+                      Get.to(MediaFilesListView(
+                        data: controller.data[index].data,
+                        title: controller.data[index].category,
+                        mediaLinkType: MediaLinkType.video,
+                      ));
+                    },
+                  );
+                }));
+      }),
+    );
   }
 }

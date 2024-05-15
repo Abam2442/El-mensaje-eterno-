@@ -9,11 +9,11 @@ class MediaFilesListView extends StatelessWidget {
       {super.key,
       required this.title,
       required this.data,
-      required this.fileType,
+      this.fileType,
       this.mediaLinkType = MediaLinkType.viewAndDownload});
   final String title;
   final List<MediaEntity> data;
-  final String fileType;
+  final String? fileType;
   final MediaLinkType mediaLinkType;
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class MediaFilesListView extends StatelessWidget {
                 return ViewOrDownloadInkwell(
                   url: data[index].url,
                   name: data[index].name,
-                  fileType: fileType,
+                  fileType: fileType ?? "",
                   mediaLinkType: mediaLinkType,
                 );
               })),

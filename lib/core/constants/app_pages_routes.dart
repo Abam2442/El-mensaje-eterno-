@@ -56,6 +56,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/jesuse_quran_ba
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah/knowing_allah_audios_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah/knowing_allah_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah/knowing_allah_books_binding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah/knowing_allah_videos_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/learning_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/love_in_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/message_of_islam_banding.dart';
@@ -95,6 +96,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/jesu
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/jesus_quran_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Audio/audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Book/book_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Video/video_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/learning_islam/learning_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/love_in_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/massage_of_islam_screen.dart';
@@ -204,6 +206,7 @@ abstract class AppPagesRoutes {
   static const String knowingAllah = "/knowing_allah";
   static const String knowingAllahBooks = "/knowing_allah_books";
   static const String knowingAllahAudios = "/knowing_allah_audios";
+  static const String knowingAllahVideos = "/knowing_allah_videos";
   static const String saberElIslam = "/saber_el_islam";
   static const String detailsChannelsScreen = "/DetailsChannelsScreen";
   static List<GetPage<dynamic>> appPages = [
@@ -358,6 +361,12 @@ abstract class AppPagesRoutes {
       name: knowingAllahAudios,
       page: () => const KnowingAllahAudiosScreen(),
       binding: KnowingAllahAudiosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: knowingAllahVideos,
+      page: () => const KnowingAllahVideoScreen(),
+      binding: KnowingAllahVideosBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(

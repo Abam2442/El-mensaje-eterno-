@@ -25,4 +25,9 @@ class KnowingAllahUseCase {
     Get.find<Logger>().i("Call KnowingAllahUseCase");
     return knowingAllahRepository.getAudios();
   }
+
+  Future<Either<Failure, List<MediaCategoryEntity>>> getVideos() async {
+    Get.find<Logger>().i("Call KnowingAllahUseCase");
+    return knowingAllahRepository.getVideos();
+  }
 }

@@ -7,9 +7,9 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/know
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Audio/audio_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Book/book_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Video/video_screen.dart';
-import '../../../../core/constants/app_enums.dart';
-import '../../../../core/helpers/get_state_from_failure.dart';
-import '../../domain/usecase/knowing_allah_usecase.dart';
+import '../../../../../core/constants/app_enums.dart';
+import '../../../../../core/helpers/get_state_from_failure.dart';
+import '../../../domain/usecase/knowing_allah_usecase.dart';
 // import '../../domain/usecase/the_key_to_islam_2_usecase.dart';
 
 class KnowingAllahControllerImp extends GetxController {
