@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/constants/app_enums.dart';
-import '../../../../core/helpers/get_state_from_failure.dart';
-import '../../domain/entities/fixed_entities.dart';
-import '../../domain/entities/islam_land_entities.dart';
-import '../../domain/usecase/islam_land_usecase.dart';
-import '../screen/islam_land/islam_land_artical_on_screen.dart';
-import '../screen/islam_land/islam_land_artical_screen.dart';
-import '../screen/islam_land/islam_land_audio_screen.dart';
-import '../screen/islam_land/islam_land_fatwa_on_screen.dart';
-import '../screen/islam_land/islam_land_fatwa_screen.dart';
-import '../screen/islam_land/islam_land_video_screen.dart';
+import '../../../../../core/constants/app_enums.dart';
+import '../../../../../core/helpers/get_state_from_failure.dart';
+import '../../../domain/entities/fixed_entities.dart';
+import '../../../domain/entities/islam_land_entities.dart';
+import '../../../domain/usecase/islam_land_usecase.dart';
+import '../../screen/islam_land/islam_land_artical_on_screen.dart';
+import '../../screen/islam_land/islam_land_artical_screen.dart';
+import '../../screen/islam_land/islam_land_audio_screen.dart';
+import '../../screen/islam_land/islam_land_fatwa_on_screen.dart';
+import '../../screen/islam_land/islam_land_fatwa_screen.dart';
+import '../../screen/islam_land/islam_land_video_screen.dart';
 
 class IslamLandControllerImp extends GetxController {
   List title = [

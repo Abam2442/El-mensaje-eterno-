@@ -9,4 +9,5 @@ abstract class IslamLandRepository {
   Future<Either<Failure, Map<String, List<MediaEntity>>>> getBooks();
   Future<Either<Failure, List<IslamLandFatwaEntities>>> getFatwa();
   Future<Either<Failure, List<MediaEntity>>> getAudio();
+  Future<Either<Failure, List<MediaEntity>>> getVideos();
 }

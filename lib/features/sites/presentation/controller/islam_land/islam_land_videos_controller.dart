@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
-import '../../../../core/constants/app_enums.dart';
-import '../../../../core/helpers/get_state_from_failure.dart';
-import '../../domain/usecase/islam_land_usecase.dart';
+import '../../../../../core/constants/app_enums.dart';
+import '../../../../../core/helpers/get_state_from_failure.dart';
+import '../../../domain/usecase/islam_land_usecase.dart';
 
-class IslamLandAudioControllerImp extends GetxController {
+class IslamLandVideoControllerImp extends GetxController {
   List<MediaEntity> data = [];
 
   // States
@@ -15,7 +15,7 @@ class IslamLandAudioControllerImp extends GetxController {
 
   Future<void> getContent() async {
     IslamLandUseCase islamLandUseCase = IslamLandUseCase(Get.find());
-    var result = await islamLandUseCase.callAudios();
+    var result = await islamLandUseCase.callVideos();
     result.fold(
       (l) async {
         getDataState = getStateFromFailure(l);

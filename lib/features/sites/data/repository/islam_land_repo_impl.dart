@@ -76,4 +76,19 @@ class IslamLandRepositoryImp extends IslamLandRepository {
       return Left(getFailureFromException(e));
     }
   }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getVideos() async {
+    try {
+      Get.find<Logger>().i("Start `getVideos` in |IslamLandRepositoryImp|");
+      var data = await islamLandLocalDataSource.getVideos();
+      Get.find<Logger>()
+          .w("End `getVideos` in |IslamLandRepositoryImp| ${data.length}");
+      return Right(data);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getVideos` in |IslamLandRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
 }

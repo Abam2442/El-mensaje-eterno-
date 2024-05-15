@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_land_books_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_land/islam_land_books_controller.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../data/data_source/islam_land_local_data_source.dart';
 import '../../data/repository/islam_land_repo_impl.dart';

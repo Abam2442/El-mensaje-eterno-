@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/services/download_services.dart';
@@ -71,8 +72,19 @@ class ViewOrDownloadInkwell extends StatelessWidget {
                     Icons.download,
                     color: Colors.white,
                   )),
+            if (mediaLinkType == MediaLinkType.video && _isYoutube())
+              IconButton(
+                  onPressed: () {
+                    launchUrl(Uri.parse(url),
+                        mode: LaunchMode.externalApplication);
+                  },
+                  icon: const Icon(
+                    FontAwesomeIcons.youtube,
+                    color: Colors.red,
+                  )),
             if (mediaLinkType == MediaLinkType.viewAndDownload ||
-                mediaLinkType == MediaLinkType.viewOnly)
+                mediaLinkType == MediaLinkType.viewOnly ||
+                mediaLinkType == MediaLinkType.video)
               IconButton(
                   onPressed: _view,
                   icon: const Icon(
@@ -92,7 +104,14 @@ class ViewOrDownloadInkwell extends StatelessWidget {
   }
 
   _view() {
-    launchUrl(Uri.parse(url));
+    launchUrl(Uri.parse(url),
+        mode: mediaLinkType == MediaLinkType.video
+            ? LaunchMode.inAppWebView
+            : LaunchMode.platformDefault);
+  }
+
+  bool _isYoutube() {
+    return url.contains('youtube') || url.contains('youtu.be');
   }
 }
 
@@ -100,7 +119,8 @@ enum MediaLinkType {
   downloadOnly,
   viewOnly,
   viewAndDownload,
-  downloadAndListen
+  downloadAndListen,
+  video
 }
 
 class _AudioPlayerWidget extends StatefulWidget {

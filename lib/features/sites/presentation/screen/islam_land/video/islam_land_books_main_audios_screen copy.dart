@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_land/islam_land_audio_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_land/islam_land_videos_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/view_or_download_inkwell.dart';
 import '../../../widget/app_bar_custom.dart';
-import '../../../widget/inkwell_custom.dart';
 
-class IslamLandAudioMainScreen extends GetView<IslamLandAudioControllerImp> {
-  const IslamLandAudioMainScreen({super.key});
+class IslamLandVideosMainScreen extends GetView<IslamLandVideoControllerImp> {
+  const IslamLandVideosMainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:
-            const AppBarCustom(title: "Islam Land Audio").customAppBar(context),
-        body: GetBuilder<IslamLandAudioControllerImp>(builder: (controller) {
+        appBar: const AppBarCustom(title: "Islam Land Videos")
+            .customAppBar(context),
+        body: GetBuilder<IslamLandVideoControllerImp>(builder: (controller) {
           if (controller.getDataState == StateType.loading) {
             return const Center(
               child: CircularProgressIndicator(),
@@ -31,7 +30,7 @@ class IslamLandAudioMainScreen extends GetView<IslamLandAudioControllerImp> {
                     // iconData: controller.icons[index],
                     url: ele.url,
                     name: ele.name,
-                    mediaLinkType: MediaLinkType.viewOnly,
+                    mediaLinkType: MediaLinkType.video,
                   );
                 }),
           );

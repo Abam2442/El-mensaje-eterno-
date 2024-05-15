@@ -40,6 +40,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_for_chris
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_audio_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_audio_videos_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_banding.dart';
@@ -81,6 +82,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/isla
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/audio/islam_land_books_main_audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/books/islam_land_books_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/islam_land_main_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/video/islam_land_books_main_audios_screen%20copy.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/audios/islam_message_audio_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/books/islam_message_main_books_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/islam_message_main_screen.dart';
@@ -166,6 +168,7 @@ abstract class AppPagesRoutes {
   static const String islamLand = "/islam_land_screen";
   static const String islamLandBooks = "/islam_land_books_screen";
   static const String islamLandAudio = "/islam_land_audio_screen";
+  static const String islamLandVideos = "/islam_land_videos_screen";
   static const String rasulullah = "/rasulullah_screen";
   static const String rasulullahAudios = "/rasulullah_screen_audios";
   static const String jesusIsMuslim = "/jesus_is_muslim_screen";
@@ -458,6 +461,12 @@ abstract class AppPagesRoutes {
       name: islamLandAudio,
       page: () => const IslamLandAudioMainScreen(),
       binding: IslamLandAudioBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamLandVideos,
+      page: () => const IslamLandVideosMainScreen(),
+      binding: IslamLandVideosBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(
