@@ -2,9 +2,10 @@
 
 class IslamicCenterModel {
   IslamicCenterModel({
-      List<Countries>? countries,}){
+    List<Countries>? countries,
+  }) {
     _countries = countries;
-}
+  }
 
   IslamicCenterModel.fromJson(dynamic json) {
     if (json['countries'] != null) {
@@ -15,9 +16,12 @@ class IslamicCenterModel {
     }
   }
   List<Countries>? _countries;
-IslamicCenterModel copyWith({  List<Countries>? countries,
-}) => IslamicCenterModel(  countries: countries ?? _countries,
-);
+  IslamicCenterModel copyWith({
+    List<Countries>? countries,
+  }) =>
+      IslamicCenterModel(
+        countries: countries ?? _countries,
+      );
   List<Countries>? get countries => _countries;
 
   Map<String, dynamic> toJson() {
@@ -27,7 +31,6 @@ IslamicCenterModel copyWith({  List<Countries>? countries,
     }
     return map;
   }
-
 }
 
 /// countryName : "St. Kitts & Nevis"
@@ -35,11 +38,12 @@ IslamicCenterModel copyWith({  List<Countries>? countries,
 
 class Countries {
   Countries({
-      String? countryName, 
-      List<Centers>? centers,}){
+    String? countryName,
+    List<Centers>? centers,
+  }) {
     _countryName = countryName;
     _centers = centers;
-}
+  }
 
   Countries.fromJson(dynamic json) {
     _countryName = json['countryName'];
@@ -52,11 +56,14 @@ class Countries {
   }
   String? _countryName;
   List<Centers>? _centers;
-Countries copyWith({  String? countryName,
-  List<Centers>? centers,
-}) => Countries(  countryName: countryName ?? _countryName,
-  centers: centers ?? _centers,
-);
+  Countries copyWith({
+    String? countryName,
+    List<Centers>? centers,
+  }) =>
+      Countries(
+        countryName: countryName ?? _countryName,
+        centers: centers ?? _centers,
+      );
   String? get countryName => _countryName;
   List<Centers>? get centers => _centers;
 
@@ -68,7 +75,6 @@ Countries copyWith({  String? countryName,
     }
     return map;
   }
-
 }
 
 /// Title : "Mussala 78V7+MF5, Frigate Bay, St. Kitts & Nevis"
@@ -77,13 +83,14 @@ Countries copyWith({  String? countryName,
 
 class Centers {
   Centers({
-      String? title, 
-      String? description, 
-      String? address,}){
+    String? title,
+    String? description,
+    String? address,
+  }) {
     _title = title;
     _description = description;
     _address = address;
-}
+  }
 
   Centers.fromJson(dynamic json) {
     _title = json['Title'];
@@ -93,13 +100,16 @@ class Centers {
   String? _title;
   String? _description;
   String? _address;
-Centers copyWith({  String? title,
-  String? description,
-  String? address,
-}) => Centers(  title: title ?? _title,
-  description: description ?? _description,
-  address: address ?? _address,
-);
+  Centers copyWith({
+    String? title,
+    String? description,
+    String? address,
+  }) =>
+      Centers(
+        title: title ?? _title,
+        description: description ?? _description,
+        address: address ?? _address,
+      );
   String? get title => _title;
   String? get description => _description;
   String? get address => _address;
@@ -112,4 +122,14 @@ Centers copyWith({  String? title,
     return map;
   }
 
+  @override
+  String toString() {
+    String text = "";
+
+    text += '${title ?? ''}\n';
+    text += '${description ?? ''}\n';
+    text += '${address ?? ''}\n';
+
+    return text;
+  }
 }
