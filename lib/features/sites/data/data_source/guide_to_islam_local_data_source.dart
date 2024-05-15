@@ -11,6 +11,7 @@ abstract class GuideToIslamLocalDataSource {
   Future<List<List<FixedEntities>>> getContect();
   Future<List<MediaEntity>> getBooks();
   Future<List<MediaEntity>> getAudios();
+  Future<List<MediaEntity>> getVideos();
 }
 
 class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
@@ -120,7 +121,7 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
           await archiveService.readFile(name: AppKeys.guideToIslamAudios);
       if (json != null) {
         Map<String, dynamic> decoded = jsonDecode(json);
-        print(((decoded['guide-to-islam'] as List)[0]).runtimeType);
+
         (((decoded['guide-to-islam'] as List)[0] as Map)['auidos'] as Map)
             .forEach((name, url) {
           result.add(MediaEntity(name: name, url: url));
@@ -130,6 +131,31 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
     } catch (e) {
       Get.find<Logger>().e(
         "End `getAudios` in |GuideToIslamLocalDataSourceImpl| Exception: ${e.runtimeType} $e",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaEntity>> getVideos() async {
+    try {
+      Get.find<Logger>()
+          .i("Start `getVideos` in |GuideToIslamLocalDataSourceImpl|");
+      List<MediaEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.guideToIslamVideos);
+      if (json != null) {
+        print('##final');
+        Map<String, dynamic> decoded = jsonDecode(json);
+        (((decoded['guide-to-islam'] as List)[0] as Map)['videos'] as Map)
+            .forEach((name, url) {
+          result.add(MediaEntity(name: name, url: url));
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getVideos` in |GuideToIslamLocalDataSourceImpl| Exception: ${e.runtimeType} $e",
       );
       rethrow;
     }

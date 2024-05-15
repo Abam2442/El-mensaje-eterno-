@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/artical_custom.dart';
-import '../../controller/guide_to_islam_controller.dart';
+import '../../controller/guide_to_islam/guide_to_islam_controller.dart';
 import '../../widget/app_bar_custom.dart';
 import '../../widget/inkwell_custom.dart';
 

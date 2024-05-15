@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/guid_to_islam_artical.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/guid_to_islam_videos.dart';
-import '../../../../core/constants/app_enums.dart';
-import '../../../../core/helpers/get_state_from_failure.dart';
-import '../../domain/entities/fixed_entities.dart';
-import '../../domain/usecase/guide_to_islam_usecase.dart';
-import '../screen/giude_to_islam/guid_to_islam_audio.dart';
-import '../screen/giude_to_islam/guid_to_islam_book.dart';
+import '../../../../../core/constants/app_enums.dart';
+import '../../../../../core/helpers/get_state_from_failure.dart';
+import '../../../domain/entities/fixed_entities.dart';
+import '../../../domain/usecase/guide_to_islam_usecase.dart';
+import '../../screen/giude_to_islam/guid_to_islam_audio.dart';
+import '../../screen/giude_to_islam/guid_to_islam_book.dart';
 
 class GuideToIslamControllerImp extends GetxController {
   List title = ['Videos', 'Audios', 'Books', 'Articales'];

@@ -26,4 +26,9 @@ class GuideToIslamUseCase {
     Get.find<Logger>().i("Call GuideToIslamUseCase");
     return islamRepository.getAudios();
   }
+
+  Future<Either<Failure, List<MediaEntity>>> getVideos() async {
+    Get.find<Logger>().i("Call GuideToIslamUseCase");
+    return islamRepository.getVideos();
+  }
 }

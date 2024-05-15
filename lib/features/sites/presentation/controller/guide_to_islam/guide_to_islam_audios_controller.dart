@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/usecase/guide_to_islam_usecase.dart';
-import '../../../../core/constants/app_enums.dart';
-import '../../../../core/helpers/get_state_from_failure.dart';
+import '../../../../../core/constants/app_enums.dart';
+import '../../../../../core/helpers/get_state_from_failure.dart';
 
-class GuideToIslamBooksControllerImp extends GetxController {
+class GuideToIslamAudiosControllerImp extends GetxController {
   List<MediaEntity> data = [];
 
   // States
@@ -15,8 +15,7 @@ class GuideToIslamBooksControllerImp extends GetxController {
 
   Future<void> getContent() async {
     GuideToIslamUseCase useCases = GuideToIslamUseCase(Get.find());
-
-    var result = await useCases.getBooks();
+    var result = await useCases.getAudios();
     result.fold(
       (l) async {
         getDataState = getStateFromFailure(l);

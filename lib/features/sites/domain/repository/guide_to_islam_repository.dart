@@ -7,4 +7,5 @@ abstract class GuideToIslamRepository {
   Future<Either<Failure, List<List<FixedEntities>>>> getContent();
   Future<Either<Failure, List<MediaEntity>>> getBooks();
   Future<Either<Failure, List<MediaEntity>>> getAudios();
+  Future<Either<Failure, List<MediaEntity>>> getVideos();
 }

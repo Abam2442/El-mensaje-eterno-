@@ -58,4 +58,19 @@ class GuideToIslamRepositoryImp extends GuideToIslamRepository {
       return Left(getFailureFromException(e));
     }
   }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getVideos() async {
+    try {
+      Get.find<Logger>().i("Start `getVideos` in |GuideToIslamRepositoryImp|");
+      var content = await islamLocalDataSource.getVideos();
+      Get.find<Logger>().w(
+          "End `getVideos` in |GuideToIslamRepositoryImp| ${content.length}");
+      return Right(content);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getVideos` in |GuideToIslamRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
 }

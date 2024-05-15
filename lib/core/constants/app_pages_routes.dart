@@ -36,6 +36,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/explore_islam_b
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/first_step_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/guid_to_islam_books_audios_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/guid_to_islam_books_binding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/guid_to_islam_videos_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_for_christian_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_books_banding.dart';
@@ -73,6 +74,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/firs
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/audios/audios.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/books/books.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/guid_to_islam_book.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/videos/videos.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/hisnul_mumin_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/human_rights_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam%20_religion/islam_religion_main_screen.dart';
@@ -200,6 +202,7 @@ abstract class AppPagesRoutes {
   static const String guideToIslam = "/guid_to_islam";
   static const String guideToIslamBooks = "/guid_to_islam_books";
   static const String guideToIslamAudios = "/guid_to_islam_audios";
+  static const String guideToIslamVideos = "/guid_to_islam_videos";
   static const String islamGuide1 = "/islam_guide_1";
   static const String hisnulMumin = "/hisnul_mumin";
   static const String huminRight = "/humin_right";
@@ -325,6 +328,12 @@ abstract class AppPagesRoutes {
       name: guideToIslamAudios,
       page: () => const GudidToIslamAudiosScreen(),
       binding: GuideToIslamAudiosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: guideToIslamVideos,
+      page: () => const GudidToIslamVideosScreen(),
+      binding: GuideToIslamVideosBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(
