@@ -66,11 +66,11 @@ class RasuluallhLocalDataSourceImp extends RasuluallhLocalDataSource {
       List<MediaEntity> audios = [];
       if (jsonString != null) {
         var jsonData = json.decode(jsonString);
-        audios = jsonData['RasuluAllah']['Audios']
-            .map<MediaEntity>(
-              (key, value) => MediaEntity(url: key, name: value),
-            )
-            .toList();
+        ((jsonData['RasuluAllah']['Audios']) as Map).forEach(
+          (key, value) {
+            audios.add(MediaEntity(url: key, name: value));
+          },
+        );
       }
       Get.find<Logger>().w("End `getAudio` in |RasuluallhLocalDataSourceImp|");
       return Future.value(audios);
