@@ -30,6 +30,7 @@ class AppKeys {
   static const String firstSteps = 'first_steps.json';
   static const String guideToIslam = 'guidetoislam.json';
   static const String guideToIslamBooks = 'book-guidetoislam.json';
+  static const String guideToIslamAudios = 'audio-guidetoislam.json';
   static const String humanRights = 'humanRights.json';
   static const String islamLand = 'islam_Land.json';
   static const String islamLandBooks = 'Book-islamland.json';

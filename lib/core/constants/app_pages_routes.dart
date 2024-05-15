@@ -68,6 +68,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/begi
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/bidaa_in_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/explore_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/first_steps_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/audios/audios.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/books/books.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/guid_to_islam_book.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/hisnul_mumin_screen.dart';
@@ -193,7 +194,7 @@ abstract class AppPagesRoutes {
   static const String islamFaith = "/Islam_faith";
   static const String guideToIslam = "/guid_to_islam";
   static const String guideToIslamBooks = "/guid_to_islam_books";
-  static const String guideToIslamAudios = "/guid_to_islam_books";
+  static const String guideToIslamAudios = "/guid_to_islam_audios";
   static const String islamGuide1 = "/islam_guide_1";
   static const String hisnulMumin = "/hisnul_mumin";
   static const String huminRight = "/humin_right";
@@ -316,7 +317,7 @@ abstract class AppPagesRoutes {
     ),
     GetPage(
       name: guideToIslamAudios,
-      page: () => const GudidToIslamBooksScreen(),
+      page: () => const GudidToIslamAudiosScreen(),
       binding: GuideToIslamAudiosBindings(),
       transition: Transition.cupertino,
     ),

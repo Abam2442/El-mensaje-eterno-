@@ -37,7 +37,7 @@ class GuideToIslamControllerImp extends GetxController {
 
   Future<void> getContent() async {
     GuideToIslamUseCase guideToIslamUseCase = GuideToIslamUseCase(Get.find());
-    var result = await guideToIslamUseCase.call();
+    var result = await guideToIslamUseCase.callContent();
     result.fold(
       (l) async {
         getVideosState = getStateFromFailure(l);

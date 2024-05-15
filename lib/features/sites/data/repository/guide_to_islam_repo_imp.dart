@@ -16,7 +16,6 @@ class GuideToIslamRepositoryImp extends GuideToIslamRepository {
 
   @override
   Future<Either<Failure, List<List<FixedEntities>>>> getContent() async {
-    await islamLocalDataSource.getContect();
     try {
       Get.find<Logger>().i("Start `getContent` in |GuideToIslamRepositoryImp|");
       var content = await islamLocalDataSource.getContect();
@@ -32,7 +31,6 @@ class GuideToIslamRepositoryImp extends GuideToIslamRepository {
 
   @override
   Future<Either<Failure, List<MediaEntity>>> getBooks() async {
-    await islamLocalDataSource.getContect();
     try {
       Get.find<Logger>().i("Start `getBooks` in |GuideToIslamRepositoryImp|");
       var content = await islamLocalDataSource.getBooks();
@@ -42,6 +40,21 @@ class GuideToIslamRepositoryImp extends GuideToIslamRepository {
     } catch (e) {
       Get.find<Logger>().e(
           "End `getBooks` in |GuideToIslamRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getAudios() async {
+    try {
+      Get.find<Logger>().i("Start `getAudios` in |GuideToIslamRepositoryImp|");
+      var content = await islamLocalDataSource.getAudios();
+      Get.find<Logger>().w(
+          "End `getAudios` in |GuideToIslamRepositoryImp| ${content.length}");
+      return Right(content);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getAudios` in |GuideToIslamRepositoryImp| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }

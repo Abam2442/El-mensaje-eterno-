@@ -12,13 +12,18 @@ class GuideToIslamUseCase {
     this.islamRepository,
   );
 
-  Future<Either<Failure, List<List<FixedEntities>>>> call() async {
+  Future<Either<Failure, List<List<FixedEntities>>>> callContent() async {
     Get.find<Logger>().i("Call GuideToIslamUseCase");
     return islamRepository.getContent();
   }
 
   Future<Either<Failure, List<MediaEntity>>> getBooks() async {
-    Get.find<Logger>().i("Call GuideToIslamUseCase");
+    Get.find<Logger>().i(" Call GuideToIslamUseCase");
     return islamRepository.getBooks();
+  }
+
+  Future<Either<Failure, List<MediaEntity>>> getAudios() async {
+    Get.find<Logger>().i("Call GuideToIslamUseCase");
+    return islamRepository.getAudios();
   }
 }

@@ -10,6 +10,7 @@ import '../../domain/entities/fixed_entities.dart';
 abstract class GuideToIslamLocalDataSource {
   Future<List<List<FixedEntities>>> getContect();
   Future<List<MediaEntity>> getBooks();
+  Future<List<MediaEntity>> getAudios();
 }
 
 class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
@@ -24,6 +25,7 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
   @override
   Future<List<List<FixedEntities>>> getContect() async {
     try {
+      print('## false case');
       Get.find<Logger>()
           .i("Start `getContect` in |GuideToIslamLocalDataSourceImpl|");
       String? guideToIslam =
@@ -88,12 +90,14 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
       Get.find<Logger>()
           .i("Start `getBooks` in |GuideToIslamLocalDataSourceImpl|");
       List<MediaEntity> result = [];
+
       String? json =
           await archiveService.readFile(name: AppKeys.guideToIslamBooks);
       if (json != null) {
         Map<String, dynamic> decoded = jsonDecode(json);
-
-        (decoded['guide-to-islam'][0]['books'] as Map).forEach((name, url) {
+        print("## ${decoded['guide-to-islam'].runtimeType}");
+        (((decoded['guide-to-islam']).elementAt(0))['books'] as Map)
+            .forEach((name, url) {
           result.add(MediaEntity(name: name, url: url));
         });
       }
@@ -101,6 +105,31 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
     } catch (e) {
       Get.find<Logger>().e(
         "End `getBooks` in |GuideToIslamLocalDataSourceImpl| Exception: ${e.runtimeType} $e",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaEntity>> getAudios() async {
+    try {
+      Get.find<Logger>()
+          .i("Start `getAudios` in |GuideToIslamLocalDataSourceImpl|");
+      List<MediaEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.guideToIslamAudios);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+        print(((decoded['guide-to-islam'] as List)[0]).runtimeType);
+        (((decoded['guide-to-islam'] as List)[0] as Map)['auidos'] as Map)
+            .forEach((name, url) {
+          result.add(MediaEntity(name: name, url: url));
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getAudios` in |GuideToIslamLocalDataSourceImpl| Exception: ${e.runtimeType} $e",
       );
       rethrow;
     }

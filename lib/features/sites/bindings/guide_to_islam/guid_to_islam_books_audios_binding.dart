@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/guide_to_islam_books_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/guide_to_islam_audios_controller.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../data/data_source/guide_to_islam_local_data_source.dart';
 import '../../data/repository/guide_to_islam_repo_imp.dart';
@@ -21,6 +21,6 @@ class GuideToIslamAudiosBindings extends Bindings {
       ),
     );
 
-    Get.put(GuideToIslamBooksControllerImp());
+    Get.put(GuideToIslamAudiosControllerImp());
   }
 }

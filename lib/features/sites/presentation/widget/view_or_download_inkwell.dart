@@ -15,7 +15,8 @@ class ViewOrDownloadInkwell extends StatelessWidget {
       this.fileType = '',
       this.mediaLinkType = MediaLinkType.viewAndDownload}) {
     if (mediaLinkType == MediaLinkType.downloadOnly ||
-        mediaLinkType == MediaLinkType.viewAndDownload) {
+        mediaLinkType == MediaLinkType.viewAndDownload ||
+        mediaLinkType == MediaLinkType.downloadAndListen) {
       _downloadServices = Get.find();
     }
   }
