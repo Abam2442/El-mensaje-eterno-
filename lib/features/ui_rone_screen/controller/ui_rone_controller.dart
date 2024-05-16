@@ -12,6 +12,7 @@ import 'package:hiwayda_oracion_islamica/features/ui_rone_screen/models/Intermed
 class UiRoneController extends GetxController {
   RxBool isLoading = true.obs;
   List<IntermediateSalahModel> list =[];
+  RxInt currentPos = 1.obs;
   String file='';
   @override
   void onInit() {
