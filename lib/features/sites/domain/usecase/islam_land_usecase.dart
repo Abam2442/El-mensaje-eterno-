@@ -29,4 +29,8 @@ class IslamLandUseCase {
   Future<Either<Failure, List<MediaEntity>>> callAudios() async {
     return islamLandRepository.getAudio();
   }
+
+  Future<Either<Failure, List<MediaEntity>>> callVideos() async {
+    return islamLandRepository.getVideos();
+  }
 }

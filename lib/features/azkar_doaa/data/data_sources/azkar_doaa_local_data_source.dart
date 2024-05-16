@@ -56,21 +56,21 @@ class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
   Future<List<DoaaModel>> getDoaas() async {
     try {
       Get.find<Logger>().i("Start `getDoaas` in |DoaaLocalDataSourceImpl|");
-      String? fileContent = await archiveService.readFile(name: AppKeys.doaa);
+      String? fileContent = await archiveService.readFile(name: AppKeys.alduaa);
 
       late List<DoaaModel> doaas = [];
       if (fileContent != null) {
         var jsonData = json.decode(fileContent);
-        jsonData.forEach((element) {
-          List<SingleDoaa> list = [];
-          element['الأدعية'].forEach((a) {
-            list.add(SingleDoaa(arabic: a['عربي'], espanule: a['أسباني']));
-          });
+        jsonData['Es'].forEach((element) {
+          // List<SingleDoaa> list = [];
+          // element['الأدعية'].forEach((a) {
+          //   list.add(SingleDoaa(arabic: a['عربي'], espanule: a['أسباني']));
+          // });
           doaas.add(DoaaModel(
-              ar: element['العنوان عربي'],
-              es: element['العنوان أسباني'],
+              link: element['الرابط'],
+              title: element['العنوان'],
               noOfPages: element['عدد الصفحات'],
-              listOfDoaa: list));
+              listOfDoaa: List<String>.from(element["الأدعية"].map((x) => x))));
         });
       }
       Get.find<Logger>().w("End `getDoaas` in |DoaaLocalDataSourceImpl|");

@@ -29,11 +29,16 @@ class AppKeys {
   static const String exploreIslam = 'explore_islam.json';
   static const String firstSteps = 'first_steps.json';
   static const String guideToIslam = 'guidetoislam.json';
+  static const String guideToIslamBooks = 'book-guidetoislam.json';
+  static const String guideToIslamAudios = 'audio-guidetoislam.json';
+  static const String guideToIslamVideos = 'video-guidetoislam.json';
   static const String humanRights = 'humanRights.json';
   static const String islamLand = 'islam_Land.json';
   static const String islamLandBooks = 'Book-islamland.json';
+  static const String islamLandVideos = 'video-islam_Land.json';
   static const String islamLandAudios = 'audio-islam_Land.json';
   static const String islamMessage = 'islam_message.json';
+  static const String islamMessageAudios = 'audio-islam_message.json';
   static const String islamMessageBooks = 'book-islam_message.json';
   static const String islamPort = 'islam_port.json';
   static const String islamReligion = 'islam_Religion.json';
@@ -51,12 +56,16 @@ class AppKeys {
   static const String jesusQuran = 'jesus_quran.json';
   static const String knowingAllah = 'knowing_allah.json';
   static const String knowingAllahBooks = 'book-knowing_allah.json';
+  static const String knowingAllahAudios = 'audio-knowing_allah.json';
+  static const String knowingAllahVideos = 'video-knowing_allah.json';
   static const String learningIslam = 'learning_islam.json';
   static const String loveInIslam = 'love_in_islam.json';
   static const String messageOfIslam = 'message_of_islam.json';
   static const String muhammadTheMessengerOfGod =
       'muhammad_the_messenger_of_God.json';
   static const String rasuluAllah = 'rasulu_allah.json';
+  static const String rasuluAllahAudios = 'audios-rasulu_allah.json';
+  static const String rasuluAllahVideos = 'video-rasulu_allah.json';
   static const String romanceInIslam = 'romance_in_islam.json';
   static const String saberElIslam = 'new-saber-islam.json';
   static const String terminology = 'terminology.json';

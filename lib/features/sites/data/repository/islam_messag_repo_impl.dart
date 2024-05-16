@@ -32,7 +32,7 @@ class IslamMessageRepositoryImp extends IslamMessageRepository {
   }
 
   @override
-  Future<Either<Failure, List<IslamMessageAudioEntities>>> getAudio() async {
+  Future<Either<Failure, List<MediaEntity>>> getAudio() async {
     await islamMessageLocalDataSource.getAudio();
     try {
       Get.find<Logger>().i("Start `getAudio` in |IslamMessageRepositoryImp|");

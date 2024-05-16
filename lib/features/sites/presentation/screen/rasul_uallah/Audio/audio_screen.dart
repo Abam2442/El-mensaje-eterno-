@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controller/rasulullah_controller.dart';
+import '../../../controller/rasuluallah/rasulullah_controller.dart';
 import '../../../widget/app_bar_custom.dart';
 import '../../../widget/inkwell_custom.dart';
 import 'audio_contain_screen.dart';
@@ -13,7 +13,8 @@ class AudioScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(RasuluallhControllerImp());
     return Scaffold(
-        appBar: const AppBarCustom(title: 'Rasul allah audio').customAppBar(context),
+        appBar: const AppBarCustom(title: 'Rasul allah audio')
+            .customAppBar(context),
         body: GetBuilder<RasuluallhControllerImp>(
             builder: (controller) => Container(
                 margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),

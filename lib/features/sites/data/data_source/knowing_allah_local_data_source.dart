@@ -12,6 +12,8 @@ import '../models/knowing_allah_model.dart';
 abstract class KnowingAllahLocalDataSource {
   Future<KnowingAllahModel> getContent();
   Future<List<MediaEntity>> getBooks();
+  Future<List<MediaEntity>> getAudios();
+  Future<List<MediaCategoryEntity>> getVideos();
 }
 
 class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
@@ -129,6 +131,57 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
     } catch (e) {
       Get.find<Logger>().e(
         "End `getBooks` in |KnowingAllahDataSourceImpl| Exception: ${e.runtimeType} $e",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaEntity>> getAudios() async {
+    try {
+      Get.find<Logger>().i("Start `getAudios` in |KnowingAllahDataSourceImpl|");
+      List<MediaEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.knowingAllahAudios);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+
+        (decoded['knowing-Allah']['Audios'] as Map).forEach((name, url) {
+          result.add(MediaEntity(name: name, url: url));
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getAudios` in |KnowingAllahDataSourceImpl| Exception: ${e.runtimeType} $e",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaCategoryEntity>> getVideos() async {
+    try {
+      Get.find<Logger>().i("Start `getVideos` in |KnowingAllahDataSourceImpl|");
+      List<MediaCategoryEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.knowingAllahVideos);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+
+        (decoded['knowing-Allah']['Videos'] as Map)
+            .forEach((category, dataMap) {
+          List<MediaEntity> data = [];
+          (dataMap as Map).forEach((name, url) {
+            data.add(MediaEntity(name: name, url: url));
+          });
+          result.add(MediaCategoryEntity(category: category, data: data));
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getVideos` in |KnowingAllahDataSourceImpl| Exception: ${e.runtimeType} $e",
       );
       rethrow;
     }

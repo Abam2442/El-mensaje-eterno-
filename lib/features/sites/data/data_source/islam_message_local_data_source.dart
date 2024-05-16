@@ -12,7 +12,7 @@ import '../models/islam_message_model.dart';
 abstract class IslamMessageLocalDataSource {
   Future<List<IslamMessageArticalModel>> getArtical();
   Future<List<MediaCategoryEntity>> getBook();
-  Future<List<IslamMessageAudioModel>> getAudio();
+  Future<List<MediaEntity>> getAudio();
 }
 
 class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
@@ -52,18 +52,18 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
   }
 
   @override
-  Future<List<IslamMessageAudioModel>> getAudio() async {
+  Future<List<MediaEntity>> getAudio() async {
     try {
       Get.find<Logger>()
           .i("Start `getAudio` in |IslamMessageLocalDataSourceImpl|");
       String? islamMessageJson =
-          await archiveService.readFile(name: AppKeys.islamMessage);
-      List<IslamMessageAudioModel> audios = [];
+          await archiveService.readFile(name: AppKeys.islamMessageAudios);
+      List<MediaEntity> audios = [];
       if (islamMessageJson != null) {
         var jsonData = json.decode(islamMessageJson);
         audios = jsonData['islam-message']['audios']
-            .map<IslamMessageAudioModel>(
-              (audio) => IslamMessageAudioModel.fromJson(audio),
+            .map<MediaEntity>(
+              (json) => MediaEntity(url: json['link'], name: json['title']),
             )
             .toList();
       }

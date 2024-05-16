@@ -6,7 +6,7 @@ import '../../../../core/helpers/get_state_from_failure.dart';
 import '../../domain/entities/islam_message_entities.dart';
 import '../../domain/usecase/islam_message_usecase.dart';
 import '../screen/islam_message/islam_message_artical_screen.dart';
-import '../screen/islam_message/islam_message_audio_screen.dart';
+import '../screen/islam_message/audios/islam_message_audio_screen.dart';
 import '../screen/islam_message/islam_message_book_screen.dart';
 
 class IslamMessageControllerImp extends GetxController {
@@ -19,7 +19,7 @@ class IslamMessageControllerImp extends GetxController {
   List page = [
     const IslamMessageArticalScreen(),
     const IslamMessageBookScreen(),
-    const IslamMessageAudioScreen(),
+    // const IslamMessageAudioScreen(),
   ];
   List<IslamMessageArticalEntities> articals = [];
   List<IslamMessageBookEntities> books = [];
@@ -53,23 +53,23 @@ class IslamMessageControllerImp extends GetxController {
   }
 
   Future<void> getAudio() async {
-    IslamMessageUseCase islamMessageUseCase = IslamMessageUseCase(Get.find());
-    var result = await islamMessageUseCase.callAudio();
-    result.fold(
-      (l) async {
-        getAudiosState = getStateFromFailure(l);
-        validationMessage = l.message;
-        update();
-        await Future.delayed(const Duration(milliseconds: 50));
-        getArticalsState = StateType.init;
-      },
-      (r) {
-        getArticalsState = StateType.success;
-        audios = r;
+    // IslamMessageUseCase islamMessageUseCase = IslamMessageUseCase(Get.find());
+    // var result = await islamMessageUseCase.callAudio();
+    // result.fold(
+    //   (l) async {
+    //     getAudiosState = getStateFromFailure(l);
+    //     validationMessage = l.message;
+    //     update();
+    //     await Future.delayed(const Duration(milliseconds: 50));
+    //     getArticalsState = StateType.init;
+    //   },
+    //   (r) {
+    //     getArticalsState = StateType.success;
+    //     audios = r;
 
-        update();
-      },
-    );
+    //     update();
+    //   },
+    // );
   }
 
   @override

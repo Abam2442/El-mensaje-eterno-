@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import '../../../../core/errors/failures.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
@@ -15,7 +16,6 @@ class GuideToIslamRepositoryImp extends GuideToIslamRepository {
 
   @override
   Future<Either<Failure, List<List<FixedEntities>>>> getContent() async {
-    await islamLocalDataSource.getContect();
     try {
       Get.find<Logger>().i("Start `getContent` in |GuideToIslamRepositoryImp|");
       var content = await islamLocalDataSource.getContect();
@@ -25,6 +25,51 @@ class GuideToIslamRepositoryImp extends GuideToIslamRepository {
     } catch (e) {
       Get.find<Logger>().e(
           "End `getContent` in |GuideToIslamRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getBooks() async {
+    try {
+      Get.find<Logger>().i("Start `getBooks` in |GuideToIslamRepositoryImp|");
+      var content = await islamLocalDataSource.getBooks();
+      Get.find<Logger>()
+          .w("End `getBooks` in |GuideToIslamRepositoryImp| ${content.length}");
+      return Right(content);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getBooks` in |GuideToIslamRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getAudios() async {
+    try {
+      Get.find<Logger>().i("Start `getAudios` in |GuideToIslamRepositoryImp|");
+      var content = await islamLocalDataSource.getAudios();
+      Get.find<Logger>().w(
+          "End `getAudios` in |GuideToIslamRepositoryImp| ${content.length}");
+      return Right(content);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getAudios` in |GuideToIslamRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getVideos() async {
+    try {
+      Get.find<Logger>().i("Start `getVideos` in |GuideToIslamRepositoryImp|");
+      var content = await islamLocalDataSource.getVideos();
+      Get.find<Logger>().w(
+          "End `getVideos` in |GuideToIslamRepositoryImp| ${content.length}");
+      return Right(content);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getVideos` in |GuideToIslamRepositoryImp| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }

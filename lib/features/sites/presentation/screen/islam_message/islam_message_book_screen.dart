@@ -12,9 +12,9 @@ class IslamMessageBookScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(IslamMessageControllerImp());
     return Scaffold(
-      appBar: const AppBarCustom(title: "Islam Message Book").customAppBar(context),
+      appBar:
+          const AppBarCustom(title: "Islam Message Book").customAppBar(context),
       body: GetBuilder<IslamMessageControllerImp>(
           builder: (controller) => Container(
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),

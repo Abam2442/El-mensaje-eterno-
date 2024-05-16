@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/knowing_allah_books_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/knowing_allah/knowing_allah_books_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/view_or_download_inkwell.dart';
 
 import '../../../widget/app_bar_custom.dart';
