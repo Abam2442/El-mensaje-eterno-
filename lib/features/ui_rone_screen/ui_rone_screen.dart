@@ -24,6 +24,7 @@ class UiRoneScreen extends StatelessWidget {
   PageController pageController = PageController();
   late VideoPlayerController videoPlayerController;
   final String title;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -40,10 +41,13 @@ class UiRoneScreen extends StatelessWidget {
             () => controller.isLoading.value
                 ? Container()
                 : PageView(
-                    controller: pageController,
-                    children: List.generate(controller.list.length,
-                        (index) => _buildSinglePage(index)),
-                  ),
+                                onPageChanged: (page){
+                  controller.currentPos.value = page+1;
+                                },
+                      controller: pageController,
+                      children: List.generate(controller.list.length,
+                          (index) => _buildSinglePage(index)),
+                    ),
           ),
         ),
       ),
@@ -53,32 +57,90 @@ class UiRoneScreen extends StatelessWidget {
   Widget _buildSinglePage(int index) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InkWell(
-              onTap: () {
-                pageController.previousPage(
-                    duration: const Duration(microseconds: 500), curve: Curves.ease);
-              },
-              child: Text(
-                "Anterior".tr,
-                style: Styles.textStyle18Black,
+        SizedBox(
+          height: 50,
+          width: Get.width,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              navigateToPage(
+                Icons.arrow_back_ios,
+                    () {
+                  pageController.previousPage(
+                      duration: const Duration(microseconds: 500),
+                      curve: Curves.ease);
+                },
               ),
-            ),
+              Container(
+                padding: 5.aEdge,
+                decoration: BoxDecoration(
+                  borderRadius: 20.cBorder,
+                  color: AppColors.kGreenColor,
+                ),
+                child: Row(
+                  children: [
+                    Obx(
+                          () => Text(
+                        ' ${controller.currentPos.value}',
+                        style: const TextStyle(
+                          color: AppColors.kGoldenColor,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    const Text(
+                      ' De ',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                    Text(
+                      ' ${controller.list.length}',
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              navigateToPage(
+                Icons.arrow_forward_ios,
+                    () {
+                  pageController.nextPage(
+                      duration: const Duration(microseconds: 500),
+                      curve: Curves.bounceIn);
+                },
+              ),
+            ],
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // InkWell(
+            //   onTap: () {
+            //     pageController.previousPage(
+            //         duration: const Duration(microseconds: 500),
+            //         curve: Curves.ease);
+            //   },
+            //   child: Text(
+            //     "Anterior".tr,
+            //     style: Styles.textStyle18Black,
+            //   ),
+            // ),
             Text(controller.list[index].rakaa.toString(),
                 style: Styles.textStyle18Green),
-            InkWell(
-              onTap: () {
-                pageController.nextPage(
-                    duration: const Duration(microseconds: 500),
-                    curve: Curves.bounceIn);
-              },
-              child: Text(
-                "Próximo".tr,
-                style: Styles.textStyle18Black,
-              ),
-            )
+            // InkWell(
+            //   onTap: () {
+            //     pageController.nextPage(
+            //         duration: const Duration(microseconds: 500),
+            //         curve: Curves.bounceIn);
+            //   },
+            //   child: Text(
+            //     "Próximo".tr,
+            //     style: Styles.textStyle18Black,
+            //   ),
+            // )
           ],
         ),
         const SizedBox(
@@ -168,24 +230,33 @@ class UiRoneScreen extends StatelessWidget {
             Column(
               children: [
                 CustomImageView(
-                  onTap: (){
+                  onTap: () {
                     print(controller.list[index].images!.image5.toString());
                     Get.defaultDialog(
-                      title: 'galería',
-                        content: swap(
-                        SalahPracticalModel(
-                          video: controller.list[index].images!.video.toString(),
-                          image:controller.list[index].images!.image.toString(),
-                          image2:controller.list[index].images!.image2.toString(),
-                          image3:controller.list[index].images!.image3.toString(),
-                          image4:controller.list[index].images!.image4.toString(),
-                          image5: controller.list[index].images!.image5.toString(),
-                          image6: controller.list[index].images!.image6.toString(),
-                          video2:controller.list[index].images!.video2.toString(),
-                          rakaa: '', stepName: '', description: '', descriptionaudio: '', topics: [],
-
-                        )
-                    ));
+                        title: 'galería',
+                        content: swap(SalahPracticalModel(
+                          video:
+                              controller.list[index].images!.video.toString(),
+                          image:
+                              controller.list[index].images!.image.toString(),
+                          image2:
+                              controller.list[index].images!.image2.toString(),
+                          image3:
+                              controller.list[index].images!.image3.toString(),
+                          image4:
+                              controller.list[index].images!.image4.toString(),
+                          image5:
+                              controller.list[index].images!.image5.toString(),
+                          image6:
+                              controller.list[index].images!.image6.toString(),
+                          video2:
+                              controller.list[index].images!.video2.toString(),
+                          rakaa: '',
+                          stepName: '',
+                          description: '',
+                          descriptionaudio: '',
+                          topics: [],
+                        )));
                   },
                   imagePath: AppAssets.imgEyeSvgrepoCom,
                   height: 32.adaptSize,
@@ -193,10 +264,13 @@ class UiRoneScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 32.v),
                 CustomImageView(
-                  onTap: (){
+                  onTap: () {
                     Get.defaultDialog(
-                      title: 'descripción',
-                        content: SingleChildScrollView(child: Text(controller.list[index].images!.description.toString())));
+                        title: 'descripción',
+                        content: SingleChildScrollView(
+                            child: Text(controller
+                                .list[index].images!.description
+                                .toString())));
                   },
                   imagePath: AppAssets.imgInfoSquareSvgrepoCom,
                   height: 32.adaptSize,
@@ -206,6 +280,7 @@ class UiRoneScreen extends StatelessWidget {
             )
           ],
         ),
+
         Expanded(
           child: ListView.builder(
               itemCount: controller.list[index].topics!.length,
@@ -220,6 +295,7 @@ class UiRoneScreen extends StatelessWidget {
                     image: AppAssets.imgUserSpeakSvgrepoCom,
                   )),
         ),
+
         // _buildPlaceYourRight(
         //   text: controller.list[index].images!.description.toString(),
         //   image: AppAssets.imgIcons8Salat64,
@@ -292,6 +368,26 @@ class UiRoneScreen extends StatelessWidget {
               width: 32.adaptSize,
               margin: 10.hEdge)
         ],
+      ),
+    );
+  }
+
+  GestureDetector navigateToPage(IconData icon, Function() controllerFunction) {
+    return GestureDetector(
+      onTap: controllerFunction,
+      child: Container(
+        padding: 5.vEdge,
+        decoration: BoxDecoration(
+          borderRadius: 5.cBorder,
+          color: AppColors.kGreenColor,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(
+            icon,
+            color: AppColors.kGoldenColor,
+          ),
+        ),
       ),
     );
   }
