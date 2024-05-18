@@ -67,7 +67,7 @@ class BodyContentAzkarScreen extends GetView<AzkarDoaaController> {
                                       maxWidth:
                                           MediaQuery.sizeOf(context).width - 70,
                                     ),
-                                    child: Text(
+                                    child: SelectableText(
                                       zikr.espaniol ?? "",
                                       style: Styles.textStyle18Black,
                                       textDirection: TextDirection.ltr,

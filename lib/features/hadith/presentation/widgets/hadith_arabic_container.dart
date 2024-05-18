@@ -47,7 +47,7 @@ class HadithArabicContainer extends StatelessWidget {
                   // padding: const EdgeInsets.only(right: 12),
                   constraints: BoxConstraints(
                       maxWidth: MediaQuery.sizeOf(context).width - 50),
-                  child: Text(
+                  child: SelectableText(
                     hadithArabic,
                     style: Styles.textStyle18Godlen,
                     textDirection: TextDirection.rtl,

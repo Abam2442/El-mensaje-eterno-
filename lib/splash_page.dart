@@ -9,6 +9,7 @@ import 'package:hiwayda_oracion_islamica/features/home/presentation/home_screen.
 import 'package:flutter/material.dart';
 
 import 'core/constants/app_public_var.dart';
+import 'features/kids/view/kids_list_screen.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -45,6 +46,7 @@ class _SplashBodyState extends State<SplashBody>
       Get.off(()=> HomeScreen());
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -22,11 +22,13 @@ abstract class AppAssets {
   static const String hadith = "$rootSVGIcon/hadith.svg";
   static const String prayer = "$rootSVGIcon/prayer.svg";
   static const String azkar = "$rootSVGIcon/azkar.svg";
+  static const String kids = "$rootSVGIcon/boy.svg";
   static const String dua = "$rootSVGIcon/dua.svg";
   static const String calender = "$rootSVGIcon/calender.svg";
   static const String profileDefault = "$rootSVG/profile_default.svg";
   static const String categoriesIconSvg = "$rootSVGIcon/categories.svg";
   static const String kBasmalaImage = '$rootImages/basmala.png';
+  static const String kidsImage = '$rootImages/kids.png';
   static const String kZaghrafaIcon = '$imageSVG/zaghrafa.png';
 
   static const String kCopyIcon = '$rootSVGIcon/copy.svg';

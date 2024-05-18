@@ -87,7 +87,7 @@ class BodySonanDayNightSubZikrScreen extends GetView<AzkarDoaaController> {
                                           maxWidth:
                                               MediaQuery.sizeOf(context).width -
                                                   50),
-                                      child: Text(
+                                      child: SelectableText(
                                         doaa.zikr,
                                         style: Styles.textStyle18Godlen,
                                         textDirection: TextDirection.ltr,

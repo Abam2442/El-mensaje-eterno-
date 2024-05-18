@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
@@ -6,6 +8,8 @@ import 'package:hiwayda_oracion_islamica/features/salah/model/tahara_lesson_mode
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/styles/text_styles.dart';
+import '../../../core/constants/app_assets.dart';
+import '../../../core/services/easy_loader_service.dart';
 
 class LessonDetailsPage extends StatelessWidget {
   LessonDetailsPage({required this.lessonDetail});
@@ -26,7 +30,20 @@ class LessonDetailsPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(lessonDetail.title, style: Styles.textStyle24Golden),
+                      Wrap(
+                        alignment: WrapAlignment.spaceBetween,
+                        children: [
+                          Text(lessonDetail.title, style: Styles.textStyle24Golden),
+                          IconButton(onPressed:() async {
+                            var data = ClipboardData(text:lessonDetail.body.toString());
+                            await Clipboard.setData(data);
+                            EasyLoaderService.showToast(message: "Copied");
+                          },
+                            icon: SvgPicture.asset(
+                              AppAssets.kCopyIcon,
+                            ),)
+                        ],
+                      ),
                       10.hSize,
                       InkWell(
                         onTap: () {
@@ -45,7 +62,13 @@ class LessonDetailsPage extends StatelessWidget {
                         ),
                       ),
                       10.hSize,
-                      Text(lessonDetail.body.toString(), style: TextStyle(color: Colors.white, fontSize: 18))
+                    SelectableText(lessonDetail.body.toString(),
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                 //   showCursor: true,
+                 //   contextMenuBuilder:(context,editableTextState){
+                  //    return AdaptiveTextSelectionToolbar.}
+                      )
+                    //  Text(lessonDetail.body.toString(), style: TextStyle(color: Colors.white, fontSize: 18))
                     ],
                   ),
                 ),

@@ -59,7 +59,7 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                 color: AppColors.kWhiteColor.withOpacity(0.4),
                               ),
                               width: Get.width,
-                              child: Text(
+                              child: SelectableText(
                                 'De Ubada ibn Al Sámit que el Mensajero de Allah ﷺ dijo:\n'
                                 '\n'
                                 '"Hay cinco oraciones que Allah ha prescrito para los hombres. Quien los cumpla con la atención que requieren sin faltar a ninguno de sus pilares obtiene la promesa de Allah de hacerle entrar en el Paraíso.\n'

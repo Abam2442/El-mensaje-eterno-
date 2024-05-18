@@ -78,7 +78,7 @@ class BodyContentDoaaScreen extends GetView<AzkarDoaaController> {
                                             maxWidth: MediaQuery.sizeOf(context)
                                                     .width -
                                                 50),
-                                        child: Text(
+                                        child: SelectableText(
                                           doaa,
                                           style: Styles.textStyle18Godlen,
                                           textDirection: TextDirection.ltr,

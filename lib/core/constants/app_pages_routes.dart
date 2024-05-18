@@ -97,6 +97,8 @@ import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation
 import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation/telegram_channels_bindings.dart';
 
 import '../../features/azkar_doaa/presentation/screens/content_azkar_doaa_screen.dart';
+import '../../features/kids/kids_binding.dart';
+import '../../features/kids/view/kids_list_screen.dart';
 import '../../features/salah/view/learn_salah_page.dart';
 import '../../features/sites/bindings/guid_to_islam_binding.dart';
 import '../../features/sites/bindings/hisnul_mumin_binding.dart';
@@ -140,6 +142,7 @@ abstract class AppPagesRoutes {
   static const String surahScreen = "/surahScreen";
   static const String telawaScreen = "/telawaScreen";
   static const String contentAzkarScreen = "/content_azkar_screen";
+  static const String KidsScreen = "/kids_list_screen";
 
   ///////////////////////// name routs site ////////////////////////
   static const String islamHouse = "/islam_house_screen";
@@ -193,6 +196,12 @@ abstract class AppPagesRoutes {
     GetPage(
       name: learnSalahPage,
       page: () => const LearnSalahPage(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: KidsScreen,
+      page: () => const kidswidgetsHomeScreen(),
+      binding: KidsBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(

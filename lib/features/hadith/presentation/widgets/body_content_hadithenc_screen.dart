@@ -56,7 +56,7 @@ class BodyContentHadithencScreen extends GetView<HadithController> {
                     padding: const EdgeInsets.only(left: 12),
                     constraints: BoxConstraints(
                         maxWidth: MediaQuery.sizeOf(context).width - 50),
-                    child: Text(
+                    child: SelectableText(
                       hadith?[2] ?? "",
                       style: Styles.textStyle18Black,
                       textDirection: TextDirection.ltr,

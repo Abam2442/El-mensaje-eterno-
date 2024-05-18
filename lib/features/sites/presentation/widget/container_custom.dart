@@ -38,7 +38,7 @@ class ContainerCustom extends StatelessWidget {
                   height: 40,
                 ),
                 Expanded(
-                  child: Text(
+                  child: SelectableText(
                     dataText,
                     style: const TextStyle(
                         color: AppColors.kGoldenColor,
@@ -49,7 +49,7 @@ class ContainerCustom extends StatelessWidget {
                 ),
               ],
             )
-          : Text(
+          : SelectableText(
               dataText,
               style: const TextStyle(
                   color: AppColors.kGoldenColor,

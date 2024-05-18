@@ -8,6 +8,7 @@ import 'core/helpers/network_info.dart';
 import 'core/services/api_service.dart';
 import 'core/services/easy_loader_service.dart';
 import 'core/services/shared_preferences_service.dart';
+import 'features/kids/controller/kids_controller.dart';
 
 class InitialBindings extends Bindings {
   @override
@@ -24,5 +25,7 @@ class InitialBindings extends Bindings {
       ),
     );
     Get.lazyPut(() => DownloadServices());
+   // Get.put(() => KidsController());
+    Get.put<KidsController>(KidsController(), permanent: true);
   }
 }

@@ -17,6 +17,7 @@ class NewMuslimsLessonScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(
               '${newMuslimsController.newMuslimsModel.courses![courseIndex].lessons![lessonIndex].header}'),
+
         ),
         body: Container(
           color: AppColors.kPrimaryColor,

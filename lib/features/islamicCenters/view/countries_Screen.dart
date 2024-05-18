@@ -14,6 +14,7 @@ class CountriesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('${islamicCenterController.islamicCenterModel.countries![countryIndex].countryName}'),
+
       ),
         body:
               Container(
