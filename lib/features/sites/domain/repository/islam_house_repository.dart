@@ -6,4 +6,5 @@ import '../entities/fixed_entities.dart';
 abstract class IslamHouseRepository {
   Future<Either<Failure, List<List<FixedEntities>>>> getContent();
   Future<Either<Failure, List<MediaEntity>>> getBooks();
+  Future<Either<Failure, List<FixedEntities>>> getFatwa();
 }

@@ -21,4 +21,9 @@ class IslamHouseUseCase {
     Get.find<Logger>().i("Call IslamHouseUseCase");
     return islamHouseRepository.getBooks();
   }
+
+  Future<Either<Failure, List<FixedEntities>>> getFatwa() async {
+    Get.find<Logger>().i("Call IslamHouseUseCase");
+    return islamHouseRepository.getFatwa();
+  }
 }

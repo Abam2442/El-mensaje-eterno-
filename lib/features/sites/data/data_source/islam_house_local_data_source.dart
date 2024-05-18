@@ -10,6 +10,7 @@ import '../../domain/entities/fixed_entities.dart';
 abstract class IslamHouseLocalDataSource {
   Future<List<List<FixedEntities>>> getContect();
   Future<List<MediaEntity>> getBooks();
+  Future<List<FixedEntities>> getFatwa();
 }
 
 class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
@@ -100,6 +101,30 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
     } catch (e) {
       Get.find<Logger>().e(
         "End `getBooks` in |IslamLandHouseDataSourceImpl| Exception: ${e.runtimeType} $e",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<FixedEntities>> getFatwa() async {
+    try {
+      Get.find<Logger>()
+          .i("Start `getFatwa` in |IslamHouseLocalDataSourceImpl|");
+      List<FixedEntities> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.islamHouseFatwa);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+
+        (decoded['islam-house']['Fatwa'] as Map).forEach((name, content) {
+          result.add(FixedEntities(name: name, content: content));
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getFatwa` in |IslamLandHouseDataSourceImpl| Exception: ${e.runtimeType} $e",
       );
       rethrow;
     }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../controller/islam_house_controller.dart';
+import '../../controller/islam_house/islam_house_controller.dart';
 import '../../widget/app_bar_custom.dart';
 import '../../widget/inkwell_custom.dart';
 

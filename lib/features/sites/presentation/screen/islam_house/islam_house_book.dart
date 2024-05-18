@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../controller/islam_house_controller.dart';
+import '../../controller/islam_house/islam_house_controller.dart';
 import '../../widget/app_bar_custom.dart';
 import '../../widget/inkwell_custom.dart';
 
@@ -25,12 +25,10 @@ class IslamHouseBookScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return InkwellCustom(
                       catigory: false,
-                      dataText: controller.content[2][index].name
-                         ,
+                      dataText: controller.content[2][index].name,
                       onTap: () async {
-                        await launchUrl(Uri.parse(controller
-                            .content[2][index].content
-                          ));
+                        await launchUrl(
+                            Uri.parse(controller.content[2][index].content));
                       },
                     );
                   }))),

@@ -50,6 +50,7 @@ class AppKeys {
   static const String islamGuide2 = 'islamguide_2.json';
   static const String islamHouse = 'islamhouse.json';
   static const String islamHouseBooks = 'book-islamhouse.json';
+  static const String islamHouseFatwa = 'fatwa-islamhouse.json';
   static const String islamQA = 'islamqa.json';
   static const String islamWeb = 'islamweb.json';
   static const String jesusMuslim = 'jesus_muslim.json';

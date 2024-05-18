@@ -31,6 +31,21 @@ class IslamHouseRepositoryImp extends IslamHouseRepository {
   }
 
   @override
+  Future<Either<Failure, List<FixedEntities>>> getFatwa() async {
+    try {
+      Get.find<Logger>().i("Start `getFatwa` in |IslamHouseRepositoryImp|");
+      final fatwa = await islamHouseLocalDataSource.getFatwa();
+      Get.find<Logger>()
+          .w("End `getFatwa` in |IslamHouseRepositoryImp| ${fatwa.length}");
+      return Right(fatwa);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getFatwa` in |IslamHouseRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
   Future<Either<Failure, List<MediaEntity>>> getBooks() async {
     try {
       Get.find<Logger>().i("Start `getBooks` in |IslamHouseRepositoryImp|");
