@@ -25,6 +25,14 @@ class AboutController extends GetxController {
         linkedin: ''
     ),
     DeveloperModel(
+        name: 'Eng. Ahmed Alzabr',
+        whatsapp: 'https://wa.me/967771143849',
+        linkedin: 'www.linkedin.com/in/ahmed-alzabr',
+        facebook: 'https://www.facebook.com/ahmed.alzubr',
+        gmail: 'ahmedalzabr1@gmail.com',
+
+    ),
+    DeveloperModel(
       name: 'Eng. Nazeer nageb',
       whatsapp: 'https://wa.me/963958345528',
       facebook: 'https://www.facebook.com/nazeer.nageb',
