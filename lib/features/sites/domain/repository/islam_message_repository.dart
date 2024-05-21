@@ -7,4 +7,5 @@ abstract class IslamMessageRepository {
   Future<Either<Failure, List<IslamMessageArticalEntities>>> getArtical();
   Future<Either<Failure, List<MediaCategoryEntity>>> getBook();
   Future<Either<Failure, List<MediaEntity>>> getAudio();
+  Future<Either<Failure, List<MediaEntity>>> getVideos();
 }

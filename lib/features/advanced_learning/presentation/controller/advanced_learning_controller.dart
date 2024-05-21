@@ -466,6 +466,22 @@ class Advanced_LearningController extends GetxController {
             "description": "Una explicación del Islam",
             "targetScreen": AppPagesRoutes.guideToIslamVideos,
           },
+          {
+            "title": "Islam Messege (Mensaje del Islam)",
+            "copyRight":
+                'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+            "link": 'http://www.Islammessage.org',
+            "description": "Contenido islámico integrado",
+            "targetScreen": AppPagesRoutes.islamMessageVideos,
+          },
+          {
+            "title": "Islam Messege Quran Videos (Mensaje del Islam)",
+            "copyRight":
+                'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+            "link": 'http://www.Islammessage.org',
+            "description": "Contenido islámico integrado",
+            "targetScreen": AppPagesRoutes.islamMessage,
+          },
         ],
       },
       {
@@ -504,30 +520,6 @@ class Advanced_LearningController extends GetxController {
             "link": 'http://www.islamweb.net',
             "description": "Respuestas a las preguntas de los musulmanes",
             "targetScreen": AppPagesRoutes.islamWeb,
-          },
-          {
-            "title": "Rasoul Al-lah (el Mensajero de Al-láh)",
-            "copyRight":
-                'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
-            "link": 'http://www.rasoulallah.net',
-            "description": "sobre el profeta Muhammad ﷺ",
-            "targetScreen": AppPagesRoutes.rasulullahVideos,
-          },
-          {
-            "title": "Knowing Allah (Conociendo a Al-láh)",
-            "copyRight":
-                'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
-            "link": 'http://www.knowingallah.com',
-            "description": "sobre nuestra creencia en Dios",
-            "targetScreen": AppPagesRoutes.knowingAllahVideos,
-          },
-          {
-            "title": "Guía al Islam",
-            "copyRight":
-                'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
-            "link": 'https://www.guidetoislam.com',
-            "description": "Una explicación del Islam",
-            "targetScreen": AppPagesRoutes.guideToIslamVideos,
           },
         ],
       }

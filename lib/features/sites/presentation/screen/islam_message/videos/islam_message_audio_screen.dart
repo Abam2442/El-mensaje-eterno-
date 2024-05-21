@@ -2,21 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_messages/islam_message_audios_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_messages/islam_message_audios_videos_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/view_or_download_inkwell.dart';
 import '../../../widget/app_bar_custom.dart';
 
-class IslamMessageAudiosMainScreen
-    extends GetView<IslamMessageAudiosControllerImp> {
-  const IslamMessageAudiosMainScreen({
+class IslamMessageVideosMainScreen
+    extends GetView<IslamMessageVideosControllerImp> {
+  const IslamMessageVideosMainScreen({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarCustom(title: "Islam Message Audios")
+      appBar: const AppBarCustom(title: "Islam Message Videos")
           .customAppBar(context),
-      body: GetBuilder<IslamMessageAudiosControllerImp>(builder: (controller) {
+      body: GetBuilder<IslamMessageVideosControllerImp>(builder: (controller) {
         if (controller.getDataState == StateType.loading) {
           return const Center(
             child: CircularProgressIndicator(),
@@ -32,8 +33,7 @@ class IslamMessageAudiosMainScreen
                   return ViewOrDownloadInkwell(
                     url: ele.url,
                     name: ele.name,
-                    fileType: ele.url.split('.').last,
-                    mediaLinkType: MediaLinkType.downloadAndListen,
+                    mediaLinkType: MediaLinkType.video,
                   );
                 }));
       }),

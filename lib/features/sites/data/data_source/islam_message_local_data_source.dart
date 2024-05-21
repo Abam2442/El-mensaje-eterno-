@@ -13,6 +13,7 @@ abstract class IslamMessageLocalDataSource {
   Future<List<IslamMessageArticalModel>> getArtical();
   Future<List<MediaCategoryEntity>> getBook();
   Future<List<MediaEntity>> getAudio();
+  Future<List<MediaEntity>> getVideos();
 }
 
 class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
@@ -73,6 +74,33 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
     } catch (e) {
       Get.find<Logger>().e(
         "End `getAudio` in |IslamMessageLocalDataSourceImpl| Exception: ${e.runtimeType}",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaEntity>> getVideos() async {
+    try {
+      Get.find<Logger>()
+          .i("Start `getVideos` in |IslamMessageLocalDataSourceImpl|");
+      String? islamMessageJson =
+          await archiveService.readFile(name: AppKeys.islamMessageVideos);
+      List<MediaEntity> videos = [];
+      if (islamMessageJson != null) {
+        var jsonData = json.decode(islamMessageJson);
+        videos = (jsonData)
+            .map<MediaEntity>(
+              (map) => MediaEntity(name: map.keys.first, url: map.values.first),
+            )
+            .toList();
+      }
+      Get.find<Logger>()
+          .w("End `getVideos` in |IslamMessageLocalDataSourceImpl|");
+      return Future.value(videos);
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getVideos` in |IslamMessageLocalDataSourceImpl| Exception: ${e.runtimeType}",
       );
       rethrow;
     }

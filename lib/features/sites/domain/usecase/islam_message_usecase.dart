@@ -26,4 +26,9 @@ class IslamMessageUseCase {
     Get.find<Logger>().i("Call LearningIslamUseCase");
     return await islamMessageRepository.getAudio();
   }
+
+  Future<Either<Failure, List<MediaEntity>>> callVideos() async {
+    Get.find<Logger>().i("Call LearningIslamUseCase");
+    return await islamMessageRepository.getVideos();
+  }
 }

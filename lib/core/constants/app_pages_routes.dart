@@ -47,6 +47,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/isla
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_books_audios_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_books_audios_videos_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_port_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_religion_banding.dart';
@@ -91,6 +92,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/isla
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/audios/islam_message_audio_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/books/islam_message_main_books_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/islam_message_main_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/videos/islam_message_audio_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_port_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_qa_home_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_religion_of_pace_screen.dart';
@@ -172,6 +174,7 @@ abstract class AppPagesRoutes {
   static const String islamMessage = "/islam_message_screen";
   static const String islamMessageBooks = "/islam_message_books_screen";
   static const String islamMessageAudios = "/islam_message_audios_screen";
+  static const String islamMessageVideos = "/islam_message_videos_screen";
   static const String islamReligion = "/islam_religion_screen";
   static const String islamLand = "/islam_land_screen";
   static const String islamLandBooks = "/islam_land_books_screen";
@@ -467,6 +470,12 @@ abstract class AppPagesRoutes {
       name: islamMessageAudios,
       page: () => const IslamMessageAudiosMainScreen(),
       binding: IslamMessageAudiosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamMessageVideos,
+      page: () => const IslamMessageVideosMainScreen(),
+      binding: IslamMessageVideosBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(
