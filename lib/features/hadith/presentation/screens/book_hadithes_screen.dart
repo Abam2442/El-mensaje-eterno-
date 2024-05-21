@@ -12,9 +12,10 @@ class BookHadithesScreen extends GetView<HadithController> {
   @override
   Widget build(BuildContext context) {
     controller.isBack.value = true;
-    return  PopScope(canPop: false,
+    return PopScope(
+        canPop: false,
         onPopInvoked: (isPoped) async {
-          if(controller.isBack.isTrue){
+          if (controller.isBack.isTrue) {
             controller.isBack.value = false;
             controller.searchTextController.text = "";
             controller.isSearching.value = false;
@@ -22,18 +23,20 @@ class BookHadithesScreen extends GetView<HadithController> {
             controller.getbookHadithesName;
             controller.update();
           }
-    },child:Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SearchHadithSliverAppBarWidget(
-            title: Get.arguments["title"],controller: controller,
-              isHadithenc:Get.arguments["isHadithenc"] == "true" ? true:false
+        },
+        child: Scaffold(
+          body: CustomScrollView(
+            slivers: [
+              SearchHadithSliverAppBarWidget(
+                  title: Get.arguments["title"],
+                  controller: controller,
+                  isHadithenc:
+                      Get.arguments["isHadithenc"] == "true" ? true : false),
+              Get.arguments["webside"] == "sunnah"
+                  ? const SunnahBookSelectSliver()
+                  : HadithencCategorySelectSliver(),
+            ],
           ),
-          Get.arguments["webside"] == "sunnah"
-              ?   SunnahBookSelectSliver()
-              :   HadithencCategorySelectSliver(),
-        ],
-      ),
         ));
   }
 }

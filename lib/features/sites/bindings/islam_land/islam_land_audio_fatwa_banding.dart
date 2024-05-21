@@ -5,7 +5,7 @@ import '../../data/data_source/islam_land_local_data_source.dart';
 import '../../data/repository/islam_land_repo_impl.dart';
 import '../../domain/repository/islam_land_repository.dart';
 
-class IslamLandVideosBindings extends Bindings {
+class IslamLandFatwaBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<IslamLandLocalDataSource>(

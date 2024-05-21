@@ -42,7 +42,7 @@ class IslamQAView extends StatelessWidget {
                               title: islamQaSubTopic.name,
                             ));
                       },
-                      child: const Item_Card(titleSite: 'Questions')),
+                      child: const Item_Card(titleSite: '¡Preguntas!')),
             ],
           ),
         ));

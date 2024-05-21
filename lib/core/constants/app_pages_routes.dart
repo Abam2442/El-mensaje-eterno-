@@ -177,6 +177,7 @@ abstract class AppPagesRoutes {
   static const String islamLandBooks = "/islam_land_books_screen";
   static const String islamLandAudio = "/islam_land_audio_screen";
   static const String islamLandVideos = "/islam_land_videos_screen";
+  static const String islamLandFatwa = "/islam_land_videos_screen";
   static const String rasulullah = "/rasulullah_screen";
   static const String rasulullahAudios = "/rasulullah_screen_audios";
   static const String rasulullahVideos = "/rasulullah_screen_videos";
@@ -498,6 +499,12 @@ abstract class AppPagesRoutes {
       binding: IslamLandVideosBindings(),
       transition: Transition.cupertino,
     ),
+    // GetPage(
+    //   name: islamLandFatwa,
+    //   page: () => const IslamLandFatwaMainScreen(),
+    //   binding: IslamLandFatwaBindings(),
+    //   transition: Transition.cupertino,
+    // ),
     GetPage(
       name: rasulullah,
       page: () => const RasuluallahScreen(),

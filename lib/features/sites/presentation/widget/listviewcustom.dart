@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+import 'package:logger/logger.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/services/easy_loader_service.dart';
@@ -34,7 +39,7 @@ class ListViewCustom extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              "Question",
+              "Pregunta:",
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -52,7 +57,7 @@ class ListViewCustom extends StatelessWidget {
           ),
           const Padding(
             padding: EdgeInsets.all(8.0),
-            child: Text("Answer",
+            child: Text("Respuesta:",
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -60,15 +65,29 @@ class ListViewCustom extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SelectableText(
-              answer,
-              textAlign: TextAlign.start,
+            child: Linkify(
+              onOpen: _opnenLink,
+              text: answer,
               style: const TextStyle(
-                  fontSize: 18, height: 1.5, fontWeight: FontWeight.bold),
+                fontSize: 18,
+                height: 1.5,
+              ),
+              textAlign: TextAlign.justify,
+              linkStyle: Styles.telegramMessagesLinksStyle,
             ),
           ),
         ],
       ),
     );
+  }
+
+  Future _opnenLink(LinkableElement link) async {
+    final uri = Uri.parse(link.url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      final Logger logger = Get.find();
+      logger.e('failed to launch url :> ${uri.path}');
+    }
   }
 }

@@ -40,22 +40,21 @@ class BodySunnahScreen extends GetView<HadithController> {
             child: Column(
               children: [
                 ...List.generate(
-                  controller.sunnahHadithes?.booksName.take(20).length ?? 0,
+                  controller.sunnahHadithes?.booksName.length ?? 0,
                   (index) {
                     String bookName =
                         controller.sunnahHadithes!.booksName[index];
                     return PrimaryListTile(
                       onTap: () {
-                        controller.pageNumber =0;
+                        controller.pageNumber = 0;
                         controller.getbookHadithesName?.clear();
                         controller.update();
                         Get.toNamed(
                           AppPagesRoutes.bookHadithesScreen,
                           arguments: {
-                        "isHadithenc":"false",
+                            "isHadithenc": "false",
                             "title": bookName,
                             "webside": "sunnah",
-
                           },
                         );
                       },

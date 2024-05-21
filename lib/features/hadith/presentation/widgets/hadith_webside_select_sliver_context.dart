@@ -19,25 +19,25 @@ class HadithWebsideSelectSliver extends GetView<HadithController> {
           color: AppColors.kPrimaryColor,
           child: Stack(
             children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    color: AppColors.kWhiteColor,
-                  ),
-                  child: SizedBox(
-                    height: Get.height,
-                    child: TabBarView(
-                      controller: controller.tabController,
-                      children: controller.tabs.map(
-                        (Tab tab) {
-                          final String label = tab.text!.toLowerCase();
-                          return label == "sunnah"
-                              ? const BodySunnahScreen()
-                              : const BodyHadithencScreen();
-                        },
-                      ).toList(),
-                    ),
+              Container(
+                decoration: const BoxDecoration(
+                  color: AppColors.kWhiteColor,
+                ),
+                child: SizedBox(
+                  height: Get.height,
+                  child: TabBarView(
+                    controller: controller.tabController,
+                    children: controller.tabs.map(
+                      (Tab tab) {
+                        final String label = tab.text!.toLowerCase();
+                        return label == "sunnah"
+                            ? const BodySunnahScreen()
+                            : const BodyHadithencScreen();
+                      },
+                    ).toList(),
                   ),
                 ),
+              ),
             ],
           ),
         ),
