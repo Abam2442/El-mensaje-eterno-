@@ -64,6 +64,23 @@ class IslamMessageRepositoryImp extends IslamMessageRepository {
   }
 
   @override
+  Future<Either<Failure, List<MediaEntity>>> getQuranVideos() async {
+    await islamMessageLocalDataSource.getQuranVideos();
+    try {
+      Get.find<Logger>()
+          .i("Start `getQuranVideos` in |IslamMessageRepositoryImp|");
+      var videos = await islamMessageLocalDataSource.getQuranVideos();
+      Get.find<Logger>().w(
+          "End `getQuranVideos` in |IslamMessageRepositoryImp| ${videos.length}");
+      return Right(videos);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getQuranVideos` in |IslamMessageRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
   Future<Either<Failure, List<MediaCategoryEntity>>> getBook() async {
     await islamMessageLocalDataSource.getBook();
     try {
