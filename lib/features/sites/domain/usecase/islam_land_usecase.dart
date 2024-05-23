@@ -17,9 +17,13 @@ class IslamLandUseCase {
     return islamLandRepository.getContent();
   }
 
-  Future<Either<Failure, List<IslamLandFatwaEntities>>> callFatwa() async {
-    Get.find<Logger>().i("Call IslamLandUseCase");
-    return islamLandRepository.getFatwa();
+  Future<Either<Failure, List<IslamLandFatwaEntities>>>
+      callOfflineFatwa() async {
+    return islamLandRepository.getOfflineFatwa();
+  }
+
+  Future<Either<Failure, List<MediaEntity>>> callOnlineFatwa() async {
+    return islamLandRepository.getOnlineFatwa();
   }
 
   Future<Either<Failure, Map<String, List<MediaEntity>>>> callBooks() async {

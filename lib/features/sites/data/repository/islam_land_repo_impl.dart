@@ -16,17 +16,18 @@ class IslamLandRepositoryImp extends IslamLandRepository {
   });
 
   @override
-  Future<Either<Failure, List<IslamLandFatwaEntities>>> getFatwa() async {
-    await islamLandLocalDataSource.getFatwa();
+  Future<Either<Failure, List<IslamLandFatwaEntities>>>
+      getOfflineFatwa() async {
     try {
-      Get.find<Logger>().i("Start `getFatwa` in |IslamLandRepositoryImp|");
-      var fatwa = await islamLandLocalDataSource.getFatwa();
+      Get.find<Logger>()
+          .i("Start `getOfflineFatwa` in |IslamLandRepositoryImp|");
+      var fatwa = await islamLandLocalDataSource.getOfflineFatwa();
       Get.find<Logger>()
           .w("End `getFatwa` in |IslamLandRepositoryImp| ${fatwa.length}");
       return Right(fatwa.cast<IslamLandFatwaEntities>());
     } catch (e) {
       Get.find<Logger>().e(
-          "End `getFatwa` in |IslamLandRepositoryImp| Exception: ${e.runtimeType}");
+          "End `getOfflineFatwa` in |IslamLandRepositoryImp| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }
@@ -73,6 +74,22 @@ class IslamLandRepositoryImp extends IslamLandRepository {
     } catch (e) {
       Get.find<Logger>().e(
           "End `getAudio` in |IslamLandRepositoryImp| Exception: ${e.runtimeType}");
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getOnlineFatwa() async {
+    try {
+      Get.find<Logger>()
+          .i("Start `getOnlineFatwa` in |IslamLandRepositoryImp|");
+      var data = await islamLandLocalDataSource.getOnlineFatwa();
+      Get.find<Logger>()
+          .w("End `getOnlineFatwa` in |IslamLandRepositoryImp| ${data.length}");
+      return Right(data);
+    } catch (e) {
+      Get.find<Logger>().e(
+          "End `getOnlineFatwa` in |IslamLandRepositoryImp| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }

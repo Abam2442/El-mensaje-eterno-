@@ -8,8 +8,8 @@ import '../../../domain/usecase/islam_land_usecase.dart';
 import '../../screen/islam_land/islam_land_artical_on_screen.dart';
 import '../../screen/islam_land/islam_land_artical_screen.dart';
 import '../../screen/islam_land/islam_land_audio_screen.dart';
-import '../../screen/islam_land/islam_land_fatwa_on_screen.dart';
-import '../../screen/islam_land/islam_land_fatwa_screen.dart';
+import '../../screen/islam_land/fatwa/islam_land_fatwa_on_screen.dart';
+import '../../screen/islam_land/fatwa/islam_land_fatwa_screen.dart';
 import '../../screen/islam_land/islam_land_video_screen.dart';
 
 class IslamLandControllerImp extends GetxController {
@@ -72,7 +72,7 @@ class IslamLandControllerImp extends GetxController {
 
   Future<void> getFatwa() async {
     IslamLandUseCase islamLandUseCase = IslamLandUseCase(Get.find());
-    var result = await islamLandUseCase.callFatwa();
+    var result;
     result.fold(
       (l) async {
         getAudiosState = getStateFromFailure(l);

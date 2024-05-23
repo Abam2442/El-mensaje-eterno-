@@ -10,10 +10,11 @@ import '../../domain/entities/islam_land_entities.dart';
 
 abstract class IslamLandLocalDataSource {
   Future<List<List<FixedEntities>>> getContent();
-  Future<List<IslamLandFatwaEntities>> getFatwa();
+  Future<List<IslamLandFatwaEntities>> getOfflineFatwa();
   Future<Map<String, List<MediaEntity>>> getBooks();
   Future<List<MediaEntity>> getAudio();
   Future<List<MediaEntity>> getVideos();
+  Future<List<MediaEntity>> getOnlineFatwa();
 }
 
 class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
@@ -138,12 +139,12 @@ class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
   }
 
   @override
-  Future<List<IslamLandFatwaEntities>> getFatwa() async {
+  Future<List<IslamLandFatwaEntities>> getOfflineFatwa() async {
     try {
       Get.find<Logger>()
           .i("Start `getFatwa` in |IslamLandLocalDataSourceImpl|");
       String? islamLandJson =
-          await archiveService.readFile(name: AppKeys.islamLand);
+          await archiveService.readFile(name: AppKeys.islamLandFatwa);
       List<IslamLandFatwaEntities> fatwas = [];
       if (islamLandJson != null) {
         var jsonData = json.decode(islamLandJson);
@@ -182,6 +183,30 @@ class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
     } catch (e) {
       Get.find<Logger>().e(
         "End `getAudio` in |islamLandDataSourceImpl| Exception: ${e.runtimeType} $e",
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaEntity>> getOnlineFatwa() async {
+    try {
+      Get.find<Logger>()
+          .i("Start `getOfflineFatwa` in |islamLandDataSourceImpl|");
+      List<MediaEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.islamLandFatwa);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+
+        (decoded['islam-Land']['Fatwas Online'] as Map).forEach((name, url) {
+          result.add(MediaEntity(name: name, url: url));
+        });
+      }
+      return result;
+    } catch (e) {
+      Get.find<Logger>().e(
+        "End `getOfflineFatwa` in |islamLandDataSourceImpl| Exception: ${e.runtimeType} $e",
       );
       rethrow;
     }

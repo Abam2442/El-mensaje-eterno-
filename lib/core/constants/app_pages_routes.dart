@@ -42,6 +42,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/isl
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_fatwa_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_audio_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_audio_fatwa_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_audio_videos_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_books_banding.dart';
@@ -88,6 +89,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/isla
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_main.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/audio/islam_land_books_main_audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/books/islam_land_books_main_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/fatwa/islam_land_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/islam_land_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/video/islam_land_books_main_audios_screen%20copy.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/audios/islam_message_audio_screen.dart';
@@ -184,7 +186,7 @@ abstract class AppPagesRoutes {
   static const String islamLandBooks = "/islam_land_books_screen";
   static const String islamLandAudio = "/islam_land_audio_screen";
   static const String islamLandVideos = "/islam_land_videos_screen";
-  static const String islamLandFatwa = "/islam_land_videos_screen";
+  static const String islamLandFatwa = "/islam_land_fatwa_screen";
   static const String rasulullah = "/rasulullah_screen";
   static const String rasulullahAudios = "/rasulullah_screen_audios";
   static const String rasulullahVideos = "/rasulullah_screen_videos";
@@ -518,12 +520,12 @@ abstract class AppPagesRoutes {
       binding: IslamLandVideosBindings(),
       transition: Transition.cupertino,
     ),
-    // GetPage(
-    //   name: islamLandFatwa,
-    //   page: () => const IslamLandFatwaMainScreen(),
-    //   binding: IslamLandFatwaBindings(),
-    //   transition: Transition.cupertino,
-    // ),
+    GetPage(
+      name: islamLandFatwa,
+      page: () => const IslamLandFatwaMainScreen(),
+      binding: IslamLandFatwaBindings(),
+      transition: Transition.cupertino,
+    ),
     GetPage(
       name: rasulullah,
       page: () => const RasuluallahScreen(),
