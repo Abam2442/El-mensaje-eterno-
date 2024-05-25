@@ -33,25 +33,8 @@ class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
           .i("Start `getContent` in |IslamLandLocalDataSourceImpl|");
       String? islamLandJson =
           await archiveService.readFile(name: AppKeys.islamLand);
-      List<FixedEntities> videos = [];
-      List<FixedEntities> audios = [];
       List<FixedEntities> articals = [];
       List<FixedEntities> articalsOn = [];
-      List<FixedEntities> fatwasOn = [];
-
-      if (islamLandJson != null) {
-        var jsonData = json.decode(islamLandJson);
-        jsonData['islam-Land']['Videos'].forEach((key, value) {
-          videos.add(FixedEntities(name: key, content: value));
-        });
-      }
-
-      if (islamLandJson != null) {
-        var jsonData = json.decode(islamLandJson);
-        jsonData['islam-Land']['Audios'].forEach((key, value) {
-          audios.add(FixedEntities(name: key, content: value));
-        });
-      }
 
       if (islamLandJson != null) {
         var jsonData = json.decode(islamLandJson);
@@ -67,15 +50,9 @@ class IslamLandLocalDataSourceImpl extends IslamLandLocalDataSource {
         });
       }
 
-      if (islamLandJson != null) {
-        var jsonData = json.decode(islamLandJson);
-        jsonData['islam-Land']['Fatwas Online'].forEach((key, value) {
-          fatwasOn.add(FixedEntities(name: key, content: value));
-        });
-      }
       Get.find<Logger>()
           .w("End `getContent` in |IslamLandLocalDataSourceImpl|");
-      return Future.value([videos, audios, articals, articalsOn, fatwasOn]);
+      return Future.value([articals, articalsOn]);
     } catch (e) {
       Get.find<Logger>().e(
         "End `getContent` in |IslamLandLocalDataSourceImpl| Exception: ${e.runtimeType}",

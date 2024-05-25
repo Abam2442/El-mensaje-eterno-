@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/custom_paginator.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_land/islam_land_fatwa_controller.dart';
 import '../../../widget/app_bar_custom.dart';
 import '../../../widget/inkwell_custom.dart';
@@ -14,21 +15,14 @@ class IslamLandFatwaScreen extends StatelessWidget {
       appBar:
           const AppBarCustom(title: "Islam Land Fatwa").customAppBar(context),
       body: GetBuilder<IslamLandFatawaControllerImp>(
-          builder: (controller) => Container(
-              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-              child: ListView.builder(
-                  padding: const EdgeInsets.all(5),
-                  itemCount: controller.offLineFatwa.length,
-                  itemBuilder: (context, index) {
-                    return InkwellCustom(
-                      catigory: false,
-                      dataText: controller.offLineFatwa[index].title,
-                      onTap: () {
-                        Get.to(ListViewCustom(
-                            question: controller.offLineFatwa[index].question,
-                            answer: controller.offLineFatwa[index].answer));
-                      },
-                    );
+          builder: (controller) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+              child: CustomPaginator(
+                  data: controller.offLineFatwa,
+                  getItemText: (item) => item.title,
+                  onItemTaped: (item) {
+                    Get.to(ListViewCustom(
+                        question: item.question, answer: item.answer));
                   }))),
     );
   }

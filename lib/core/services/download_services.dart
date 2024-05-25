@@ -7,18 +7,22 @@ import 'package:hiwayda_oracion_islamica/core/widgets/dialogs/download_dialogs.d
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:permission_handler/permission_handler.dart';
 
+/// This GetX service provides functionalities for downloading files from URLs.
+/// Please don't forget to put this class for the first using time
 class DownloadServices extends GetxService {
-  /// state
+  /// Observes the download state (true: downloading, false: not downloading).
   final RxBool isDownloading = false.obs;
 
-  /// file size
+  /// Observes the total size of the file being downloaded.
   final RxDouble total = 0.0.obs;
 
-  /// file downloaded data size
+  /// Observes the amount of data downloaded so far.
   final RxDouble received = 0.0.obs;
 
+  /// Cancel token used to cancel ongoing downloads.
   CancelToken _cancelToken = CancelToken();
 
+  /// Retrieves the download directory path.
   Future<String> _getDownloadDirectory() async {
     Directory? directory = Directory('/storage/emulated/0/Download');
     if (!await directory.exists()) {
@@ -43,6 +47,10 @@ class DownloadServices extends GetxService {
     return dio;
   }
 
+  /// Downloads a file from a URL.
+  ///
+  /// This method initiates the download process for a file from the specified `url`.
+  /// You can optionally control the visibility of progress, success, and error dialogs.
   download(
       {required String url,
       required String fileName,
@@ -76,7 +84,6 @@ class DownloadServices extends GetxService {
           dio.download(urlFileName, "$path/$fileName",
               onReceiveProgress: (rec, tot) {
             if (i < 10) {
-              print("tot $tot, rec $rec");
               i++;
             }
             received.value = rec.toDouble();
@@ -89,7 +96,6 @@ class DownloadServices extends GetxService {
             isDownloading.value = false;
             ;
           }).onError((error, stackTrace) {
-            print('#eeror $error, $stackTrace');
             if (Get.isDialogOpen == true) {
               Get.back();
             }
@@ -112,7 +118,6 @@ class DownloadServices extends GetxService {
         }
       }
     } catch (e) {
-      print('#eeror $e');
       isDownloading.value = false;
     }
   }

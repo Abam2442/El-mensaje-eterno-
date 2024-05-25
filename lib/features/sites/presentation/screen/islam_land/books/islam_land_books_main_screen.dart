@@ -38,6 +38,8 @@ class IslamLandBooksMainScreen extends GetView<IslamLandBooksControllerImp> {
                         data: controller.data[name] ?? [],
                         fileType: 'pdf',
                         mediaLinkType: MediaLinkType.downloadOnly,
+                        usePaginator:
+                            (controller.data[name]?.length ?? 0) >= 40,
                       ));
                     },
                   );

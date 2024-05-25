@@ -14,7 +14,7 @@ class ViewOrDownloadInkwell extends StatelessWidget {
       required this.url,
       required this.name,
       this.fileType = '',
-      this.mediaLinkType = MediaLinkType.viewAndDownload}) {
+      this.mediaLinkType = MediaLinkType.viewOnly}) {
     if (mediaLinkType == MediaLinkType.downloadOnly ||
         mediaLinkType == MediaLinkType.viewAndDownload ||
         mediaLinkType == MediaLinkType.downloadAndListen) {
@@ -22,7 +22,7 @@ class ViewOrDownloadInkwell extends StatelessWidget {
     }
   }
 
-  final MediaLinkType mediaLinkType;
+  final MediaLinkType? mediaLinkType;
   final String url;
   final String name;
   final String fileType;

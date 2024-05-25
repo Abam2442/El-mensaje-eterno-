@@ -145,7 +145,6 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
       String? json =
           await archiveService.readFile(name: AppKeys.guideToIslamVideos);
       if (json != null) {
-        print('##final');
         Map<String, dynamic> decoded = jsonDecode(json);
         (((decoded['guide-to-islam'] as List)[0] as Map)['videos'] as Map)
             .forEach((name, url) {

@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
-import 'package:hiwayda_oracion_islamica/core/utils/components/appbar/direction_aware.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/islam_web_entities.dart';
+import 'package:get/get.dart';
+// import 'package:flutter_svg/svg.dart';
+// import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
+// import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+// import 'package:hiwayda_oracion_islamica/core/utils/components/appbar/direction_aware.dart';
+// import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/islam_web_entities.dart';
 import 'package:number_paginator/number_paginator.dart';
 
 import '../controller/islam_web_controller.dart';
@@ -22,7 +20,7 @@ class IslamWebMainScreen extends GetView<IslamWebControllerImp> {
   Widget build(BuildContext context) {
     //Get.put(IslamWebControllerImp());
     return Scaffold(
-      appBar: AppBarCustom(title: "Islam Web", actions: [
+      appBar: const AppBarCustom(title: "Islam Web", actions: [
         // IconButton(
         //     onPressed: () async {
         //       IslamWebEntities? result = await showSearch(
@@ -78,7 +76,7 @@ class IslamWebMainScreen extends GetView<IslamWebControllerImp> {
     );
   }
 }
-
+/*
 class _IslamWebSearchDelegate extends SearchDelegate<IslamWebEntities> {
   _IslamWebSearchDelegate({required this.data})
       : super(
@@ -155,3 +153,4 @@ class _IslamWebSearchDelegate extends SearchDelegate<IslamWebEntities> {
           hintStyle: TextStyle(color: Colors.grey.shade600),
           border: InputBorder.none));
 }
+*/

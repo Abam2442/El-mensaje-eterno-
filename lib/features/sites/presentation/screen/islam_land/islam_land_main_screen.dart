@@ -9,7 +9,6 @@ class IslamLandMainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(IslamLandControllerImp());
     return Scaffold(
       appBar: const AppBarCustom(title: "Islam Land").customAppBar(context),
       body: GetBuilder<IslamLandControllerImp>(builder: (controller) {
