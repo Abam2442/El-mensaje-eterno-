@@ -120,6 +120,7 @@ import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/s
 import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/youtube_channels_bindings.dart';
 
 import '../../features/azkar_doaa/presentation/screens/content_azkar_doaa_screen.dart';
+import '../../features/quran/presentation/screens/telawa_screen.dart';
 import '../../features/salah/view/learn_salah_page.dart';
 import '../../features/sites/bindings/guide_to_islam/guid_to_islam_binding.dart';
 import '../../features/sites/bindings/hisnul_mumin_binding.dart';
@@ -249,6 +250,7 @@ abstract class AppPagesRoutes {
     GetPage(
       name: surahScreen,
       page: () => const SurahScreen(),
+      binding: QuranBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(
@@ -643,7 +645,12 @@ abstract class AppPagesRoutes {
       ),
       transition: Transition.cupertino,
     ),
-
+    GetPage(
+      name: telawaScreen,
+      page: () => const TelawaScreen(),
+      binding: QuranBindings(),
+      transition: Transition.cupertino,
+    ),
     /*
 
     GetPage(
@@ -666,11 +673,7 @@ abstract class AppPagesRoutes {
     ),
 
 
-    GetPage(
-      name: telawaScreen,
-      page: () => const TelawaScreen(),
-      transition: Transition.cupertino,
-    ),
+
     GetPage(
       name: contentAzkarScreen,
       page: () => const ContentAzkarPage(),

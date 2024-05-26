@@ -1,9 +1,12 @@
+import 'package:hiwayda_oracion_islamica/features/quran/data/data_sources/ayat_audio_remote_source.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/data/data_sources/quran_local_data_source.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/data/data_sources/quran_remote_data_source.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/data/repository/quran_repo_impl.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/domain/repository/quran_repo.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 import 'package:get/get.dart';
+
+import 'controller/telawa_controller.dart';
 
 class QuranBindings extends Bindings {
   @override
@@ -23,7 +26,11 @@ class QuranBindings extends Bindings {
         quranLocalDataSource: Get.find(),
       ),
     );
+    Get.put<AyatAudioRemoteDataSource>(
+      AyatAudioRemoteDataSourceImpl(apiService: Get.find()),
+    );
 
     Get.put(QuranController());
+    Get.put(TelawaController());
   }
 }
