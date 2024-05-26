@@ -1,16 +1,18 @@
+import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/core/helpers/get_state_from_failure.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/ayah_entity.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/surah_entity.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/domain/usecases/get_surahs_use_case.dart';
-import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
 class QuranController extends GetxController {
   // Data
-  List<Surah> surahs = [];
+  RxList<Surah> surahs = <Surah>[].obs;
   List<Ayah> resultAyat = [];
   List<Ayah> currentAyat = [];
+  var searchResults = <Map<String, dynamic>>[].obs;
+  var isSearching = false.obs;
 
   // States
   StateType getSurahsState = StateType.init;
@@ -44,11 +46,20 @@ class QuranController extends GetxController {
       },
       (r) {
         getSurahsState = StateType.success;
-        surahs = r;
+        surahs.assignAll(r);
         update();
       },
     );
-    Get.find<Logger>().w("End `getSurahs` in |QuranController| $getSurahsState");
+    Get.find<Logger>()
+        .w("End `getSurahs` in |QuranController| $getSurahsState");
+  }
+
+  void filterSurahs(String query) {
+    // Filter the surahs based on the search query
+    // This is a simple example, you might need to adjust it based on your needs
+    surahs.assignAll(
+        surahs.where((surah) => surah.name.contains(query)).toList());
+    update(); // Notify the listeners to update the UI
   }
 
   Future<void> searchAboutAyah(String query) async {
@@ -65,6 +76,26 @@ class QuranController extends GetxController {
     }
     searchAboutAyahState = StateType.success;
     update();
-    Get.find<Logger>().w("End `searchAboutAyah` in |QuranController| $searchAboutAyahState");
+    Get.find<Logger>()
+        .w("End `searchAboutAyah` in |QuranController| $searchAboutAyahState");
+  }
+
+  void search(String query) {
+    isSearching.value = query.isNotEmpty;
+    searchResults.clear();
+    // if (query.isEmpty) {
+    //   return;
+    // }
+    for (var surah in surahs) {
+      for (var ayat in surah.ayat) {
+        if (ayat.arabic.contains(query)) {
+          searchResults.add({
+            'sora': surah.name,
+            'ayat': ayat,
+          });
+        }
+      }
+    }
+    update();
   }
 }

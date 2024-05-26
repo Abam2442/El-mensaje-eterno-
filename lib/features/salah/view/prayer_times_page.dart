@@ -338,6 +338,9 @@ class CustomPrayerTimes {
 }
 */
 
+import 'package:adhan_dart/adhan_dart.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
@@ -345,12 +348,8 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/string_to_from.dart';
 import 'package:hiwayda_oracion_islamica/data/local/local_data.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:location/location.dart';
-
-import 'package:adhan_dart/adhan_dart.dart';
 
 import '../../../core/helper/format.dart';
 
@@ -375,25 +374,26 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
     super.initState();
   }
 
-
   void calcPrayerTimes() async {
-    if(AppPublicVar.coordinates == null){
+    if (AppPublicVar.coordinates == null) {
       Location location = Location();
       locationData = await location.getLocation();
-      AppPublicVar.coordinates = Coordinates(locationData.latitude,locationData.longitude);
+      AppPublicVar.coordinates =
+          Coordinates(locationData.latitude!, locationData.longitude!);
     }
-    CalculationParameters params = CalculationMethod.UmmAlQura();
-    params.madhab = Madhab.Shafi;
+    CalculationParameters params = CalculationMethod.ummAlQura();
+    params.madhab = Madhab.shafi;
     prayerTimes = PrayerTimes(
-        AppPublicVar.coordinates!, dateToCalc, params,
-        precision: true);
+        precision: true,
+        date: dateToCalc,
+        coordinates: AppPublicVar.coordinates!,
+        calculationParameters: params);
     current = prayerTimes.currentPrayer(date: DateTime.now());
     saveData(AppPublicVar.coordinates!);
     setState(() {
       isLoading = false;
     });
   }
-
 
   void saveData(Coordinates coordinates) async {
     await LocalData.setString(
@@ -490,22 +490,22 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
                         ),
                       ),
                       15.hSize,
-                      _buildListTile(Prayer.Fajr, 'Primer Salah', AppSvgs.fajr,
+                      _buildListTile(Prayer.fajr, 'Primer Salah', AppSvgs.fajr,
                           prayerTimes.fajr!),
                       15.hSize,
-                      _buildListTile(Prayer.Sunrise, '', AppSvgs.duhr,
+                      _buildListTile(Prayer.sunrise, '', AppSvgs.duhr,
                           prayerTimes.sunrise!),
                       15.hSize,
-                      _buildListTile(Prayer.Dhuhr, 'segundo Salah',
+                      _buildListTile(Prayer.dhuhr, 'segundo Salah',
                           AppSvgs.duhr, prayerTimes.dhuhr!),
                       15.hSize,
-                      _buildListTile(Prayer.Asr, 'tercer Salah', AppSvgs.asr,
+                      _buildListTile(Prayer.asr, 'tercer Salah', AppSvgs.asr,
                           prayerTimes.asr!),
                       15.hSize,
-                      _buildListTile(Prayer.Maghrib, 'cuarto Salah',
+                      _buildListTile(Prayer.maghrib, 'cuarto Salah',
                           AppSvgs.maghrib, prayerTimes.maghrib!),
                       15.hSize,
-                      _buildListTile(Prayer.Isha, 'quinto Salah', AppSvgs.isha,
+                      _buildListTile(Prayer.isha, 'quinto Salah', AppSvgs.isha,
                           prayerTimes.isha!),
                       35.hSize
                     ],
@@ -522,13 +522,11 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
     return Container(
       height: 65,
       decoration: BoxDecoration(
-          color: ((current == title)
-              &&
+          color: ((current == title) &&
                   (DateFormat(DateFormat.YEAR_ABBR_MONTH_DAY)
                           .format(DateTime.now()) ==
                       DateFormat(DateFormat.YEAR_ABBR_MONTH_DAY)
-                          .format(dateToCalc))
-          )
+                          .format(dateToCalc)))
               ? AppColors.kGoldenColor.withOpacity(0.5)
               : Colors.transparent,
           borderRadius: 10.cBorder,
@@ -600,28 +598,31 @@ class _PermissionprayerPageState extends State<PermissionprayerPage> {
                   if (snapshot.data == PermissionStatus.denied) {
                     return Center(
                         child: InkWell(
-                          onTap: () async{
-                            await location.requestPermission();
-                            setState(() {});
-                          },
-                          child: const Text('Denied Click To Enable')));
+                            onTap: () async {
+                              await location.requestPermission();
+                              setState(() {});
+                            },
+                            child: const Text('Denied Click To Enable')));
                   } else {
                     return const PrayerTimesPage();
                   }
                 } else {
                   return Center(
                       child: InkWell(
-                          onTap: () async{
+                          onTap: () async {
                             await location.requestPermission();
                             setState(() {});
                           },
                           child: const Text('Error')));
                 }
-              }
-              else {
+              } else {
                 AppPublicVar.coordinates = Coordinates(
-                    LocalData.getString('prayerTime')!.split(':')[0].toDoubleNum,
-                    LocalData.getString('prayerTime')!.split(':')[1].toDoubleNum);
+                    LocalData.getString('prayerTime')!
+                        .split(':')[0]
+                        .toDoubleNum,
+                    LocalData.getString('prayerTime')!
+                        .split(':')[1]
+                        .toDoubleNum);
                 return const PrayerTimesPage();
               }
             },
@@ -630,12 +631,10 @@ class _PermissionprayerPageState extends State<PermissionprayerPage> {
       ),
       floatingActionButton: FloatingActionButton.small(
         child: const Icon(Icons.refresh),
-        onPressed: ()async{
+        onPressed: () async {
           AppPublicVar.coordinates = null;
-          await LocalData.setString(
-              'prayerTime', '');
-          setState(() {
-          });
+          await LocalData.setString('prayerTime', '');
+          setState(() {});
         },
       ),
     );

@@ -1,16 +1,16 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/handle_states_widget.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/primary_shimmer.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/surah_entity.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/soura_item.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class SurahSelectSliver extends StatelessWidget {
-  final List<Surah> surahs;
+  final RxList<Surah> surahs;
 
-  const SurahSelectSliver({
+  SurahSelectSliver({
     required this.surahs,
     super.key,
   });
