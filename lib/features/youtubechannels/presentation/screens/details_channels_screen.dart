@@ -9,8 +9,8 @@ import 'package:hiwayda_oracion_islamica/features/youtubechannels/data/models/yo
 import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/widgets/card_details_channels_widget.dart';
 
 class DetailsChannelsScreen extends StatelessWidget {
-  YoutubeModel data;
-  DetailsChannelsScreen({super.key, required this.data});
+  final YoutubeModel data;
+  const DetailsChannelsScreen({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
