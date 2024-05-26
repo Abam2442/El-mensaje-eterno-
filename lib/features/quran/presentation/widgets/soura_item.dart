@@ -16,6 +16,7 @@ class SouraItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         Get.find<QuranController>().currentAyat = Get.find<QuranController>().surahs[souraNumber - 1].ayat;
+        Get.find<QuranController>().chapterNumber=souraNumber;
         Get.toNamed(AppPagesRoutes.surahScreen);
       },
       child: Container(
