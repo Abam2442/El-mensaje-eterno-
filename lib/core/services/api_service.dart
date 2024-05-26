@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
@@ -34,6 +33,7 @@ class ApiService extends GetxService {
     try {
       Get.find<Logger>().i('Start post `$subUrl` |ApiServiceImpl| data: $data');
       if (!(await networkInfo.isConnected)) {
+        
         throw OfflineException();
       }
       final response = await client.post(

@@ -49,6 +49,7 @@ class SliverAppBarWidget extends StatelessWidget {
       title: Text(
         title,
         style: Styles.textStyle18Godlen,
+        
       ),
       actions: [
         // isSearch == true
@@ -84,6 +85,18 @@ class SliverAppBarWidget extends StatelessWidget {
                   DropdownMenuItem<int>(
                     value: 3,
                     child: Text('Translator 3'),
+                  ),
+                  DropdownMenuItem<int>(
+                    value: 4,
+                    child: Text('Translator 4'),
+                  ),
+                  DropdownMenuItem<int>(
+                    value: 5,
+                    child: Text('Translator 5'),
+                  ),
+                  DropdownMenuItem<int>(
+                    value: 6,
+                    child: Text('Translator 6'),
                   ),
                 ],
                 selectedItem: controller.selectedTranslator,

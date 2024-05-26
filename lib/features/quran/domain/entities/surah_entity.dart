@@ -1,3 +1,4 @@
+//describes strucure of Surah
 import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/ayah_entity.dart';
 
 class Surah {
