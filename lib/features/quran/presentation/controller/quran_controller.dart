@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/core/helpers/get_state_from_failure.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/ayah_entity.dart';
@@ -5,6 +7,8 @@ import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/surah_en
 import 'package:hiwayda_oracion_islamica/features/quran/domain/usecases/get_surahs_use_case.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+
+import '../../../../core/services/easy_loader_service.dart';
 
 class QuranController extends GetxController {
   // Data
@@ -19,6 +23,8 @@ class QuranController extends GetxController {
   // Primitive
   String validationMessage = '';
   int selectedTranslator = 1;
+
+  int chapterNumber = 1;
 
   @override
   void onInit() async {
@@ -48,7 +54,8 @@ class QuranController extends GetxController {
         update();
       },
     );
-    Get.find<Logger>().w("End `getSurahs` in |QuranController| $getSurahsState");
+    Get.find<Logger>()
+        .w("End `getSurahs` in |QuranController| $getSurahsState");
   }
 
   Future<void> searchAboutAyah(String query) async {
@@ -65,6 +72,60 @@ class QuranController extends GetxController {
     }
     searchAboutAyahState = StateType.success;
     update();
-    Get.find<Logger>().w("End `searchAboutAyah` in |QuranController| $searchAboutAyahState");
+    Get.find<Logger>()
+        .w("End `searchAboutAyah` in |QuranController| $searchAboutAyahState");
+  }
+
+  bool isMultiCopyEnabled = false;
+
+  List<String> multiCopySelectedAyat = [];
+
+  updateMultiCopySelection(String aya) {
+    if (multiCopySelectedAyat.contains(aya)) {
+      multiCopySelectedAyat.remove(aya);
+    } else {
+      multiCopySelectedAyat.add(aya);
+    }
+    update();
+  }
+
+  Future<void> updateMultiCopyState() async {
+    //selecting multicopy ayat
+    if (isMultiCopyEnabled == true) {
+      var data = ClipboardData(text: multiCopySelectedAyat.join('\n'));
+      await Clipboard.setData(data);
+      EasyLoaderService.showToast(message: "Copied");
+      multiCopySelectedAyat.clear();
+      isMultiCopyEnabled = false;
+    } else {
+      isMultiCopyEnabled = true;
+    }
+    update();
+  }
+
+  bool isPlaying = false;
+  int currentPlayingIndex = 0;
+
+  void updatePlayState(bool state) {
+    isPlaying = state;
+    update();
+  }
+
+  void updateCurrentPlayingState(int current) {
+    currentPlayingIndex = current;
+    scrollController.animateTo((currentPlayingIndex * 150),
+        duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
+    update();
+  }
+
+  ScrollController scrollController = ScrollController();
+
+  bool isAyaPlaying(int index) {
+    return currentPlayingIndex + 1 == index && isPlaying;
+  }
+
+  void updateSelectedTranslator(int selection){
+    selectedTranslator=selection;
+    update();
   }
 }

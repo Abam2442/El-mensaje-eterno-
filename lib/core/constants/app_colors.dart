@@ -35,7 +35,9 @@ class AppColors {
   static const Color yLightGreyColor = Color(0xffe9ede0);
   static const Color kPrimaryColor = Color(0xff2A2C41);
   static const Color kGreenColor = Color(0xff8DA05E);
+  static const Color kLightGreenColor = Color(0xff697A40);
   static const Color kGoldenColor = Color(0xffFCC050);
   static const Color kBlackColor = Color(0xff222222);
   static const Color kWhiteColor = Color(0xffE9EDDF);
+  static const Color kBlueColor = Color(0xff2A2C41);
 }
