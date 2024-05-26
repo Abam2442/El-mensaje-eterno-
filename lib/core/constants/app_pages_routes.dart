@@ -94,7 +94,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/isla
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/video/islam_land_books_main_audios_screen%20copy.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/audios/islam_message_audio_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/books/islam_message_main_books_screen.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/islam_message_main_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/articals/islam_message_artical_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/videos/islam_message_quran__videos_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/videos/islam_message_videos_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_port_screen.dart';
@@ -462,7 +462,7 @@ abstract class AppPagesRoutes {
     ),
     GetPage(
       name: islamMessage,
-      page: () => const IslamMessageMainScreen(),
+      page: () => const IslamMessageArticalScreen(),
       binding: IslamMessageBindings(),
       transition: Transition.cupertino,
     ),

@@ -14,8 +14,8 @@ class MediaFilesListView extends StatelessWidget {
     required this.data,
     this.fileType,
     this.mediaLinkType = MediaLinkType.viewAndDownload,
-    this.usePaginator = true,
-  });
+    bool? usePaginator,
+  }) : _usePaginator = usePaginator ?? data.length >= 40;
 
   /// The title to be displayed above the list view.
   final String title;
@@ -36,7 +36,7 @@ class MediaFilesListView extends StatelessWidget {
   final MediaLinkType mediaLinkType;
 
   /// Controls whether to use number pagination or not. Defaults is `true`.
-  final bool usePaginator;
+  final bool _usePaginator;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class MediaFilesListView extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          if (usePaginator)
+          if (_usePaginator)
             _PaginatorListBuilder(
               data: data,
               fileType: fileType,

@@ -71,17 +71,19 @@ class _CustomPaginatorState<T> extends State<CustomPaginator<T>> {
   int pageIndex = 0;
   @override
   Widget build(BuildContext context) {
+    print((widget.data.length >= 20));
     if (pageIndex == 0 && _currentPageData.isEmpty && widget.data.isNotEmpty) {
       _currentPageData = (widget.data).take(20).toList();
     }
     return Column(
       children: [
-        NumberPaginator(
-          numberPages: widget.data.length ~/ 20,
-          onPageChange: _onPageChanged,
-          showPrevButton: false,
-          showNextButton: false,
-        ),
+        if (widget.data.length >= 20)
+          NumberPaginator(
+            numberPages: widget.data.length ~/ 20,
+            onPageChange: _onPageChanged,
+            showPrevButton: false,
+            showNextButton: false,
+          ),
         Expanded(
           child: ListView.builder(
               padding: const EdgeInsets.all(5),
