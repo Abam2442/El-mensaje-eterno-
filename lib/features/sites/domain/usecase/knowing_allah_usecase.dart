@@ -11,7 +11,7 @@ class KnowingAllahUseCase {
   KnowingAllahUseCase(
     this.knowingAllahRepository,
   );
-  Future<Either<Failure, KnowingAllahModel>> call() async {
+  Future<Either<Failure, List<KnowingAllahSubCategoryModel>>> call() async {
     Get.find<Logger>().i("Call KnowingAllahUseCase");
     return knowingAllahRepository.getArtical();
   }

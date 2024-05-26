@@ -104,6 +104,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/isla
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_web_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/jesus_muslim_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/jesus_quran_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Artical/artical_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Audio/audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Book/book_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Video/video_screen.dart';
@@ -138,7 +139,6 @@ import '../../features/sites/bindings/the_key_to_islam_2_binding.dart';
 import '../../features/sites/bindings/the_key_to_islam_binding.dart';
 import '../../features/sites/presentation/screen/giude_to_islam/guid_to_islam_main.dart';
 import '../../features/sites/presentation/screen/islam_faith_screen.dart';
-import '../../features/sites/presentation/screen/knowing_allah/knowing_allah_screen.dart';
 import '../../features/sites/presentation/screen/saber_el_islam/saber_el_islam_screen.dart';
 import '../../features/sites/presentation/screen/the_key_to_islam_2_screen.dart';
 
@@ -371,7 +371,7 @@ abstract class AppPagesRoutes {
     ),
     GetPage(
       name: knowingAllah,
-      page: () => const KnowingAllahScreen(),
+      page: () => const KnowingAllahArticalScreen(),
       binding: KnowingAllahBindings(),
       transition: Transition.cupertino,
     ),

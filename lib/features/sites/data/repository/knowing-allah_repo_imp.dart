@@ -16,13 +16,14 @@ class KnowingAllahRepositoryImp extends KnowingAllahRepository {
     required this.knowingAllahLocalDataSource,
   });
   @override
-  Future<Either<Failure, KnowingAllahModel>> getArtical() async {
+  Future<Either<Failure, List<KnowingAllahSubCategoryModel>>>
+      getArtical() async {
     await knowingAllahLocalDataSource.getContent();
     try {
       Get.find<Logger>().i("Start `getArtical` in |KnowingAllahRepositoryImp|");
       var artical = await knowingAllahLocalDataSource.getContent();
       Get.find<Logger>().w(
-          "End `getArtical` in |KnowingAllahRepositoryImp| ${artical.articles.length}");
+          "End `getArtical` in |KnowingAllahRepositoryImp| ${artical.length}");
       return Right(artical);
     } catch (e) {
       Get.find<Logger>().e(

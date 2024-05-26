@@ -21,17 +21,16 @@ class KnowingAllahArticalScreen extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                 child: ListView.builder(
                     padding: const EdgeInsets.all(5),
-                    itemCount: controller.knowingAllah!.articles.length,
+                    itemCount: controller.articals.length,
                     itemBuilder: (context, index) {
                       return InkwellCustom(
                         catigory: false,
-                        dataText: controller.knowingAllah!.articles[index].name,
+                        dataText: controller.articals[index].name,
                         onTap: () {
                           Get.to(KnowingAllahArticalContainScreen(
-                            dataText: controller
-                                .knowingAllah!.articles[index].subcategories,
-                            itemCount: controller.knowingAllah!.articles[index]
-                                .subcategories.length,
+                            dataText: controller.articals[index].subcategories,
+                            itemCount:
+                                controller.articals[index].subcategories.length,
                           ));
                         },
                       );
