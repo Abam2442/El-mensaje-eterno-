@@ -3,10 +3,10 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_pages_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/player_widget.dart';
-import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/translator_dialog.dart';
+import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/translator_diallog.dart';
 
-import '../../controller/telawa_controller.dart';
 import '../controller/quran_controller.dart';
+import '../controller/telawa_controller.dart';
 
 class TelawaWidget extends StatelessWidget {
   final int chapterNumber;
