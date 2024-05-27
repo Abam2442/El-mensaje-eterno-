@@ -17,12 +17,12 @@ import '../../../../data/local/local_data.dart';
 class HomeController extends GetxController {
   JHijri hijriNow = JHijri.now();
   DateTime now = DateTime.now().toLocal();
-  RxList<HomeCardData> newMuslimHomeCardsDataNewList = <HomeCardData> [].obs;
+  RxList<HomeCardData> newMuslimHomeCardsDataNewList = <HomeCardData>[].obs;
 
-  void filterNewMuslimHomeCardsData(String searchText){
+  void filterNewMuslimHomeCardsData(String searchText) {
     newMuslimHomeCardsDataNewList.clear();
     for (var element in newMuslimHomeCardsData) {
-      if(searchText.isEmpty) {
+      if (searchText.isEmpty) {
         newMuslimHomeCardsDataNewList.add(element);
       } else {
         if (element.description.contains(searchText) ||
@@ -32,10 +32,11 @@ class HomeController extends GetxController {
       }
     }
   }
+
   //Searching
   var isSearching = false.obs;
   var searchTextController = TextEditingController();
-  var searchFocusNode  = FocusNode();
+  var searchFocusNode = FocusNode();
   List<HomeCardData> homeCardsData = [
     HomeCardData(
       title: "El Corán Sagrado",
@@ -278,8 +279,8 @@ class HomeController extends GetxController {
   }
 
   Future<void> calcTimes() async {
-    params = CalculationMethod.UmmAlQura();
-    params.madhab = Madhab.Shafi;
+    params = CalculationMethod.ummAlQura();
+    params.madhab = Madhab.shafi;
     prayerTimes = PrayerTimes(AppPublicVar.coordinates!, dateToCalc, params,
         precision: true);
     current = prayerTimes.currentPrayer(date: DateTime.now());

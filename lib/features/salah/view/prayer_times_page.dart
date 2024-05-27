@@ -375,17 +375,16 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
     super.initState();
   }
 
-
   void calcPrayerTimes() async {
-    if(AppPublicVar.coordinates == null){
+    if (AppPublicVar.coordinates == null) {
       Location location = Location();
       locationData = await location.getLocation();
-      AppPublicVar.coordinates = Coordinates(locationData.latitude,locationData.longitude);
+      AppPublicVar.coordinates =
+          Coordinates(locationData.latitude, locationData.longitude);
     }
-    CalculationParameters params = CalculationMethod.UmmAlQura();
-    params.madhab = Madhab.Shafi;
-    prayerTimes = PrayerTimes(
-        AppPublicVar.coordinates!, dateToCalc, params,
+    CalculationParameters params = CalculationMethod.ummAlQura();
+    params.madhab = Madhab.shafi;
+    prayerTimes = PrayerTimes(AppPublicVar.coordinates!, dateToCalc, params,
         precision: true);
     current = prayerTimes.currentPrayer(date: DateTime.now());
     saveData(AppPublicVar.coordinates!);
@@ -393,7 +392,6 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
       isLoading = false;
     });
   }
-
 
   void saveData(Coordinates coordinates) async {
     await LocalData.setString(
@@ -490,22 +488,22 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
                         ),
                       ),
                       15.hSize,
-                      _buildListTile(Prayer.Fajr, 'Primer Salah', AppSvgs.fajr,
+                      _buildListTile(Prayer.fajr, 'Primer Salah', AppSvgs.fajr,
                           prayerTimes.fajr!),
                       15.hSize,
-                      _buildListTile(Prayer.Sunrise, '', AppSvgs.duhr,
+                      _buildListTile(Prayer.sunrise, '', AppSvgs.duhr,
                           prayerTimes.sunrise!),
                       15.hSize,
-                      _buildListTile(Prayer.Dhuhr, 'segundo Salah',
+                      _buildListTile(Prayer.dhuhr, 'segundo Salah',
                           AppSvgs.duhr, prayerTimes.dhuhr!),
                       15.hSize,
-                      _buildListTile(Prayer.Asr, 'tercer Salah', AppSvgs.asr,
+                      _buildListTile(Prayer.asr, 'tercer Salah', AppSvgs.asr,
                           prayerTimes.asr!),
                       15.hSize,
-                      _buildListTile(Prayer.Maghrib, 'cuarto Salah',
+                      _buildListTile(Prayer.maghrib, 'cuarto Salah',
                           AppSvgs.maghrib, prayerTimes.maghrib!),
                       15.hSize,
-                      _buildListTile(Prayer.Isha, 'quinto Salah', AppSvgs.isha,
+                      _buildListTile(Prayer.isha, 'quinto Salah', AppSvgs.isha,
                           prayerTimes.isha!),
                       35.hSize
                     ],
@@ -522,13 +520,11 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
     return Container(
       height: 65,
       decoration: BoxDecoration(
-          color: ((current == title)
-              &&
+          color: ((current == title) &&
                   (DateFormat(DateFormat.YEAR_ABBR_MONTH_DAY)
                           .format(DateTime.now()) ==
                       DateFormat(DateFormat.YEAR_ABBR_MONTH_DAY)
-                          .format(dateToCalc))
-          )
+                          .format(dateToCalc)))
               ? AppColors.kGoldenColor.withOpacity(0.5)
               : Colors.transparent,
           borderRadius: 10.cBorder,
@@ -600,28 +596,31 @@ class _PermissionprayerPageState extends State<PermissionprayerPage> {
                   if (snapshot.data == PermissionStatus.denied) {
                     return Center(
                         child: InkWell(
-                          onTap: () async{
-                            await location.requestPermission();
-                            setState(() {});
-                          },
-                          child: const Text('Denied Click To Enable')));
+                            onTap: () async {
+                              await location.requestPermission();
+                              setState(() {});
+                            },
+                            child: const Text('Denied Click To Enable')));
                   } else {
                     return const PrayerTimesPage();
                   }
                 } else {
                   return Center(
                       child: InkWell(
-                          onTap: () async{
+                          onTap: () async {
                             await location.requestPermission();
                             setState(() {});
                           },
                           child: const Text('Error')));
                 }
-              }
-              else {
+              } else {
                 AppPublicVar.coordinates = Coordinates(
-                    LocalData.getString('prayerTime')!.split(':')[0].toDoubleNum,
-                    LocalData.getString('prayerTime')!.split(':')[1].toDoubleNum);
+                    LocalData.getString('prayerTime')!
+                        .split(':')[0]
+                        .toDoubleNum,
+                    LocalData.getString('prayerTime')!
+                        .split(':')[1]
+                        .toDoubleNum);
                 return const PrayerTimesPage();
               }
             },
@@ -630,12 +629,10 @@ class _PermissionprayerPageState extends State<PermissionprayerPage> {
       ),
       floatingActionButton: FloatingActionButton.small(
         child: const Icon(Icons.refresh),
-        onPressed: ()async{
+        onPressed: () async {
           AppPublicVar.coordinates = null;
-          await LocalData.setString(
-              'prayerTime', '');
-          setState(() {
-          });
+          await LocalData.setString('prayerTime', '');
+          setState(() {});
         },
       ),
     );

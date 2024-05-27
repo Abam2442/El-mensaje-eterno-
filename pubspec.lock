@@ -5,10 +5,10 @@ packages:
     dependency: "direct main"
     description:
       name: adhan_dart
-      sha256: "3510e87a81acd816dfe11df458d236cb33f64a9132d2f5becc57ef6cbfefb565"
+      sha256: "8835a7a125a34a03a7134bfe85e1a8b590cb9e1465ce09ce629942f457afbb2b"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.2"
+    version: "1.1.0"
   archive:
     dependency: transitive
     description:
