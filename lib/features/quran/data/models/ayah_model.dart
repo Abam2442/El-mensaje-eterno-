@@ -6,14 +6,20 @@ class AyahModel extends Ayah {
     required super.julioCortes,
     required super.raulGonzalezBornez,
     required super.muhammadIsaGarcia,
+    required super.elMokhtasarTafsir,
+    required super.noorinternationallatin,
+    required super.noorinternationaleu,
   });
 
   factory AyahModel.fromJson(Map<String, dynamic> json) {
     return AyahModel(
       arabic: json['arabic'],
-      julioCortes: json['julio_cortes'],
-      raulGonzalezBornez: json['raul_gonzalez_bornez'],
-      muhammadIsaGarcia: json['muhammad_isa_garcia'],
+      julioCortes: json['Julio Cortes'],  
+      raulGonzalezBornez: json['Raul Gonzalez Bornez'],
+      muhammadIsaGarcia: json['Muhammad Isa Garcia'],
+      elMokhtasarTafsir: json['El-Mokhtasar Tafsir'],
+      noorinternationallatin: json['Noor international (Latin)'],
+      noorinternationaleu: json['Noor international (EU)'],
     );
   }
 }

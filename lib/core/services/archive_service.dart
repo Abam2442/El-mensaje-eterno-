@@ -32,7 +32,7 @@ class ArchiveService extends GetxService {
         List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 
         Directory appDir = await getApplicationDocumentsDirectory();
-        final zipFile = await File('${appDir.path}/json.zip').writeAsBytes(bytes);
+        final zipFile = await File('${appDir.path}/Json.zip').writeAsBytes(bytes);
 
         await ZipFile.extractToDirectory(
             zipFile: zipFile,

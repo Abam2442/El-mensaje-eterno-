@@ -35,6 +35,27 @@ class TranslatorDialog extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
+              ListTile(
+                title: const Text('ElMokhtasar'),
+                onTap: () {
+                  controller.updateSelectedTranslator(4);
+                  Navigator.of(context).pop();
+                },
+              ),
+              ListTile(
+                title: const Text('Noon Latin'),
+                onTap: () {
+                  controller.updateSelectedTranslator(5);
+                  Navigator.of(context).pop();
+                },
+              ),
+              ListTile(
+                title: const Text('Noon EU'),
+                onTap: () {
+                  controller.updateSelectedTranslator(6);
+                  Navigator.of(context).pop();
+                },
+              ),
             ],
           );
         }
