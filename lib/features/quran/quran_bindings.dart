@@ -8,6 +8,8 @@ import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/telawa_controller.dart';
 
 
+import 'controller/telawa_controller.dart';
+
 class QuranBindings extends Bindings {
   @override
   dependencies() async {
