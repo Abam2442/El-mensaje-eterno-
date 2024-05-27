@@ -112,9 +112,9 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/lear
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/love_in_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/massage_of_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/mohammad_messanger_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Artical/artical_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Audio/rasul_uallah_audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Video/video_screen.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/rasul_uallah_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/romance_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminolgy_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/the_key_to_islam_screen.dart';
@@ -528,7 +528,7 @@ abstract class AppPagesRoutes {
     ),
     GetPage(
       name: rasulullah,
-      page: () => const RasuluallahScreen(),
+      page: () => const RasuluallahArticalScreen(),
       binding: RasuluallhBindings(),
       transition: Transition.cupertino,
     ),

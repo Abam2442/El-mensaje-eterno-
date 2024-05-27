@@ -1,29 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Video/video_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/fixed_entities.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/usecase/rasuluallah_usecase.dart';
 
 import '../../../../../core/constants/app_enums.dart';
 import '../../../../../core/helpers/get_state_from_failure.dart';
-import '../../../domain/entities/islam_religion_entities.dart';
-import '../../../domain/usecase/islam_religion_usecase.dart';
-import '../../screen/rasul_uallah/Artical/artical_screen.dart';
-import '../../screen/rasul_uallah/Audio/audio_screen.dart';
-import '../../screen/rasul_uallah/Book/book_screen.dart';
 
 class RasuluallhControllerImp extends GetxController {
-  List<IconData> icons = [
-    Icons.headphones_outlined,
-    Icons.tv_outlined,
-    Icons.book_outlined,
-    Icons.article_rounded,
-  ];
-  List<Widget> page = [
-    const AudioScreen(),
-    const RasulutallahVideosScreen(),
-    const BookScreen(),
-    const ArticalScreen(),
-  ];
-  List<IslamReligionEntities> articals = [];
+  List<CategoryFixedEntity> articals = [];
   // States
   StateType getArticalsState = StateType.init;
 
@@ -31,8 +14,8 @@ class RasuluallhControllerImp extends GetxController {
   String validationMessage = '';
 
   Future<void> getArtical() async {
-    IslamReligionUseCase rasulullahUseCase = IslamReligionUseCase(Get.find());
-    var result = await rasulullahUseCase();
+    RasuluallahUseCase rasulullahUseCase = RasuluallahUseCase(Get.find());
+    var result = await rasulullahUseCase.call();
     result.fold(
       (l) async {
         getArticalsState = getStateFromFailure(l);
