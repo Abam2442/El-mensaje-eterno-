@@ -8,7 +8,7 @@ import '../../../../core/services/shared_preferences_service.dart';
 import '../../domain/entities/fixed_entities.dart';
 
 abstract class GuideToIslamLocalDataSource {
-  Future<List<List<FixedEntities>>> getContect();
+  Future<List<FixedEntities>> getContect();
   Future<List<MediaEntity>> getBooks();
   Future<List<MediaEntity>> getAudios();
   Future<List<MediaEntity>> getVideos();
@@ -24,49 +24,17 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
   });
 
   @override
-  Future<List<List<FixedEntities>>> getContect() async {
+  Future<List<FixedEntities>> getContect() async {
     try {
-      print('## false case');
       Get.find<Logger>()
           .i("Start `getContect` in |GuideToIslamLocalDataSourceImpl|");
       String? guideToIslam =
           await archiveService.readFile(name: AppKeys.guideToIslam);
-      List<FixedEntities> videos = [];
-      List<FixedEntities> audios = [];
-      List<FixedEntities> books = [];
+
       List<FixedEntities> articals = [];
       if (guideToIslam != null) {
         var jsonData = json.decode(guideToIslam) as Map;
         var jsonguide = jsonData['guide-to-islam'][0] as Map;
-        // print(jsonData['guide-to-islam'][0]['Articles']);
-        jsonguide['videos'].forEach((key, value) {
-          videos.add(FixedEntities(
-            name: key,
-            content: value,
-          ));
-        });
-
-        jsonguide['auidos'].forEach((key, value) {
-          audios.add(FixedEntities(
-            name: key,
-            content: value,
-          ));
-        });
-
-        jsonguide['books'].forEach((key, value) {
-          books.add(FixedEntities(
-            name: key,
-            content: value,
-          ));
-        });
-
-        // jsonData['islam-house']['Fatwa'].forEach((key, value) {
-        //   fatwas.add(FixedEntities(
-        //     name: key,
-        //     content: value,
-        //   ));
-        // });
-
         jsonguide['Articles'].forEach((key, value) {
           articals.add(FixedEntities(
             name: key,
@@ -76,7 +44,7 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
       }
       Get.find<Logger>()
           .w("End `getContect` in |GuideToIslamLocalDataSourceImpl|");
-      return Future.value([videos, audios, books, articals]);
+      return Future.value(articals);
     } catch (e) {
       Get.find<Logger>().e(
         "End `getContect` in |GuideToIslamLocalDataSourceImpl| Exception: ${e.runtimeType}",

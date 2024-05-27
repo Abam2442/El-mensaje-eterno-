@@ -76,6 +76,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/begi
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/bidaa_in_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/explore_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/first_steps_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/articals/guid_to_islam_artical.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/audios/audios.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/books/books.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/videos/videos.dart';
@@ -137,7 +138,6 @@ import '../../features/sites/bindings/islam_qa_bindings.dart';
 import '../../features/sites/bindings/saber_el_islam_binding.dart';
 import '../../features/sites/bindings/the_key_to_islam_2_binding.dart';
 import '../../features/sites/bindings/the_key_to_islam_binding.dart';
-import '../../features/sites/presentation/screen/giude_to_islam/guid_to_islam_main.dart';
 import '../../features/sites/presentation/screen/islam_faith_screen.dart';
 import '../../features/sites/presentation/screen/saber_el_islam/saber_el_islam_screen.dart';
 import '../../features/sites/presentation/screen/the_key_to_islam_2_screen.dart';
@@ -329,7 +329,7 @@ abstract class AppPagesRoutes {
     ),
     GetPage(
       name: guideToIslam,
-      page: () => const GuideToIslamMainScreen(),
+      page: () => const GuideToIslamArticalScreen(),
       binding: GuideToIslamBindings(),
       transition: Transition.cupertino,
     ),

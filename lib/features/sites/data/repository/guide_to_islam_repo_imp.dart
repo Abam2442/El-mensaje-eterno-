@@ -15,7 +15,7 @@ class GuideToIslamRepositoryImp extends GuideToIslamRepository {
   });
 
   @override
-  Future<Either<Failure, List<List<FixedEntities>>>> getContent() async {
+  Future<Either<Failure, List<FixedEntities>>> getContent() async {
     try {
       Get.find<Logger>().i("Start `getContent` in |GuideToIslamRepositoryImp|");
       var content = await islamLocalDataSource.getContect();

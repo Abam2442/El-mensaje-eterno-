@@ -12,7 +12,7 @@ class GuideToIslamUseCase {
     this.islamRepository,
   );
 
-  Future<Either<Failure, List<List<FixedEntities>>>> callContent() async {
+  Future<Either<Failure, List<FixedEntities>>> callContent() async {
     Get.find<Logger>().i("Call GuideToIslamUseCase");
     return islamRepository.getContent();
   }
