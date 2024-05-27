@@ -12,16 +12,16 @@ class Item_Card extends StatelessWidget {
   final String subtitle;
   final String copyRights;
   final String link;
-
+  final IconData? icon;
   final bool hasCopyRights;
-  const Item_Card({
-    super.key,
-    required this.titleSite,
-    this.subtitle = '',
-    this.copyRights = '',
-    this.link = '',
-    this.hasCopyRights = false,
-  });
+  const Item_Card(
+      {super.key,
+      required this.titleSite,
+      this.subtitle = '',
+      this.copyRights = '',
+      this.link = '',
+      this.hasCopyRights = false,
+      this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +69,8 @@ class Item_Card extends StatelessWidget {
                     Container(
                       width: 10,
                     ),
-                    const Icon(
-                      Icons.arrow_forward_ios,
+                    Icon(
+                      icon ?? Icons.arrow_forward_ios,
                       color: AppColors.white,
                     )
                   ],

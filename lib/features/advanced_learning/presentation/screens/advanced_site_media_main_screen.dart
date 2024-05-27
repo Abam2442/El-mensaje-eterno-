@@ -45,16 +45,24 @@ class AdvancedSiteMediaMainScreen extends StatelessWidget {
                             final selectedPage = page['targetScreen'][index];
                             return InkWell(
                               onTap: () {
-                                Get.toNamed(
-                                  selectedPage['targetScreen'],
-                                );
+                                if ((selectedPage).containsKey('fun')) {
+                                  selectedPage['fun']();
+                                } else {
+                                  Get.toNamed(
+                                    selectedPage['targetScreen'],
+                                  );
+                                }
                               },
                               child: Item_Card(
-                                hasCopyRights: true,
+                                hasCopyRights:
+                                    selectedPage.containsKey('copyRight'),
                                 titleSite: selectedPage['title'],
                                 subtitle: selectedPage['description'],
                                 copyRights: selectedPage['copyRight'] ?? '',
                                 link: selectedPage['link'] ?? '',
+                                icon: selectedPage.containsKey('icon')
+                                    ? selectedPage['icon']
+                                    : null,
                               ),
                             );
                           },

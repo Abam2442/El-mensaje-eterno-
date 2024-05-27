@@ -87,10 +87,11 @@ class AdvancedSites extends StatelessWidget {
                                 }
                               },
                               child: Item_Card(
-                                hasCopyRights: controller.selectedPart == 0 ||
-                                        controller.selectedPart == 5
+                                hasCopyRights: controller.selectedPart == 0
                                     ? false
-                                    : true,
+                                    : (controller.page[controller.selectedPart]
+                                            [index])
+                                        .containsKey("copyRight"),
                                 titleSite:
                                     controller.page[controller.selectedPart]
                                         [index]['title'],

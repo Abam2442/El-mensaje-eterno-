@@ -23,7 +23,7 @@ dependencies:
   multi_select_flutter: ^4.1.3
   dropdown_button2: ^2.3.9
   shimmer: ^3.0.0
-  intl: ^0.19.0
+  intl:
   shared_preferences: ^2.2.0
   dio: ^5.3.2
   provider: ^6.0.5
@@ -88,6 +88,7 @@ flutter:
     - assets/svg/icons/
     - assets/svg/images/
     - assets/Json.zip
+    - assets/books/
 
   fonts:
     - family: Poppins

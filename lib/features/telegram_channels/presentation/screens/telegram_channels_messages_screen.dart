@@ -14,8 +14,7 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class TelegramChannelsMessagesScreen
-    extends GetView<TelegramChannelsController> {
+class TelegramChannelsMessagesScreen extends StatefulWidget {
   final TelegramChannel channelMessages;
   final String channelName;
 
@@ -26,17 +25,61 @@ class TelegramChannelsMessagesScreen
   });
 
   @override
+  State<TelegramChannelsMessagesScreen> createState() =>
+      _TelegramChannelsMessagesScreenState();
+}
+
+class _TelegramChannelsMessagesScreenState
+    extends State<TelegramChannelsMessagesScreen> {
+  final ScrollController _scrollController = ScrollController();
+  bool hideFloatingActionBotton = false;
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_onScroll);
+    super.dispose();
+  }
+
+  void _onScroll() {
+    // final currentPosition = _scrollController.offset;
+    if (_scrollController.position.atEdge) {
+      setState(() {
+        hideFloatingActionBotton = true;
+      });
+    } else if (hideFloatingActionBotton) {
+      setState(() {
+        hideFloatingActionBotton = false;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GetBuilder(
       builder: (TelegramChannelsController controller) => PopScope(
         onPopInvoked: (_) => _pop(controller, _),
         child: Scaffold(
+          floatingActionButton: !hideFloatingActionBotton
+              ? FloatingActionButton(
+                  onPressed: () {
+                    _scrollController.jumpTo(
+                      _scrollController.position.maxScrollExtent,
+                    );
+                  },
+                  child: const Icon(Icons.keyboard_arrow_down),
+                )
+              : null,
           backgroundColor: AppColors.kWhiteColor,
           appBar: AppBar(
             title: Row(
               children: [
                 Text(
-                  channelName,
+                  widget.channelName,
                   style: Styles.textStyle18Godlen,
                 ),
               ],
@@ -69,8 +112,9 @@ class TelegramChannelsMessagesScreen
                         showSearch(
                           context: context,
                           delegate: TelegramMessagesSearcDelegate(
-                              channelMessages:
-                                  channelMessages.messages.values.toList()),
+                              channelMessages: widget
+                                  .channelMessages.messages.values
+                                  .toList()),
                         );
                       },
                       icon: const Icon(Icons.search)),
@@ -81,7 +125,7 @@ class TelegramChannelsMessagesScreen
                           List<String> data = [];
                           for (int index
                               in controller.selectedMessagesIndexes) {
-                            data.add(channelMessages.messages.values
+                            data.add(widget.channelMessages.messages.values
                                 .toList()
                                 .reversed
                                 .toList()[index]);
@@ -109,11 +153,12 @@ class TelegramChannelsMessagesScreen
             ],
           ),
           body: ListView.builder(
+            controller: _scrollController,
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-            reverse: true,
-            itemCount: channelMessages.messages.length,
+            // reverse: true,
+            itemCount: widget.channelMessages.messages.length,
             itemBuilder: (BuildContext context, int index) {
-              final message = channelMessages.messages.values
+              final message = widget.channelMessages.messages.values
                   .toList()
                   .reversed
                   .toList()[index];
