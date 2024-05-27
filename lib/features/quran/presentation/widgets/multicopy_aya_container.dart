@@ -12,7 +12,8 @@ class MultiCopyAyaContainer extends StatelessWidget {
   final Ayah ayah;
   final int number;
 
-  const MultiCopyAyaContainer({required this.number, required this.ayah, super.key});
+  const MultiCopyAyaContainer(
+      {required this.number, required this.ayah, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,13 @@ class MultiCopyAyaContainer extends StatelessWidget {
                 ? ayah.julioCortes
                 : controller.selectedTranslator == 2
                     ? ayah.raulGonzalezBornez
-                    : ayah.muhammadIsaGarcia,
+                    : controller.selectedTranslator == 3
+                        ? ayah.muhammadIsaGarcia
+                        : controller.selectedTranslator == 4
+                            ? ayah.elMokhtasarTafsir
+                            : controller.selectedTranslator == 5
+                                ? ayah.noorinternationallatin
+                                : ayah.noorinternationaleu,
             ayaNumber: number,
           ),
         ),
