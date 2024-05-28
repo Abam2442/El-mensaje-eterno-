@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
@@ -125,7 +127,9 @@ class QuranController extends GetxController {
   }
 
   void updateSelectedTranslator(int selection){
+
     selectedTranslator=selection;
+    print('selected reanslator ${selectedTranslator.toString()}');
     update();
   }
 }

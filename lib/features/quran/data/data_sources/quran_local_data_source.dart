@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
 import 'package:hiwayda_oracion_islamica/core/services/archive_service.dart';
@@ -25,6 +26,8 @@ class QuranLocalDataSourceImpl extends QuranLocalDataSource {
     try {
       Get.find<Logger>().i("Start `getSurahs` in |QuranLocalDataSourceImpl|");
       String? quranJson = await archiveService.readFile(name: AppKeys.quran);
+      log('quran json file is  ${AppKeys.quran}');
+      // log('quran json file is  $quranJson');
       List<SurahModel> surahs = [];
       if (quranJson != null) {
         var jsonData = json.decode(quranJson);

@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/features/quran/controller/telawa_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 
 import '../../../../core/constants/app_colors.dart';
+import '../controller/telawa_controller.dart';
 
 class PlayerWidget extends StatefulWidget {
   final int chapterNumber;

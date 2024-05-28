@@ -6,7 +6,8 @@ import 'package:hiwayda_oracion_islamica/features/quran/domain/repository/quran_
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 import 'package:get/get.dart';
 
-import 'controller/telawa_controller.dart';
+import 'presentation/controller/telawa_controller.dart';
+
 
 class QuranBindings extends Bindings {
   @override

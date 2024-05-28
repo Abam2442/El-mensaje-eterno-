@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert'; // For using json.decode
 
-import '../data/models/reader_model.dart';
+import '../../data/models/reader_model.dart';
 
 class TelawaController extends GetxController {
   List<ReaderModel> readers = [

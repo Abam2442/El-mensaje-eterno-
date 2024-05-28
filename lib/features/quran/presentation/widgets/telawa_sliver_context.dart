@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 
-import '../../controller/telawa_controller.dart';
+import '../controller/telawa_controller.dart';
 
 class QariSliverAdapter extends StatelessWidget {
   const QariSliverAdapter({
