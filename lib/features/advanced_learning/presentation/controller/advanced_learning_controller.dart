@@ -482,13 +482,7 @@ class Advanced_LearningController extends GetxController {
           {
             "title": "Quiero abrazar el islam pero",
             "description": "",
-            "fun": () async {
-              try {
-                var path =
-                    await rootBundle.loadString("assets/books/book1.docx");
-                OpenFile.open(File(path).path);
-              } catch (e) {}
-            },
+            "fun": true,
             "icon": Icons.menu_book,
             // "targetScreen": AppPagesRoutes.guideToIslamBooks,
           },
