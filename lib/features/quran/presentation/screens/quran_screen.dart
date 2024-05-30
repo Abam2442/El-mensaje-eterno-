@@ -18,8 +18,6 @@ class QuranScreen extends GetView<QuranController> {
             hintText: 'Search...',
           ),
           onChanged: (value) {
-            // Handle search here
-            // You can use the controller to filter the surahs based on the search query
             controller.search(value);
           },
         ),
@@ -52,9 +50,58 @@ class SearchResultWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(searchResult['sora']),
-      subtitle: Text(searchResult['ayat'].arabic),
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+      elevation: 5,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              searchResult['sora'],
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.blueAccent,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              searchResult['ayat'].arabic,
+              style: TextStyle(
+                fontSize: 18,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              searchResult['ayat'].julioCortes,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.deepPurple,
+              ),
+            ),
+            SizedBox(height: 5),
+            Text(
+              searchResult['ayat'].raulGonzalezBornez,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.green,
+              ),
+            ),
+            SizedBox(height: 5),
+            Text(
+              searchResult['ayat'].muhammadIsaGarcia,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.teal,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -88,7 +88,7 @@ class QuranController extends GetxController {
     // }
     for (var surah in surahs) {
       for (var ayat in surah.ayat) {
-        if (ayat.arabic.contains(query)) {
+        if (ayat.arabic_search.contains(query)) {
           searchResults.add({
             'sora': surah.name,
             'ayat': ayat,
