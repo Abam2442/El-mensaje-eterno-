@@ -9,8 +9,8 @@ import '../../../constants/app_colors.dart';
 import '../../../styles/text_styles.dart';
 import 'direction_aware.dart';
 
-class SliverAppBarWidget extends StatelessWidget {
-  final bool? isSearch;
+class SliverAppBarWidget extends StatefulWidget {
+  final bool isSearch;
   final Color backgroundColor;
   final Color iconColor;
   final bool isPinned;
@@ -19,7 +19,7 @@ class SliverAppBarWidget extends StatelessWidget {
 
   const SliverAppBarWidget({
     super.key,
-    this.isSearch,
+    this.isSearch = false,
     this.backgroundColor = AppColors.kPrimaryColor,
     this.iconColor = AppColors.kWhiteColor,
     this.title = '',
@@ -28,10 +28,21 @@ class SliverAppBarWidget extends StatelessWidget {
   });
 
   @override
+  State<SliverAppBarWidget> createState() => _SliverAppBarWidgetState();
+}
+
+class _SliverAppBarWidgetState extends State<SliverAppBarWidget> {
+  final TextEditingController _searchController = TextEditingController();
+  final ValueNotifier<bool> _isSearching = ValueNotifier<bool>(false);
+
+  @override
   Widget build(BuildContext context) {
+    var controller = Get.find<QuranController>(); // Get the controller instance
+    String appBarTitle = widget.title;
+
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: backgroundColor,
+      backgroundColor: widget.backgroundColor,
       leading: !Navigator.canPop(context)
           ? null
           : DirectionAware(
@@ -47,7 +58,7 @@ class SliverAppBarWidget extends StatelessWidget {
             ),
       centerTitle: true,
       title: Text(
-        title,
+        appBarTitle,
         style: Styles.textStyle18Godlen,
       ),
       actions: [
@@ -60,7 +71,45 @@ class SliverAppBarWidget extends StatelessWidget {
         //         ),
         //       )
         //     : const SizedBox(),
-        if (hasTranslator)
+        if (widget.isSearch)
+          ValueListenableBuilder<bool>(
+            valueListenable: _isSearching,
+            builder: (context, isSearching, child) {
+              return isSearching
+                  ? Container(
+                      width: 200, // Adjust the width as needed
+                      child: TextField(
+                        style: Styles.textStyle18White,
+                        onChanged: (value) {
+                          // Trigger the search function when the text changes
+                          controller.search(value);
+                        },
+                        controller: _searchController,
+                        decoration: InputDecoration(
+                          hintText: 'Search...',
+                          hintStyle: Styles.textStyle18White,
+                        ),
+                      ),
+                    )
+                  : Container();
+            },
+          ),
+        IconButton(
+          icon: Icon(Icons.search, color: Colors.white),
+          onPressed: () {
+            // Toggle the search TextField visibility when the icon is clicked
+            _isSearching.value = !_isSearching.value;
+            if (_isSearching.value) {
+              // Trigger the search function when the icon is clicked
+              controller.search(_searchController.text);
+            } else {
+              // Clear the search results when the search TextField is hidden
+              controller.search('');
+            }
+          },
+        ),
+
+        if (widget.hasTranslator)
           SizedBox(
             width: 0.5 * Get.width,
             child: GetBuilder<QuranController>(
@@ -69,7 +118,8 @@ class SliverAppBarWidget extends StatelessWidget {
                 labelText: "Translator",
                 hintText: "Select",
                 onChanged: (value) {
-                  controller.selectedTranslator = value ?? controller.selectedTranslator;
+                  controller.selectedTranslator =
+                      value ?? controller.selectedTranslator;
                   controller.update(["Translator Select", "ayaNonArabic"]);
                 },
                 items: const [
@@ -94,7 +144,7 @@ class SliverAppBarWidget extends StatelessWidget {
       floating: true,
       snap: true,
       elevation: 0,
-      pinned: isPinned,
+      pinned: widget.isPinned,
     );
   }
 }

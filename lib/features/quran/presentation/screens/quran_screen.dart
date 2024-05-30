@@ -12,20 +12,13 @@ class QuranScreen extends GetView<QuranController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: TextField(
-          decoration: InputDecoration(
-            hintText: 'Search...',
-          ),
-          onChanged: (value) {
-            controller.search(value);
-          },
-        ),
-      ),
       body: Obx(
         () => CustomScrollView(
           slivers: [
-            const SliverAppBarWidget(title: "Quran"),
+            const SliverAppBarWidget(
+              title: "Quran",
+              isSearch: true,
+            ),
             controller.isSearching.value
                 ? SliverList(
                     delegate: SliverChildBuilderDelegate(
