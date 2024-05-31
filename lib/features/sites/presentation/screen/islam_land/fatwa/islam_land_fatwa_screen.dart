@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/custom_paginator.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_land/islam_land_fatwa_controller.dart';
 import '../../../widget/app_bar_custom.dart';
-import '../../../widget/inkwell_custom.dart';
 import '../../../widget/listviewcustom.dart';
 
 class IslamLandFatwaScreen extends StatelessWidget {

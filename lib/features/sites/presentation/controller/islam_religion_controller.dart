@@ -12,6 +12,16 @@ class IslamReligionControllerImp extends GetxController {
   // Primitive
   String validationMessage = '';
 
+  List searchResult = [];
+  void searchFun(String val, target) {
+    searchResult.clear();
+    for (var item in target) {
+      if (item.name.toLowerCase().contains(val.toLowerCase())) {
+        searchResult.add(item);
+      }
+    }
+  }
+
   Future<void> getArtical() async {
     IslamReligionUseCase islamReligionUseCase =
         IslamReligionUseCase(Get.find());

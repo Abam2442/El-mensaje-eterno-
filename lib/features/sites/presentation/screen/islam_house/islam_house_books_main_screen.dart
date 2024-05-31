@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_house/islam_house_books_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/view_or_download_inkwell.dart';
-import '../../controller/islam_house/islam_house_controller.dart';
 import '../../widget/app_bar_custom.dart';
-import '../../widget/inkwell_custom.dart';
 
 class IslamHouseBooksMainScreen extends StatelessWidget {
   const IslamHouseBooksMainScreen({super.key});
