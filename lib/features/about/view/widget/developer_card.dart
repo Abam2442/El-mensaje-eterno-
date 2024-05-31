@@ -42,11 +42,14 @@ class DeveloperCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      if (developerModel.whatsapp != '') getSocial(developerModel.whatsapp!, AppImages.whatsapp),
+                      if (developerModel.whatsapp != '')
+                        getSocial(developerModel.whatsapp!, AppImages.whatsapp),
                       10.wSize,
-                      if (developerModel.facebook != '') getSocial(developerModel.facebook!, AppImages.facebook),
+                      if (developerModel.facebook != '')
+                        getSocial(developerModel.facebook!, AppImages.facebook),
                       10.wSize,
-                      if (developerModel.linkedin != '') getSocial(developerModel.linkedin!, AppImages.linkedin),
+                      if (developerModel.linkedin != '')
+                        getSocial(developerModel.linkedin!, AppImages.linkedin),
                     ],
                   )
                 ],
@@ -96,7 +99,7 @@ class DeveloperCard extends StatelessWidget {
           Get.snackbar('info', 'Could not launch $url');
         }
       }
-    } on SocketException catch (e) {
+    } on SocketException catch (_) {
       Get.defaultDialog(
         title: 'تنبيه',
         middleText: 'الرجاء التأكد من الاتصال بالانترنت ثم المحاولة مجدداً',

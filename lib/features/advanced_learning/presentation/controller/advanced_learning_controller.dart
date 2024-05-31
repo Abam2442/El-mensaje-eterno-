@@ -22,6 +22,7 @@ class Advanced_LearningController extends GetxController {
   ];
 
   List<List<Map>> page = [
+    //1
     [
       {
         "title": "¿Qué es el Islam?",
@@ -54,6 +55,7 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.nonMuslimTopicsScreen,
       },
     ],
+    //2
     [
       {
         "title": "Islam House (Casa del Islam)",
@@ -88,6 +90,7 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.islamMessage,
       },
     ],
+    //3
     [
       {
         "title": "Knowing Allah (Conociendo a Al-láh)",
@@ -138,6 +141,7 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.islamForChristians,
       },
     ],
+    //4
     [
       {
         "title": "Guía del Islam (La Verdad Clara)",
@@ -226,6 +230,7 @@ class Advanced_LearningController extends GetxController {
       //   "targetScreen": AppPagesRoutes.quranScreen,
       // },
     ],
+    //5
     [
       {
         "title": "Religión de paz",
@@ -316,6 +321,7 @@ class Advanced_LearningController extends GetxController {
         "targetScreen": AppPagesRoutes.terminology,
       },
     ],
+    //6
     [
       {
         "title": "Canales de telegram",

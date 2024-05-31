@@ -13,6 +13,26 @@ class IslamMessageControllerImp extends GetxController {
   // Primitive
   String validationMessage = '';
 
+  List searchResult = [];
+  void searchFun(String val) {
+    searchResult.clear();
+    for (var item in articals) {
+      if (item.name.toLowerCase().contains(val.toLowerCase())) {
+        searchResult.add(item);
+      }
+    }
+  }
+
+  void searchInFun(String val, int index) {
+    searchResult.clear();
+
+    for (var item in articals[index].subCatigory) {
+      if (item.subArticalName.toLowerCase().contains(val.toLowerCase())) {
+        searchResult.add(item);
+      }
+    }
+  }
+
   Future<void> getArtical() async {
     IslamMessageUseCase islamMessageUseCase = IslamMessageUseCase(Get.find());
     var result = await islamMessageUseCase.callArtical();
@@ -27,7 +47,7 @@ class IslamMessageControllerImp extends GetxController {
       (r) {
         getArticalsState = StateType.success;
         articals = r;
-
+        print(articals[0].subCatigory[0].subArticalName);
         update();
       },
     );

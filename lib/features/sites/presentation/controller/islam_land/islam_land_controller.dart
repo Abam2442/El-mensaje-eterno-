@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../core/constants/app_enums.dart';
@@ -12,6 +14,8 @@ class IslamLandControllerImp extends GetxController {
     'Artical Offline',
     'Artical Online',
   ];
+
+  late TextEditingController searchController;
   List<IconData> icons = [
     Icons.article_rounded,
     Icons.article_outlined,
@@ -29,6 +33,15 @@ class IslamLandControllerImp extends GetxController {
 
   List<FixedEntities> onlineArticals = [];
   List<FixedEntities> offlineArticals = [];
+  List<FixedEntities> searchResult = [];
+
+  void searchArticle() {
+    for (var item in offlineArticals) {
+      if (item.name.contains(searchController.text)) {
+        searchResult.add(item);
+      }
+    }
+  }
 
   Future<void> getContent() async {
     IslamLandUseCase islamLandUseCase = IslamLandUseCase(Get.find());
@@ -45,7 +58,7 @@ class IslamLandControllerImp extends GetxController {
         getVideosState = StateType.success;
         offlineArticals = r[0];
         onlineArticals = r[1];
-
+        print(offlineArticals[0].content);
         update();
       },
     );
@@ -55,5 +68,6 @@ class IslamLandControllerImp extends GetxController {
   void onInit() async {
     super.onInit();
     await getContent();
+    searchController = TextEditingController();
   }
 }

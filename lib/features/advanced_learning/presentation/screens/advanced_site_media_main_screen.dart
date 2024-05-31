@@ -19,7 +19,7 @@ class AdvancedSiteMediaMainScreen extends StatelessWidget {
       backgroundColor: AppColors.kPrimaryColor,
       body: CustomScrollView(
         slivers: [
-          Custom_AppBar(
+          CustomAppBar(
             title: page['title'],
             isSearch: false,
             isPinned: true,
