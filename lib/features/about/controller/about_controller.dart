@@ -74,6 +74,13 @@ class AboutController extends GetxController {
         gmail: 'bassemahmed4444@gmail.com',
         linkedin: ''
     ),
+    DeveloperModel(
+        name:'Eng. Mahmoud Tarek',
+        gmail: 'mahmoudtarek12339@gmail.com',
+        facebook: '',
+        linkedin: 'https://www.linkedin.com/in/mahmoud-tarek-0596a5207',
+        whatsapp: 'https://wa.me/201554098506'
+    ),
   ];
 
   @override
