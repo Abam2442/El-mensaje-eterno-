@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/search_field_widget.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Artical/search/article_search.dart';
 
 import '../../../controller/knowing_allah/knowing_allah_controller.dart';
 import '../../../widget/app_bar_custom.dart';
@@ -17,23 +19,36 @@ class KnowingAllahArticalScreen extends StatelessWidget {
         appBar: const AppBarCustom(title: 'knowing allah artical')
             .customAppBar(context),
         body: GetBuilder<KnowingAllahControllerImp>(
-            builder: (controller) => Container(
-                margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                child: ListView.builder(
-                    padding: const EdgeInsets.all(5),
-                    itemCount: controller.articals.length,
-                    itemBuilder: (context, index) {
-                      return InkwellCustom(
-                        catigory: false,
-                        dataText: controller.articals[index].name,
-                        onTap: () {
-                          Get.to(KnowingAllahArticalContainScreen(
-                            dataText: controller.articals[index].subcategories,
-                            itemCount:
-                                controller.articals[index].subcategories.length,
-                          ));
-                        },
-                      );
-                    }))));
+            builder: (controller) => Column(
+                  children: [
+                    SearchFieldWidget(
+                      onSubmitted: (val) => {
+                        controller.searchArticle(val, controller.articals),
+                        Get.to(() => const KnowingAllahArticalSearch())
+                      },
+                      formState: controller.formState,
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                          padding: const EdgeInsets.all(5),
+                          itemCount: controller.articals.length,
+                          itemBuilder: (context, index) {
+                            return InkwellCustom(
+                              catigory: false,
+                              dataText: controller.articals[index].name,
+                              onTap: () {
+                                Get.to(KnowingAllahArticalContainScreen(
+                                  dataText:
+                                      controller.articals[index].subcategories,
+                                  itemCount: controller
+                                      .articals[index].subcategories.length,
+                                  index: index,
+                                ));
+                              },
+                            );
+                          }),
+                    ),
+                  ],
+                )));
   }
 }

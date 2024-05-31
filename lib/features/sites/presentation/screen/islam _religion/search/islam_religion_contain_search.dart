@@ -17,14 +17,6 @@ class IslamReligionContainSearch extends StatelessWidget {
       body: GetBuilder<IslamReligionControllerImp>(
           builder: (controller) => Column(
                 children: [
-                  SearchFieldWidget(
-                    onSubmitted: (val) => {
-                      controller.searchFun(
-                        val,
-                        controller.articals[position].catigory,
-                      ),
-                    },
-                  ),
                   Expanded(
                     child: ListView.builder(
                         padding: const EdgeInsets.all(5),

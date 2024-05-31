@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/search_field_widget.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Artical/search/article_search.dart';
 
 import '../../../controller/rasuluallah/rasulullah_controller.dart';
 import '../../../widget/app_bar_custom.dart';
@@ -14,30 +16,44 @@ class RasuluallahArticalScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(RasuluallhControllerImp());
     return Scaffold(
-        appBar: const AppBarCustom(title: 'Rasul allah artical')
-            .customAppBar(context),
-        body: GetBuilder<RasuluallhControllerImp>(
-            builder: (controller) => controller.getArticalsState !=
-                    StateType.success
+      appBar: const AppBarCustom(title: 'Rasul allah artical')
+          .customAppBar(context),
+      body: GetBuilder<RasuluallhControllerImp>(
+        builder: (controller) =>
+            controller.getArticalsState != StateType.success
                 ? const Center(
                     child: CircularProgressIndicator(),
                   )
-                : Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                    child: ListView.builder(
-                        padding: const EdgeInsets.all(5),
-                        itemCount: controller.articals.length,
-                        itemBuilder: (context, index) {
-                          return InkwellCustom(
-                            catigory: false,
-                            dataText: controller.articals[index].category,
-                            onTap: () {
-                              Get.to(ArticalContainScreen(
-                                dataText: controller.articals[index].data,
-                              ));
-                            },
-                          );
-                        }))));
+                : Column(
+                    children: [
+                      SearchFieldWidget(
+                        onSubmitted: (val) => {
+                          controller.searchArticle(val, controller.articals),
+                          Get.to(() => const RasuluallahArticalSearch())
+                        },
+                        formState: controller.formState,
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          padding: const EdgeInsets.all(5),
+                          itemCount: controller.articals.length,
+                          itemBuilder: (context, index) {
+                            return InkwellCustom(
+                              catigory: false,
+                              dataText: controller.articals[index].category,
+                              onTap: () {
+                                Get.to(ArticalContainScreen(
+                                  dataText: controller.articals[index].data,
+                                  index: index,
+                                ));
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+      ),
+    );
   }
 }

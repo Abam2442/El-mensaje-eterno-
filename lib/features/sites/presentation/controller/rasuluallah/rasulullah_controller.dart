@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/fixed_entities.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/usecase/rasuluallah_usecase.dart';
@@ -12,6 +13,32 @@ class RasuluallhControllerImp extends GetxController {
 
   // Primitive
   String validationMessage = '';
+
+  List searchResult = [];
+
+  GlobalKey<FormState> formState = GlobalKey();
+
+  void searchArticle(String val, target) {
+    if (formState.currentState!.validate()) {
+      searchResult.clear();
+      for (var item in target) {
+        if (item.category.toLowerCase().contains(val.toLowerCase())) {
+          searchResult.add(item);
+        }
+      }
+    }
+    // print(searchResult);
+  }
+
+  void searchSubArticle(String val, target) {
+    searchResult.clear();
+    for (var item in target) {
+      if (item.name.toLowerCase().contains(val.toLowerCase())) {
+        searchResult.add(item);
+      }
+    }
+    print(searchResult);
+  }
 
   Future<void> getArtical() async {
     RasuluallahUseCase rasulullahUseCase = RasuluallahUseCase(Get.find());
