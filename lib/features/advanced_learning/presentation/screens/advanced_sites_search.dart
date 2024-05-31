@@ -1,54 +1,55 @@
-// ignore_for_file: camel_case_types
-
-import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/custom_paginator.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/fixed_entities.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_land/islam_land_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/app_bar_custom.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/artical_custom.dart';
 
-class Advanced_Sites_Search extends StatefulWidget {
-  const Advanced_Sites_Search({super.key});
+class IslamLandSearch extends StatelessWidget {
+  // final data;
+  const IslamLandSearch({super.key});
 
-  @override
-  State<Advanced_Sites_Search> createState() => _Advanced_Sites_SearchState();
-}
-
-class _Advanced_Sites_SearchState extends State<Advanced_Sites_Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('JSON Example'),
+      appBar: const AppBarCustom(title: "Islam Land Articals")
+          .customAppBar(context),
+      body: GetBuilder<IslamLandControllerImp>(
+        builder: (controller) => Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
+                onFieldSubmitted: (val) {
+                  controller.searchArticle();
+                },
+                controller: controller.searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search in Articals',
+                  filled: true,
+                  fillColor: const Color.fromARGB(255, 226, 226, 226),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: CustomPaginator<FixedEntities>(
+                  data: controller.searchResult,
+                  getItemText: (item) => item.name,
+                  onItemTaped: (item) {
+                    Get.to(ArticalCustom(dataText: item.content));
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
-        body: FutureBuilder(
-          future: DefaultAssetBundle.of(context).loadString('assets/json/sites.json'),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return const Center(
-                child: Text('Something went wrong'),
-              );
-            }
-            if (snapshot.hasData) {
-              var showData = json.decode(snapshot.data!);
-              return ListView.builder(
-                  // itemCount: showData['knowing-Allah']['Audios']['Audio'].length,
-                  itemCount: 1,
-                  itemBuilder: (context, index) {
-                    return buildTile(showData['knowing-Allah']['Audios']['Audio'][index].keys);
-                  });
-            } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
-        ));
-  }
-
-  buildTile(obj) {
-    return ListTile(
-      title: Text('$obj'),
-      subtitle: const Text('نننن}'),
-      leading: CircleAvatar(
-        backgroundColor: Colors.indigo[400],
-        child: const Icon(Icons.money),
       ),
     );
   }

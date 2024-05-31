@@ -19,10 +19,11 @@ class AdvancedSites extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(Advanced_LearningController());
     return Scaffold(
+      
       backgroundColor: AppColors.kPrimaryColor,
       body: CustomScrollView(
         slivers: [
-          const Custom_AppBar(
+          const CustomAppBar(
             title: 'La educación avanzada',
             isSearch: false,
             isPinned: true,
@@ -31,14 +32,14 @@ class AdvancedSites extends StatelessWidget {
             builder: (controller) => SliverToBoxAdapter(
               child: Column(
                 children: [
-                  //
+                
                   Container(
                     padding: EdgeInsets.only(top: 10),
                     height: Get.height / 13,
                     child: Item_GridView(),
                   ),
 
-                  //
+                
                   Directionality(
                       textDirection: TextDirection.ltr,
                       child: Container(

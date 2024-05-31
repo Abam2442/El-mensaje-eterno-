@@ -8,8 +8,8 @@ import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 
-class Custom_AppBar extends StatelessWidget {
-  const Custom_AppBar({
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({
     super.key,
     this.isSearch,
     this.backgroundColor = AppColors.kPrimaryColor,
@@ -30,8 +30,6 @@ class Custom_AppBar extends StatelessWidget {
       leading: !Navigator.canPop(context)
           ? null
           : DirectionAware(
-              // من شان تدوير الايقونة بزاوية 90
-              //DirectionAware for rotate the icon to other side rtl or ltr
               child: IconButton(
                 onPressed: () => Get.back(),
                 icon: SvgPicture.asset(
@@ -46,15 +44,10 @@ class Custom_AppBar extends StatelessWidget {
         style: Styles.textStyle18Godlen,
       ),
       actions: [
-        isSearch == true
-            ? Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: SvgPicture.asset(
-                  AppAssets.kSearchIcon,
-                  color: iconColor,
-                ),
-              )
-            : const SizedBox(),
+        IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.search),
+        )
       ],
       floating: true,
       snap: true,

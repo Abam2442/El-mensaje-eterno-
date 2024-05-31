@@ -9,8 +9,7 @@ import 'package:logger/logger.dart';
 
 abstract class HadithLocalDataSource {
   Future<SunnahHadithModel> getSunnahHadithes();
-  Future<HaditencHadithModel>
-      getHadithencHadithes();
+  Future<HaditencHadithModel> getHadithencHadithes();
 }
 
 class HadithLocalDataSourceImpl extends HadithLocalDataSource {
@@ -55,8 +54,6 @@ class HadithLocalDataSourceImpl extends HadithLocalDataSource {
       if (fileContent != null) {
         var jsonData = json.decode(fileContent);
         hadithencHadithes = HaditencHadithModel.fromJson(jsonData);
-        print('eeeeeeeeeeeeeeeeeeeeeeeee');
-        print(hadithencHadithes);
       }
 
       Get.find<Logger>().w("End `getHadithes` in |HadithLocalDataSourceImpl|");
