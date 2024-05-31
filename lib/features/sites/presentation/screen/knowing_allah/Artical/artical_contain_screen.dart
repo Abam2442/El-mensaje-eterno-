@@ -27,13 +27,15 @@ class KnowingAllahArticalContainScreen extends StatelessWidget {
       body: Column(
         children: [
           SearchFieldWidget(
-              onSubmitted: (val) => {
-                    controller.searchArticle(
-                        val, controller.articals[index].subcategories),
-                    Get.to(
-                      () => KnowingAllahContainSearch(index: index),
-                    ),
-                  }),
+            onSubmitted: (val) => {
+              controller.searchArticle(
+                  val, controller.articals[index].subcategories),
+              Get.to(
+                () => KnowingAllahContainSearch(index: index),
+              ),
+            },
+            formState: controller.formState,
+          ),
           Expanded(
             child: CustomPaginator(
               data: dataText,

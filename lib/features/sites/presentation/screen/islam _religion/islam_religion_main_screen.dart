@@ -23,6 +23,7 @@ class IslamReligionMainScreen extends StatelessWidget {
                       controller.searchFun(val, controller.articals),
                       Get.to(() => const IslamReligionMainSearch())
                     },
+                    formState: controller.formState,
                   ),
                   Expanded(
                     child: ListView.builder(

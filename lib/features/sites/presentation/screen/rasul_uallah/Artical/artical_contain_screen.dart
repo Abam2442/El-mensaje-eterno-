@@ -25,13 +25,15 @@ class ArticalContainScreen extends StatelessWidget {
         body: Column(
           children: [
             SearchFieldWidget(
-                onSubmitted: (val) => {
-                      controller.searchSubArticle(
-                          val, controller.articals[index].data),
-                      Get.to(() => RasuluallahContainSearch(
-                            index: index,
-                          ))
-                    }),
+              onSubmitted: (val) => {
+                controller.searchSubArticle(
+                    val, controller.articals[index].data),
+                Get.to(() => RasuluallahContainSearch(
+                      index: index,
+                    ))
+              },
+              formState: controller.formState,
+            ),
             Expanded(
               child: CustomPaginator(
                 data: dataText,

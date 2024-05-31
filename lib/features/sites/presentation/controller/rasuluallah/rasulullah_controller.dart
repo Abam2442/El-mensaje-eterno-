@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/fixed_entities.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/usecase/rasuluallah_usecase.dart';
@@ -15,14 +16,18 @@ class RasuluallhControllerImp extends GetxController {
 
   List searchResult = [];
 
+  GlobalKey<FormState> formState = GlobalKey();
+
   void searchArticle(String val, target) {
-    searchResult.clear();
-    for (var item in target) {
-      if (item.category.toLowerCase().contains(val.toLowerCase())) {
-        searchResult.add(item);
+    if (formState.currentState!.validate()) {
+      searchResult.clear();
+      for (var item in target) {
+        if (item.category.toLowerCase().contains(val.toLowerCase())) {
+          searchResult.add(item);
+        }
       }
     }
-    print(searchResult);
+    // print(searchResult);
   }
 
   void searchSubArticle(String val, target) {

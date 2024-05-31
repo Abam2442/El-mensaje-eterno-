@@ -19,35 +19,37 @@ class IslamMessageArticalScreen extends StatelessWidget {
       appBar: const AppBarCustom(title: "Islam Message Artical")
           .customAppBar(context),
       body: GetBuilder<IslamMessageControllerImp>(
-          builder: (controller) => controller.getArticalsState !=
-                  StateType.success
-              ? const Center(child: CircularProgressIndicator())
-              : Column(
-                  children: [
-                    SearchFieldWidget(
-                        onSubmitted: (val) => {
-                              controller.searchFun(val),
-                              Get.to(() => const IslamMessageArticalSearch())
-                            }),
-                    Expanded(
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          padding: const EdgeInsets.all(5),
-                          itemCount: controller.articals.length,
-                          itemBuilder: (context, index) {
-                            return InkwellCustom(
-                              catigory: false,
-                              dataText: controller.articals[index].name,
-                              onTap: () {
-                                Get.to(IslamMessageContainArticalScreen(
-                                  index: index,
-                                ));
-                              },
-                            );
-                          }),
-                    ),
-                  ],
-                )),
+          builder: (controller) =>
+              controller.getArticalsState != StateType.success
+                  ? const Center(child: CircularProgressIndicator())
+                  : Column(
+                      children: [
+                        SearchFieldWidget(
+                          onSubmitted: (val) => {
+                            controller.searchFun(val),
+                            Get.to(() => const IslamMessageArticalSearch())
+                          },
+                          formState: controller.formState,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              padding: const EdgeInsets.all(5),
+                              itemCount: controller.articals.length,
+                              itemBuilder: (context, index) {
+                                return InkwellCustom(
+                                  catigory: false,
+                                  dataText: controller.articals[index].name,
+                                  onTap: () {
+                                    Get.to(IslamMessageContainArticalScreen(
+                                      index: index,
+                                    ));
+                                  },
+                                );
+                              }),
+                        ),
+                      ],
+                    )),
     );
   }
 }

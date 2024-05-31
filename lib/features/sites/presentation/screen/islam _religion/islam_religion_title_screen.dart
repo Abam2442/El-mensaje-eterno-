@@ -34,6 +34,7 @@ class IslamReligionTitleScreen extends StatelessWidget {
                             positionSub: positionSub,
                           ))
                     },
+                    formState: controller.formState,
                   ),
                   Expanded(
                     child: ListView.builder(

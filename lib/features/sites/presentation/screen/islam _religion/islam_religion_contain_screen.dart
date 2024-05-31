@@ -31,6 +31,7 @@ class IslamReligionContainScreen extends StatelessWidget {
                       Get.to(
                           () => IslamReligionContainSearch(position: position))
                     },
+                    formState: controller.formState,
                   ),
                   Expanded(
                     child: ListView.builder(

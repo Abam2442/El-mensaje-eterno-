@@ -21,9 +21,6 @@ class IslamMessageArticalSearch extends StatelessWidget {
                   ? const Center(child: CircularProgressIndicator())
                   : Column(
                       children: [
-                        SearchFieldWidget(
-                          onSubmitted: (val) => controller.searchFun(val),
-                        ),
                         Expanded(
                           child: ListView.builder(
                               shrinkWrap: true,

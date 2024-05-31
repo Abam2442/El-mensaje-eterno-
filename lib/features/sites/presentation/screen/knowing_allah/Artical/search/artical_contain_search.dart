@@ -17,10 +17,6 @@ class KnowingAllahContainSearch extends StatelessWidget {
       appBar: const AppBarCustom(title: 'Artical').customAppBar(context),
       body: Column(
         children: [
-          SearchFieldWidget(
-            onSubmitted: (val) => controller.searchArticle(
-                val, controller.articals[index].subcategories),
-          ),
           Expanded(
             child: CustomPaginator(
               data: controller.searchResult,

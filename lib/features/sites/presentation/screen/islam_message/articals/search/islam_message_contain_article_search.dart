@@ -23,9 +23,6 @@ class IslamMessageContainArticalSearch extends StatelessWidget {
       body: GetBuilder<IslamMessageControllerImp>(
           builder: (controller) => Column(
                 children: [
-                  SearchFieldWidget(onSubmitted: (val) {
-                    controller.searchInFun(val, index);
-                  }),
                   Expanded(
                     child: CustomPaginator(
                         data: controller.searchResult,

@@ -1,5 +1,6 @@
 // import 'package:elresala/features/sites/data/models/islam_qa.dart';
 // import 'package:elresala/features/sites/domain/usecase/islam_qa_usecase.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/data/models/knowing_allah_model.dart';
 import '../../../../../core/constants/app_enums.dart';
@@ -15,13 +16,17 @@ class KnowingAllahControllerImp extends GetxController {
   // Primitive
   String validationMessage = '';
 
+  GlobalKey<FormState> formState = GlobalKey();
+
   List searchResult = [];
 
   void searchArticle(String val, target) {
-    searchResult.clear();
-    for (var item in target) {
-      if (item.name.toLowerCase().contains(val.toLowerCase())) {
-        searchResult.add(item);
+    if (formState.currentState!.validate()) {
+      searchResult.clear();
+      for (var item in target) {
+        if (item.name.toLowerCase().contains(val.toLowerCase())) {
+          searchResult.add(item);
+        }
       }
     }
   }

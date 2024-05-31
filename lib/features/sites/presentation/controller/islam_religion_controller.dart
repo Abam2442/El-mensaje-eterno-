@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/constants/app_enums.dart';
 import '../../../../core/helpers/get_state_from_failure.dart';
@@ -12,12 +13,16 @@ class IslamReligionControllerImp extends GetxController {
   // Primitive
   String validationMessage = '';
 
+  GlobalKey<FormState> formState = GlobalKey();
+
   List searchResult = [];
   void searchFun(String val, target) {
-    searchResult.clear();
-    for (var item in target) {
-      if (item.name.toLowerCase().contains(val.toLowerCase())) {
-        searchResult.add(item);
+    if (formState.currentState!.validate()) {
+      searchResult.clear();
+      for (var item in target) {
+        if (item.name.toLowerCase().contains(val.toLowerCase())) {
+          searchResult.add(item);
+        }
       }
     }
   }

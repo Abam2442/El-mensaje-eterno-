@@ -31,6 +31,7 @@ class RasuluallahArticalScreen extends StatelessWidget {
                           controller.searchArticle(val, controller.articals),
                           Get.to(() => const RasuluallahArticalSearch())
                         },
+                        formState: controller.formState,
                       ),
                       Expanded(
                         child: ListView.builder(

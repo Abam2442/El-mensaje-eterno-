@@ -18,10 +18,6 @@ class KnowingAllahArticalSearch extends StatelessWidget {
       body: GetBuilder<KnowingAllahControllerImp>(
         builder: (controller) => Column(
           children: [
-            SearchFieldWidget(
-              onSubmitted: (val) =>
-                  {controller.searchArticle(val, controller.articals)},
-            ),
             Expanded(
               child: ListView.builder(
                   padding: const EdgeInsets.all(5),
