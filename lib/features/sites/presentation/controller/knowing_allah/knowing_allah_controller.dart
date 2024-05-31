@@ -15,6 +15,17 @@ class KnowingAllahControllerImp extends GetxController {
   // Primitive
   String validationMessage = '';
 
+  List searchResult = [];
+
+  void searchArticle(String val, target) {
+    searchResult.clear();
+    for (var item in target) {
+      if (item.name.toLowerCase().contains(val.toLowerCase())) {
+        searchResult.add(item);
+      }
+    }
+  }
+
   Future<void> getArtical() async {
     await Future.delayed(const Duration(milliseconds: 200));
     KnowingAllahUseCase knowingAllahUseCase = KnowingAllahUseCase(Get.find());

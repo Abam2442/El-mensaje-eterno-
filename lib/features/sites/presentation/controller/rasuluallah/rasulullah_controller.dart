@@ -13,6 +13,28 @@ class RasuluallhControllerImp extends GetxController {
   // Primitive
   String validationMessage = '';
 
+  List searchResult = [];
+
+  void searchArticle(String val, target) {
+    searchResult.clear();
+    for (var item in target) {
+      if (item.category.toLowerCase().contains(val.toLowerCase())) {
+        searchResult.add(item);
+      }
+    }
+    print(searchResult);
+  }
+
+  void searchSubArticle(String val, target) {
+    searchResult.clear();
+    for (var item in target) {
+      if (item.name.toLowerCase().contains(val.toLowerCase())) {
+        searchResult.add(item);
+      }
+    }
+    print(searchResult);
+  }
+
   Future<void> getArtical() async {
     RasuluallahUseCase rasulullahUseCase = RasuluallahUseCase(Get.find());
     var result = await rasulullahUseCase.call();
