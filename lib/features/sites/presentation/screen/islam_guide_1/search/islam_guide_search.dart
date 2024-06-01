@@ -1,35 +1,32 @@
 // import 'package:elresala/features/advanced_learning/presentation/widgets/item%20_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/widgets/item%20_card.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_guide_1_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/app_bar_custom.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/artical_custom.dart';
 
-import '../../../../advanced_learning/presentation/widgets/item _card.dart';
-import '../../../data/models/islam_guide_1_model.dart';
-import '../../widget/app_bar_custom.dart';
-
-class IslamGuide1ChaptersScreen extends StatelessWidget {
-  final List<Chapter0> chapters;
-  final String title;
-  const IslamGuide1ChaptersScreen(
-      {super.key, required this.chapters, required this.title});
+class IslamGuideSearch extends StatelessWidget {
+  const IslamGuideSearch({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<IslamGuide1ControllerImp>();
     return Scaffold(
-      appBar: AppBarCustom(title: title).customAppBar(context),
+      appBar: const AppBarCustom(title: 'Islam Guide').customAppBar(context),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: ListView.builder(
-          itemCount: chapters.length,
+          itemCount: controller.searchResult.length,
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
                 Get.to(() => ArticalCustom(
-                      dataText: chapters[index].paragraphs,
+                      dataText: controller.searchResult[index].paragraphs,
                     ));
               },
               child: Item_Card(
-                titleSite: chapters[index].title,
+                titleSite: controller.searchResult[index].title,
               ),
             );
           },

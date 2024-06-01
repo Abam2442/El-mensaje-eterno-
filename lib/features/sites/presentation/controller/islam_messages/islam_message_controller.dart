@@ -15,6 +15,7 @@ class IslamMessageControllerImp extends GetxController {
   String validationMessage = '';
 
   GlobalKey<FormState> formState = GlobalKey();
+  GlobalKey<FormState> secondFormState = GlobalKey();
 
   List searchResult = [];
   void searchFun(String val) {
@@ -29,11 +30,13 @@ class IslamMessageControllerImp extends GetxController {
   }
 
   void searchInFun(String val, int index) {
-    searchResult.clear();
+    if (secondFormState.currentState!.validate()) {
+      searchResult.clear();
 
-    for (var item in articals[index].subCatigory) {
-      if (item.subArticalName.toLowerCase().contains(val.toLowerCase())) {
-        searchResult.add(item);
+      for (var item in articals[index].subCatigory) {
+        if (item.subArticalName.toLowerCase().contains(val.toLowerCase())) {
+          searchResult.add(item);
+        }
       }
     }
   }

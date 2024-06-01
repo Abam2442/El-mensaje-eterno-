@@ -3,20 +3,41 @@ import 'package:hiwayda_oracion_islamica/core/helpers/get_state_from_failure.dar
 import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/domain/usecases/get_hadithenc_hadithes_use_case.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/domain/usecases/get_sunnah_hadithes_use_case.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/search/hadith_search_screen.dart';
 import 'package:logger/logger.dart';
 import 'package:number_paginator/number_paginator.dart';
-
-import '../../domain/usecases/get_hadithenc_hadithes_use_case.dart';
-import '../../domain/usecases/get_sunnah_hadithes_use_case.dart';
 
 class HadithController extends GetxController
     with GetSingleTickerProviderStateMixin {
   // Data
   SunnahHadithModel? sunnahHadithes;
-  // List<Map> bookHadithes = [];
+
+  GlobalKey<FormState> formState = GlobalKey();
 
   HaditencHadithModel? hadithencHadithes;
   List<Map> categoryHadithes = [];
+
+  List searchResult = [];
+
+  void searchFun(String val) {
+    searchResult.clear();
+    sunnahHadithes?.sunnahHadithes.forEach(
+      (_, value) {
+        value.forEach((key, value) {
+          value.forEach((key, value) {
+            if (value.toString().contains(val)) {
+              searchResult.add(value.toString());
+            }
+          });
+        });
+      },
+    );
+    searchResult = searchResult.toSet().toList();
+    // log('$test');
+    Get.to(() => const HadithSearchScreen());
+  }
 
   // States
   StateType getSunnahHadithesState = StateType.init;
@@ -28,12 +49,12 @@ class HadithController extends GetxController
   //Searching
   var isSearching = false.obs;
   var searchTextController = TextEditingController();
-  var searchFocusNode  = FocusNode();
+  var searchFocusNode = FocusNode();
   RxBool isBack = true.obs;
 
   //Pagination
   var pageNumber = 0;
-   final NumberPaginatorController pageController = NumberPaginatorController();
+  final NumberPaginatorController pageController = NumberPaginatorController();
   var bookHadithesNameForList = <String>[].obs;
   var subCategoryHadithesNameForList = <String>[].obs;
   // Tab Bar
@@ -73,6 +94,7 @@ class HadithController extends GetxController
       (r) {
         getSunnahHadithesState = StateType.success;
         sunnahHadithes = r;
+        print(sunnahHadithes?.sunnahHadithes.values);
         update();
       },
     );
@@ -87,8 +109,8 @@ class HadithController extends GetxController
       (key, value) {
         if (key == Get.arguments['title']) {
           value.forEach((key, value) {
-            if(isSearching.value){
-              if(value!=null) {
+            if (isSearching.value) {
+              if (value != null) {
                 if (value.toString().contains(searchTextController.text)) {
                   bookHadithesName.add(key);
                 }
@@ -150,7 +172,6 @@ class HadithController extends GetxController
   }
 
   List<String>? get getCategorySubCategoriesName {
-
     List<String>? categorySubCategoryName = [];
     hadithencHadithes?.hadithencHadithes.forEach(
       (key, value) {
@@ -172,8 +193,8 @@ class HadithController extends GetxController
           value.forEach((key, value) {
             if (key == Get.arguments['title']) {
               value.forEach((key, value) {
-                if(isSearching.value){
-                  if(value != null) {
+                if (isSearching.value) {
+                  if (value != null) {
                     print(value.toString());
                     if (value.toString().contains(searchTextController.text)) {
                       subCategoryHadithesName.add(key);
@@ -182,7 +203,6 @@ class HadithController extends GetxController
                 } else {
                   subCategoryHadithesName.add(key);
                 }
-
               });
             }
           });

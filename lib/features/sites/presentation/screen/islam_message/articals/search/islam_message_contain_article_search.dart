@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/custom_paginator.dart';
-import 'package:hiwayda_oracion_islamica/core/widgets/search_field_widget.dart';
 import '../../../../controller/islam_messages/islam_message_controller.dart';
 import '../../../../widget/app_bar_custom.dart';
 import '../../../../widget/artical_custom.dart';
@@ -21,18 +20,12 @@ class IslamMessageContainArticalSearch extends StatelessWidget {
       appBar: const AppBarCustom(title: "Islam Message Artical")
           .customAppBar(context),
       body: GetBuilder<IslamMessageControllerImp>(
-          builder: (controller) => Column(
-                children: [
-                  Expanded(
-                    child: CustomPaginator(
-                        data: controller.searchResult,
-                        getItemText: (artical) => artical.subArticalName,
-                        onItemTaped: (item) {
-                          Get.to(ArticalCustom(dataText: item.bodyArtical));
-                        }),
-                  ),
-                ],
-              )),
+          builder: (controller) => CustomPaginator(
+              data: controller.searchResult,
+              getItemText: (artical) => artical.subArticalName,
+              onItemTaped: (item) {
+                Get.to(ArticalCustom(dataText: item.bodyArtical));
+              })),
     );
   }
 }

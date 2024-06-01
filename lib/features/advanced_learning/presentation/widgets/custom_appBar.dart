@@ -43,12 +43,6 @@ class CustomAppBar extends StatelessWidget {
         title,
         style: Styles.textStyle18Godlen,
       ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.search),
-        )
-      ],
       floating: true,
       snap: true,
       elevation: 0,

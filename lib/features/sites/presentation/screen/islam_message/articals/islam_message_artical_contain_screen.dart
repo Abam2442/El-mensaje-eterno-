@@ -27,13 +27,15 @@ class IslamMessageContainArticalScreen extends StatelessWidget {
                   SearchFieldWidget(
                     onSubmitted: (val) {
                       controller.searchInFun(val, index);
-                      Get.to(
-                        () => IslamMessageContainArticalSearch(
-                          index: index,
-                        ),
-                      );
+                      val.isEmpty
+                          ? null
+                          : Get.to(
+                              () => IslamMessageContainArticalSearch(
+                                index: index,
+                              ),
+                            );
                     },
-                    formState: controller.formState,
+                    formState: controller.secondFormState,
                   ),
                   Expanded(
                     child: CustomPaginator(
