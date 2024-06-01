@@ -84,7 +84,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/hisn
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/human_rights_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam%20_religion/islam_religion_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_for_christians/islam_for_christians_screen.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_guide_1_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_guide_1/islam_guide_1_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_books_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_fatwa.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_main.dart';

@@ -13,11 +13,17 @@ class IslamReligionControllerImp extends GetxController {
   // Primitive
   String validationMessage = '';
 
-  GlobalKey<FormState> formState = GlobalKey();
+  GlobalKey<FormState> firstFormState = GlobalKey();
+  GlobalKey<FormState> secondFormState = GlobalKey();
+  GlobalKey<FormState> lastFormState = GlobalKey();
 
   List searchResult = [];
-  void searchFun(String val, target) {
-    if (formState.currentState!.validate()) {
+  void searchFun(String val, target, int screen) {
+    if (screen == 0
+        ? firstFormState.currentState!.validate()
+        : screen == 1
+            ? secondFormState.currentState!.validate()
+            : lastFormState.currentState!.validate()) {
       searchResult.clear();
       for (var item in target) {
         if (item.name.toLowerCase().contains(val.toLowerCase())) {

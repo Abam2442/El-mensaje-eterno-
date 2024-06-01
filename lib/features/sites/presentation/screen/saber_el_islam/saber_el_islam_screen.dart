@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/search_field_widget.dart';
 
 import '../../controller/saber_el_islam_controller.dart';
 import '../../widget/app_bar_custom.dart';
@@ -20,23 +21,31 @@ class SaberElIslamScreen extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        return Container(
-            margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-            child: ListView.builder(
-                padding: const EdgeInsets.all(5),
-                itemCount: controller.articals.length,
-                itemBuilder: (context, index) {
-                  return InkwellCustom(
-                    catigory: false,
-                    dataText: controller.articals[index].name,
-                    onTap: () {
-                      Get.to(() => SaberElIslamArticalListScreen(
-                            articals: controller.articals[index].articals,
-                            name: controller.articals[index].name,
-                          ));
-                    },
-                  );
-                }));
+        return Column(
+          children: [
+            SearchFieldWidget(
+              formState: controller.formState,
+              onSubmitted: (val) => controller.searchFun(val),
+            ),
+            Expanded(
+              child: ListView.builder(
+                  padding: const EdgeInsets.all(5),
+                  itemCount: controller.articals.length,
+                  itemBuilder: (context, index) {
+                    return InkwellCustom(
+                      catigory: false,
+                      dataText: controller.articals[index].name,
+                      onTap: () {
+                        Get.to(() => SaberElIslamArticalListScreen(
+                              articals: controller.articals[index].articals,
+                              name: controller.articals[index].name,
+                            ));
+                      },
+                    );
+                  }),
+            ),
+          ],
+        );
       }),
     );
   }

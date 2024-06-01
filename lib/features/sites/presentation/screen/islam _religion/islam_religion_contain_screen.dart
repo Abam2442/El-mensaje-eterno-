@@ -25,13 +25,13 @@ class IslamReligionContainScreen extends StatelessWidget {
                   SearchFieldWidget(
                     onSubmitted: (val) => {
                       controller.searchFun(
-                        val,
-                        controller.articals[position].catigory,
-                      ),
-                      Get.to(
-                          () => IslamReligionContainSearch(position: position))
+                          val, controller.articals[position].catigory, 1),
+                      val.isEmpty
+                          ? null
+                          : Get.to(() =>
+                              IslamReligionContainSearch(position: position))
                     },
-                    formState: controller.formState,
+                    formState: controller.secondFormState,
                   ),
                   Expanded(
                     child: ListView.builder(

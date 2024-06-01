@@ -28,13 +28,16 @@ class IslamReligionTitleScreen extends StatelessWidget {
                       controller.searchFun(
                           val,
                           controller.articals[position].catigory[positionSub]
-                              .subCatigory),
-                      Get.to(() => IslamReligionTitleSearch(
-                            position: position,
-                            positionSub: positionSub,
-                          ))
+                              .subCatigory,
+                          2),
+                      val.isEmpty
+                          ? null
+                          : Get.to(() => IslamReligionTitleSearch(
+                                position: position,
+                                positionSub: positionSub,
+                              ))
                     },
-                    formState: controller.formState,
+                    formState: controller.lastFormState,
                   ),
                   Expanded(
                     child: ListView.builder(
