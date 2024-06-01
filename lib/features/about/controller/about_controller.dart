@@ -10,6 +10,11 @@ class AboutController extends GetxController {
         linkedin: 'https://www.linkedin.com/in/osamaaabdalmalik/',
         whatsapp: 'https://wa.me/963996697253'),
     DeveloperModel(
+        name: 'Eng. Mahmoud Elhelw',
+        gmail: 'professort47@gmail.com',
+        linkedin: 'https://www.linkedin.com/in/mahmoud-elhelw-5a8180279/',
+        whatsapp: 'https://wa.me/201208334954'),
+    DeveloperModel(
         name: 'Eng. Mahmoud Soufan',
         gmail: 'Mahmoud.Soufan313@gmail.com',
         facebook: 'https://www.facebook.com/mhmoud313',
@@ -63,8 +68,7 @@ class AboutController extends GetxController {
         whatsapp: '',
         facebook: '',
         gmail: 'bassemahmed4444@gmail.com',
-        linkedin: '')
-
+        linkedin: ''),
   ];
 
   @override
