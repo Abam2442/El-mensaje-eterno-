@@ -26,8 +26,6 @@ class QuranController extends GetxController {
   String validationMessage = '';
   int selectedTranslator = 1;
 
-  int chapterNumber = 1;
-
   @override
   void onInit() async {
     Get.find<Logger>().i("Start onInit QuranController");
