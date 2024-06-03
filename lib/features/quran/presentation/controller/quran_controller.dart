@@ -26,6 +26,12 @@ class QuranController extends GetxController {
   String validationMessage = '';
   int selectedTranslator = 1;
 
+  int chapterNumber = 1;
+  var isSearching = false.obs;
+  var searchResults = <Map<String, dynamic>>[].obs;
+
+  var  searchController = TextEditingController().obs;
+
   @override
   void onInit() async {
     Get.find<Logger>().i("Start onInit QuranController");
@@ -124,10 +130,30 @@ class QuranController extends GetxController {
     return currentPlayingIndex + 1 == index && isPlaying;
   }
 
-  void updateSelectedTranslator(int selection){
-
-    selectedTranslator=selection;
+  void updateSelectedTranslator(int selection) {
+    selectedTranslator = selection;
     print('selected reanslator ${selectedTranslator.toString()}');
+    update();
+  }
+
+  void search(String query) {
+    isSearching.value = query.isNotEmpty;
+    searchResults.clear();
+    // if (query.isEmpty) {
+    //   return;
+    // }
+    searchController.value.text = query;
+    print(searchController.value.text);
+    for (var surah in surahs) {
+      for (var ayat in surah.ayat) {
+        if (ayat.arabic_search.contains(query)) {
+          searchResults.add({
+            'sora': surah.name,
+            'ayat': ayat,
+          });
+        }
+      }
+    }
     update();
   }
 }
