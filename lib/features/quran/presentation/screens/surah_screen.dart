@@ -1,15 +1,51 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/utils/components/appbar/build_sliver_appbar.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/aya_container.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/basmala_image.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/multicopy_aya_container.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/telawa_widget.dart';
 
-class SurahScreen extends StatelessWidget {
-  const SurahScreen({super.key});
+class SurahScreen extends StatefulWidget {
+  final int targetNumber;
+  const SurahScreen({
+    Key? key,
+     this.targetNumber = 0,
+  }) : super(key: key);
+
+  @override
+  State<SurahScreen> createState() => _SurahScreenState();
+}
+
+class _SurahScreenState extends State<SurahScreen> {
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    WidgetsBinding.instance.addPostFrameCallback(_scrollToTargetAyah);
+  }
+
+  void _scrollToTargetAyah(_) {
+    if (widget.targetNumber != -1) {
+      _scrollController.animateTo(
+        widget.targetNumber * 150, // Assuming each Ayah item height is 56.0
+        duration: 1.seconds,
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +73,7 @@ class SurahScreen extends StatelessWidget {
           children: [
             Expanded(
               child: CustomScrollView(
-                controller: Get.find<QuranController>().scrollController,
+                controller: _scrollController,
                 slivers: [
                   const SliverAppBarWidget(
                     isSearch: false,
