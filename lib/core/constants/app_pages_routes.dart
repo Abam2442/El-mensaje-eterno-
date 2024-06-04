@@ -118,7 +118,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasu
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Audio/rasul_uallah_audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Video/video_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/romance_screen.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminolgy_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminology/terminolgy_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/the_key_to_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/woman_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/learn_salah.dart';
@@ -140,7 +140,7 @@ import '../../features/sites/bindings/islam_qa_bindings.dart';
 import '../../features/sites/bindings/saber_el_islam_binding.dart';
 import '../../features/sites/bindings/the_key_to_islam_2_binding.dart';
 import '../../features/sites/bindings/the_key_to_islam_binding.dart';
-import '../../features/sites/presentation/screen/islam_faith_screen.dart';
+import '../../features/sites/presentation/screen/islam_faith/islam_faith_screen.dart';
 import '../../features/sites/presentation/screen/saber_el_islam/saber_el_islam_screen.dart';
 import '../../features/sites/presentation/screen/the_key_to_islam_2_screen.dart';
 
@@ -261,11 +261,8 @@ abstract class AppPagesRoutes {
     GetPage(
       name: surahScreen,
       page: () {
-        
-
-        return  SurahScreen();
+        return SurahScreen();
       },
-      
       binding: QuranBindings(),
       transition: Transition.cupertino,
     ),
