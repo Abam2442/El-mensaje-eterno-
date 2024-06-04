@@ -7,19 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SectionItemHomePageWidget extends StatelessWidget {
-  SectionItemHomePageWidget({
-    super.key,
-    required this.sectionName,
-    required this.sectionSubtitle,
-    required this.sectionIcon,
-    required this.onTap,
-    this.isInfo
-  });
+  SectionItemHomePageWidget(
+      {super.key,
+      required this.sectionName,
+      required this.sectionSubtitle,
+      required this.sectionIcon,
+      required this.onTap,
+      this.isInfo = false});
   final String sectionName;
   final String sectionSubtitle;
   final String sectionIcon;
   final GestureTapCallback? onTap;
-  bool? isInfo = false;
+  bool? isInfo;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -68,31 +67,28 @@ class SectionItemHomePageWidget extends StatelessWidget {
                           maxLines: 1,
                         )
                       : const SizedBox.shrink(),
-
                 ],
               ),
             ),
-            if(isInfo!=null)
+            if (isInfo != null)
               IconButton(
                 onPressed: () {
-                  if(isInfo==true){
+                  if (isInfo == true) {
                     Get.to(() => const SalahImportancePage());
-                  }else{
+                  } else {
                     String text =
                         'La importancia de la Purificación en el Islam, y es una condición que se debe cumplir antes de realizar la oración\n\n'
-
-                    'De Ibn Umar que dijo:\n'
-
-                    'Que fue a lo de Ibn ‘Amir (para conocer su estado de salud) ya que estaba enfermo y le dijo (Ibn ‘Amir) “Ibn ‘Umar ¿por qué no ruegas a Allah por mí?”.'
-                  'Él contestó: “Escuché al Mensajero de Allah ﷺ decir: “Ninguna oración es aceptada sin la purificación previa,........ Muslim\n\n\n'
-
-                  'De Abu Málik Al Hariz Ibn Asim Al Asharí, Allah esté complacido con él que el Mensajero de Allah ﷺ dijo\n'
-
-                  '“La purificación es la mitad del imán (de la fe)....... Muslim'
-                  ;
-                    Get.defaultDialog(title: 'La importancia de la Purificación en el Islam',content: SingleChildScrollView(child: Text(text),));
+                        'De Ibn Umar que dijo:\n'
+                        'Que fue a lo de Ibn ‘Amir (para conocer su estado de salud) ya que estaba enfermo y le dijo (Ibn ‘Amir) “Ibn ‘Umar ¿por qué no ruegas a Allah por mí?”.'
+                        'Él contestó: “Escuché al Mensajero de Allah ﷺ decir: “Ninguna oración es aceptada sin la purificación previa,........ Muslim\n\n\n'
+                        'De Abu Málik Al Hariz Ibn Asim Al Asharí, Allah esté complacido con él que el Mensajero de Allah ﷺ dijo\n'
+                        '“La purificación es la mitad del imán (de la fe)....... Muslim';
+                    Get.defaultDialog(
+                        title: 'La importancia de la Purificación en el Islam',
+                        content: SingleChildScrollView(
+                          child: Text(text),
+                        ));
                   }
-
                 },
                 icon: const Icon(
                   Icons.info_outline,

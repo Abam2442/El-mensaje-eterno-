@@ -26,7 +26,6 @@ class KnowingAllahAudiosScreen extends StatelessWidget {
                         url: controller.data[index].url,
                         mediaLinkType: MediaLinkType.viewOnly,
                       );
-                      ;
                     }))));
   }
 }

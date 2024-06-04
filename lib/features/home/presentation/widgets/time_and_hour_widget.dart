@@ -37,7 +37,7 @@ class TimeAndHourWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [ Obx(()=>(homeController.isLoading.value)?
-              CircularProgressIndicator():
+              const CircularProgressIndicator():
             Text('${homeController.next} ',
               style: Styles.textStyle18Golden.copyWith(color: AppColors.danger),
             )),

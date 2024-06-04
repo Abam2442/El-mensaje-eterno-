@@ -8,10 +8,8 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
-import 'package:hiwayda_oracion_islamica/core/widgets/custom_appbar.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/widgets/section_item_homeP_page_widget.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/lessons_details_page.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/view/practical_learn_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_importance_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/wudu_practical_page.dart';
 class TaharaPage extends StatelessWidget {

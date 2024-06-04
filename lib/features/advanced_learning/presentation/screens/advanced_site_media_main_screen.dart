@@ -58,8 +58,7 @@ class AdvancedSiteMediaMainScreen extends StatelessWidget {
                                     Directory tempDir =
                                         await getTemporaryDirectory();
                                     String tempPath = tempDir.path;
-                                    var filePath = tempPath +
-                                        '/Quiero abrazar el islam pero.pdf'; // file_01.tmp is dump file, can be anything
+                                    var filePath = '$tempPath/Quiero abrazar el islam pero.pdf'; // file_01.tmp is dump file, can be anything
                                     File file = await File(filePath)
                                         .writeAsBytes(data.buffer.asUint8List(
                                             data.offsetInBytes,

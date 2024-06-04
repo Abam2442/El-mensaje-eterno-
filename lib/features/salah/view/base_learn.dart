@@ -2,9 +2,7 @@ import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/model/tahara_lesson_model.dart';
 import 'package:flutter/material.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/view/lesson_details_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/lessons_details_page.dart';
 
 import '../../../core/styles/text_styles.dart';

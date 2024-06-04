@@ -9,7 +9,7 @@ class CategorySpModel {
     if (json['value'] != null) {
       value = <Value>[];
       json['value'].forEach((v) {
-        value!.add(new Value.fromJson(v));
+        value!.add(Value.fromJson(v));
       });
     }
   }

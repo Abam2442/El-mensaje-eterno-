@@ -7,7 +7,7 @@ class QiblaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: AppColors.kPrimaryColor, body: SafeArea(child: QiblaCompass()));
+    return const Scaffold(backgroundColor: AppColors.kPrimaryColor, body: SafeArea(child: QiblaCompass()));
   }
 
 /*static Future<bool?> androidDeviceSensorSupport() async {

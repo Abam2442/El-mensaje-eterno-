@@ -93,7 +93,7 @@ class TelegramChannelsScreen extends StatelessWidget {
                             ),
                           ),
                           IconButton(
-                              icon:Icon(Icons.info),onPressed:(){
+                              icon:const Icon(Icons.info),onPressed:(){
                                   launchUrl(Uri.parse('https://t.me/${controller.channelsNames[index]}'));
                           }),
                         ],

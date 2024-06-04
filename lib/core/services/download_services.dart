@@ -95,7 +95,6 @@ class DownloadServices extends GetxService {
             }
             DownloadDialog.showSuccessDialog(fileName, "$path/$fileName");
             isDownloading.value = false;
-            ;
           }).onError((error, stackTrace) {
             if (Get.isDialogOpen == true) {
               Get.back();

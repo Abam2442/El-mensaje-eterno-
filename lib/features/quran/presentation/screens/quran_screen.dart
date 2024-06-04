@@ -1,11 +1,8 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/features/quran/data/models/surah_model.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/screens/surah_screen.dart';
 
-import '../../../../core/constants/app_pages_routes.dart';
 import '../../../../core/utils/components/appbar/build_sliver_appbar.dart';
 import '../../domain/entities/surah_entity.dart';
 import '../controller/quran_controller.dart';

@@ -5,7 +5,6 @@ import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
-import '../../../styles/text_styles.dart';
 import 'direction_aware.dart';
 
 class SearchHadithSliverAppBarWidget extends StatelessWidget {

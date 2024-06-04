@@ -1,11 +1,8 @@
 // ignore_for_file: camel_case_types
 
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:open_file/open_file.dart';
 
 import '../../../../core/constants/app_pages_routes.dart';
 

@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_jsons.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
-import 'package:hiwayda_oracion_islamica/core/widgets/custom_appbar.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/widgets/section_item_homeP_page_widget.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/lessons_details_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/practical_learn_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_importance_page.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/view/wudu_practical_page.dart';
 
 class SalahPage extends StatelessWidget {
   const SalahPage({super.key});
@@ -74,7 +71,7 @@ class SalahPage extends StatelessWidget {
                           sectionSubtitle: ''),
                       SectionItemHomePageWidget(
                         onTap: () {
-                          Get.to(() => PracticalLearnPage(level: 0,));
+                          Get.to(() => const PracticalLearnPage(level: 0,));
                         },
                         sectionIcon: AppSvgs.learnSalah,
                         sectionName: 'Practico Aprende a orar Principiante',
@@ -82,7 +79,7 @@ class SalahPage extends StatelessWidget {
                       ),
                       SectionItemHomePageWidget(
                         onTap: () {
-                          Get.to(() => PracticalLearnPage(level: 1,));
+                          Get.to(() => const PracticalLearnPage(level: 1,));
                         },
                         sectionIcon: AppSvgs.learnSalah,
                         sectionName: 'Practico Aprende a orar Intermedio',
@@ -90,7 +87,7 @@ class SalahPage extends StatelessWidget {
                       ),
                       SectionItemHomePageWidget(
                         onTap: () {
-                          Get.to(() => PracticalLearnPage(level: 2,));
+                          Get.to(() => const PracticalLearnPage(level: 2,));
                         },
                         sectionIcon: AppSvgs.learnSalah,
                         sectionName: 'Practico Aprende a orar Avanzado',

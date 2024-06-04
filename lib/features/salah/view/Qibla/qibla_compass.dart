@@ -37,10 +37,10 @@ class _QiblaCompassState extends State<QiblaCompass> {
       backgroundColor: AppColors.kPrimaryColor,
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(top: 35),
+          margin: const EdgeInsets.only(top: 35),
           //margin: 10.aEdge,
           padding: 10.aEdge,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(topLeft: Radius.circular(100)),
             color: AppColors.kGreenColor,
           ),
@@ -109,7 +109,7 @@ class _QiblaCompassState extends State<QiblaCompass> {
                                 ],
                               );
                             } else {
-                              return Center(
+                              return const Center(
                                 child: CircularProgressIndicator(),
                               );
                             }
@@ -124,7 +124,7 @@ class _QiblaCompassState extends State<QiblaCompass> {
                     ),
                   );
                 } else {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 }
               },
             );
@@ -178,10 +178,10 @@ class _PermissionPageState extends State<PermissionPage> {
       backgroundColor: AppColors.kPrimaryColor,
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(top: 35),
+          margin: const EdgeInsets.only(top: 35),
           //margin: 10.aEdge,
           padding: 10.aEdge,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(topLeft: Radius.circular(100)),
             color: AppColors.kGreenColor,
           ),

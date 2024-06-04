@@ -58,7 +58,7 @@ class _VideoIconState extends State<VideoIcon> {
                 });
           }
         },
-        child: Container(
+        child: SizedBox(
             width: 200,
             height: 200,
             child: (widget.videoPath.startsWith('http'))

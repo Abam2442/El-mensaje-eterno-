@@ -8,7 +8,7 @@ import 'package:hiwayda_oracion_islamica/features/salah/view/lesson_details_page
 
 import '../../../../core/styles/text_styles.dart';
 class LessonsDetailsPage extends StatelessWidget {
-  LessonsDetailsPage({required this.list,this.list2,required this.title, required this.icon});
+  LessonsDetailsPage({super.key, required this.list,this.list2,required this.title, required this.icon});
   String icon;
   String title;
   List<LessonDetail> list;

@@ -25,7 +25,7 @@ class IslamLandArticalScreen extends StatelessWidget {
               child: TextFormField(
                 onFieldSubmitted: (val) {
                   controller.searchArticle();
-                  Get.to(() => IslamLandSearch());
+                  Get.to(() => const IslamLandSearch());
                 },
                 controller: controller.searchController,
                 decoration: InputDecoration(

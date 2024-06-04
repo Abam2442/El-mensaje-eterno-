@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/core/services/easy_loader_service.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/copy_button.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/model/tahara_lesson_model.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -12,7 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/styles/text_styles.dart';
 
 class LessonDetailsPage extends StatelessWidget {
-  LessonDetailsPage({required this.lessonDetail});
+  const LessonDetailsPage({super.key, required this.lessonDetail});
 
  final LessonDetail lessonDetail;
 
@@ -55,7 +52,7 @@ class LessonDetailsPage extends StatelessWidget {
                         ),
                       ),
                       10.hSize,
-                      SelectableText(lessonDetail.body.toString(), style: TextStyle(color: Colors.white, fontSize: 18))
+                      SelectableText(lessonDetail.body.toString(), style: const TextStyle(color: Colors.white, fontSize: 18))
                     ],
                   ),
                 ),

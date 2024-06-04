@@ -2,7 +2,6 @@ import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/ayah_ent
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/aya_arabic_container.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/multicopy_quran_page_widget.dart';
-import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/quran_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

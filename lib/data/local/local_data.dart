@@ -19,8 +19,9 @@ class LocalData {
   static Future<bool> setString(String key, String value) async {
     return await sharedPref.setString(key, value);
   }
-  static String? getString(String key){
-    return  sharedPref.getString(key);
+
+  static String? getString(String key) {
+    return sharedPref.getString(key);
   }
 
   static Future<bool> setBool(String key, bool value) async {
@@ -32,7 +33,6 @@ class LocalData {
   }
 
   //! Getter Functions
-  
 }
 
 class LocalKeys {

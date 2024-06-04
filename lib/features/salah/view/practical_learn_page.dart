@@ -13,7 +13,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hiwayda_oracion_islamica/features/ui_rone_screen/ui_rone_screen.dart';
 
 class PracticalLearnPage extends StatefulWidget {
-  PracticalLearnPage({Key? key, required this.level}) : super(key: key);
+  const PracticalLearnPage({Key? key, required this.level}) : super(key: key);
   final int level;
 
   @override
@@ -106,7 +106,7 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                             });
                                         break;
                                       case 2:
-                                        Get.to(()=> AdvancedSalahPage(title: 'Salat Fajr',imgList:const [AppImages.advancedFajr, AppImages.advancedFajr1]));
+                                        Get.to(()=> const AdvancedSalahPage(title: 'Salat Fajr',imgList:[AppImages.advancedFajr, AppImages.advancedFajr1]));
                                         break;
                                     }
                                   },
@@ -127,8 +127,8 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                             });
                                         break;
                                       case 2:
-                                        Get.to(()=> AdvancedSalahPage(title: 'Salat Duhr',imgList:
-                                        const [AppImages.advancedDAI1, AppImages.advancedDAI2,
+                                        Get.to(()=> const AdvancedSalahPage(title: 'Salat Duhr',imgList:
+                                        [AppImages.advancedDAI1, AppImages.advancedDAI2,
                                           AppImages.advancedDAI3, AppImages.advancedDAI4,
                                         ]));
                                         break;
@@ -151,8 +151,8 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                             });
                                         break;
                                       case 2:
-                                        Get.to(()=> AdvancedSalahPage(title: 'Salat Asr',imgList:
-                                        const [AppImages.advancedDAI1, AppImages.advancedDAI2,
+                                        Get.to(()=> const AdvancedSalahPage(title: 'Salat Asr',imgList:
+                                        [AppImages.advancedDAI1, AppImages.advancedDAI2,
                                           AppImages.advancedDAI3, AppImages.advancedDAI4,
                                         ]));
                                         break;
@@ -176,9 +176,9 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                             });
                                         break;
                                       case 2:
-                                        Get.to(()=> AdvancedSalahPage(
+                                        Get.to(()=> const AdvancedSalahPage(
                                           title: 'Salat Magrib',
-                                            imgList: const [AppImages.advancedMagh1, AppImages.advancedMagh2,
+                                            imgList: [AppImages.advancedMagh1, AppImages.advancedMagh2,
                                           AppImages.advancedMagh3
                                         ]));
                                         break;
@@ -201,8 +201,8 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                             });
                                         break;
                                       case 2:
-                                        Get.to(()=> AdvancedSalahPage(title: 'Salat Isha',imgList:
-                                        const [AppImages.advancedDAI1, AppImages.advancedDAI2,
+                                        Get.to(()=> const AdvancedSalahPage(title: 'Salat Isha',imgList:
+                                        [AppImages.advancedDAI1, AppImages.advancedDAI2,
                                           AppImages.advancedDAI3, AppImages.advancedDAI4,
                                         ]));
                                         break;

@@ -72,8 +72,4 @@ class AboutController extends GetxController {
         linkedin: ''),
   ];
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 }

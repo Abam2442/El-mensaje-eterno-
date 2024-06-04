@@ -33,7 +33,7 @@ class BookHadithesScreen extends GetView<HadithController> {
               ),
               Get.arguments["webside"] == "sunnah"
                   ? const SunnahBookSelectSliver()
-                  : HadithencCategorySelectSliver(),
+                  : const HadithencCategorySelectSliver(),
             ],
           ),
         ));

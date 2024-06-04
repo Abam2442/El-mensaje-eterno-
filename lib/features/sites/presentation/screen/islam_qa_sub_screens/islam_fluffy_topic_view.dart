@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_qa_sub_screens/islam_flufy_topic_view.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_qa_sub_screens/islam_subtopic_view.dart';
 
 import '../../../../advanced_learning/presentation/widgets/item _card.dart';
 import '../../../data/models/islam_qa.dart';

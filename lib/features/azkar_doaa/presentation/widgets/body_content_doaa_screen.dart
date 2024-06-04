@@ -1,7 +1,6 @@
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
-import 'package:hiwayda_oracion_islamica/features/azkar_doaa/data/models/doaa_model/doaa_model.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/presentation/controller/azkar_doaa_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

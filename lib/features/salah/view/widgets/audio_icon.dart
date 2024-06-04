@@ -1,5 +1,4 @@
 //import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';

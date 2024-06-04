@@ -9,7 +9,7 @@ class CallMe extends StatelessWidget {
   String whatsapp;
   String messenger;
 
-  CallMe({required this.whatsapp, required this.messenger, required this.message});
+  CallMe({super.key, required this.whatsapp, required this.messenger, required this.message});
 
   @override
   Widget build(BuildContext context) {

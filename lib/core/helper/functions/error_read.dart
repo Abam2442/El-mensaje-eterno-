@@ -1,5 +1,3 @@
-import 'package:hiwayda_oracion_islamica/core/ys_localizations/ys_localizations.dart';
-
 String readError(e) {
   if (e is Map<String, dynamic>) {
     if (e['error'] == 1 && e['message'] != null) {
@@ -11,5 +9,5 @@ String readError(e) {
     return '${e.values.first}';
   }
   // IDK what the wrong is this. so something weird happened;
-  return 'something_wrong'.tr;
+  return 'something_wrong';
 }

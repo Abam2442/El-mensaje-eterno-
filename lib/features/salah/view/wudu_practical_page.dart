@@ -106,7 +106,7 @@ class StepPage extends StatelessWidget {
 }
 
 class TopicPage extends StatefulWidget {
-  TopicPage({required this.topic, required this.index, Key? key}) : super(key: key);
+  const TopicPage({required this.topic, required this.index, Key? key}) : super(key: key);
   final NestedTopics topic;
   final int index;
 

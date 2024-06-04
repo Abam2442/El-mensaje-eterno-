@@ -8,7 +8,7 @@ import '../../../../core/constants/app_pages_routes.dart';
 import '../../../../core/widgets/primary_list_tile.dart';
 
 class HadithencCategorySelectSliver extends GetView<HadithController> {
-    HadithencCategorySelectSliver({super.key});
+    const HadithencCategorySelectSliver({super.key});
    @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(

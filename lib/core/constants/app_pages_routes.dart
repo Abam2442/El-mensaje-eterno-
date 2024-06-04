@@ -1,7 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/extensions/string_to_from.dart';
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/advanced_learning.dart';
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/screens/advanced_sites.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/azkar_doaa_bindings.dart';
@@ -261,7 +260,7 @@ abstract class AppPagesRoutes {
     GetPage(
       name: surahScreen,
       page: () {
-        return SurahScreen();
+        return const SurahScreen();
       },
       binding: QuranBindings(),
       transition: Transition.cupertino,

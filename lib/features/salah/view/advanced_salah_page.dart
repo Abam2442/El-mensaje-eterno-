@@ -5,7 +5,7 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
 class AdvancedSalahPage extends StatefulWidget {
-  AdvancedSalahPage({super.key, required this.imgList, required this.title});
+  const AdvancedSalahPage({super.key, required this.imgList, required this.title});
   final String title;
   final List<String> imgList;
 

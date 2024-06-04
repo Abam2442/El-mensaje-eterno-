@@ -4,7 +4,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 class Options extends StatelessWidget {
-  Options({
+  const Options({
     super.key,
     required this.label,
     required this.image,

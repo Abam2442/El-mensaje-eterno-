@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/functions/copy_clipboard.dart';
-import 'package:hiwayda_oracion_islamica/core/services/easy_loader_service.dart';
 import 'package:hiwayda_oracion_islamica/features/islamicCenters/model/islamic_centers_model.dart';
 import 'package:hiwayda_oracion_islamica/features/islamicCenters/view/countries_Screen.dart';
 import '../../../core/widgets/custom_listTile.dart';

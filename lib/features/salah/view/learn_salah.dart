@@ -2,19 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/Qibla/qibla_compass.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/view/practical_learn_page.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/view/salah_importance_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/tahara_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_page.dart';
 
 import '../../home/presentation/widgets/section_item_homeP_page_widget.dart';
-import 'base_learn.dart';
 import 'prayer_times_page.dart';
 
 class LearnSalah extends StatelessWidget {

@@ -39,7 +39,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
 class SalahAppbar extends StatelessWidget implements PreferredSizeWidget{
   final String title;
 
-  SalahAppbar({super.key, required this.title});
+  const SalahAppbar({super.key, required this.title});
   @override
   Widget build(BuildContext context) {
     return AppBar(

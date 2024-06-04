@@ -28,8 +28,6 @@ class SplashBody extends StatefulWidget {
 
 class _SplashBodyState extends State<SplashBody>
     with SingleTickerProviderStateMixin {
-
-
   @override
   void initState() {
     super.initState();
@@ -38,18 +36,19 @@ class _SplashBodyState extends State<SplashBody>
 
   void loadData() async {
     AppPublicVar.taharaLessons = await TaharaLessonFromJson.getData();
-   goToNextView();
+    goToNextView();
   }
+
   void goToNextView() {
     Future.delayed(const Duration(seconds: 1), () {
-      Get.off(()=> HomeScreen());
+      Get.off(() => HomeScreen());
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        // widthFactor: context.width,
         child: Container(
           width: double.infinity,
           decoration: const BoxDecoration(
@@ -62,13 +61,13 @@ class _SplashBodyState extends State<SplashBody>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-               SvgPicture.asset(
-                   AppAssets.logoApp,
+              SvgPicture.asset(
+                AppAssets.logoApp,
                 height: 100,
                 //fit: BoxFit.fitWidth,
               ),
               Container(
-                padding: 10.aEdge,
+                  padding: 10.aEdge,
                   margin: 10.aEdge,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
@@ -92,6 +91,4 @@ class _SplashBodyState extends State<SplashBody>
       ),
     );
   }
-
-
 }

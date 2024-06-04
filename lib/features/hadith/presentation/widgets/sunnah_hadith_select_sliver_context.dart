@@ -88,9 +88,9 @@ class SunnahBookSelectSliver extends GetView<HadithController> {
                               // ),
                             ),
                             Obx(() => controller.bookHadithesNameForList.isEmpty
-                                ? Container(
+                                ? SizedBox(
                                     height: Get.height * 0.5,
-                                    child: Center(
+                                    child: const Center(
                                       child: Text(
                                         "neniuj rezultoj",
                                         style: TextStyle(

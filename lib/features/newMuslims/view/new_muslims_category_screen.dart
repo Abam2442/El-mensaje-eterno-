@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/features/newMuslims/controller/newMuslims_controller.dart';
-import 'package:hiwayda_oracion_islamica/features/newMuslims/view/newMuslims_nestedTopics_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/newMuslims/view/new_muslims_Topics_Screen.dart';
 import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/screens/web_view_screen.dart';
 

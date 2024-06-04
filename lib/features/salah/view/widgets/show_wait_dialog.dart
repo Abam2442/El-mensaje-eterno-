@@ -5,10 +5,10 @@ class ShowWaitDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           CircularProgressIndicator(
             backgroundColor: Colors.transparent,
           ),

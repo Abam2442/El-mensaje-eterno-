@@ -18,19 +18,19 @@ class YoutubeModel {
     if (json['Videos'] != null) {
       videos = <Videos>[];
       json['Videos'].forEach((v) {
-        videos!.add(new Videos.fromJson(v));
+        videos!.add(Videos.fromJson(v));
       });
     }
     if (json['Playlists'] != null) {
       playlists = <Playlists>[];
       json['Playlists'].forEach((v) {
-        playlists!.add(new Playlists.fromJson(v));
+        playlists!.add(Playlists.fromJson(v));
       });
     }
     if (json['Shorts'] != null) {
       shorts = <Shorts>[];
       json['Shorts'].forEach((v) {
-        shorts!.add(new Shorts.fromJson(v));
+        shorts!.add(Shorts.fromJson(v));
       });
     }
   }
@@ -50,10 +50,10 @@ class Videos {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['VideoName'] = this.videoName;
-    data['VideoUrl'] = this.videoUrl;
-    data['VideoDescription '] = this.videoDescription;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['VideoName'] = videoName;
+    data['VideoUrl'] = videoUrl;
+    data['VideoDescription '] = videoDescription;
     return data;
   }
 }
