@@ -261,9 +261,9 @@ abstract class AppPagesRoutes {
     GetPage(
       name: surahScreen,
       page: () {
-        var targetNumber = Get.arguments['targetNumber'];
+        
 
-        return  SurahScreen(targetNumber: targetNumber.toIntNum,);
+        return  SurahScreen();
       },
       arguments: {
         'targetNumber': Get.arguments['targetNumber'],
