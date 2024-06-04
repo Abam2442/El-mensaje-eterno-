@@ -17,7 +17,6 @@ class NonMuslimSectionScreen extends GetView<NonMuslimController> {
         slivers: [
           const SliverAppBarWidget(
             title: 'Courses for Non Muslims',
-            // isSearch: true,
             isPinned: true,
           ),
           SliverToBoxAdapter(

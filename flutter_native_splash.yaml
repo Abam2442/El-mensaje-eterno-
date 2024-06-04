@@ -65,7 +65,7 @@ flutter_native_splash:
   # platform.
   android: true
   ios: true
-  # web: false
+  web: false
 
   # Platform specific images can be specified with the following parameters, which will override
   # the respective parameter.  You may specify all, selected, or none of these parameters:

@@ -6,6 +6,7 @@ import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/contro
 import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/screens/non_muslim_sub_topic_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 
 class NonMuslimTopicsScreen extends GetView<NonMuslimController> {
   final List<IslamTopic> topics;
@@ -15,6 +16,8 @@ class NonMuslimTopicsScreen extends GetView<NonMuslimController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(QuranController());
+
     return Scaffold(
       backgroundColor: AppColors.kPrimaryColor,
       body: CustomScrollView(
