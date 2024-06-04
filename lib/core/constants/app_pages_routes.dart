@@ -265,9 +265,7 @@ abstract class AppPagesRoutes {
 
         return  SurahScreen();
       },
-      arguments: {
-        'targetNumber': Get.arguments['targetNumber'],
-      },
+      
       binding: QuranBindings(),
       transition: Transition.cupertino,
     ),
