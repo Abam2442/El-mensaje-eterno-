@@ -71,7 +71,9 @@ class SalahPage extends StatelessWidget {
                           sectionSubtitle: ''),
                       SectionItemHomePageWidget(
                         onTap: () {
-                          Get.to(() => const PracticalLearnPage(level: 0,));
+                          Get.to(() => const PracticalLearnPage(
+                                level: 0,
+                              ));
                         },
                         sectionIcon: AppSvgs.learnSalah,
                         sectionName: 'Practico Aprende a orar Principiante',
@@ -79,20 +81,24 @@ class SalahPage extends StatelessWidget {
                       ),
                       SectionItemHomePageWidget(
                         onTap: () {
-                          Get.to(() => const PracticalLearnPage(level: 1,));
+                          Get.to(() => const PracticalLearnPage(
+                                level: 1,
+                              ));
                         },
                         sectionIcon: AppSvgs.learnSalah,
                         sectionName: 'Practico Aprende a orar Intermedio',
                         sectionSubtitle: '',
                       ),
-                      SectionItemHomePageWidget(
-                        onTap: () {
-                          Get.to(() => const PracticalLearnPage(level: 2,));
-                        },
-                        sectionIcon: AppSvgs.learnSalah,
-                        sectionName: 'Practico Aprende a orar Avanzado',
-                        sectionSubtitle: '',
-                      ),
+                      // SectionItemHomePageWidget(
+                      //   onTap: () {
+                      //     Get.to(() => const PracticalLearnPage(
+                      //           level: 2,
+                      //         ));
+                      //   },
+                      //   sectionIcon: AppSvgs.learnSalah,
+                      //   sectionName: 'Practico Apende a orar Avanzado',
+                      //   sectionSubtitle: '',
+                      // ),
                       SectionItemHomePageWidget(
                           onTap: () {
                             AppRoutes.routeTo(

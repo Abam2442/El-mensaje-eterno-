@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/controller/home_controller.dart';
@@ -10,17 +9,17 @@ import 'widgets/sections_widgets_home_screen.dart';
 import 'widgets/time_and_hour_widget.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
-  HomeController homeController = Get.put(HomeController());
+  const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    HomeController homeController = Get.put(HomeController());
     return Scaffold(
       backgroundColor: AppColors.kPrimaryColor,
       appBar: const HomeAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TimeAndHourWidget(),
+            const TimeAndHourWidget(),
             const SizedBox(
               height: 12,
             ),

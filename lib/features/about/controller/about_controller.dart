@@ -59,17 +59,23 @@ class AboutController extends GetxController {
         gmail: 'algharrpy2022@gmail.com',
         linkedin: ''),
     DeveloperModel(
-        name: 'Muhammed Ahmed',
-        whatsapp: '',
-        facebook: '',
+        name: 'Muhammed Ahmed (UI)',
+        whatsapp: 'https://wsend.co/201026364250',
+        facebook: 'https://www.facebook.com/profile.php?id=100050464672421',
         gmail: 'm29026753@gmail.com',
-        linkedin: ''),
+        linkedin:
+            'https://www.linkedin.com/in/mohamed-ahmed-36b3b4276/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BzI1HMFFKQBaohC8g2P6XlQ%3D%3D'),
     DeveloperModel(
-        name: 'Dr. Bassem Ahmed',
-        whatsapp: '',
-        facebook: '',
-        gmail: 'bassemahmed4444@gmail.com',
-        linkedin: ''),
+        name: 'Yousef',
+        whatsapp: 'https://wa.me/+201221818411',
+        facebook: 'https://www.facebook.com/',
+        gmail: '',
+        linkedin: 'https://www.linkedin.com/'),
+    DeveloperModel(
+        name: 'Ahmed Fathi (web)',
+        whatsapp: 'https://wa.me/+201067222657',
+        facebook: 'https://www.facebook.com/',
+        gmail: 'iahmed.fathy@hotmail.com',
+        linkedin: 'https://www.linkedin.com/in/iahmedfathy/'),
   ];
-
 }

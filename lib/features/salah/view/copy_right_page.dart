@@ -13,7 +13,7 @@ class CopyRightPage extends StatelessWidget {
         backgroundColor: AppColors.kPrimaryColor,
         appBar: AppBar(
           title: const Text(
-            "Fuentes",
+            "Guía para usar la aplicación",
             style: Styles.textStyle20Golden,
           ),
           backgroundColor: AppColors.kPrimaryColor,
@@ -33,59 +33,51 @@ class CopyRightPage extends StatelessWidget {
                     children: [
                       10.hSize,
                       const Text(
-                        '''El siguiente contenido no está afiliado al sitio original (no official) .
- Más bien, es mediante la clonación  con web scraping 
-para permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.
- También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.
- Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, 
+                        '''Cómo utilizar la aplicación
 
- Si desea explorar los materiales originales de la fuente, colocaremos un enlace a cada sitio''',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                        textAlign: TextAlign.start,
-                      ),
-                      const Text(
-                        '''
-                        
-Newmuslimguide.com 
-Newmuslims.com 
-Al-feqh.com 
-Islamhouse.com
-Islamland.com 
-Islamreligion.com 
-Islammessage.org 
-Islamqa.com
-http://www.thepurity.org/
-http://www.romanceinislam.com,
-http://themessageofislam.org
-http://www.humanrightsinislam.com/
-http://www.pbuh.us 
-http://thereligionofpeace.ws/
-http://www.thisistruth.org
-http://www.womeninislam.ws/
-http://jesusandquran.com/
-Saberislam.com
-https://guidetoislam.com/
-https://islamguide.com/
-http://www.thekeytoislam.com
-http://islamuniverse.org/ 
-https://jesus-is-muslim.net/
-https://religiondelislam.com/
-https://www.islam-guide.com
-La-sunnah.com
-Hadithenc.com
-https://www.hisnmuslim.com/
-https://doa.eqtidaa.com/
-https://terminologyenc.com/ 
-http://islam-port.com/
-http://knowingallah.com/
-https://rasoulallah.net/
-http://islamweb.net/
-https://www.muslim-library.com/
-http://islamforchristians.com/
-https://www.islam-hinduism.com/
-https://www.the-faith.com/
-https://www.lastmiracle.com/
-http://www.truth-seeker.info/''',
+ Bienvenidos hermano y hermana a la aplicación del mensaje eterno.
+
+ La aplicación aborda todos los niveles.
+🌸 Para los no musulmanes
+🌸 Y los nuevos musulmanes
+🌸 Y los antiguos musulmanes
+ hispanohablantes alrededor del mundo
+
+ La aplicación incluye la mayor parte del contenido educativo que explica el Islam en una sola plataforma.
+
+ Incluye aplicación
+♦️  6 traducciones del Corán en español 
+♦️ La aplicación incluye muchos ♦️hadices del profeta Muhammad صل الله عليه وسلم  
+♦️ La aplicación incluye un plan educativo para enseñar al nuevo musulmán (la tercera sección) desde los sitios aprobados y una explicación distinta y única para enseñar la oración de una manera muy fácil y sencilla. 
+♦️ La aplicación contiene las súplicas y súplicas que un musulmán necesita durante el día y la noche. 
+♦️ La aplicación contiene lecciones para enseñar a los niños. 
+
+
+🔷 Para la cuarta sección de la solicitud. 
+🔷 Contiene 40 sitios web que puedes navegar sin Internet. 
+🔷 La aplicación contiene una biblioteca para recopilar todos los libros, lecciones de audio y videoclips. 
+🔷 También contiene 60 canales de Telegram y más de 50 canales de YouTube. 
+🔷 La aplicación contiene recursos para la enseñanza de la lengua árabe.
+
+
+
+
+ Le pedimos a Al-láh que nos guíe a todo lo bueno, y que esta aplicación te ayude a ti, hermano y hermana, a aprender y acercarte a Al-láh 🤲 .
+
+
+
+ Si tienes alguna consulta o sugerencia o no eres musulmán y quieres hablar sobre el Islam.
+ Envíame un mensaje en las siguientes redes sociales.
+
+
+WhatsApp
+Wa.me/+201090578754
+
+Facebook
+https://www.facebook.com/bassem2442
+
+Telegram
+T.me/Abam2442''',
                         style: TextStyle(color: Colors.white, fontSize: 18),
                         textAlign: TextAlign.start,
                       ),

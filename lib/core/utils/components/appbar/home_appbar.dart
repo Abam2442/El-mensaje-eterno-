@@ -4,7 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/about/about_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/about/view/about_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/question/question_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/copy_right_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
@@ -18,7 +20,16 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.kPrimaryColor,
-      title: Padding(padding: const EdgeInsets.symmetric(horizontal: 12), child: SvgPicture.asset(AppAssets.logoApp)),
+      title: GestureDetector(
+        onTap: () {
+          launchUrl(Uri.parse(
+              'https://play.google.com/store/apps/details?id=com.mensaje.eterno'));
+        },
+        child: SvgPicture.asset(
+          AppAssets.logoApp,
+          height: 50,
+        ),
+      ),
       actions: const [
         CustomPopupMenuButton(),
       ],
@@ -40,11 +51,17 @@ class CustomPopupMenuButton extends StatelessWidget {
     return PopupMenuButton<String>(
       onSelected: (value) {},
       itemBuilder: (BuildContext context) => [
-        _buildPopupMenuItem('Fuentes', FontAwesomeIcons.copyright, 'Fuentes', () {
+        _buildPopupMenuItem('Guía para usar la aplicación.',
+            FontAwesomeIcons.copyright, 'Guía para usar la aplicación.', () {
           Get.to(() => const CopyRightPage());
         }),
-        _buildPopupMenuItem('Developers', FontAwesomeIcons.user, 'Developers', () {
+        _buildPopupMenuItem('Developers', FontAwesomeIcons.user, 'Developers',
+            () {
           Get.to(() => const AboutScreen(), binding: AboutBinding());
+        }),
+        _buildPopupMenuItem('Para consultas y sugerencias',
+            FontAwesomeIcons.question, 'Para consultas y sugerencias', () {
+          Get.to(() => const QuestionScreen());
         }),
       ],
       splashRadius: 1,
@@ -64,7 +81,8 @@ class CustomPopupMenuButton extends StatelessWidget {
     );
   }
 
-  _buildPopupMenuItem(String value, IconData icon, String text, VoidCallback? onTap) {
+  _buildPopupMenuItem(
+      String value, IconData icon, String text, VoidCallback? onTap) {
     return PopupMenuItem<String>(
       onTap: onTap,
       value: value,
