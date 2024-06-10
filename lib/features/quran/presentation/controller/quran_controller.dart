@@ -14,6 +14,14 @@ class QuranController extends GetxController {
   List<Surah> surahs = [];
   List<Ayah> resultAyat = [];
   List<Ayah> currentAyat = [];
+  List translator = [
+    'Muhammad Isa Garcia',
+    'El-Mokhtasar Tafsir',
+    'Noor international (Latin)',
+    'Noor international (EU)',
+    'Abdel-Ghani Melara - Complejo del Rey Fahd',
+    'Mohammed Bahige Mulla'
+  ];
 
   // States
   StateType getSurahsState = StateType.init;
@@ -21,7 +29,7 @@ class QuranController extends GetxController {
 
   // Primitive
   String validationMessage = '';
-  int selectedTranslator = 1;
+  int selectedTranslator = 0;
 
   int chapterNumber = 1;
   var isSearching = false.obs;
@@ -51,6 +59,7 @@ class QuranController extends GetxController {
       (r) {
         getSurahsState = StateType.success;
         surahs = r;
+        // log(surahs[0].ayat[0].noorinternationallatin);
         update();
       },
     );
@@ -121,8 +130,8 @@ class QuranController extends GetxController {
 
   void updateSelectedTranslator(int selection) {
     selectedTranslator = selection;
-    print('selected reanslator ${selectedTranslator.toString()}');
     update();
+    Get.back();
   }
 
   void search(String query) {

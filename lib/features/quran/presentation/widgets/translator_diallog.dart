@@ -9,57 +9,16 @@ class TranslatorDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text('Elija Traducir'),
-      content: GetBuilder<QuranController>(
-        builder: (controller) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                title: const Text('Julio Cortes'),
-                onTap: () {
-                  controller.updateSelectedTranslator(1);
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: const Text('Raúl Gonzalez'),
-                onTap: () {
-                  controller.updateSelectedTranslator(2);
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: const Text('Isa García'),
-                onTap: () {
-                  controller.updateSelectedTranslator(3);
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: const Text('ElMokhtasar'),
-                onTap: () {
-                  controller.updateSelectedTranslator(4);
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: const Text('Noon Latin'),
-                onTap: () {
-                  controller.updateSelectedTranslator(5);
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: const Text('Noon EU'),
-                onTap: () {
-                  controller.updateSelectedTranslator(6);
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        }
-      ),
+      content: GetBuilder<QuranController>(builder: (controller) {
+        return ListView.builder(
+            itemCount: controller.translator.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                onTap: () => controller.updateSelectedTranslator(index),
+                title: Text(controller.translator[index]),
+              );
+            });
+      }),
     );
   }
 }
