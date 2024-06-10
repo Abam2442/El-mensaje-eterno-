@@ -1,6 +1,5 @@
 import '../constants/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
 class PrimaryShimmer extends StatelessWidget {
@@ -30,7 +29,7 @@ class PrimaryShimmer extends StatelessWidget {
     return Shimmer.fromColors(
       baseColor: color.withOpacity(0.2),
       highlightColor: color.withOpacity(0.5),
-      direction: Get.locale!.languageCode == 'ar' ? ShimmerDirection.rtl : ShimmerDirection.ltr,
+      direction: ShimmerDirection.rtl,
       child: Container(
         width: width,
         height: height,

@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
-import 'package:logger/logger.dart';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
@@ -26,8 +24,6 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
   @override
   Future<List<FixedEntities>> getContect() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getContect` in |GuideToIslamLocalDataSourceImpl|");
       String? guideToIslam =
           await archiveService.readFile(name: AppKeys.guideToIslam);
 
@@ -42,13 +38,9 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
           ));
         });
       }
-      Get.find<Logger>()
-          .w("End `getContect` in |GuideToIslamLocalDataSourceImpl|");
+
       return Future.value(articals);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getContect` in |GuideToIslamLocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }
@@ -56,8 +48,6 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
   @override
   Future<List<MediaEntity>> getBooks() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getBooks` in |GuideToIslamLocalDataSourceImpl|");
       List<MediaEntity> result = [];
 
       String? json =
@@ -72,9 +62,6 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
       }
       return result;
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getBooks` in |GuideToIslamLocalDataSourceImpl| Exception: ${e.runtimeType} $e",
-      );
       rethrow;
     }
   }
@@ -82,8 +69,6 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
   @override
   Future<List<MediaEntity>> getAudios() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getAudios` in |GuideToIslamLocalDataSourceImpl|");
       List<MediaEntity> result = [];
       String? json =
           await archiveService.readFile(name: AppKeys.guideToIslamAudios);
@@ -97,9 +82,6 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
       }
       return result;
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getAudios` in |GuideToIslamLocalDataSourceImpl| Exception: ${e.runtimeType} $e",
-      );
       rethrow;
     }
   }
@@ -107,8 +89,6 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
   @override
   Future<List<MediaEntity>> getVideos() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getVideos` in |GuideToIslamLocalDataSourceImpl|");
       List<MediaEntity> result = [];
       String? json =
           await archiveService.readFile(name: AppKeys.guideToIslamVideos);
@@ -121,9 +101,6 @@ class GuideToIslamLocalDataSourceImpl extends GuideToIslamLocalDataSource {
       }
       return result;
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getVideos` in |GuideToIslamLocalDataSourceImpl| Exception: ${e.runtimeType} $e",
-      );
       rethrow;
     }
   }

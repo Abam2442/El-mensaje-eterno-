@@ -19,7 +19,7 @@ class TelegramChannelsModelLocalDataSourceImpl
     required this.sharedPreferencesService,
     required this.archiveService,
   });
-  
+
   @override
   Future<TelegramChannels> getTelegramChannels() async {
     try {
@@ -30,24 +30,14 @@ class TelegramChannelsModelLocalDataSourceImpl
           await archiveService.readFile(name: AppKeys.telegram);
 
       // Call the readFile method
-      Map<String, dynamic> jsonData =
-          json.decode(fileContent!);
+      Map<String, dynamic> jsonData = json.decode(fileContent!);
       //print('ssssss $jsonData');
       //  Map<String, dynamic> telegramChannels = jsonData["telegram-channels"];
       TelegramChannels channelsModel = TelegramChannels.fromJson(jsonData);
-      Get.find<Logger>().w(
-          "End `getTelegramChannels` in |TelegramChannelsModelLocalDataSourceImpl|");
+
       return channelsModel;
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getChannels` in |TelegramChannelsModelLocalDataSourceImpl| Exception: $e",
-      );
       rethrow;
     }
   }
 }
-
-
-
-
-

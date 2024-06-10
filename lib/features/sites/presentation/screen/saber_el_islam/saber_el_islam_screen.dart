@@ -24,6 +24,7 @@ class SaberElIslamScreen extends StatelessWidget {
         return Column(
           children: [
             SearchFieldWidget(
+              text: 'Buscar en artículos',
               formState: controller.formState,
               onSubmitted: (val) => controller.searchFun(val),
             ),

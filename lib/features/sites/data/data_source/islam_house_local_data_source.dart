@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
-import 'package:logger/logger.dart';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
@@ -25,8 +23,6 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
   @override
   Future<List<List<FixedEntities>>> getContect() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getContect` in |IslamHouseLocalDataSourceImpl|");
       String? islamHouseJson =
           await archiveService.readFile(name: AppKeys.islamHouse);
       List<FixedEntities> videos = [];
@@ -71,13 +67,9 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
           ));
         });
       }
-      Get.find<Logger>()
-          .w("End `getContect` in |IslamHouseLocalDataSourceImpl|");
+
       return Future.value([videos, audios, books, fatwas, articals]);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getContect` in |IslamHouseLocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }
@@ -85,8 +77,6 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
   @override
   Future<List<MediaEntity>> getBooks() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getBooks` in |IslamHouseLocalDataSourceImpl|");
       List<MediaEntity> result = [];
       String? json =
           await archiveService.readFile(name: AppKeys.islamHouseBooks);
@@ -99,9 +89,6 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
       }
       return result;
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getBooks` in |IslamLandHouseDataSourceImpl| Exception: ${e.runtimeType} $e",
-      );
       rethrow;
     }
   }
@@ -109,8 +96,6 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
   @override
   Future<List<FixedEntities>> getFatwa() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getFatwa` in |IslamHouseLocalDataSourceImpl|");
       List<FixedEntities> result = [];
       String? json =
           await archiveService.readFile(name: AppKeys.islamHouseFatwa);
@@ -123,9 +108,6 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
       }
       return result;
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getFatwa` in |IslamLandHouseDataSourceImpl| Exception: ${e.runtimeType} $e",
-      );
       rethrow;
     }
   }

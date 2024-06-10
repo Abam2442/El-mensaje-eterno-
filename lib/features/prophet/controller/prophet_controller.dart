@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/features/prophet/model/prophetModel.dart';
-import 'package:logger/logger.dart';
 
 class ProphetController extends GetxController with GetSingleTickerProviderStateMixin{
 
@@ -17,7 +16,7 @@ class ProphetController extends GetxController with GetSingleTickerProviderState
   StateType getLessonsState = StateType.init;
   @override
   void onInit() async {
-    Get.find<Logger>().i("Start onInit ProphetController");
+    
     super.onInit();
     await loadJsonFile();
     tabs = [
@@ -25,7 +24,7 @@ class ProphetController extends GetxController with GetSingleTickerProviderState
       Tab(text: prophetModel.courses![1].title!),
     ];
     tabController = TabController(length: 2, vsync: this);
-    Get.find<Logger>().w("End onInit ProphetController");
+    
     getLessonsState = StateType.success;
 
   }

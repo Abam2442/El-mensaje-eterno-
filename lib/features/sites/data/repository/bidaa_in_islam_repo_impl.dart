@@ -18,12 +18,9 @@ class BidaaInIslamRepositoryImp extends FixedRepository {
     try {
       Get.find<Logger>().i("Start `getArtical` in |BidaaInIslamRepositoryImp|");
       var artical = await bidaaInIslamLocalDataSource.getArtical();
-      Get.find<Logger>().w(
-          "End `getArtical` in |BidaaInIslamRepositoryImp| ${artical.length}");
+
       return Right(artical);
     } catch (e) {
-      Get.find<Logger>().e(
-          "End `getArtical` in |BidaaInIslamRepositoryImp| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }

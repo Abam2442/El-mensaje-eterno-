@@ -22,8 +22,6 @@ class BeginingRepositoryImp extends FixedRepository {
           .w("End `getArtical` in |BeginingRepositoryImp| ${artical.length}");
       return Right(artical);
     } catch (e) {
-      Get.find<Logger>().e(
-          "End `getArtical` in |BeginingRepositoryImp| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }

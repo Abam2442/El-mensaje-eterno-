@@ -1,6 +1,4 @@
-import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/main/data/model/pair_model.dart';
-import 'package:logger/logger.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/services/api_service.dart';
 
@@ -16,10 +14,9 @@ class NonMuslimRemoteDataSourceImpl extends NonMuslimRemoteDataSource {
 
   // TODO This is example
   @override
-  Future<List<PairModel>> getCategoriesAsPair({required int repositoryId}) async {
+  Future<List<PairModel>> getCategoriesAsPair(
+      {required int repositoryId}) async {
     try {
-      Get.find<Logger>().i("Start `getCategoriesAsPair` in |NonMuslimRemoteDataSourceImpl|");
-
       Map<String, dynamic> mapData = await apiService.get(
         subUrl: AppApiRoutes.getCategoriesAsPair,
         parameters: {
@@ -32,12 +29,8 @@ class NonMuslimRemoteDataSourceImpl extends NonMuslimRemoteDataSource {
           )
           .toList();
 
-      Get.find<Logger>().w("End `getCategoriesAsPair` in |NonMuslimRemoteDataSourceImpl|");
       return Future.value(expenses);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getCategoriesAsPair` in |NonMuslimRemoteDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }

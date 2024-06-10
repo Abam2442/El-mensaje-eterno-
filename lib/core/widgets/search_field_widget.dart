@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 class SearchFieldWidget extends StatelessWidget {
   final void Function(String)? onSubmitted;
   final GlobalKey<FormState> formState;
+  final String text;
   const SearchFieldWidget(
-      {super.key, this.onSubmitted, required this.formState});
+      {super.key,
+      this.onSubmitted,
+      required this.formState,
+      required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class SearchFieldWidget extends StatelessWidget {
           },
           onFieldSubmitted: onSubmitted,
           decoration: InputDecoration(
-            hintText: 'Search in Articals',
+            hintText: text,
             filled: true,
             fillColor: const Color.fromARGB(255, 226, 226, 226),
             border: OutlineInputBorder(

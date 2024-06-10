@@ -2,8 +2,6 @@ import 'dart:convert';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import '../../domain/entities/fixed_entities.dart';
 
 abstract class HisnulMuminLocalDataSource {
@@ -20,8 +18,6 @@ class HisnulMuminLocalDataSourceImp extends HisnulMuminLocalDataSource {
   });
   @override
   Future<List<FixedEntities>> getArtical() async {
-    Get.find<Logger>()
-        .i("Start `getArtical` in |HisnulMuminLocalDataSourceImp|");
     String? fileContent =
         await archiveService.readFile(name: AppKeys.hisnulmumin);
     List<FixedEntities> articals = [];
@@ -34,7 +30,7 @@ class HisnulMuminLocalDataSourceImp extends HisnulMuminLocalDataSource {
         ));
       });
     }
-    Get.find<Logger>().w("End `getArtical` in |HisnulMuminLocalDataSourceImp|");
+
     return Future.value(articals);
   }
 }

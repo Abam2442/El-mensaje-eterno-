@@ -42,12 +42,12 @@ class MultiCopyQuranPageWidget extends StatelessWidget {
             height: 30,
             child: GetBuilder<QuranController>(builder: (c) {
               return Checkbox(
-                fillColor: MaterialStateProperty.all(AppColors.kWhiteColor),
-                value: c.multiCopySelectedAyat.contains(
-                    "${ayah.arabic}\n\n${c.selectedTranslator == 1 ? ayah.julioCortes : c.selectedTranslator == 2 ? ayah.raulGonzalezBornez : ayah.muhammadIsaGarcia}"),
+                fillColor: WidgetStateProperty.all(AppColors.kWhiteColor),
+                value: c.multiCopySelectedAyat
+                    .contains("${ayah.arabic}\n\n${ayah.muhammadIsaGarcia}"),
                 onChanged: (value) {
                   c.updateMultiCopySelection(
-                      "${ayah.arabic}\n\n${c.selectedTranslator == 1 ? ayah.julioCortes : c.selectedTranslator == 2 ? ayah.raulGonzalezBornez : ayah.muhammadIsaGarcia}");
+                      "${ayah.arabic}\n\n${ayah.muhammadIsaGarcia}");
                 },
                 activeColor: AppColors.kBlackColor,
                 checkColor: AppColors.kGreenColor,

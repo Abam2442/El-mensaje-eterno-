@@ -44,7 +44,7 @@ class FaithScreen extends GetView<FaithController> {
           tabs: controller.tabs,
         ),
         backgroundColor: AppColors.kWhiteColor,
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             FaithCourseScreen(index: 0),
             FaithCourseScreen(index: 1)

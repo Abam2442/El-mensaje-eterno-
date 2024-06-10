@@ -19,6 +19,7 @@ class JesusQuranScreen extends StatelessWidget {
           builder: (controller) => Column(
                 children: [
                   SearchFieldWidget(
+                    text: 'Buscar en artículos',
                     formState: controller.formState,
                     onSubmitted: (val) =>
                         controller.searchArticle(val, controller.articals),

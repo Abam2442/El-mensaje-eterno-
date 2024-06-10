@@ -22,6 +22,7 @@ class KnowingAllahArticalScreen extends StatelessWidget {
             builder: (controller) => Column(
                   children: [
                     SearchFieldWidget(
+                      text: 'Buscar en artículos',
                       onSubmitted: (val) => {
                         controller.searchArticle(val, controller.articals),
                         Get.to(() => const KnowingAllahArticalSearch())

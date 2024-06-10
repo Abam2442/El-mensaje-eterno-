@@ -2,8 +2,6 @@ import 'dart:convert';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import '../../domain/entities/fixed_entities.dart';
 
 abstract class JesusQuranLocalDataSource {
@@ -20,8 +18,6 @@ class JesusQuranLocalDataSourceImp extends JesusQuranLocalDataSource {
   });
   @override
   Future<List<FixedEntities>> getArtical() async {
-    Get.find<Logger>()
-        .i("Start `getArtical` in |JesusQuranLocalDataSourceImp|");
     String? fileContent =
         await archiveService.readFile(name: AppKeys.jesusQuran);
     List<FixedEntities> articals = [];
@@ -31,7 +27,7 @@ class JesusQuranLocalDataSourceImp extends JesusQuranLocalDataSource {
         articals.add(FixedEntities(name: key, content: value));
       });
     }
-    Get.find<Logger>().w("End `getArtical` in |JesusQuranLocalDataSourceImp|");
+
     return Future.value(articals);
   }
 }

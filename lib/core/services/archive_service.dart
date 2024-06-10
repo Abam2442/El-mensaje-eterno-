@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_archive/flutter_archive.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../constants/app_assets.dart';
@@ -24,7 +23,7 @@ class ArchiveService extends GetxService {
 
   Future<void> extractFile() async {
     try {
-      Get.find<Logger>().i("Start extractFile |ArchiveService|");
+      
       bool? isExtracted = sharedPreferencesService.getData<bool>(key: AppKeys.isExtracted);
       if ((isExtracted != null && !isExtracted) || isExtracted == null) {
         EasyLoaderService.showLoading();
@@ -38,7 +37,7 @@ class ArchiveService extends GetxService {
             zipFile: zipFile,
             destinationDir: appDir,
             onExtracting: (zipEntry, progress) {
-              Get.find<Logger>().w(zipEntry.name);
+              
               sharedPreferencesService.setData(
                 key: zipEntry.name,
                 value: '${appDir.path}/${zipEntry.name}',
@@ -49,16 +48,16 @@ class ArchiveService extends GetxService {
         zipFile.deleteSync();
         EasyLoaderService.dismiss();
       }
-    } catch (e, s) {
+    } catch (e) {
       EasyLoaderService.dismiss();
       EasyLoaderService.showError(message: "Error in Extracting");
-      Get.find<Logger>().w("End extractFile |ArchiveService| extraction failed $e ,$s");
+      
     }
   }
 
   Future<String?> readFile({required String name}) async {
     try {
-      Get.find<Logger>().i("Start `readFile` in |ArchiveService|");
+      
       bool? isExtracted = sharedPreferencesService.getData<bool>(
         key: AppKeys.isExtracted,
       );
@@ -68,7 +67,7 @@ class ArchiveService extends GetxService {
           final file = File(path);
           if (await file.exists()) {
             String fileContent = await file.readAsString();
-            Get.find<Logger>().w("End `readFile` in |ArchiveService|");
+            
             return fileContent;
           } else {
             EasyLoaderService.showToast(message: "File not exist");
@@ -80,10 +79,10 @@ class ArchiveService extends GetxService {
         await extractFile();
         await readFile(name: name);
       }
-      Get.find<Logger>().w("End `readFile` in |ArchiveService|");
+      
       return null;
     } catch (e) {
-      Get.find<Logger>().e("End `readFile` in |ArchiveService| Exception: ${e.runtimeType}");
+      
       rethrow;
     }
   }

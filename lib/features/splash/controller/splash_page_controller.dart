@@ -18,7 +18,7 @@ class SplashPageController extends GetxController
 
   void goToNextView() {
     Future.delayed(const Duration(seconds: 1), () {
-      Get.off(() => HomeScreen());
+      Get.off(() => const HomeScreen());
       Get.delete<SplashPageController>();
     });
   }

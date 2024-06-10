@@ -25,6 +25,7 @@ class IslamMessageArticalScreen extends StatelessWidget {
               : Column(
                   children: [
                     SearchFieldWidget(
+                      text: 'Buscar en artículos',
                       onSubmitted: (val) => {
                         controller.searchFun(val),
                         val.isEmpty

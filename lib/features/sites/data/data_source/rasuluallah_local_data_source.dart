@@ -64,9 +64,6 @@ class RasuluallhLocalDataSourceImp extends RasuluallhLocalDataSource {
       Get.find<Logger>().w("End `getAudio` in |RasuluallhLocalDataSourceImp|");
       return Future.value(audios);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getAudio` in |RasuluallhLocalDataSourceImp| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }
@@ -92,9 +89,6 @@ class RasuluallhLocalDataSourceImp extends RasuluallhLocalDataSource {
       }
       return result;
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getVideos` in |RasuluallhLocalDataSourceImp| Exception: ${e.runtimeType} $e",
-      );
       rethrow;
     }
   }

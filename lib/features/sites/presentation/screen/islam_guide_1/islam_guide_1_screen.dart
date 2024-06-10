@@ -20,6 +20,7 @@ class IslamGuide1Screen extends StatelessWidget {
           return Column(
             children: [
               SearchFieldWidget(
+                text: 'Buscar en artículos',
                 formState: c.formState,
                 onSubmitted: (val) => c.searchFun(val),
               ),

@@ -25,6 +25,7 @@ class ArticalContainScreen extends StatelessWidget {
         body: Column(
           children: [
             SearchFieldWidget(
+              text: 'Buscar en artículos',
               onSubmitted: (val) => {
                 controller.searchSubArticle(
                     val, controller.articals[index].data),

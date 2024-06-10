@@ -4,7 +4,6 @@ import 'package:hiwayda_oracion_islamica/features/azkar_doaa/data/models/sonan_m
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/domain/usecases/get_azkar_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 
 import '../../data/models/doaa_model/doaa_model.dart';
 import '../../domain/entities/azkar_entity.dart';
@@ -45,7 +44,7 @@ class AzkarDoaaController extends GetxController
 
   @override
   void onInit() async {
-    Get.find<Logger>().i("Start onInit AzkarController");
+    
     super.onInit();
     tabController = TabController(length: 3, vsync: this);
     tabController.addListener(() {
@@ -56,11 +55,11 @@ class AzkarDoaaController extends GetxController
     await getAzkar();
     await getDoaas();
     await getSonan();
-    Get.find<Logger>().w("End onInit AzkarController");
+    
   }
 
   Future<void> getAzkar() async {
-    Get.find<Logger>().i("Start `getAzkars` in |AzkarController|");
+    
     getAzkarState = StateType.loading;
     update();
     GetAzkarUseCase getAzkarsUseCase = GetAzkarUseCase(Get.find());
@@ -79,11 +78,11 @@ class AzkarDoaaController extends GetxController
         update();
       },
     );
-    Get.find<Logger>().w("End `getAzkars` in |AzkarController| $getAzkarState");
+    
   }
 
   Future<void> getDoaas() async {
-    Get.find<Logger>().i("Start `getDoaas` in |DoaaController|");
+    
     getDoaaState = StateType.loading;
     update();
     GetDoaasUseCase getDoaasUseCase = GetDoaasUseCase(Get.find());
@@ -102,11 +101,11 @@ class AzkarDoaaController extends GetxController
         update();
       },
     );
-    Get.find<Logger>().w("End `getDoaas` in |DoaaController| $getAzkarState");
+    
   }
 
   Future<void> getSonan() async {
-    Get.find<Logger>().i("Start `getSonan` in |SonanController|");
+    
     getDoaaState = StateType.loading;
     update();
     GetSonanUseCase getSonanUseCase = GetSonanUseCase(Get.find());
@@ -125,7 +124,7 @@ class AzkarDoaaController extends GetxController
         update();
       },
     );
-    Get.find<Logger>().w("End `getSonan` in |SonanController| $getSonanState");
+    
   }
 
   void onPageChanged(int index) {

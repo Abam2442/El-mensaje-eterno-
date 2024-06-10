@@ -21,6 +21,7 @@ class HadithScreen extends GetView<HadithController> {
           ),
           SliverToBoxAdapter(
             child: SearchFieldWidget(
+              text: 'Buscar en hadices',
               formState: controller.formState,
               onSubmitted: (val) => controller.searchFun(val),
             ),

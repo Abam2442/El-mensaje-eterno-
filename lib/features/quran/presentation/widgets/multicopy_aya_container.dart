@@ -25,17 +25,13 @@ class MultiCopyAyaContainer extends StatelessWidget {
         GetBuilder<QuranController>(
           id: "ayaNonArabic",
           builder: (controller) => MultiCopyAyaLanguageContainer(
-            ayaNonArabic: controller.selectedTranslator == 1
-                ? ayah.julioCortes
-                : controller.selectedTranslator == 2
-                    ? ayah.raulGonzalezBornez
-                    : controller.selectedTranslator == 3
-                        ? ayah.muhammadIsaGarcia
-                        : controller.selectedTranslator == 4
-                            ? ayah.elMokhtasarTafsir
-                            : controller.selectedTranslator == 5
-                                ? ayah.noorinternationallatin
-                                : ayah.noorinternationaleu,
+            ayaNonArabic: controller.selectedTranslator == 3
+                ? ayah.muhammadIsaGarcia
+                : controller.selectedTranslator == 4
+                    ? ayah.elMokhtasarTafsir
+                    : controller.selectedTranslator == 5
+                        ? ayah.noorinternationallatin
+                        : ayah.noorinternationaleu,
             ayaNumber: number,
           ),
         ),

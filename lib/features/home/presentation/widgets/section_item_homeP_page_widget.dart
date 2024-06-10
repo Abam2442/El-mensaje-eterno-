@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_importance_page.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_palyer_widget.dart';
+import 'package:video_player/video_player.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/styles/text_styles.dart';
@@ -21,6 +23,7 @@ class SectionItemHomePageWidget extends StatelessWidget {
   bool? isInfo;
   @override
   Widget build(BuildContext context) {
+    final VideoPlayerController controller = VideoPlayerController.asset('assets/video/v1.mp4');
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -77,17 +80,79 @@ class SectionItemHomePageWidget extends StatelessWidget {
                     Get.to(() => const SalahImportancePage());
                   } else {
                     String text =
-                        'La importancia de la Purificación en el Islam, y es una condición que se debe cumplir antes de realizar la oración\n\n'
-                        'De Ibn Umar que dijo:\n'
-                        'Que fue a lo de Ibn ‘Amir (para conocer su estado de salud) ya que estaba enfermo y le dijo (Ibn ‘Amir) “Ibn ‘Umar ¿por qué no ruegas a Allah por mí?”.'
-                        'Él contestó: “Escuché al Mensajero de Allah ﷺ decir: “Ninguna oración es aceptada sin la purificación previa,........ Muslim\n\n\n'
-                        'De Abu Málik Al Hariz Ibn Asim Al Asharí, Allah esté complacido con él que el Mensajero de Allah ﷺ dijo\n'
-                        '“La purificación es la mitad del imán (de la fe)....... Muslim';
-                    Get.defaultDialog(
-                        title: 'La importancia de la Purificación en el Islam',
-                        content: SingleChildScrollView(
-                          child: Text(text),
-                        ));
+                        '''Aviso:
+ En educación utilizamos lo que se llama transliteración, que significa una traducción fonética de textos árabes a letras españolas. 
+
+ Ejemplos :
+
+Allâhu Akbar
+Subhana rabbi al a'alaa
+Rabi ighfer li
+Arrahmani arrahim
+Samiaa allahu leman 7am ida
+..... Etc
+
+⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+No es correcto confiar en estas palabras traducidas para memorizarlas.
+ Ponemos estos símbolos sólo para que entiendas cómo pronunciar palabras árabes.
+ Por lo tanto, sólo debes confiar en las palabras que escuchas y no en las letras del español.
+ Debido a que existen fonemas, la lengua árabe no tiene una fonética equivalente en la lengua española.
+
+
+🌟🌟🌟🌟🌟
+Esa es la clave de las letras especiales utilizadas en los vídeos ilustrativos.
+ Aprende la pronunciación para que te resulte más fácil entender la pronunciación correcta de las letras
+''';
+                    // Get.defaultDialog(
+                    //     title: 'La importancia de la Purificación en el Islam',
+                    //     content: ListView(
+                    //       shrinkWrap: true,
+                    //       children: [Text(text)],
+                    //     ));
+                         showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+        backgroundColor: AppColors.kWhiteColor,
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: const Text(
+                "Ok",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.kPrimaryColor),
+              ))
+        ],
+        title: const Text("La importancia de la Purificación en el Islam"),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Text(
+                  text,
+                  style: const TextStyle(fontSize: 18),
+                ),
+              ),
+              IconButton(onPressed:() async {
+                // controller = VideoPlayerController.asset(videoPath);
+                await controller.initialize();
+                await Get.generalDialog(pageBuilder: (_, __, ___) {
+                  return VideoPlayerWidget(controller: controller);
+                });
+                controller.dispose();
+              }, icon: const Icon(Icons.play_arrow),)
+              
+              
+            ],
+          ),
+        ));
+                            });
                   }
                 },
                 icon: const Icon(

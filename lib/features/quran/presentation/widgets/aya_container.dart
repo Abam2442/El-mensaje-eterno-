@@ -23,11 +23,7 @@ class AyaContainer extends StatelessWidget {
         GetBuilder<QuranController>(
           id: "ayaNonArabic",
           builder: (controller) => AyaLanguageContainer(
-            ayaNonArabic: controller.selectedTranslator == 1
-                ? ayah.julioCortes
-                : controller.selectedTranslator == 2
-                    ? ayah.raulGonzalezBornez
-                    : ayah.muhammadIsaGarcia,
+            ayaNonArabic: ayah.muhammadIsaGarcia,
             ayaNumber: number,
           ),
         ),

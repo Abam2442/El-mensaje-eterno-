@@ -3,8 +3,6 @@ import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/ayah_ent
 class AyahModel extends Ayah {
   const AyahModel({
     required super.arabic,
-    required super.julioCortes,
-    required super.raulGonzalezBornez,
     required super.muhammadIsaGarcia,
     required super.elMokhtasarTafsir,
     required super.noorinternationallatin,
@@ -15,8 +13,6 @@ class AyahModel extends Ayah {
   factory AyahModel.fromJson(Map<String, dynamic> json) {
     return AyahModel(
       arabic: json['arabic'],
-      julioCortes: json['Julio Cortes'],
-      raulGonzalezBornez: json['Raul Gonzalez Bornez'],
       muhammadIsaGarcia: json['Muhammad Isa Garcia'],
       elMokhtasarTafsir: json['El-Mokhtasar Tafsir'],
       noorinternationallatin: json['Noor international (Latin)'],

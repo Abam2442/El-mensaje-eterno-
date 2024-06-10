@@ -4,8 +4,6 @@ import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_en
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import '../../domain/entities/fixed_entities.dart';
 import '../models/knowing_allah_model.dart';
 
@@ -26,8 +24,6 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
   });
   @override
   Future<List<KnowingAllahSubCategoryModel>> getContent() async {
-    Get.find<Logger>()
-        .i("Start `getContent` in |KnowingAllahLocalDataSourceImp|");
     String? fileContent =
         await archiveService.readFile(name: AppKeys.knowingAllah);
     // List<IslamReligionEntities> articals = [];
@@ -53,15 +49,13 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
       });
     }
     var knowingAllah = articles;
-    Get.find<Logger>()
-        .w("End `getContent` in |KnowingAllahLocalDataSourceImp|");
+
     return Future.value(knowingAllah);
   }
 
   @override
   Future<List<MediaEntity>> getBooks() async {
     try {
-      Get.find<Logger>().i("Start `getBooks` in |KnowingAllahDataSourceImpl|");
       List<MediaEntity> result = [];
       String? json =
           await archiveService.readFile(name: AppKeys.knowingAllahBooks);
@@ -74,9 +68,6 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
       }
       return result;
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getBooks` in |KnowingAllahDataSourceImpl| Exception: ${e.runtimeType} $e",
-      );
       rethrow;
     }
   }
@@ -84,7 +75,6 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
   @override
   Future<List<MediaEntity>> getAudios() async {
     try {
-      Get.find<Logger>().i("Start `getAudios` in |KnowingAllahDataSourceImpl|");
       List<MediaEntity> result = [];
       String? json =
           await archiveService.readFile(name: AppKeys.knowingAllahAudios);
@@ -97,9 +87,6 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
       }
       return result;
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getAudios` in |KnowingAllahDataSourceImpl| Exception: ${e.runtimeType} $e",
-      );
       rethrow;
     }
   }
@@ -107,7 +94,6 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
   @override
   Future<List<MediaCategoryEntity>> getVideos() async {
     try {
-      Get.find<Logger>().i("Start `getVideos` in |KnowingAllahDataSourceImpl|");
       List<MediaCategoryEntity> result = [];
       String? json =
           await archiveService.readFile(name: AppKeys.knowingAllahVideos);
@@ -125,9 +111,6 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
       }
       return result;
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getVideos` in |KnowingAllahDataSourceImpl| Exception: ${e.runtimeType} $e",
-      );
       rethrow;
     }
   }

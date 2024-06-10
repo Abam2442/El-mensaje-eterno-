@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/domain/usecases/get_hadithenc_hadithes_use_case.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/domain/usecases/get_sunnah_hadithes_use_case.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/search/hadith_search_screen.dart';
-import 'package:logger/logger.dart';
 import 'package:number_paginator/number_paginator.dart';
 
 class HadithController extends GetxController
@@ -68,16 +67,13 @@ class HadithController extends GetxController
 
   @override
   void onInit() async {
-    Get.find<Logger>().i("Start onInit HadithController");
     super.onInit();
     tabController = TabController(length: 2, vsync: this);
     await getSunnahHadithes();
     await getHadithencHadithes();
-    Get.find<Logger>().w("End onInit HadithController");
   }
 
   Future<void> getSunnahHadithes() async {
-    Get.find<Logger>().i("Start `getHadithes` in |HadithController|");
     getSunnahHadithesState = StateType.loading;
     update();
     GetSunnahHadithesUseCase getSunnahHadithesUseCase =
@@ -98,8 +94,6 @@ class HadithController extends GetxController
         update();
       },
     );
-    Get.find<Logger>()
-        .w("End `getHadithes` in |HadithController| $getSunnahHadithesState");
   }
 
   List<String>? get getbookHadithesName {
@@ -147,7 +141,6 @@ class HadithController extends GetxController
   }
 
   Future<void> getHadithencHadithes() async {
-    Get.find<Logger>().i("Start `getHadithes` in |HadithController|");
     getHadithencHadithesState = StateType.loading;
     update();
     GetHadithencHadithesUseCase getHadithencHadithesUseCase =
@@ -167,8 +160,6 @@ class HadithController extends GetxController
         update();
       },
     );
-    Get.find<Logger>().w(
-        "End `getHadithes` in |HadithController| $getHadithencHadithesState");
   }
 
   List<String>? get getCategorySubCategoriesName {

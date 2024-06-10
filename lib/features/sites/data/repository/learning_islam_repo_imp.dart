@@ -1,6 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/helpers/get_failure_from_exception.dart';
 import '../../domain/repository/learning_islam_repository.dart';
@@ -16,16 +14,11 @@ class LearningIslamRepositoryImp extends LearningIslamRepository {
   Future<Either<Failure, List<LearningIslamModel>>> getArtical() async {
     await learningIslamLocalDataSource.getArtical();
     try {
-      Get.find<Logger>().i("Start `getArtical` in |LearningIslamRepositoryImp|");
       var artical = await learningIslamLocalDataSource.getArtical();
-      Get.find<Logger>().w(
-          "End `getArtical` in |LearningIslamRepositoryImp| ${artical.length}");
+
       return Right(artical);
     } catch (e) {
-      Get.find<Logger>().e(
-          "End `getArtical` in |LearningIslamRepositoryImp| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }
 }
-

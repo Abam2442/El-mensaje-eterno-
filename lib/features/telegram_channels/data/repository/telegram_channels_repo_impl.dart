@@ -8,7 +8,8 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
 class TelegramChannelsRepoImpl implements TelegramChannelsRepo {
-  final TelegramChannelsModelLocalDataSource telegramChannelsModelLocalDataSource;
+  final TelegramChannelsModelLocalDataSource
+      telegramChannelsModelLocalDataSource;
 
   const TelegramChannelsRepoImpl({
     required this.telegramChannelsModelLocalDataSource,
@@ -18,18 +19,13 @@ class TelegramChannelsRepoImpl implements TelegramChannelsRepo {
   Future<Either<Failure, TelegramChannels>> getChannels() async {
     try {
       Get.find<Logger>().i("Start `getChannels` in |TelegramChannelsRepoImpl|");
-      var channels = await telegramChannelsModelLocalDataSource.getTelegramChannels();
-      Get.find<Logger>()
-          .w("End `getChannels` in |TelegramChannelsRepoImpl| ${channels.telegramChannels.length}");
+      var channels =
+          await telegramChannelsModelLocalDataSource.getTelegramChannels();
+      Get.find<Logger>().w(
+          "End `getChannels` in |TelegramChannelsRepoImpl| ${channels.telegramChannels.length}");
       return Right(channels);
     } catch (e) {
-      Get.find<Logger>().e(
-          "End `getChannels` in |TelegramChannelsRepoImpl| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }
-
-
-  
-
 }

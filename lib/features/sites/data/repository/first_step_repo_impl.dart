@@ -22,8 +22,6 @@ class FirstStepRepositoryImp extends FixedRepository {
           .w("End `getArtical` in |FirstStepRepositoryImp| ${artical.length}");
       return Right(artical);
     } catch (e) {
-      Get.find<Logger>().e(
-          "End `getArtical` in |FirstStepRepositoryImp| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }

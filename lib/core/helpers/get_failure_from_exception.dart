@@ -1,5 +1,3 @@
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 
 import '../constants/app_translation_keys.dart';
 import '../errors/exception.dart';
@@ -21,7 +19,7 @@ Failure getFailureFromException(Object exception) {
   } else if (exception is OfflineException) {
     return const OfflineFailure(message: AppTranslationKeys.offline);
   } else {
-    Get.find<Logger>().e(exception);
+    
     return const UnexpectedFailure(
       message: AppTranslationKeys.unexpectedException,
     );

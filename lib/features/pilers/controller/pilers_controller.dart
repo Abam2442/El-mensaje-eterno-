@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/features/pilers/model/pilersModel.dart';
-import 'package:logger/logger.dart';
 
 class PilersController extends GetxController with GetSingleTickerProviderStateMixin{
 
@@ -17,7 +16,7 @@ class PilersController extends GetxController with GetSingleTickerProviderStateM
   StateType getLessonsState = StateType.init;
   @override
   void onInit() async {
-    Get.find<Logger>().i("Start onInit PilersController");
+    
     super.onInit();
     await loadJsonFile();
     tabs = [
@@ -26,7 +25,7 @@ class PilersController extends GetxController with GetSingleTickerProviderStateM
       Tab(text: pilersModel.courses![2].title!),
     ];
     tabController = TabController(length: 3, vsync: this);
-    Get.find<Logger>().w("End onInit PilersController");
+    
     getLessonsState = StateType.success;
 
   }

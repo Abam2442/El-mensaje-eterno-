@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/features/mooamalat/model/mooamalatModel.dart';
-import 'package:logger/logger.dart';
 
 class MooamalatController extends GetxController with GetSingleTickerProviderStateMixin{
 
@@ -17,7 +16,7 @@ class MooamalatController extends GetxController with GetSingleTickerProviderSta
   StateType getLessonsState = StateType.init;
   @override
   void onInit() async {
-    Get.find<Logger>().i("Start onInit MooamalatController");
+    
     super.onInit();
     await loadJsonFile();
     tabs = [
@@ -28,7 +27,7 @@ class MooamalatController extends GetxController with GetSingleTickerProviderSta
       Tab(text: mooamalatModel.courses![4].title!),
     ];
     tabController = TabController(length: 5, vsync: this);
-    Get.find<Logger>().w("End onInit MooamalatController");
+    
     getLessonsState = StateType.success;
 
   }

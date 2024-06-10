@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/features/newLife/model/newLifeModel.dart';
-import 'package:logger/logger.dart';
 
 class NewLifeController extends GetxController with GetSingleTickerProviderStateMixin{
 
@@ -17,7 +16,7 @@ class NewLifeController extends GetxController with GetSingleTickerProviderState
   StateType getLessonsState = StateType.init;
   @override
   void onInit() async {
-    Get.find<Logger>().i("Start onInit NewLifeController");
+    
     super.onInit();
     await loadJsonFile();
     tabs = [
@@ -27,7 +26,7 @@ class NewLifeController extends GetxController with GetSingleTickerProviderState
       Tab(text: newLifeModel.courses![3].title!),
     ];
     tabController = TabController(length: 4, vsync: this);
-    Get.find<Logger>().w("End onInit NewLifeController");
+    
     getLessonsState = StateType.success;
 
   }

@@ -23,6 +23,7 @@ class TerminologyScreen extends StatelessWidget {
         return Column(
           children: [
             SearchFieldWidget(
+              text: 'Buscar en artículos',
               formState: controller.formState,
               onSubmitted: controller.searchFun,
             ),

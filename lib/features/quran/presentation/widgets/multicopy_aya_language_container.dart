@@ -37,7 +37,7 @@ class MultiCopyAyaLanguageContainer extends StatelessWidget {
             height: 30,
             child: GetBuilder<QuranController>(builder: (controller) {
               return Checkbox(
-                fillColor: MaterialStateProperty.all(AppColors.kWhiteColor),
+                fillColor: WidgetStateProperty.all(AppColors.kWhiteColor),
                 value:
                     controller.multiCopySelectedAyat.contains(ayaNonArabic),
                 onChanged: (value) {

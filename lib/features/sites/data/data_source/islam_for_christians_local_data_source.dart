@@ -2,8 +2,6 @@ import 'dart:convert';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import '../../domain/entities/fixed_entities.dart';
 import '../../domain/entities/islam_for_christians_entities.dart';
 
@@ -22,8 +20,6 @@ class IslamForChristiansLocalDataSourceImp
   });
   @override
   Future<List<IslamForChristiansEntities>> getContent() async {
-    Get.find<Logger>()
-        .i("Start `getContent` in |IslamForChristiansLocalDataSourceImp|");
     String? fileContent =
         await archiveService.readFile(name: AppKeys.islamForChristians);
     List<IslamForChristiansEntities> articals = [];
@@ -42,8 +38,7 @@ class IslamForChristiansLocalDataSourceImp
         ));
       });
     }
-    Get.find<Logger>()
-        .w("End `getContent` in |IslamForChristiansLocalDataSourceImp|");
+
     return Future.value(articals);
   }
 }

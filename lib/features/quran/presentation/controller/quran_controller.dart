@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
@@ -7,7 +6,6 @@ import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/ayah_ent
 import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/surah_entity.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/domain/usecases/get_surahs_use_case.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 
 import '../../../../core/services/easy_loader_service.dart';
 
@@ -29,18 +27,15 @@ class QuranController extends GetxController {
   var isSearching = false.obs;
   var searchResults = <Map<String, dynamic>>[].obs;
 
-  var  searchController = TextEditingController().obs;
+  var searchController = TextEditingController().obs;
 
   @override
   void onInit() async {
-    Get.find<Logger>().i("Start onInit QuranController");
     super.onInit();
     await getSurahs();
-    Get.find<Logger>().w("End onInit QuranController");
   }
 
   Future<void> getSurahs() async {
-    Get.find<Logger>().i("Start `getSurahs` in |QuranController|");
     getSurahsState = StateType.loading;
     update();
     GetSurahsUseCase getSurahsUseCase = GetSurahsUseCase(Get.find());
@@ -59,12 +54,9 @@ class QuranController extends GetxController {
         update();
       },
     );
-    Get.find<Logger>()
-        .w("End `getSurahs` in |QuranController| $getSurahsState");
   }
 
   Future<void> searchAboutAyah(String query) async {
-    Get.find<Logger>().i("Start `searchAboutAyah` in |QuranController|");
     searchAboutAyahState = StateType.loading;
     update();
     resultAyat = [];
@@ -77,8 +69,6 @@ class QuranController extends GetxController {
     }
     searchAboutAyahState = StateType.success;
     update();
-    Get.find<Logger>()
-        .w("End `searchAboutAyah` in |QuranController| $searchAboutAyahState");
   }
 
   bool isMultiCopyEnabled = false;

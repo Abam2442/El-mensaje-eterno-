@@ -19,6 +19,7 @@ class IslamForChristiansScreen extends StatelessWidget {
         builder: (controller) => Column(
           children: [
             SearchFieldWidget(
+              text: 'Buscar en artículos',
               formState: controller.firstFormState,
               onSubmitted: (val) =>
                   controller.searchFun(val, controller.articals, false),

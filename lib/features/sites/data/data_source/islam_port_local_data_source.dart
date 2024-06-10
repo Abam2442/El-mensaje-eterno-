@@ -2,8 +2,6 @@ import 'dart:convert';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 
 import '../../domain/entities/fixed_entities.dart';
 
@@ -21,7 +19,7 @@ class IslamPortLocalDataSourceImp extends IslamPortLocalDataSource {
   });
   @override
   Future<List<FixedEntities>> getArtical() async {
-    Get.find<Logger>().i("Start `getArtical` in |IslamPortLocalDataSourceImp|");
+    
     String? fileContent =
         await archiveService.readFile(name: AppKeys.islamPort);
     List<FixedEntities> articals = [];
@@ -31,7 +29,7 @@ class IslamPortLocalDataSourceImp extends IslamPortLocalDataSource {
         articals.add(FixedEntities(name: key, content: value));
       });
     }
-    Get.find<Logger>().w("End `getArtical` in |IslamPortLocalDataSourceImp|");
+    
     return Future.value(articals);
   }
 }

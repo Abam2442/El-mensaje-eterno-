@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
@@ -22,8 +20,6 @@ class IslamWebLocalDataSourceImpl extends IslamWebLocalDataSource {
   @override
   Future<List<IslamWebModel>> getArtical() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getArtical` in |IslamWebLocalDataSourceImpl|");
       String? islamWebJson =
           await archiveService.readFile(name: AppKeys.islamWeb);
       List<IslamWebModel> articals = [];
@@ -35,12 +31,9 @@ class IslamWebLocalDataSourceImpl extends IslamWebLocalDataSource {
             )
             .toList();
       }
-      Get.find<Logger>().w("End `getArtical` in |IslamWebLocalDataSourceImpl|");
+
       return Future.value(articals);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getArtical` in |IslamWebLocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }

@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
 import 'package:hiwayda_oracion_islamica/core/services/archive_service.dart';
 import 'package:hiwayda_oracion_islamica/core/services/shared_preferences_service.dart';
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 
 import '../models/azkar_model/azkar_model.dart';
 import '../models/doaa_model/doaa_model.dart';
@@ -29,7 +27,6 @@ class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
   @override
   Future<List<AzkarModel>> getAzkar() async {
     try {
-      Get.find<Logger>().i("Start `getAzkars` in |AzkarLocalDataSourceImpl|");
       String? fileContent =
           await archiveService.readFile(name: AppKeys.azkarDua);
 
@@ -42,12 +39,9 @@ class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
             )
             .toList();
       }
-      Get.find<Logger>().w("End `getAzkars` in |AzkarLocalDataSourceImpl|");
+
       return Future.value(azkar);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getAzkars` in |AzkarLocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }
@@ -55,7 +49,6 @@ class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
   @override
   Future<List<DoaaModel>> getDoaas() async {
     try {
-      Get.find<Logger>().i("Start `getDoaas` in |DoaaLocalDataSourceImpl|");
       String? fileContent = await archiveService.readFile(name: AppKeys.alduaa);
 
       late List<DoaaModel> doaas = [];
@@ -73,12 +66,9 @@ class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
               listOfDoaa: List<String>.from(element["الأدعية"].map((x) => x))));
         });
       }
-      Get.find<Logger>().w("End `getDoaas` in |DoaaLocalDataSourceImpl|");
+
       return Future.value(doaas);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getDoaas` in |DoaaLocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }
@@ -86,7 +76,6 @@ class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
   @override
   Future<Sonan> getSonan() async {
     try {
-      Get.find<Logger>().i("Start `getSonan` in |SonanLocalDataSourceImpl|");
       String? fileContent = await archiveService.readFile(name: AppKeys.sonan);
 
       // late Sonan sonan ;
@@ -137,12 +126,9 @@ class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
           dayAndNightSonan: nightAndDaySonan,
           notTimedSonan: unTimedSonan,
           timedSonan: timedSonan);
-      Get.find<Logger>().w("End `getSonan` in |SonanLocalDataSourceImpl|");
+
       return Future.value(sonan);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getSonan` in |SonanLocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }

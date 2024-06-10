@@ -57,8 +57,6 @@ class TelegramChannelsController extends GetxController {
         update();
       },
     );
-    Get.find<Logger>().w(
-        "End `getTelegramChannels` in |TelegramChannelsController| $getTelegramChannelsState");
   }
 
   addOrDeleteSelectedMessage(int index) {

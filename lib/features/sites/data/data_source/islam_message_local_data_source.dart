@@ -1,9 +1,7 @@
 import 'dart:convert';
-import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/data/models/books_list_model.dart'
     as models;
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
-import 'package:logger/logger.dart';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
@@ -29,8 +27,6 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
   @override
   Future<List<IslamMessageArticalModel>> getArtical() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getArtical` in |IslamMessageLocalDataSourceImpl|");
       String? islamMessageJson =
           await archiveService.readFile(name: AppKeys.islamMessage);
       List<IslamMessageArticalModel> articals = [];
@@ -42,13 +38,9 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
             )
             .toList();
       }
-      Get.find<Logger>()
-          .w("End `getArtical` in |IslamMessageLocalDataSourceImpl|");
+
       return Future.value(articals);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getArtical` in |IslamMessageLocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }
@@ -56,8 +48,6 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
   @override
   Future<List<MediaEntity>> getAudio() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getAudio` in |IslamMessageLocalDataSourceImpl|");
       String? islamMessageJson =
           await archiveService.readFile(name: AppKeys.islamMessageAudios);
       List<MediaEntity> audios = [];
@@ -69,13 +59,9 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
             )
             .toList();
       }
-      Get.find<Logger>()
-          .w("End `getAudio` in |IslamMessageLocalDataSourceImpl|");
+
       return Future.value(audios);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getAudio` in |IslamMessageLocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }
@@ -83,8 +69,6 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
   @override
   Future<List<MediaEntity>> getQuranVideos() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getQuranVideos` in |IslamMessageLocalDataSourceImpl|");
       String? islamMessageJson =
           await archiveService.readFile(name: AppKeys.islamMessageQuranVideos);
       List<MediaEntity> videos = [];
@@ -96,13 +80,9 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
             )
             .toList();
       }
-      Get.find<Logger>()
-          .w("End `getQuranVideos` in |IslamMessageLocalDataSourceImpl|");
+
       return Future.value(videos);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getQuranVideos` in |IslamMessageLocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }
@@ -110,8 +90,6 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
   @override
   Future<List<MediaCategoryEntity>> getBook() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getBook` in |IslamMessageLocalDataSourceImpl|");
       String? islamMessageJson =
           await archiveService.readFile(name: AppKeys.islamMessageBooks);
       List<models.IslamMessageBookModel> books = [];
@@ -124,13 +102,9 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
             )
             .toList();
       }
-      Get.find<Logger>()
-          .w("End `getBook` in |IslamMessageLocalDataSourceImpl|");
+
       return books;
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getBook` in |IslamMessageLocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }
@@ -138,8 +112,6 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
   @override
   Future<List<MediaEntity>> getVideos() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getVideos` in |IslamMessageLocalDataSourceImpl|");
       String? islamMessageJson =
           await archiveService.readFile(name: AppKeys.islamMessageVideos);
       List<MediaEntity> videos = [];
@@ -151,13 +123,9 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
             )
             .toList();
       }
-      Get.find<Logger>()
-          .w("End `getVideos` in |IslamMessageLocalDataSourceImpl|");
+
       return Future.value(videos);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getVideos` in |IslamMessageLocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }

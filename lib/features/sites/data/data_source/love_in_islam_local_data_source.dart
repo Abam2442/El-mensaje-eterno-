@@ -2,8 +2,6 @@ import 'dart:convert';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import '../../domain/entities/fixed_entities.dart';
 
 abstract class LoveInIslamLocalDataSource {
@@ -20,8 +18,6 @@ class LoveInIslamLocalDataSourceImp extends LoveInIslamLocalDataSource {
   });
   @override
   Future<List<FixedEntities>> getArtical() async {
-    Get.find<Logger>()
-        .i("Start `getArtical` in |LoveInIslamLocalDataSourceImp|");
     String? fileContent =
         await archiveService.readFile(name: AppKeys.loveInIslam);
     List<FixedEntities> articals = [];
@@ -31,7 +27,7 @@ class LoveInIslamLocalDataSourceImp extends LoveInIslamLocalDataSource {
         articals.add(FixedEntities(name: key, content: value));
       });
     }
-    Get.find<Logger>().w("End `getArtical` in |LoveInIslamLocalDataSourceImp|");
+
     return Future.value(articals);
   }
 }

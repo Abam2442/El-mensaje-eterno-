@@ -9,24 +9,19 @@ abstract class YoutubeChannelsModelLocalDataSource {
   Future<List<YoutubeModel>> getYoutubeChannels();
 }
 
-
-class YoutubeChannelsModelLocalDataSourceImpl extends YoutubeChannelsModelLocalDataSource{
+class YoutubeChannelsModelLocalDataSourceImpl
+    extends YoutubeChannelsModelLocalDataSource {
   @override
-  Future<List<YoutubeModel>> getYoutubeChannels() async{
-     Get.find<Logger>().i(
-          "Start `getYoutubeChannels` in |YoutubeChannelsModelLocalDataSourceImpl|");
+  Future<List<YoutubeModel>> getYoutubeChannels() async {
+    Get.find<Logger>().i(
+        "Start `getYoutubeChannels` in |YoutubeChannelsModelLocalDataSourceImpl|");
     List<YoutubeModel> youtubechannels = [];
-    String data = await  rootBundle.loadString('assets/json/data-1.json');
-  var data1 = jsonDecode(data);
-    data1['channels'].forEach((v){
-       youtubechannels.add(YoutubeModel.fromJson(v));
+    String data = await rootBundle.loadString('assets/json/data-1.json');
+    var data1 = jsonDecode(data);
+    data1['channels'].forEach((v) {
+      youtubechannels.add(YoutubeModel.fromJson(v));
     });
-
-Get.find<Logger>().w(
-          "End `getYoutubeChannels` in |YoutubeChannelsModelLocalDataSourceImpl|");
 
     return youtubechannels;
   }
-
-
-} 
+}

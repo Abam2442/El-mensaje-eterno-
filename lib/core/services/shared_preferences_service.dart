@@ -9,7 +9,8 @@ class SharedPreferencesService extends GetxService {
   SharedPreferencesService({required this.pref});
 
   T? getData<T>({required String key}) {
-    Get.find<Logger>().i("Start `getData` in |SharedPreferencesService| ~~key~~ $key");
+    Get.find<Logger>()
+        .i("Start `getData` in |SharedPreferencesService| ~~key~~ $key");
     T? value;
     if (T.toString() == 'int') {
       value = pref.getInt(key) as T?;
@@ -23,9 +24,6 @@ class SharedPreferencesService extends GetxService {
     if (T.toString() == 'String') {
       value = pref.getString(key) as T?;
     }
-    Get.find<Logger>().w(
-      "End `getData` in |SharedPreferencesService| ~~$key~~ $value",
-    );
     return value;
   }
 
@@ -54,18 +52,12 @@ class SharedPreferencesService extends GetxService {
       isSetDone = await pref.remove(key);
       return Future.value(unit);
     }
-    Get.find<Logger>().w(
-      "End `setData` in |SharedPreferencesService| ~~isSetDone~~ $isSetDone",
-    );
     return Future.value(unit);
   }
 
   Future<Unit> clear() async {
     Get.find<Logger>().i("Start `clear` in |SharedPreferencesService|");
     final clear = await pref.clear();
-    Get.find<Logger>().w(
-      "End `clear` in |SharedPreferencesService| ~~isClear~~ $clear ",
-    );
     return Future.value(unit);
   }
 }

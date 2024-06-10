@@ -26,6 +26,7 @@ class GuideToIslamArticalScreen extends StatelessWidget {
                   children: [
                     SearchFieldWidget(
                       formState: controller.formState,
+                      text: 'Buscar en artículos',
                       onSubmitted: (val) => controller.searchFun(val),
                     ),
                     Expanded(

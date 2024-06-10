@@ -7,24 +7,23 @@ import 'package:hiwayda_oracion_islamica/features/youtubechannels/data/models/yo
 import 'package:hiwayda_oracion_islamica/features/youtubechannels/domain/repository/youtube_channels_repo.dart';
 import 'package:logger/logger.dart';
 
-class YoutubeChannelsRepoImpl implements YoutubeChannelsRepo{
- final YoutubeChannelsModelLocalDataSource youtubeChannelsModelLocalDataSource;
+class YoutubeChannelsRepoImpl implements YoutubeChannelsRepo {
+  final YoutubeChannelsModelLocalDataSource youtubeChannelsModelLocalDataSource;
 
   const YoutubeChannelsRepoImpl({
     required this.youtubeChannelsModelLocalDataSource,
   });
 
   @override
-  Future<Either<Failure, List<YoutubeModel>>> getChannels() async{
-   try {
+  Future<Either<Failure, List<YoutubeModel>>> getChannels() async {
+    try {
       Get.find<Logger>().i("Start `getChannels` in |YoutubeChannelsRepoImpl|");
-      var channels = await youtubeChannelsModelLocalDataSource.getYoutubeChannels();
-      Get.find<Logger>()
-          .w("End `getChannels` in |YoutubeChannelsRepoImpl| ${channels.length}");
+      var channels =
+          await youtubeChannelsModelLocalDataSource.getYoutubeChannels();
+      Get.find<Logger>().w(
+          "End `getChannels` in |YoutubeChannelsRepoImpl| ${channels.length}");
       return Right(channels);
     } catch (e) {
-      Get.find<Logger>().e(
-          "End `getChannels` in |YoutubeChannelsRepoImpl| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }

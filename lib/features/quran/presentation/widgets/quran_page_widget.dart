@@ -44,8 +44,7 @@ class QuranPageWidget extends StatelessWidget {
             onTap: () async {
               var c = Get.find<QuranController>();
               var data = ClipboardData(
-                  text:
-                      "${ayah.arabic}\n\n${c.selectedTranslator == 1 ? ayah.julioCortes : c.selectedTranslator == 2 ? ayah.raulGonzalezBornez : ayah.muhammadIsaGarcia}");
+                  text: "${ayah.arabic}\n\n${ayah.muhammadIsaGarcia}");
               await Clipboard.setData(data);
               EasyLoaderService.showToast(message: "Copied");
             },

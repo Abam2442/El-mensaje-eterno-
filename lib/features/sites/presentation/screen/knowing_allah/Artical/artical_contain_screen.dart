@@ -27,6 +27,7 @@ class KnowingAllahArticalContainScreen extends StatelessWidget {
       body: Column(
         children: [
           SearchFieldWidget(
+            text: 'Buscar en artículos',
             onSubmitted: (val) => {
               controller.searchArticle(
                   val, controller.articals[index].subcategories),

@@ -9,18 +9,16 @@ class YoutubeChannelsController extends GetxController {
   List<YoutubeModel> youtube_model = [];
   StateType getYoutubeChannelsState = StateType.init;
 
-
   @override
-  void onInit() async{
+  void onInit() async {
     Get.find<Logger>().i("Start onInit YoutubeChannelsController");
     super.onInit();
     await getYoutubeChannels();
     Get.find<Logger>().w("End onInit YoutubeChannelsController");
   }
 
-
-Future<void> getYoutubeChannels() async{
-Get.find<Logger>()
+  Future<void> getYoutubeChannels() async {
+    Get.find<Logger>()
         .i("Start `getYoutubeChannels` in |YoutubeChannelsController|");
     getYoutubeChannelsState = StateType.loading;
     update();
@@ -41,9 +39,5 @@ Get.find<Logger>()
         update();
       },
     );
-    Get.find<Logger>().w(
-        "End `getYoutubeChannels` in |YoutubeChannelsController| $getYoutubeChannelsState");
-
-}
-
+  }
 }

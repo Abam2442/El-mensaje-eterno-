@@ -6,7 +6,6 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/utils/components/appbar/build_sliver_appbar.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/aya_container.dart';
-import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/basmala_image.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/multicopy_aya_container.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/telawa_widget.dart';
 
@@ -14,7 +13,7 @@ class SurahScreen extends StatefulWidget {
   final int targetNumber;
   const SurahScreen({
     Key? key,
-     this.targetNumber = 0,
+    this.targetNumber = 0,
   }) : super(key: key);
 
   @override
@@ -79,14 +78,6 @@ class _SurahScreenState extends State<SurahScreen> {
                     isSearch: false,
                     backgroundColor: AppColors.kWhiteColor,
                     iconColor: AppColors.kPrimaryColor,
-                  ),
-                  const SliverToBoxAdapter(
-                    child: Column(
-                      children: [
-                        BasmalaImage(),
-                        SizedBox(height: 12),
-                      ],
-                    ),
                   ),
                   GetBuilder<QuranController>(builder: (controller) {
                     return SliverList.builder(

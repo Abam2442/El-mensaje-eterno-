@@ -1,7 +1,5 @@
 import 'dart:convert';
 // import 'package:elresala/features/sites/data/models/islam_qa.dart';
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
@@ -23,8 +21,6 @@ class IslamQALocalDataSourceImpl extends IslamqaLocalDataSource {
   @override
   Future<List<Islamqa>> getArtical() async {
     try {
-      Get.find<Logger>()
-          .i("Start `getArtical` in |IslamQALocalDataSourceImpl|");
       String? learningIslamJson =
           await archiveService.readFile(name: AppKeys.islamQA);
       List<Islamqa> articals = [];
@@ -36,12 +32,9 @@ class IslamQALocalDataSourceImpl extends IslamqaLocalDataSource {
             )
             .toList();
       }
-      Get.find<Logger>().w("End `getArtical` in |IslamQALocalDataSourceImpl|");
+
       return Future.value(articals);
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getArtical` in |IslamQALocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
       rethrow;
     }
   }

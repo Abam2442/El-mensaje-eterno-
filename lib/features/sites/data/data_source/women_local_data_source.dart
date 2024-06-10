@@ -3,8 +3,6 @@ import '../../../../core/constants/app_keys.dart';
 import '../../../../core/services/archive_service.dart';
 import '../../../../core/services/shared_preferences_service.dart';
 import '../../domain/entities/fixed_entities.dart';
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 
 abstract class WomenLocalDataSource {
   Future<List<FixedEntities>> getArtical();
@@ -20,7 +18,7 @@ class WomenLocalDataSourceImp extends WomenLocalDataSource {
   });
   @override
   Future<List<FixedEntities>> getArtical() async {
-    Get.find<Logger>().i("Start `getArtical` in |WomenLocalDataSourceImp|");
+    
     String? fileContent =
         await archiveService.readFile(name: AppKeys.womanInIslam);
     List<FixedEntities> articals = [];
@@ -30,7 +28,7 @@ class WomenLocalDataSourceImp extends WomenLocalDataSource {
         articals.add(FixedEntities(name: key, content: value));
       });
     }
-    Get.find<Logger>().w("End `getArtical` in |WomenLocalDataSourceImp|");
+    
     return Future.value(articals);
   }
 }
