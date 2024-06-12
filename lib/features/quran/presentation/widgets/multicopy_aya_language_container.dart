@@ -33,13 +33,12 @@ class MultiCopyAyaLanguageContainer extends StatelessWidget {
                     .copyWith(color: AppColors.kGreenColor)),
           ),
           SizedBox(
-            width:30,
+            width: 30,
             height: 30,
             child: GetBuilder<QuranController>(builder: (controller) {
               return Checkbox(
-                fillColor: WidgetStateProperty.all(AppColors.kWhiteColor),
-                value:
-                    controller.multiCopySelectedAyat.contains(ayaNonArabic),
+                fillColor: MaterialStateProperty.all(AppColors.kWhiteColor),
+                value: controller.multiCopySelectedAyat.contains(ayaNonArabic),
                 onChanged: (value) {
                   controller.updateMultiCopySelection(ayaNonArabic);
                 },
