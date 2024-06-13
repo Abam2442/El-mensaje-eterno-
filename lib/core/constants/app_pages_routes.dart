@@ -85,6 +85,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/huma
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam%20_religion/islam_religion_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_for_christians/islam_for_christians_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_guide_1/islam_guide_1_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_artical.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_books_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_fatwa.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_main.dart';
@@ -442,7 +443,7 @@ abstract class AppPagesRoutes {
     ),
     GetPage(
       name: islamHouse,
-      page: () => const IslamHouseMainScreen(),
+      page: () => const IslamHouseArticalScreen(),
       binding: IslamHouseBindings(),
       transition: Transition.cupertino,
     ),
