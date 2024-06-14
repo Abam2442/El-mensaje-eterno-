@@ -10,18 +10,23 @@ class IslamHouseUseCase {
     this.islamHouseRepository,
   );
 
-  Future<Either<Failure, List<List<FixedEntities>>>> call() async {
-    
+  Future<Either<Failure, List<FixedEntities>>> call() async {
     return islamHouseRepository.getContent();
   }
 
   Future<Either<Failure, List<MediaEntity>>> getBooks() async {
-    
     return islamHouseRepository.getBooks();
   }
 
+  Future<Either<Failure, List<MediaEntity>>> getAudios() async {
+    return islamHouseRepository.getAudios();
+  }
+
+  Future<Either<Failure, List<MediaEntity>>> getVideos() async {
+    return islamHouseRepository.getVideos();
+  }
+
   Future<Either<Failure, List<FixedEntities>>> getFatwa() async {
-    
     return islamHouseRepository.getFatwa();
   }
 }

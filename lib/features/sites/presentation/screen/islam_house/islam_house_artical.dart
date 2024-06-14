@@ -21,14 +21,14 @@ class IslamHouseArticalScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
               child: ListView.builder(
                   padding: const EdgeInsets.all(5),
-                  itemCount: controller.content[4].length,
+                  itemCount: controller.content.length,
                   itemBuilder: (context, index) {
                     return InkwellCustom(
                       catigory: false,
-                      dataText: controller.content[4][index].name,
+                      dataText: controller.content[index].name,
                       onTap: () async {
                         await launchUrl(
-                            Uri.parse(controller.content[4][index].content));
+                            Uri.parse(controller.content[index].content));
                       },
                     );
                   }))),

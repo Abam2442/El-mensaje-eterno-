@@ -13,7 +13,7 @@ class IslamHouseRepositoryImp extends IslamHouseRepository {
   });
 
   @override
-  Future<Either<Failure, List<List<FixedEntities>>>> getContent() async {
+  Future<Either<Failure, List<FixedEntities>>> getContent() async {
     await islamHouseLocalDataSource.getContect();
     try {
       var content = await islamHouseLocalDataSource.getContect();
@@ -39,6 +39,28 @@ class IslamHouseRepositoryImp extends IslamHouseRepository {
   Future<Either<Failure, List<MediaEntity>>> getBooks() async {
     try {
       var content = await islamHouseLocalDataSource.getBooks();
+
+      return Right(content);
+    } catch (e) {
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getVideos() async {
+    try {
+      var content = await islamHouseLocalDataSource.getVideos();
+
+      return Right(content);
+    } catch (e) {
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getAudios() async {
+    try {
+      var content = await islamHouseLocalDataSource.getAudios();
 
       return Right(content);
     } catch (e) {
