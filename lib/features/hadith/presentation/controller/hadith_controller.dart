@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/core/helpers/get_state_from_failure.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
@@ -18,23 +20,30 @@ class HadithController extends GetxController
   HaditencHadithModel? hadithencHadithes;
   List<Map> categoryHadithes = [];
 
-  List searchResult = [];
+  List searchResultArabic = [];
+  List searchResultEs = [];
 
   void searchFun(String val) {
-    searchResult.clear();
+    searchResultArabic.clear();
     sunnahHadithes?.sunnahHadithes.forEach(
       (_, value) {
-        value.forEach((key, value) {
-          value.forEach((key, value) {
+        value.forEach((key, value1) {
+          value1.forEach((key, value) {
             if (value.toString().contains(val)) {
-              searchResult.add(value.toString());
+              searchResultArabic.add(value1['Arabic']);
+              searchResultEs.add(value1['Español']);
             }
           });
         });
       },
     );
-    searchResult = searchResult.toSet().toList();
-    // log('$test');
+    searchResultArabic = searchResultArabic.toSet().toList();
+    searchResultEs = searchResultEs.toSet().toList();
+
+    // log('$test');prin
+    print(searchResultEs);
+    print(searchResultArabic);
+
     Get.to(() => const HadithSearchScreen());
   }
 
@@ -131,6 +140,7 @@ class HadithController extends GetxController
             if (key == hadithName) {
               value.forEach((key, value) {
                 hadith.add(value);
+                // print(hadith);
               });
             }
           });

@@ -44,7 +44,6 @@ class AzkarDoaaController extends GetxController
 
   @override
   void onInit() async {
-    
     super.onInit();
     tabController = TabController(length: 3, vsync: this);
     tabController.addListener(() {
@@ -55,11 +54,9 @@ class AzkarDoaaController extends GetxController
     await getAzkar();
     await getDoaas();
     await getSonan();
-    
   }
 
   Future<void> getAzkar() async {
-    
     getAzkarState = StateType.loading;
     update();
     GetAzkarUseCase getAzkarsUseCase = GetAzkarUseCase(Get.find());
@@ -78,11 +75,9 @@ class AzkarDoaaController extends GetxController
         update();
       },
     );
-    
   }
 
   Future<void> getDoaas() async {
-    
     getDoaaState = StateType.loading;
     update();
     GetDoaasUseCase getDoaasUseCase = GetDoaasUseCase(Get.find());
@@ -101,11 +96,9 @@ class AzkarDoaaController extends GetxController
         update();
       },
     );
-    
   }
 
   Future<void> getSonan() async {
-    
     getDoaaState = StateType.loading;
     update();
     GetSonanUseCase getSonanUseCase = GetSonanUseCase(Get.find());
@@ -124,7 +117,6 @@ class AzkarDoaaController extends GetxController
         update();
       },
     );
-    
   }
 
   void onPageChanged(int index) {

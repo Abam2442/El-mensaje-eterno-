@@ -65,7 +65,7 @@ class BodySunnahScreen extends GetView<HadithController> {
                     );
                   },
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 300),
               ],
             ),
           ),

@@ -49,7 +49,8 @@ class BodyHadithencScreen extends GetView<HadithController> {
                         Get.toNamed(
                           AppPagesRoutes.subCategoryScreen,
                           arguments: {
-                            "title": controller.hadithencHadithes!.categoriesName[index],
+                            "title": controller
+                                .hadithencHadithes!.categoriesName[index],
                           },
                         );
                         // Get.toNamed(

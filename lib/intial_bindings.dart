@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/services/download_services.dart';
+import 'package:hiwayda_oracion_islamica/features/advanced_learning/domain/repository/advanced_learning_repo.dart';
+import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:logger/logger.dart';
@@ -23,6 +25,9 @@ class InitialBindings extends Bindings {
         networkInfo: Get.find(),
       ),
     );
+    // Get.put(QuranRepo());
+    // Get.put(QuranController());
+
     Get.lazyPut(() => DownloadServices());
   }
 }

@@ -35,6 +35,6 @@ class LocalData {
   //! Getter Functions
 }
 
-class LocalKeys {
-  static const String isRememberMe = 'IS_REMEMBER_ME';
-}
+// class LocalKeys {
+//   static const String isRememberMe = 'IS_REMEMBER_ME';
+// }

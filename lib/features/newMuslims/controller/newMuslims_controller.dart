@@ -19,6 +19,7 @@ class NewMuslimsController extends GetxController {
   Future<void> loadJsonFile() async {
     String data =
         await rootBundle.loadString('assets/json/Sp-newmuslimscourse.json');
+    // print(data);
     newMuslimsModel = NewMuslimsModel.fromJson(await json.decode(data));
     isLoading.value = false;
   }

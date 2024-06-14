@@ -80,7 +80,7 @@ class AppKeys {
   static const String womanInIslam = 'woman_in_islam.json';
   static const String telegram = 'telegram.json';
   static const String hisnulmumin = 'hisnul-mumin.json';
-  static const String alduaa = 'Alduaa.json';
+  static const String alduaa = 'alduaa.json';
   static const String goldNote = 'Gold-note.json';
   static const String copyRights = 'Copy-Rights.json';
   static const String sonan = 'Sonan.json';

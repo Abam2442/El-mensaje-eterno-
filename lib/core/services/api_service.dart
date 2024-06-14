@@ -17,16 +17,13 @@ class ApiService extends GetxService {
     required this.networkInfo,
   });
 
-
   Future<Map<String, dynamic>> post({
     required String subUrl,
     required Map<String, dynamic> data,
     bool needToken = false,
   }) async {
     try {
-      
       if (!(await networkInfo.isConnected)) {
-        
         throw OfflineException();
       }
       final response = await client.post(
@@ -38,10 +35,9 @@ class ApiService extends GetxService {
         headers: setHeaders(),
       );
       getExceptionStatusCode(response);
-      
+
       return Future.value(json.decode(response.body));
     } catch (e) {
-      
       rethrow;
     }
   }
@@ -53,7 +49,6 @@ class ApiService extends GetxService {
     String? key,
   }) async {
     try {
-      
       if (!(await networkInfo.isConnected)) {
         throw OfflineException();
       }
@@ -67,10 +62,9 @@ class ApiService extends GetxService {
         headers: setHeaders(),
       );
       getExceptionStatusCode(response);
-      
+
       return Future.value((json.decode(response.body)));
     } catch (e) {
-      
       rethrow;
     }
   }

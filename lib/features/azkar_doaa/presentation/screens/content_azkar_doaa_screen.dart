@@ -42,6 +42,7 @@
 import 'package:hiwayda_oracion_islamica/core/utils/components/appbar/build_sliver_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../widgets/body_content_azkar_screen.dart';
@@ -53,6 +54,7 @@ class ContentAzkarDoaasScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String title = Get.arguments["title"];
+    Get.put(QuranController());
     return Scaffold(
       body: Column(
         children: [
