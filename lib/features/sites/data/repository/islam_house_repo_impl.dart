@@ -45,4 +45,26 @@ class IslamHouseRepositoryImp extends IslamHouseRepository {
       return Left(getFailureFromException(e));
     }
   }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getVideos() async {
+    try {
+      var content = await islamHouseLocalDataSource.getVideos();
+
+      return Right(content);
+    } catch (e) {
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MediaEntity>>> getAudios() async {
+    try {
+      var content = await islamHouseLocalDataSource.getAudios();
+
+      return Right(content);
+    } catch (e) {
+      return Left(getFailureFromException(e));
+    }
+  }
 }

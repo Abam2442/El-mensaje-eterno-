@@ -90,7 +90,7 @@ flutter:
     - assets/svg/icons/
     - assets/svg/images/
     - assets/Json.zip
-    # - assets/books/
+    - assets/books/
 
   fonts:
     - family: Poppins

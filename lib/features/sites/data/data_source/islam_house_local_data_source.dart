@@ -8,6 +8,8 @@ import '../../domain/entities/fixed_entities.dart';
 abstract class IslamHouseLocalDataSource {
   Future<List<FixedEntities>> getContect();
   Future<List<MediaEntity>> getBooks();
+  Future<List<MediaEntity>> getAudios();
+  Future<List<MediaEntity>> getVideos();
   Future<List<FixedEntities>> getFatwa();
 }
 
@@ -54,6 +56,44 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
         Map<String, dynamic> decoded = jsonDecode(json);
 
         (decoded['islam-house']['Books'] as Map).forEach((name, url) {
+          result.add(MediaEntity(name: name, url: url));
+        });
+      }
+      return result;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaEntity>> getVideos() async {
+    try {
+      List<MediaEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.islamHouseVideos);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+
+        (decoded['islam-house']['Videos'] as Map).forEach((name, url) {
+          result.add(MediaEntity(name: name, url: url));
+        });
+      }
+      return result;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MediaEntity>> getAudios() async {
+    try {
+      List<MediaEntity> result = [];
+      String? json =
+          await archiveService.readFile(name: AppKeys.islamHouseAudios);
+      if (json != null) {
+        Map<String, dynamic> decoded = jsonDecode(json);
+
+        (decoded['islam-house']['Audios'] as Map).forEach((name, url) {
           result.add(MediaEntity(name: name, url: url));
         });
       }

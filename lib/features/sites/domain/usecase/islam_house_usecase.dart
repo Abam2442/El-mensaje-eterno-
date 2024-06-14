@@ -18,6 +18,14 @@ class IslamHouseUseCase {
     return islamHouseRepository.getBooks();
   }
 
+  Future<Either<Failure, List<MediaEntity>>> getAudios() async {
+    return islamHouseRepository.getAudios();
+  }
+
+  Future<Either<Failure, List<MediaEntity>>> getVideos() async {
+    return islamHouseRepository.getVideos();
+  }
+
   Future<Either<Failure, List<FixedEntities>>> getFatwa() async {
     return islamHouseRepository.getFatwa();
   }
