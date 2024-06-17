@@ -83,7 +83,7 @@ class SurahController extends GetxController {
     isWordRecited = true;
     audioService.pause();
     audioService.setUrl(
-      '${RecitersUrls.wordsPronunciationUrl}/${quranController.currentSurrah.toString().padLeft(3, '0')}_${ayaNumber.toString().padLeft(3, '0')}_${(selectedWordIndex + 1).toString().padLeft(3, '0')}.mp3'
+      '${RecitersUrls.wordsPronunciationUrl}/${quranController.currentSurrah}/${quranController.currentSurrah.toString().padLeft(3, '0')}_${ayaNumber.toString().padLeft(3, '0')}_${(selectedWordIndex + 1).toString().padLeft(3, '0')}.mp3'
     );
     audioService.play();
   }

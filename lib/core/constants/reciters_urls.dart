@@ -3,7 +3,7 @@ class RecitersUrls {
 
 
 
-static var wordsPronunciationUrl = 'https://audios.quranwbw.com/words/1';
+static var wordsPronunciationUrl = 'https://audios.quranwbw.com/words';
 
 static var defaultReciter = 'Maher Al-Muaiqly';
 
