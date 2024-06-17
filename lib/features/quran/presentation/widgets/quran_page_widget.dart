@@ -64,10 +64,20 @@ class QuranPageWidget extends StatelessWidget {
               const Expanded(child: SizedBox()),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: InkWell(
+                child: surrahController.isCopyingAyas.value ?
+                  Obx(() =>    Checkbox(value: surrahController.selectedAyas.contains(ayah), onChanged: (value){
+                    if(value == true) {
+                      surrahController.selectedAyas.add(ayah);
+                    }
+                    else
+                    {
+                      surrahController.selectedAyas.remove(ayah);
+                    }
+                   }, activeColor: Colors.black, fillColor: MaterialStateColor.resolveWith((states) => AppColors.kWhiteColor) ,checkColor: Colors.black,))
+                 : InkWell(
                   onTap: () async {
                     var data = ClipboardData(
-                        text: surrahController.getAyaCopyText(number));
+                        text: surrahController.getAyaCopyText(ayah));
                     await Clipboard.setData(data);
                     EasyLoaderService.showToast(message: "Copied");
                   },

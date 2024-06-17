@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/reciters_urls.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/tafsirs_keys.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/copy_clipboard.dart';
 import 'package:hiwayda_oracion_islamica/core/services/shared_preferences_service.dart';
 import 'package:hiwayda_oracion_islamica/core/services/audio_service.dart';
+import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/ayah_entity.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 
 class SurahController extends GetxController {
@@ -16,6 +18,8 @@ class SurahController extends GetxController {
   var selectedReciter= ''.obs;
   final Map<int, GlobalKey> keys = {};
   var isWordRecited = false;
+  var isCopyingAyas = false.obs;
+  var selectedAyas = RxList<Ayah>();
 
   late ScrollController scrollController;
   final AudioService audioService = Get.find<AudioService>();
@@ -76,6 +80,9 @@ class SurahController extends GetxController {
     audioService.isDownloading.value = false;
     currentRandomVerse.value = 0;
     audioService.isPlaying.value = false;
+    isCopyingAyas.value = false;
+    selectedAyas.clear();
+
     setUrl();
   }
 
@@ -138,8 +145,8 @@ class SurahController extends GetxController {
      
   }
 
- String getAyaCopyText(int number) {
-    var aya = quranController.currentAyat[number-1];
+ String getAyaCopyText(Ayah aya) {
+     
     String tafisrText = '';
     for(var tafsir in quranController.selectedTafsirs)
     {
@@ -147,6 +154,21 @@ class SurahController extends GetxController {
       
     }  
     return  "${aya.arabic}\n\n$tafisrText";
+
+  }
+
+   copySelectedAyat()
+  {
+    String text  = '';
+    for(var ayah in selectedAyas)
+    {
+      text += getAyaCopyText(ayah);
+      text+= '\n\n';
+      text+='______________________________________________';
+    }
+     copyToClipboard(text);
+     isCopyingAyas.value = false;
+     selectedAyas.clear();
 
   }
 }
