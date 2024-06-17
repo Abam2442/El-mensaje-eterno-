@@ -267,7 +267,7 @@ abstract class AppPagesRoutes {
     GetPage(
       name: surahScreen,
       page: () {
-        return const SurahScreen();
+        return  SurahScreen();
       },
       binding: QuranBindings(),
       transition: Transition.cupertino,

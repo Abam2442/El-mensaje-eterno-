@@ -55,17 +55,19 @@ class SearchResultWidget extends StatelessWidget {
     }
 
     int getAyahIndex(Surah surah, String searchText) {
-      return surah.ayat.indexWhere((ayah) => ayah.arabic_search
-          .contains(Get.find<QuranController>().searchController.value.text));
+      return surah.ayat.indexWhere((ayah) => ayah.arabic
+          .contains(searchResult['ayat'].arabic));
     }
 
     return InkWell(
       onTap: () {
-        Get.find<QuranController>().currentAyat = Get.find<QuranController>()
-            .surahs[findSoraIndex(
+        var surahIndex= findSoraIndex(
               Get.find<QuranController>().surahs,
               searchResult['sora'],
-            )]
+            );
+         Get.find<QuranController>().currentSurrah = surahIndex+1;
+        Get.find<QuranController>().currentAyat = Get.find<QuranController>()
+            .surahs[surahIndex]
             .ayat;
 
         var ayahIndex = getAyahIndex(
@@ -77,8 +79,9 @@ class SearchResultWidget extends StatelessWidget {
         print('target ${ayahIndex.toString()}');
         print(
             'search ${Get.find<QuranController>().searchController.value.text}');
+            
         Get.to(() => SurahScreen(
-              targetNumber: ayahIndex + 1,
+                ayaNumber: ayahIndex + 1,
             ));
       },
       child: Card(
