@@ -110,36 +110,37 @@ class _SliverAppBarWidgetState extends State<SliverAppBarWidget> {
         ),
 
         if (widget.hasTranslator)
-          SizedBox(
-            width: 0.5 * Get.width,
-            child: GetBuilder<QuranController>(
-              id: "Translator Select",
-              builder: (controller) => PrimarySelectItem<int>(
-                labelText: "Translator",
-                hintText: "Select",
-                onChanged: (value) {
-                  controller.selectedTranslator =
-                      value ?? controller.selectedTranslator;
-                  controller.update(["Translator Select", "ayaNonArabic"]);
-                },
-                items: const [
-                  DropdownMenuItem<int>(
-                    value: 1,
-                    child: Text('Translator 1'),
-                  ),
-                  DropdownMenuItem<int>(
-                    value: 2,
-                    child: Text('Translator 2'),
-                  ),
-                  DropdownMenuItem<int>(
-                    value: 3,
-                    child: Text('Translator 3'),
-                  ),
-                ],
-                selectedItem: controller.selectedTranslator,
-              ),
-            ),
-          ),
+        Container(color: Colors.red, width: 20 , height: 20,)
+          // SizedBox(
+          //   width: 0.5 * Get.width,
+          //   child: GetBuilder<QuranController>(
+          //     id: "Translator Select",
+          //     builder: (controller) => PrimarySelectItem<int>(
+          //       labelText: "Translator",
+          //       hintText: "Select",
+          //       onChanged: (value) {
+          //         controller.selectedTranslator =
+          //             value ?? controller.selectedTranslator;
+          //         controller.update(["Translator Select", "ayaNonArabic"]);
+          //       },
+          //       items: const [
+          //         DropdownMenuItem<int>(
+          //           value: 1,
+          //           child: Text('Translator 1'),
+          //         ),
+          //         DropdownMenuItem<int>(
+          //           value: 2,
+          //           child: Text('Translator 2'),
+          //         ),
+          //         DropdownMenuItem<int>(
+          //           value: 3,
+          //           child: Text('Translator 3'),
+          //         ),
+          //       ],
+          //       selectedItem: controller.selectedTranslator,
+          //     ),
+          //   ),
+          // ),
       ],
       floating: true,
       snap: true,

@@ -86,4 +86,8 @@ class AppKeys {
   static const String goldNote = 'Gold-note.json';
   static const String copyRights = 'Copy-Rights.json';
   static const String sonan = 'Sonan.json';
+
+
+  static const String selectedReciter = "selectedReciter";
+  static const String isFirstRun = "isFirstRun";
 }

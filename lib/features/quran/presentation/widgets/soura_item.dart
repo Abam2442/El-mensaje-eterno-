@@ -4,6 +4,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_pages_routes.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/surrah_controller.dart';
 
 class SouraItem extends StatelessWidget {
   const SouraItem({super.key, required this.souraNumber, required this.souraName, required this.isSaved});
@@ -17,7 +18,8 @@ class SouraItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         Get.find<QuranController>().currentAyat = Get.find<QuranController>().surahs[souraNumber - 1].ayat;
-        Get.find<QuranController>().chapterNumber=souraNumber;
+        Get.find<QuranController>().currentSurrah = souraNumber;
+         Get.find<SurahController>().resetController();
         Get.toNamed(AppPagesRoutes.surahScreen);
       },
       child: Container(

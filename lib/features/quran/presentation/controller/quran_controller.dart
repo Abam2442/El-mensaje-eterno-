@@ -14,14 +14,7 @@ class QuranController extends GetxController {
   List<Surah> surahs = [];
   List<Ayah> resultAyat = [];
   List<Ayah> currentAyat = [];
-  List translator = [
-    'Muhammad Isa Garcia',
-    'El-Mokhtasar Tafsir',
-    'Noor international (Latin)',
-    'Noor international (EU)',
-    'Abdel-Ghani Melara - Complejo del Rey Fahd',
-    'Mohammed Bahige Mulla'
-  ];
+  
 
   // States
   StateType getSurahsState = StateType.init;
@@ -29,13 +22,15 @@ class QuranController extends GetxController {
 
   // Primitive
   String validationMessage = '';
-  int selectedTranslator = 0;
+ var selectedTafsirs = [].obs;
 
   int chapterNumber = 1;
   var isSearching = false.obs;
   var searchResults = <Map<String, dynamic>>[].obs;
 
   var searchController = TextEditingController().obs;
+
+  int currentSurrah = 1;
 
   @override
   void onInit() async {
@@ -128,9 +123,8 @@ class QuranController extends GetxController {
     return currentPlayingIndex + 1 == index && isPlaying;
   }
 
-  void updateSelectedTranslator(int selection) {
-    selectedTranslator = selection;
-    update();
+  void updateSelectedTranslator(List<String> selection) {
+    selectedTafsirs.value = selection;
     Get.back();
   }
 

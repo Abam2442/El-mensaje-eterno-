@@ -44,10 +44,10 @@ class MultiCopyQuranPageWidget extends StatelessWidget {
               return Checkbox(
                 fillColor: MaterialStateProperty.all(AppColors.kWhiteColor),
                 value: c.multiCopySelectedAyat
-                    .contains("${ayah.arabic}\n\n${ayah.muhammadIsaGarcia}"),
+                    .contains("anoterh s"),
                 onChanged: (value) {
                   c.updateMultiCopySelection(
-                      "${ayah.arabic}\n\n${ayah.muhammadIsaGarcia}");
+                      "another on");
                 },
                 activeColor: AppColors.kBlackColor,
                 checkColor: AppColors.kGreenColor,
