@@ -10,7 +10,8 @@ class IntermediateSalahModel {
     String? stepNumber,
     String? stepName,
     Images? images,
-    List<Topics>? topics,}){
+    List<Topics>? topics,
+  }) {
     _rakaa = rakaa;
     _stepNumber = stepNumber;
     _stepName = stepName;
@@ -22,7 +23,8 @@ class IntermediateSalahModel {
     _rakaa = json['Rakaa'];
     _stepNumber = json['StepNumber'];
     _stepName = json['StepName'];
-    _images = json['Images'] != null ? Images.fromJson(json['Images']) : null;
+    _images =
+        json['topics'] != null ? Images.fromJson(json['topics'][0]) : null;
     if (json['topics'] != null) {
       _topics = [];
       json['topics'].forEach((v) {
@@ -35,17 +37,20 @@ class IntermediateSalahModel {
   String? _stepName;
   Images? _images;
   List<Topics>? _topics;
-  IntermediateSalahModel copyWith({  String? rakaa,
+  IntermediateSalahModel copyWith({
+    String? rakaa,
     String? stepNumber,
     String? stepName,
     Images? images,
     List<Topics>? topics,
-  }) => IntermediateSalahModel(  rakaa: rakaa ?? _rakaa,
-    stepNumber: stepNumber ?? _stepNumber,
-    stepName: stepName ?? _stepName,
-    images: images ?? _images,
-    topics: topics ?? _topics,
-  );
+  }) =>
+      IntermediateSalahModel(
+        rakaa: rakaa ?? _rakaa,
+        stepNumber: stepNumber ?? _stepNumber,
+        stepName: stepName ?? _stepName,
+        images: images ?? _images,
+        topics: topics ?? _topics,
+      );
   String? get rakaa => _rakaa;
   String? get stepNumber => _stepNumber;
   String? get stepName => _stepName;
@@ -65,7 +70,6 @@ class IntermediateSalahModel {
     }
     return map;
   }
-
 }
 
 /// transliteration : "Al-lahu Akbar"
@@ -76,7 +80,8 @@ class Topics {
   Topics({
     String? transliteration,
     String? audio,
-    String? video,}){
+    String? video,
+  }) {
     _transliteration = transliteration;
     _audio = audio;
     _video = video;
@@ -90,13 +95,16 @@ class Topics {
   String? _transliteration;
   String? _audio;
   String? _video;
-  Topics copyWith({  String? transliteration,
+  Topics copyWith({
+    String? transliteration,
     String? audio,
     String? video,
-  }) => Topics(  transliteration: transliteration ?? _transliteration,
-    audio: audio ?? _audio,
-    video: video ?? _video,
-  );
+  }) =>
+      Topics(
+        transliteration: transliteration ?? _transliteration,
+        audio: audio ?? _audio,
+        video: video ?? _video,
+      );
   String? get transliteration => _transliteration;
   String? get audio => _audio;
   String? get video => _video;
@@ -108,7 +116,6 @@ class Topics {
     map['Video'] = _video;
     return map;
   }
-
 }
 
 /// Main : {"Mainimage1":"assets/images/2.png","Mainimage2":"assets/images/3.png"}
@@ -131,7 +138,8 @@ class Images {
     String? image6,
     String? video,
     String? video2,
-    String? description,}){
+    String? description,
+  }) {
     _main = main;
     _image = image;
     _image2 = image2;
@@ -166,7 +174,8 @@ class Images {
   String? _video;
   String? _video2;
   String? _description;
-  Images copyWith({  Main? main,
+  Images copyWith({
+    Main? main,
     String? image,
     String? image2,
     String? image3,
@@ -176,17 +185,19 @@ class Images {
     String? video,
     String? video2,
     String? description,
-  }) => Images(  main: main ?? _main,
-    image: image ?? _image,
-    image2: image2 ?? _image2,
-    image3: image3 ?? _image3,
-    image4: image4 ?? _image4,
-    image5: image4 ?? _image5,
-    image6: image4 ?? _image6,
-    video: video ?? _video,
-    video2: video2 ?? _video2,
-    description: description ?? _description,
-  );
+  }) =>
+      Images(
+        main: main ?? _main,
+        image: image ?? _image,
+        image2: image2 ?? _image2,
+        image3: image3 ?? _image3,
+        image4: image4 ?? _image4,
+        image5: image4 ?? _image5,
+        image6: image4 ?? _image6,
+        video: video ?? _video,
+        video2: video2 ?? _video2,
+        description: description ?? _description,
+      );
   Main? get main => _main;
   String? get image => _image;
   String? get image2 => _image2;
@@ -214,7 +225,6 @@ class Images {
     map['description'] = _description;
     return map;
   }
-
 }
 
 /// Mainimage1 : "assets/images/2.png"
@@ -223,7 +233,8 @@ class Images {
 class Main {
   Main({
     String? mainimage1,
-    String? mainimage2,}){
+    String? mainimage2,
+  }) {
     _mainimage1 = mainimage1;
     _mainimage2 = mainimage2;
   }
@@ -234,11 +245,14 @@ class Main {
   }
   String? _mainimage1;
   String? _mainimage2;
-  Main copyWith({  String? mainimage1,
+  Main copyWith({
+    String? mainimage1,
     String? mainimage2,
-  }) => Main(  mainimage1: mainimage1 ?? _mainimage1,
-    mainimage2: mainimage2 ?? _mainimage2,
-  );
+  }) =>
+      Main(
+        mainimage1: mainimage1 ?? _mainimage1,
+        mainimage2: mainimage2 ?? _mainimage2,
+      );
   String? get mainimage1 => _mainimage1;
   String? get mainimage2 => _mainimage2;
 
@@ -248,5 +262,4 @@ class Main {
     map['Mainimage2'] = _mainimage2;
     return map;
   }
-
 }

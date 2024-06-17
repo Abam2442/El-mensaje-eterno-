@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -10,28 +11,48 @@ import 'package:hiwayda_oracion_islamica/features/ui_rone_screen/models/Intermed
 /// current uiRoneModelObj
 class UiRoneController extends GetxController {
   RxBool isLoading = true.obs;
-  List<IntermediateSalahModel> list =[];
+  List<IntermediateSalahModel> list = [];
   RxInt currentPos = 1.obs;
-  String file='';
+  String file = '';
   @override
-  void onInit() {
-    loadData();
+  void onInit() async {
+    await loadData();
     super.onInit();
   }
-  void loadData() async{
-    file = Get.arguments['file'];
-    list = (await readJsonFile(file))
-        .map<IntermediateSalahModel>(IntermediateSalahModel.fromJson)
-        .toList();
-    isLoading.value = false;
-}
 
-  static Future<List<dynamic>> readJsonFile(String path) async{
-    String data = await  rootBundle.loadString(path);
+  Future<void> loadData() async {
+    file = Get.arguments['file'];
+    for (var val in (await readJsonFile(file))) {
+      try {
+        final IntermediateSalahModel data =
+            IntermediateSalahModel.fromJson(val);
+        print(data);
+        list.add(data);
+      } catch (e) {
+        print('error ================');
+        log(val);
+      }
+    }
+
+    print(list[0].images?.description);
+    // final data = ;
+    // list.add(data);
+    // list = (await readJsonFile(file))
+    //     .map<IntermediateSalahModel>(IntermediateSalahModel.fromJson)
+    //     .toList();
+    isLoading.value = false;
+  }
+
+  static Future<List<dynamic>> readJsonFile(String path) async {
+    String data = await rootBundle.loadString(path);
     final body;
-    try{
+    try {
       body = await json.decode(data);
-    }catch(e){
+      print(body);
+
+      print(' suuuuuuu=========================');
+    } catch (e) {
+      print('alied=====================');
       return [];
     }
     return body;

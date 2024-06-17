@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../core/constants/app_enums.dart';
 import '../../../../../core/helpers/get_state_from_failure.dart';
