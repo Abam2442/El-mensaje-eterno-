@@ -23,8 +23,7 @@ class IntermediateSalahModel {
     _rakaa = json['Rakaa'];
     _stepNumber = json['StepNumber'];
     _stepName = json['StepName'];
-    _images =
-        json['topics'] != null ? Images.fromJson(json['topics'][0]) : null;
+    _images = json['Images'] != null ? Images.fromJson(json['Images']) : null;
     if (json['topics'] != null) {
       _topics = [];
       json['topics'].forEach((v) {

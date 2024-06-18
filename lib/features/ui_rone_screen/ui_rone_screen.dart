@@ -92,6 +92,7 @@ class UiRoneScreen extends StatelessWidget {
                       ),
                       Expanded(
                         child: PageView.builder(
+                          itemCount: controller.list.length,
                           onPageChanged: (page) {
                             controller.currentPos.value = page + 1;
                           },
@@ -156,7 +157,7 @@ class UiRoneScreen extends StatelessWidget {
                                                                   .main!
                                                                   .mainimage1!,
                                                               height: 150,
-                                                              width: 100,
+                                                              // width: 100,
                                                               radius:
                                                                   20.cBorder,
                                                             )
@@ -292,19 +293,18 @@ class UiRoneScreen extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: ListView.builder(
-                                      itemCount: controller
-                                              .list[index].topics!.length -
-                                          1,
+                                      itemCount:
+                                          controller.list[index].topics!.length,
                                       itemBuilder: (context, i) => _buildTopic(
                                             context,
                                             text: controller.list[index]
-                                                .topics![i + 1].transliteration
+                                                .topics![i].transliteration
                                                 .toString(),
-                                            audioPath: controller.list[index]
-                                                .topics![i + 1].audio
+                                            audioPath: controller
+                                                .list[index].topics![i].audio
                                                 .toString(),
-                                            videoPath: controller.list[index]
-                                                .topics![i + 1].video
+                                            videoPath: controller
+                                                .list[index].topics![i].video
                                                 .toString(),
                                             image: AppAssets
                                                 .imgUserSpeakSvgrepoCom,

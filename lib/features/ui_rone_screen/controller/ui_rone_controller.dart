@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -15,31 +14,18 @@ class UiRoneController extends GetxController {
   RxInt currentPos = 1.obs;
   String file = '';
   @override
-  void onInit() async {
-    await loadData();
+  void onInit() {
+    loadData();
     super.onInit();
   }
 
-  Future<void> loadData() async {
+  void loadData() async {
     file = Get.arguments['file'];
-    for (var val in (await readJsonFile(file))) {
-      try {
-        final IntermediateSalahModel data =
-            IntermediateSalahModel.fromJson(val);
-        print(data);
-        list.add(data);
-      } catch (e) {
-        print('error ================');
-        log(val);
-      }
-    }
-
-    print(list[0].images?.description);
-    // final data = ;
-    // list.add(data);
-    // list = (await readJsonFile(file))
-    //     .map<IntermediateSalahModel>(IntermediateSalahModel.fromJson)
-    //     .toList();
+    // print(file);
+    list = (await readJsonFile(file))
+        .map<IntermediateSalahModel>(IntermediateSalahModel.fromJson)
+        .toList();
+    print(list[0].rakaa);
     isLoading.value = false;
   }
 
@@ -48,11 +34,9 @@ class UiRoneController extends GetxController {
     final body;
     try {
       body = await json.decode(data);
-      print(body);
-
-      print(' suuuuuuu=========================');
+      print(body[0]);
     } catch (e) {
-      print('alied=====================');
+      print(e.toString());
       return [];
     }
     return body;

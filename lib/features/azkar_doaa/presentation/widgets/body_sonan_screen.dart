@@ -11,36 +11,41 @@ class BodySonanScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        InkwellCustom(
-          catigory: false,
-          // iconData: controller.icons[index],
-          dataText: 'Súplicas de día y de noche',
-          onTap: () {
-            Get.to(() => const DayNightSonanScreen());
-          },
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: Column(
+          children: [
+            InkwellCustom(
+              catigory: false,
+              // iconData: controller.icons[index],
+              dataText: 'Súplicas de día y de noche',
+              onTap: () {
+                Get.to(() => const DayNightSonanScreen());
+              },
+            ),
+            InkwellCustom(
+              catigory: false,
+              // iconData: controller.icons[index],
+              dataText: 'Súplicas específicas',
+              onTap: () {
+                Get.to(() => const TimedSonanScreen());
+              },
+            ),
+            InkwellCustom(
+              catigory: false,
+              // iconData: controller.icons[index],
+              dataText: 'Súplicas generales',
+              onTap: () {
+                Get.to(() => const UnTimedSonanScreen());
+              },
+            )
+            // Item_Card(titleSite: ''),
+            // Item_Card(titleSite: 'سنن موقوتة'),
+            // Item_Card(titleSite: 'سنن غير موقوتة'),
+          ],
         ),
-        InkwellCustom(
-          catigory: false,
-          // iconData: controller.icons[index],
-          dataText: 'Súplicas específicas',
-          onTap: () {
-            Get.to(() => const TimedSonanScreen());
-          },
-        ),
-        InkwellCustom(
-          catigory: false,
-          // iconData: controller.icons[index],
-          dataText: 'Súplicas generales',
-          onTap: () {
-            Get.to(() => const UnTimedSonanScreen());
-          },
-        )
-        // Item_Card(titleSite: ''),
-        // Item_Card(titleSite: 'سنن موقوتة'),
-        // Item_Card(titleSite: 'سنن غير موقوتة'),
-      ],
+      ),
     );
   }
 }

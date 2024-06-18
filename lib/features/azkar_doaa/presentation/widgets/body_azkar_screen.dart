@@ -16,54 +16,60 @@ class BodyAzkarScreen extends GetView<AzkarDoaaController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<AzkarDoaaController>(
-      builder: (controller) => SingleChildScrollView(
-        child: HandleStatesWidget(
-          stateType: controller.getAzkarState,
-          hasShimmer: true,
-          shimmerChild: ListView.separated(
-            physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(15),
-            shrinkWrap: true,
-            itemBuilder: (context, index) => PrimaryShimmer.rectangle(
-              height: Get.height * 0.09,
-              color: AppColors.kGreenColor,
-              border: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
+      init: AzkarDoaaController(),
+      builder: (controller) => Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: SingleChildScrollView(
+            child: HandleStatesWidget(
+              stateType: controller.getAzkarState,
+              hasShimmer: true,
+              shimmerChild: ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.all(15),
+                shrinkWrap: true,
+                itemBuilder: (context, index) => PrimaryShimmer.rectangle(
+                  height: Get.height * 0.09,
+                  color: AppColors.kGreenColor,
+                  border: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 15,
+                ),
+                itemCount: 6,
               ),
-            ),
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 15,
-            ),
-            itemCount: 6,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              children: [
-                ...List.generate(
-                  controller.azkar.length,
-                  (index) {
-                    Azkar azkar = controller.azkar[index];
-                    return PrimaryListTile(
-                      onTap: () {
-                        Get.toNamed(
-                          AppPagesRoutes.contentAzkarDoaasScreen,
-                          arguments: {
-                            "label": "azkar",
-                            "title": azkar.categoryNameEs ?? "",
-                            "data": azkar.zikr,
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  children: [
+                    ...List.generate(
+                      controller.azkar.length,
+                      (index) {
+                        Azkar azkar = controller.azkar[index];
+                        return PrimaryListTile(
+                          onTap: () {
+                            Get.toNamed(
+                              AppPagesRoutes.contentAzkarDoaasScreen,
+                              arguments: {
+                                "label": "azkar",
+                                "title": azkar.categoryNameEs ?? "",
+                                "data": azkar.zikr,
+                              },
+                            );
                           },
+                          es: azkar.categoryNameEs ?? "",
+                          ar: '',
+                          itemNumber: index + 1,
+                          isSaved: false,
                         );
                       },
-                      es: azkar.categoryNameEs ?? "",
-                      ar: '',
-                      itemNumber: index + 1,
-                      isSaved: false,
-                    );
-                  },
+                    ),
+                    const SizedBox(height: 20),
+                  ],
                 ),
-                const SizedBox(height: 20),
-              ],
+              ),
             ),
           ),
         ),

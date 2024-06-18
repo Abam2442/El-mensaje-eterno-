@@ -19,38 +19,40 @@ class BodyDoaaScreen extends GetView<AzkarDoaaController> {
     //   doaaLang = controller.doaas!.es;
     // }
     return GetBuilder<AzkarDoaaController>(
-      builder: (controller) => HandleStatesWidget(
-        stateType: controller.getDoaaState,
-        hasShimmer: true,
-        shimmerChild: ListView.separated(
-          physics: const NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(15),
-          shrinkWrap: true,
-          itemBuilder: (context, index) => PrimaryShimmer.rectangle(
-            height: Get.height * 0.09,
-            color: AppColors.kGreenColor,
-            border: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
+      builder: (controller) => Scaffold(
+        body: HandleStatesWidget(
+          stateType: controller.getDoaaState,
+          hasShimmer: true,
+          shimmerChild: ListView.separated(
+            physics: const NeverScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(15),
+            shrinkWrap: true,
+            itemBuilder: (context, index) => PrimaryShimmer.rectangle(
+              height: Get.height * 0.09,
+              color: AppColors.kGreenColor,
+              border: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
             ),
+            separatorBuilder: (context, index) => const SizedBox(
+              height: 15,
+            ),
+            itemCount: 6,
           ),
-          separatorBuilder: (context, index) => const SizedBox(
-            height: 15,
-          ),
-          itemCount: 6,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: ListView.builder(
-            itemCount: controller.doaas.length,
-            itemBuilder: (c, i) {
-              return buildCustomListTile(
-                  controller.doaas[i].listOfDoaa,
-                  controller.doaas[i].title,
-                  controller.doaas[i].noOfPages.toString(),
-                  i + 1);
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: ListView.builder(
+              itemCount: controller.doaas.length,
+              itemBuilder: (c, i) {
+                return buildCustomListTile(
+                    controller.doaas[i].listOfDoaa,
+                    controller.doaas[i].title,
+                    controller.doaas[i].noOfPages.toString(),
+                    i + 1);
 
-              // const SizedBox(height: 20),
-            },
+                // const SizedBox(height: 20),
+              },
+            ),
           ),
         ),
       ),

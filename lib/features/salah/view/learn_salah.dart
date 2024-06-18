@@ -27,7 +27,6 @@ class LearnSalah extends StatelessWidget {
         iconTheme: const IconThemeData(
           color: AppColors.kGoldenColor,
         ),
-
         backgroundColor: AppColors.kPrimaryColor,
       ),
       backgroundColor: AppColors.kPrimaryColor,
@@ -54,7 +53,8 @@ class LearnSalah extends StatelessWidget {
                   width: context.width,
                   child: Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15), color: AppColors.kWhiteColor.withOpacity(0.1)),
+                        borderRadius: BorderRadius.circular(15),
+                        color: AppColors.kWhiteColor.withOpacity(0.1)),
                     child: Text(
                       'De Abdallah Ibn Masúd que dijo:\n\n'
                       '“Pregunté al Mensajero de Allah ﷺ : “¿Cuál es la obra más amada por Allah?”\n'
@@ -81,7 +81,10 @@ class LearnSalah extends StatelessWidget {
                 2.hSize,
                 const Text(
                   'Aprender Salah',
-                  style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -97,13 +100,24 @@ class LearnSalah extends StatelessWidget {
                   child: Column(
                     children: [
                       SectionItemHomePageWidget(
-                          onTap: () {
-                            Get.to(const TaharaPage());
-                          },
-                          sectionIcon: AppSvgs.wudoa,
-                          sectionName: 'Aprender Purificacion',
-                          sectionSubtitle: '',
+                        onTap: () {
+                          Get.to(const TaharaPage());
+                        },
+                        sectionIcon: AppSvgs.wudoa,
+                        sectionName: 'Aprender Purificacion',
+                        sectionSubtitle: '',
                         isInfo: false,
+                        textInfo: '''
+La importancia de la Purificación en el Islam, y es una condición que se debe cumplir antes de realizar la oración
+
+De Ibn Umar que dijo:
+
+Que fue a lo de Ibn ‘Amir (para conocer su estado de salud) ya que estaba enfermo y le dijo (Ibn ‘Amir) “Ibn ‘Umar ¿por qué no ruegas a Allah por mí?”.
+Él contestó: “Escuché al Mensajero de Allah ﷺ decir: “Ninguna oración es aceptada sin la purificación previa,........ Muslim
+
+De Abu Málik Al Hariz Ibn Asim Al Asharí, Allah esté complacido con él que el Mensajero de Allah ﷺ dijo
+
+“La purificación es la mitad del imán (de la fe)....... Muslim''',
                       ),
                       SectionItemHomePageWidget(
                         onTap: () {
@@ -113,6 +127,8 @@ class LearnSalah extends StatelessWidget {
                         sectionName: 'Aprender Oracion',
                         sectionSubtitle: '',
                         isInfo: true,
+                        textInfo: '''
+''',
                       ),
                       // SectionItemHomePageWidget(
                       //     onTap: () {
@@ -130,19 +146,38 @@ class LearnSalah extends StatelessWidget {
                       //     sectionName: 'Educación avanzada',
                       //     sectionSubtitle: ''),
                       SectionItemHomePageWidget(
-                          onTap: () {
-                            Get.to(() => const PermissionprayerPage());
-                          },
-                          sectionIcon: AppSvgs.prayerTimes,
-                          sectionName: 'Tiempos de oracio\'n',
-                          sectionSubtitle: ''),
+                        onTap: () {
+                          Get.to(() => const PermissionprayerPage());
+                        },
+                        sectionIcon: AppSvgs.prayerTimes,
+                        sectionName: 'Tiempos de oracio\'n',
+                        sectionSubtitle: '',
+                        textInfo: '''
+Horarios de oración
+
+ Puedes conocer los cinco tiempos de oración desde aquí.
+
+ Sin embargo, tenga en cuenta que en esta versión de la aplicación, los tiempos de oración no son 100% precisos.
+
+Habrá una diferencia de uno o dos minutos, hasta un máximo de 10 minutos, más o menos
+ 
+Ten cuidado, añade 10 minutos al tiempo que aparece 
+
+
+También 10 minutos antes del final del tiempo de oración.''',
+                      ),
                       SectionItemHomePageWidget(
-                          onTap: () {
-                            Get.to(() => const QiblaCompass());
-                          },
-                          sectionIcon: AppSvgs.qibla,
-                          sectionName: 'Qibla',
-                          sectionSubtitle: ''),
+                        onTap: () {
+                          Get.to(() => const QiblaCompass());
+                        },
+                        sectionIcon: AppSvgs.qibla,
+                        sectionName: 'Qibla',
+                        sectionSubtitle: '',
+                        textInfo: '''
+Qibla dirección 
+
+ Puedes identificar la dirección de la Qibla a través de la flecha naranja en la dirección de la forma de la Kaaba.''',
+                      ),
                     ],
                   ),
                 ),

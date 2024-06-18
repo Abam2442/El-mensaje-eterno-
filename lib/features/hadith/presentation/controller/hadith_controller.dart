@@ -22,27 +22,41 @@ class HadithController extends GetxController
   List searchResultEs = [];
 
   void searchFun(String val) {
-    searchResultArabic.clear();
-    sunnahHadithes?.sunnahHadithes.forEach(
-      (_, value) {
-        value.forEach((key, value1) {
-          value1.forEach((key, value) {
-            if (value.toString().contains(val)) {
-              searchResultArabic.add(value1['Arabic']);
-              searchResultEs.add(value1['Español']);
-            }
+    if (formState.currentState!.validate()) {
+      searchResultArabic.clear();
+      sunnahHadithes?.sunnahHadithes.forEach(
+        (_, value) {
+          value.forEach((key, value1) {
+            value1.forEach((key, value) {
+              if (value.toString().contains(val)) {
+                searchResultArabic.add(value1['Arabic']);
+                searchResultEs.add(value1['Español']);
+              }
+            });
           });
-        });
-      },
-    );
-    searchResultArabic = searchResultArabic.toSet().toList();
-    searchResultEs = searchResultEs.toSet().toList();
+        },
+      );
+      hadithencHadithes?.hadithencHadithes.forEach(
+        (_, value) {
+          value.forEach((key, value1) {
+            value1.forEach((key, value) {
+              if (value.toString().contains(val)) {
+                searchResultArabic.add(value1['Arabic']);
+                searchResultEs.add(value1['Español']);
+              }
+            });
+          });
+        },
+      );
+      searchResultArabic = searchResultArabic.toSet().toList();
+      searchResultEs = searchResultEs.toSet().toList();
 
-    // log('$test');prin
-    print(searchResultEs);
-    print(searchResultArabic);
+      // log('$test');prin
+      print(searchResultEs);
+      print(searchResultArabic);
 
-    Get.to(() => const HadithSearchScreen());
+      Get.to(() => const HadithSearchScreen());
+    }
   }
 
   // States

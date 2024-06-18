@@ -5,6 +5,9 @@ import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/screens/advanced_sites.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/azkar_doaa_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/presentation/screens/azkar_doaa_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/azkar_doaa/presentation/widgets/body_azkar_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/azkar_doaa/presentation/widgets/body_doaa_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/azkar_doaa/presentation/widgets/body_sonan_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/faith/faith_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/faith/view/faith_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/hadith_bindings.dart';
@@ -151,7 +154,11 @@ import '../../features/sites/presentation/screen/the_key_to_islam_2_screen.dart'
 abstract class AppPagesRoutes {
   // Tabs Screens
   static const String mainScreen = "/";
+
   static const String learnSalahPage = "/LearnSalahPage";
+  static const String azkarBodtScreen = "/azkar_body_screen";
+  static const String doaaBodyScreen = "/doaa_body_screen";
+
   static const String quranScreen = "/quranScreen";
   static const String faithScreen = "/faithScreen";
   static const String learnSalah = "/learnSalah";
@@ -207,6 +214,7 @@ abstract class AppPagesRoutes {
   static const String learningIslam = "/learning_islam_screen";
   static const String islamReligionOfPace = "/islam_religion_of_pace_screen";
   static const String messageOfIslam = "/message_of_islam_screen";
+  static const String bodySonanScreen = "/body_sonan_screen";
   static const String muhammadTheMessangerOfGod =
       "/muhammad_the_messanger_of_god_screen";
   static const String romanceInIslam = "/romance_in_islam_screen";
@@ -248,11 +256,29 @@ abstract class AppPagesRoutes {
       transition: Transition.cupertino,
     ),
     GetPage(
-      name: azkarDoaaScreen,
-      page: () => const AzkarDoaaScreen(),
+      name: azkarBodtScreen,
+      page: () => const BodyAzkarScreen(),
       binding: AzkarDoaaBindings(),
       transition: Transition.cupertino,
     ),
+    GetPage(
+      name: doaaBodyScreen,
+      page: () => const BodyDoaaScreen(),
+      binding: AzkarDoaaBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: bodySonanScreen,
+      page: () => const BodySonanScreen(),
+      binding: AzkarDoaaBindings(),
+      transition: Transition.cupertino,
+    ),
+    // GetPage(
+    //   name: azkarDoaaScreen,
+    //   page: () => const AzkarDoaaScreen(),
+    //   binding: AzkarDoaaBindings(),
+    //   transition: Transition.cupertino,
+    // ),
     GetPage(
       name: contentAzkarDoaasScreen,
       page: () => const ContentAzkarDoaasScreen(),
@@ -267,7 +293,7 @@ abstract class AppPagesRoutes {
     GetPage(
       name: surahScreen,
       page: () {
-        return  SurahScreen();
+        return SurahScreen();
       },
       binding: QuranBindings(),
       transition: Transition.cupertino,

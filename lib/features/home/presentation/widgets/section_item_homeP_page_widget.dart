@@ -9,21 +9,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SectionItemHomePageWidget extends StatelessWidget {
-  SectionItemHomePageWidget(
-      {super.key,
-      required this.sectionName,
-      required this.sectionSubtitle,
-      required this.sectionIcon,
-      required this.onTap,
-      this.isInfo = false});
+  SectionItemHomePageWidget({
+    super.key,
+    required this.sectionName,
+    required this.sectionSubtitle,
+    required this.sectionIcon,
+    required this.onTap,
+    this.isInfo = false,
+    this.isVideo = false,
+    required this.textInfo,
+  });
   final String sectionName;
   final String sectionSubtitle;
+
   final String sectionIcon;
+  final String textInfo;
+  final bool isVideo;
   final GestureTapCallback? onTap;
   bool? isInfo;
   @override
   Widget build(BuildContext context) {
-    final VideoPlayerController controller = VideoPlayerController.asset('assets/video/v1.mp4');
+    final VideoPlayerController controller =
+        VideoPlayerController.asset('assets/video/v1.mp4');
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -79,80 +86,62 @@ class SectionItemHomePageWidget extends StatelessWidget {
                   if (isInfo == true) {
                     Get.to(() => const SalahImportancePage());
                   } else {
-                    String text =
-                        '''Aviso:
- En educación utilizamos lo que se llama transliteración, que significa una traducción fonética de textos árabes a letras españolas. 
-
- Ejemplos :
-
-Allâhu Akbar
-Subhana rabbi al a'alaa
-Rabi ighfer li
-Arrahmani arrahim
-Samiaa allahu leman 7am ida
-..... Etc
-
-⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-No es correcto confiar en estas palabras traducidas para memorizarlas.
- Ponemos estos símbolos sólo para que entiendas cómo pronunciar palabras árabes.
- Por lo tanto, sólo debes confiar en las palabras que escuchas y no en las letras del español.
- Debido a que existen fonemas, la lengua árabe no tiene una fonética equivalente en la lengua española.
-
-
-🌟🌟🌟🌟🌟
-Esa es la clave de las letras especiales utilizadas en los vídeos ilustrativos.
- Aprende la pronunciación para que te resulte más fácil entender la pronunciación correcta de las letras
-''';
+                    String text = textInfo;
                     // Get.defaultDialog(
                     //     title: 'La importancia de la Purificación en el Islam',
                     //     content: ListView(
                     //       shrinkWrap: true,
                     //       children: [Text(text)],
                     //     ));
-                         showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-        backgroundColor: AppColors.kWhiteColor,
-        actions: [
-          ElevatedButton(
-              onPressed: () {
-                Get.back();
-              },
-              child: const Text(
-                "Ok",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.kPrimaryColor),
-              ))
-        ],
-        title: const Text("La importancia de la Purificación en el Islam"),
-        content: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Text(
-                  text,
-                  style: const TextStyle(fontSize: 18),
-                ),
-              ),
-              IconButton(onPressed:() async {
-                // controller = VideoPlayerController.asset(videoPath);
-                await controller.initialize();
-                await Get.generalDialog(pageBuilder: (_, __, ___) {
-                  return VideoPlayerWidget(controller: controller);
-                });
-                controller.dispose();
-              }, icon: const Icon(Icons.play_arrow),)
-              
-              
-            ],
-          ),
-        ));
-                            });
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                              backgroundColor: AppColors.kWhiteColor,
+                              actions: [
+                                ElevatedButton(
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    child: const Text(
+                                      "Ok",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: AppColors.kPrimaryColor),
+                                    ))
+                              ],
+                              content: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10),
+                                      child: Text(
+                                        text,
+                                        style: const TextStyle(fontSize: 18),
+                                      ),
+                                    ),
+                                    isVideo
+                                        ? IconButton(
+                                            onPressed: () async {
+                                              // controller = VideoPlayerController.asset(videoPath);
+                                              await controller.initialize();
+                                              await Get.generalDialog(
+                                                  pageBuilder: (_, __, ___) {
+                                                return VideoPlayerWidget(
+                                                    controller: controller);
+                                              });
+                                              controller.dispose();
+                                            },
+                                            icon: const Icon(Icons.play_arrow),
+                                          )
+                                        : const SizedBox()
+                                  ],
+                                ),
+                              ));
+                        });
                   }
                 },
                 icon: const Icon(

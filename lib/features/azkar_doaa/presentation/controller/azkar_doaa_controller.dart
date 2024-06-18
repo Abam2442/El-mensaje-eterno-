@@ -1,6 +1,7 @@
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/core/helpers/get_state_from_failure.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/data/models/sonan_model.dart';
+import 'package:hiwayda_oracion_islamica/features/azkar_doaa/domain/repository/azkar_doaa_repo.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/domain/usecases/get_azkar_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,8 +11,7 @@ import '../../domain/entities/azkar_entity.dart';
 import '../../domain/usecases/get_doaas_use_case.dart';
 import '../../domain/usecases/sonan_usecase.dart';
 
-class AzkarDoaaController extends GetxController
-    with GetSingleTickerProviderStateMixin {
+class AzkarDoaaController extends GetxController {
   // Data
   List<Azkar> azkar = [];
   List<DoaaModel> doaas = [];
@@ -25,32 +25,13 @@ class AzkarDoaaController extends GetxController
   // Primitive
   String validationMessage = '';
 
-  late TabController tabController;
-
-  final List<Tab> tabs = <Tab>[
-    const Tab(text: 'Azkar'),
-    const Tab(text: 'Doaas'),
-    const Tab(text: 'Sonan'),
-  ];
-
   final PageController pageController = PageController();
   final RxInt currentPage = 0.obs;
-  @override
-  void onClose() {
-    tabController.removeListener(() {});
-    tabController.dispose();
-    super.onClose();
-  }
 
   @override
   void onInit() async {
     super.onInit();
-    tabController = TabController(length: 3, vsync: this);
-    tabController.addListener(() {
-      if (tabController.indexIsChanging) {
-        currentPage.value = 0;
-      }
-    });
+    // Get.put(());
     await getAzkar();
     await getDoaas();
     await getSonan();

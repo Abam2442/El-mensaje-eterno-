@@ -24,10 +24,10 @@ class NewMuslimsCourseScreen extends StatelessWidget {
           appBar:
               const CustomAppbar(title: 'Curso para el nuevo musulmán', tabs: [
             Tab(
-              text: 'levels',
+              text: 'Niveles',
             ),
             Tab(
-              text: 'Categories',
+              text: 'Categorías',
             ),
           ]),
           body: TabBarView(children: [
