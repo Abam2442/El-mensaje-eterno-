@@ -13,6 +13,7 @@ abstract class AppAssets {
   static const String rootSVG = "assets/svg";
 
   static const String imageSVG = '$rootSVG/images';
+  static const String imageSVGBack = '$rootSVG/images/back.svg';
   //
   static const String rootSVGIcon = "$rootSVG/icons";
   //
@@ -48,6 +49,8 @@ abstract class AppAssets {
   static const String kDownloadIcon = '$rootSVGIcon/Download.svg';
   static const String menuIcon = '$rootSVGIcon/menu_icon.svg';
   static const String logoApp = '$rootSVGIcon/elresala_logo_app.svg';
+  static const String background = '$rootSVGIcon/back.svg';
+
   static const String arrowDropDownIcon =
       '$rootSVGIcon/Arrow_drop_down_big.svg';
   static const String moonFajrIcon = '$rootSVGIcon/moon_fajer_icon.svg';
