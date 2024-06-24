@@ -52,7 +52,7 @@ class _QiblaCompassState extends State<QiblaCompass> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   //snapshot.data;
-                  AppPublicVar.coordinates = Coordinates(snapshot.data!.latitude, snapshot.data!.longitude);
+                  AppPublicVar.coordinates = Coordinates(snapshot.data!.latitude??0, snapshot.data!.longitude??0);
                   double degree = Qibla.qibla(AppPublicVar.coordinates);
                   var qibla = degree * (pi / 180);
                   return Center(

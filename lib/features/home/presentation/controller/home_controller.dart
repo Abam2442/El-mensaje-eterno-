@@ -8,6 +8,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_pages_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/services/archive_service.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/model/praying_time_method_selector.dart';
 import 'package:intl/intl.dart';
 import 'package:jhijri/jHijri.dart';
 import 'package:location/location.dart' as locationPackage;
@@ -258,7 +259,7 @@ class HomeController extends GetxController {
       locationPackage.Location location = locationPackage.Location();
       locationData = await location.getLocation();
       AppPublicVar.coordinates =
-          Coordinates(locationData.latitude, locationData.longitude);
+          Coordinates(locationData.latitude??0, locationData.longitude??0);
     } else {
       AppPublicVar.coordinates = Coordinates(
           double.parse(storedLocation!.split(':').first),
@@ -270,9 +271,9 @@ class HomeController extends GetxController {
   }
 
   Future<void> calcTimes() async {
-    params = CalculationMethod.ummAlQura();
+    params =  CalculationMethodSelector.getCalculationMethod(AppPublicVar.coordinates!.latitude, AppPublicVar.coordinates!.longitude);
     params.madhab = Madhab.shafi;
-    prayerTimes = PrayerTimes(AppPublicVar.coordinates!, dateToCalc, params,
+    prayerTimes = PrayerTimes(date:DateTime.now() ,coordinates:  AppPublicVar.coordinates!,calculationParameters:  params,
         precision: true);
     current = prayerTimes.currentPrayer(date: DateTime.now());
     next = prayerTimes.nextPrayer(date: DateTime.now());
@@ -321,7 +322,7 @@ class HomeController extends GetxController {
       nowHijri = JHijri(fDate: now);
     }
     prayerTimes =
-        PrayerTimes(AppPublicVar.coordinates!, now, params, precision: true);
+        PrayerTimes(coordinates:  AppPublicVar.coordinates!,date:  now,calculationParameters:  params, precision: true);
     selectedPage.value = page;
     update();
   }

@@ -37,7 +37,7 @@ dependencies:
   video_player: ^2.7.1
   dots_indicator: ^2.1.0
   page_view_dot_indicator: ^2.3.0
-  adhan_dart: "1.1.0"
+  adhan_dart: ^1.1.2
   timezone:
   connectivity_plus: ^2.3.9
   geolocator: ^9.0.2
@@ -59,7 +59,7 @@ dependencies:
   # share_plus: ^9.0.0
   audioplayers: ^6.0.0
   photo_view: ^0.15.0
-  flutter_native_splash: ^2.4.0
+  flutter_native_splash: ^2.3.11
 
   http: any
 dev_dependencies:
