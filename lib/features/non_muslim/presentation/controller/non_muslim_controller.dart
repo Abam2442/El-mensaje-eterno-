@@ -5,6 +5,7 @@ import 'package:hiwayda_oracion_islamica/features/non_muslim/domain/usecases/get
 import 'package:get/get.dart';
 
 class NonMuslimController extends GetxController {
+  static NonMuslimController get instance => Get.find<NonMuslimController>();
   // Data
   List<NonMuslimModel> hadithes = [];
 

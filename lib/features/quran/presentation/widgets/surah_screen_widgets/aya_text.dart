@@ -1,10 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
-import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/aya_words_widget.dart';
-
-import 'package:http/http.dart' as http;
+import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/surah_screen_widgets/aya_words_widget.dart';
 
 class AyaText extends StatelessWidget {
   const AyaText({
@@ -36,7 +33,6 @@ class AyaText extends StatelessWidget {
   }
 }
 
-
 class AyaArabicText extends StatelessWidget {
   const AyaArabicText({
     super.key,
@@ -59,13 +55,8 @@ class AyaArabicText extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: Directionality(
         textDirection: textDirection,
-        child: AyaWordsWidget(aya: aya, ayaNumber : ayaNumber),
+        child: AyaWordsWidget(aya: aya, ayaNumber: ayaNumber),
       ),
     );
-
-  
-
   }
 }
-
-

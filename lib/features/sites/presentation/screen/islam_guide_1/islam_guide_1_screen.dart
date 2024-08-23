@@ -1,9 +1,9 @@
 // import 'package:elresala/features/advanced_learning/presentation/widgets/item%20_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/search_field_widget.dart';
 
-import '../../../../advanced_learning/presentation/widgets/item _card.dart';
 import '../../controller/islam_guide_1_controller.dart';
 import '../../widget/app_bar_custom.dart';
 import 'islam_guide_chapter_view.dart';
@@ -35,7 +35,7 @@ class IslamGuide1Screen extends StatelessWidget {
                               title: 'Chapter ${index + 1}',
                             ));
                       },
-                      child: Item_Card(
+                      child: ItemCard(
                         titleSite: 'Chapter ${index + 1}',
                         // subtitle: '',
                       ),

@@ -1,6 +1,6 @@
-import 'package:hiwayda_oracion_islamica/features/main/data/model/pair_model.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/services/api_service.dart';
+import 'package:hiwayda_oracion_islamica/features/main/data/model/pair_model.dart';
 
 abstract class QuranRemoteDataSource {
   // TODO This is example

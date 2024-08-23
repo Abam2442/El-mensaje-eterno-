@@ -22,7 +22,8 @@ class AboutScreen extends GetView<AboutController> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Expanded(child: Text('Developers', style: Styles.textStyle24Golden)),
+              const Expanded(
+                  child: Text('Developers', style: Styles.textStyle24Golden)),
               SvgPicture.asset(AppAssets.logoApp)
             ],
           ),

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_qa_sub_screens/islam_qa_question_view.dart';
-import '../../../../advanced_learning/presentation/widgets/item _card.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
 import '../../widget/app_bar_custom.dart';
 
 class IslamAllQuestions extends StatelessWidget {
@@ -27,7 +27,7 @@ class IslamAllQuestions extends StatelessWidget {
                         title: 'Pregunta 1 ${index + 1}',
                       ));
                 },
-                child: Item_Card(
+                child: ItemCard(
                   titleSite: 'Pregunta 1 ${index + 1}',
                   // subtitle: '',
                 ),

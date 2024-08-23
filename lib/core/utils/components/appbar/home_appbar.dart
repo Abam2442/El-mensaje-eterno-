@@ -19,7 +19,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.kPrimaryColor,
+      backgroundColor: Color(0xFFbac2b9),
       title: GestureDetector(
         onTap: () {
           launchUrl(Uri.parse(
@@ -49,6 +49,7 @@ class CustomPopupMenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
+      iconColor: Colors.black,
       onSelected: (value) {},
       itemBuilder: (BuildContext context) => [
         _buildPopupMenuItem('Guía para usar la aplicación.',
@@ -75,7 +76,8 @@ class CustomPopupMenuButton extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Transform.flip(
           flipX: true,
-          child: SvgPicture.asset(AppAssets.menuIcon),
+          child: SvgPicture.asset(AppAssets.menuIcon,color: Colors.black,),
+          
         ),
       ),
     );

@@ -1,4 +1,3 @@
-import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller/hadith_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,31 +14,23 @@ class HadithWebsideSelectSliver extends GetView<HadithController> {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: SingleChildScrollView(
-        child: Container(
-          color: AppColors.kPrimaryColor,
-          child: Stack(
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  color: AppColors.kWhiteColor,
-                ),
-                child: SizedBox(
-                  height: Get.height,
-                  child: TabBarView(
-                    controller: controller.tabController,
-                    children: controller.tabs.map(
-                      (Tab tab) {
-                        final String label = tab.text!.toLowerCase();
-                        return label == "sunnah"
-                            ? const BodySunnahScreen()
-                            : const BodyHadithencScreen();
-                      },
-                    ).toList(),
-                  ),
-                ),
+        child: Stack(
+          children: [
+            SizedBox(
+              height: Get.height,
+              child: TabBarView(
+                controller: controller.tabController,
+                children: controller.tabs.map(
+                  (Tab tab) {
+                    final String label = tab.text!.toLowerCase();
+                    return label == "sunnah"
+                        ? const BodySunnahScreen()
+                        : const BodyHadithencScreen();
+                  },
+                ).toList(),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

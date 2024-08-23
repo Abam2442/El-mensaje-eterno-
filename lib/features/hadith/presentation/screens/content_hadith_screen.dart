@@ -5,7 +5,6 @@ import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/bo
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/body_content_sunnah_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 
 class ContentHadithScreen extends StatelessWidget {
   const ContentHadithScreen({super.key});
@@ -13,7 +12,7 @@ class ContentHadithScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(HadithController());
-    Get.put(QuranController());
+    // Get.put(QuranController());
     return Scaffold(
       body: CustomScrollView(
         slivers: [

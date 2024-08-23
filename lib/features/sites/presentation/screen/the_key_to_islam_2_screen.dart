@@ -1,8 +1,8 @@
 // import 'package:elresala/features/advanced_learning/presentation/widgets/item%20_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
 
-import '../../../advanced_learning/presentation/widgets/item _card.dart';
 import '../controller/the_key_to_islam_2_controller.dart';
 import '../widget/app_bar_custom.dart';
 import 'the_key_to_islam_2/the_key_to_islam_2_article_view.dart';
@@ -29,7 +29,7 @@ class TheKeyToIslam2Screen extends StatelessWidget {
                           title: 'número de artículo ${index + 1}',
                         ));
                   },
-                  child: Item_Card(
+                  child: ItemCard(
                     titleSite: 'número de artículo ${index + 1}',
                     // subtitle: '',
                   ),

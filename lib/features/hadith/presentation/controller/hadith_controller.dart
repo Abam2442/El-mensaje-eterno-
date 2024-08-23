@@ -5,21 +5,58 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/domain/usecases/get_hadithenc_hadithes_use_case.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/domain/usecases/get_sunnah_hadithes_use_case.dart';
-import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/search/hadith_search_screen.dart';
 import 'package:number_paginator/number_paginator.dart';
 
 class HadithController extends GetxController
     with GetSingleTickerProviderStateMixin {
+  static HadithController get instance => Get.find<HadithController>();
+
   // Data
   SunnahHadithModel? sunnahHadithes;
+  var searchResultArabic = [].obs;
+  var searchResultEs = [].obs;
 
   GlobalKey<FormState> formState = GlobalKey();
+  Rx<TextEditingController> searchController = TextEditingController().obs;
+  void search(String query) {
+    isSearching.value = query.isNotEmpty;
+    searchResultArabic.clear();
+
+    searchController.value.text = query;
+    searchResultArabic.clear();
+    sunnahHadithes?.sunnahHadithes.forEach(
+      (_, value) {
+        value.forEach((key, value1) {
+          value1.forEach((key, value) {
+            if (value.toString().contains(query)) {
+              searchResultArabic.add(value1['Arabic']);
+              searchResultEs.add(value1['Español']);
+            }
+          });
+        });
+      },
+    );
+    hadithencHadithes?.hadithencHadithes.forEach(
+      (_, value) {
+        value.forEach((key, value1) {
+          value1.forEach((key, value) {
+            if (value.toString().contains(query)) {
+              searchResultArabic.add(value1['Arabic']);
+              searchResultEs.add(value1['Español']);
+            }
+          });
+        });
+      },
+    );
+    // searchResultArabic = searchResultArabic.toSet().toList();
+    // searchResultEs = searchResultEs.toSet().toList();
+
+    print(searchResultArabic[0]);
+    update();
+  }
 
   HaditencHadithModel? hadithencHadithes;
   List<Map> categoryHadithes = [];
-
-  List searchResultArabic = [];
-  List searchResultEs = [];
 
   void searchFun(String val) {
     if (formState.currentState!.validate()) {
@@ -48,14 +85,15 @@ class HadithController extends GetxController
           });
         },
       );
-      searchResultArabic = searchResultArabic.toSet().toList();
-      searchResultEs = searchResultEs.toSet().toList();
+      // searchResultArabic = searchResultArabic.toSet().toList();
+      // searchResultEs = searchResultEs.toSet().toList();
 
       // log('$test');prin
       print(searchResultEs);
       print(searchResultArabic);
 
-      Get.to(() => const HadithSearchScreen());
+      // Get.to(() => const HadithSearchScreen());
+      update();
     }
   }
 
@@ -117,12 +155,13 @@ class HadithController extends GetxController
     );
   }
 
-  List<String>? get getbookHadithesName {
+  List<String> bookHadithesName = [];
+  List<String> getbookHadithesName(String title) {
+    bookHadithesName.clear();
     print("getData");
-    List<String>? bookHadithesName = [];
     sunnahHadithes?.sunnahHadithes.forEach(
       (key, value) {
-        if (key == Get.arguments['title']) {
+        if (key == title) {
           value.forEach((key, value) {
             if (isSearching.value) {
               if (value != null) {
@@ -159,6 +198,7 @@ class HadithController extends GetxController
         }
       },
     );
+    print(hadith);
     return hadith;
   }
 
@@ -248,6 +288,7 @@ class HadithController extends GetxController
         }
       },
     );
+    print(hadith);
     return hadith;
   }
 }

@@ -1,20 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/tafsirs_keys.dart';
 import 'package:hiwayda_oracion_islamica/core/services/shared_preferences_service.dart';
-import 'package:hiwayda_oracion_islamica/core/widgets/primary_button.dart';
-import 'package:hiwayda_oracion_islamica/core/widgets/secondary_button.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/main_button.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-
+import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/surah_screen_widgets/main_button.dart';
 
 class TafsirsPickerWidget extends StatelessWidget {
-  
   final Function(Map<String, bool>) onSave;
 
- const  TafsirsPickerWidget({super.key, required this.onSave});
+  const TafsirsPickerWidget({super.key, required this.onSave});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +24,6 @@ class TafsirsPickerWidget extends StatelessWidget {
   }
 }
 
-
 class TafsirPcikerList extends StatefulWidget {
   final Function(Map<String, bool>) onSave;
 
@@ -45,7 +37,7 @@ class _TafsirPcikerListState extends State<TafsirPcikerList> {
   Map<String, bool> selectedTafsirs = {};
 
   final sharedPreferencesService = Get.find<SharedPreferencesService>();
- 
+
   @override
   void initState() {
     super.initState();
@@ -53,10 +45,10 @@ class _TafsirPcikerListState extends State<TafsirPcikerList> {
   }
 
   _loadSelectedTafsirs() async {
-    
     setState(() {
-     for (var tafsir in TafsirKeys.tafsirs) {
-        selectedTafsirs[tafsir] = sharedPreferencesService.getData<bool>(key: tafsir)  ?? false;
+      for (var tafsir in TafsirKeys.tafsirs) {
+        selectedTafsirs[tafsir] =
+            sharedPreferencesService.getData<bool>(key: tafsir) ?? false;
       }
     });
   }
@@ -70,7 +62,8 @@ class _TafsirPcikerListState extends State<TafsirPcikerList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -98,7 +91,9 @@ class _TafsirPcikerListState extends State<TafsirPcikerList> {
               }).toList(),
             ),
           ),
-          const SizedBox(height: 12,),
+          const SizedBox(
+            height: 12,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: MainButton(
@@ -106,10 +101,15 @@ class _TafsirPcikerListState extends State<TafsirPcikerList> {
                 _saveSelectedTafsirs();
                 widget.onSave(selectedTafsirs);
               },
-              child:const Text('Save', style:TextStyle(color: Colors.white) ,),
+              child: const Text(
+                'Save',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ),
-           const SizedBox(height: 12,),
+          const SizedBox(
+            height: 12,
+          ),
         ],
       ),
     );

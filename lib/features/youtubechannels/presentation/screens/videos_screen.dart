@@ -7,11 +7,10 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/services/easy_loader_service.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/utils/components/appbar/direction_aware.dart';
-import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/widgets/pub_up_custom.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/pub_up_custom.dart';
 import 'package:hiwayda_oracion_islamica/features/youtubechannels/data/models/youtube_model.dart';
 import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/screens/web_view_screen.dart';
 //import 'package:url_launcher/url_launcher.dart';
-
 
 class VideosScreen extends StatelessWidget {
   final YoutubeModel data;
@@ -54,7 +53,7 @@ class VideosScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-             // Get.to(() => ClipsScreen(data: data, index: index,));
+              // Get.to(() => ClipsScreen(data: data, index: index,));
             },
             child: Card(
               elevation: 0,
@@ -90,27 +89,28 @@ class VideosScreen extends StatelessWidget {
                             ),
                             onPressed: () {
                               // launchUrl(Uri.parse(data.videos![index].videoUrl!));
-                               Get.to(
-                                          () => WebViweScreen(
-                                              Urlweb:data.videos![index].videoUrl!,
-                                              title: data.videos![index].videoName!),
-                                          transition: Transition.cupertino);
+                              Get.to(
+                                  () => WebViweScreen(
+                                      Urlweb: data.videos![index].videoUrl!,
+                                      title: data.videos![index].videoName!),
+                                  transition: Transition.cupertino);
                             }),
-                            IconButton(
-                      onPressed: () {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return PubUpCustom(
-                                body: data.videos![index].videoDescription!,
-                                link: '',
-                              );
-                            });
-                      },
-                      icon: const Icon(
-                        Icons.info,
-                        color: AppColors.kGoldenColor,
-                      )),
+                        IconButton(
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return PubUpCustom(
+                                      body:
+                                          data.videos![index].videoDescription!,
+                                      link: '',
+                                    );
+                                  });
+                            },
+                            icon: const Icon(
+                              Icons.info,
+                              color: AppColors.kGoldenColor,
+                            )),
                       ],
                     ),
                   ],
@@ -120,8 +120,6 @@ class VideosScreen extends StatelessWidget {
                         const AssetImage('assets/svg/images/zaghrafa.png'),
                     backgroundColor: AppColors.kGreenColor,
                     child: Text('${index + 1}')),
-                
-              
               ),
             ),
           );
@@ -130,6 +128,3 @@ class VideosScreen extends StatelessWidget {
     );
   }
 }
-
-
-

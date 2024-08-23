@@ -1,9 +1,10 @@
 // import 'package:elresala/features/sites/data/models/islam_qa.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_qa_sub_screens/islamic_all_quesion.dart';
 
-import '../../../../advanced_learning/presentation/widgets/item _card.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
 import '../../../data/models/islam_qa.dart';
 import '../../widget/app_bar_custom.dart';
 
@@ -31,7 +32,7 @@ class IslamFluffyTopicView extends StatelessWidget {
                               title: islamQaSubTopic.name,
                             ));
                       },
-                      child: const Item_Card(titleSite: 'Sub Topics')),
+                      child: const ItemCard(titleSite: 'Sub Topics')),
               islamQaSubTopic.questions.isEmpty
                   ? Container()
                   : GestureDetector(
@@ -41,7 +42,7 @@ class IslamFluffyTopicView extends StatelessWidget {
                               title: islamQaSubTopic.name,
                             ));
                       },
-                      child: const Item_Card(titleSite: 'Questions')),
+                      child: const ItemCard(titleSite: 'Questions')),
             ],
           ),
         ));

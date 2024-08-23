@@ -1,17 +1,14 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/advanced_learning.dart';
-import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/screens/advanced_sites.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/azkar_doaa_bindings.dart';
-import 'package:hiwayda_oracion_islamica/features/azkar_doaa/presentation/screens/azkar_doaa_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/azkar_doaa/presentation/screens/content_azkar_doaa_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/presentation/widgets/body_azkar_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/presentation/widgets/body_doaa_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/azkar_doaa/presentation/widgets/body_sonan_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/faith/faith_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/faith/view/faith_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/hadith_bindings.dart';
-import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/book_hadithes_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/content_hadith_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/hadith_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/sub_category_screen.dart';
@@ -94,7 +91,6 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/isla
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_books_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_fatwa.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_main.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_videos.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/audio/islam_land_books_main_audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/books/islam_land_books_main_screen.dart';
@@ -135,8 +131,6 @@ import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/s
 import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/screens/youtube_channels_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/youtube_channels_bindings.dart';
 
-import '../../features/azkar_doaa/presentation/screens/content_azkar_doaa_screen.dart';
-import '../../features/quran/presentation/screens/telawa_screen.dart';
 import '../../features/salah/view/learn_salah_page.dart';
 import '../../features/sites/bindings/guide_to_islam/guid_to_islam_binding.dart';
 import '../../features/sites/bindings/hisnul_mumin_binding.dart';
@@ -441,11 +435,11 @@ abstract class AppPagesRoutes {
       page: () => const SubCategoryScreen(),
       transition: Transition.cupertino,
     ),
-    GetPage(
-      name: bookHadithesScreen,
-      page: () => const BookHadithesScreen(),
-      transition: Transition.cupertino,
-    ),
+    // GetPage(
+    //   name: bookHadithesScreen,
+    //   page: () => const BookHadithesScreen(),
+    //   transition: Transition.cupertino,
+    // ),
     GetPage(
       name: contentHadithScreen,
       page: () => const ContentHadithScreen(),
@@ -695,12 +689,12 @@ abstract class AppPagesRoutes {
       binding: TerminologyBindings(),
       transition: Transition.cupertino,
     ),
-    GetPage(
-      name: advanced_learning,
-      page: () => const AdvancedSites(),
-      binding: Advanced_LearningBindings(),
-      transition: Transition.cupertino,
-    ),
+    // GetPage(
+    //   name: advanced_learning,
+    //   page: () => const AdvancedSites(),
+    //   binding: Advanced_LearningBindings(),
+    //   transition: Transition.cupertino,
+    // ),
     GetPage(
       name: telegram,
       page: () => const TelegramChannelsScreen(),
@@ -720,12 +714,12 @@ abstract class AppPagesRoutes {
       ),
       transition: Transition.cupertino,
     ),
-    GetPage(
-      name: telawaScreen,
-      page: () => const TelawaScreen(),
-      binding: QuranBindings(),
-      transition: Transition.cupertino,
-    ),
+    // GetPage(
+    //   name: telawaScreen,
+    //   page: () => const TelawaScreen(),
+    //   binding: QuranBindings(),
+    //   transition: Transition.cupertino,
+    // ),
     /*
 
     GetPage(
