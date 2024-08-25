@@ -10,8 +10,8 @@ class Item_GridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Advanced_LearningController controller =
-        Get.put(Advanced_LearningController());
+    AdvancedLearningController controller =
+        Get.put(AdvancedLearningController());
     return ListView.builder(
       scrollDirection: Axis.horizontal,
       itemCount: controller.titlePart.length,

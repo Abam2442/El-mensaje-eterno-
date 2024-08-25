@@ -24,7 +24,7 @@ class AdvancedSiteMediaMainScreen extends StatelessWidget {
             isSearch: false,
             isPinned: true,
           ),
-          GetBuilder<Advanced_LearningController>(
+          GetBuilder<AdvancedLearningController>(
             builder: (controller) => SliverToBoxAdapter(
               child: Column(
                 children: [

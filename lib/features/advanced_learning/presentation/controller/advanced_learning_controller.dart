@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 
 import '../../../../core/constants/app_pages_routes.dart';
 
-class Advanced_LearningController extends GetxController {
+class AdvancedLearningController extends GetxController {
+  static AdvancedLearningController get instance =>
+      Get.find<AdvancedLearningController>();
   int selectedPart = 0;
 
   List titlePart = [

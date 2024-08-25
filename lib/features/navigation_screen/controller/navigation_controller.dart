@@ -7,6 +7,8 @@ class NavigationController extends GetxController
     with GetSingleTickerProviderStateMixin {
   late TabController tabController;
 
+  static NavigationController get instance => Get.find<NavigationController>();
+
   List<TabBarModel> tabBarData = [
     TabBarModel(text: 'El Corán', image: AppAssets.quran),
     TabBarModel(text: 'El musulmán', image: AppAssets.prayer),

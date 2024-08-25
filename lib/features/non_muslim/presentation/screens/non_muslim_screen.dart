@@ -30,51 +30,56 @@ class NonMuslimSectionScreen extends StatelessWidget {
                   bottom: MediaQuery.of(context).size.height),
               itemCount: topics.length,
               itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () => Get.to(
-                    () => NonMuslimTopicsScreen(
-                      topics: topics[index].topics,
-                      title: topics[index].sectionName,
-                    ),
-                    transition: Transition.cupertino,
-                  ),
-                  child: Card(
-                    color: AppColors.kGreenColor,
-                    child: ListTile(
-                      leading: const Padding(
-                        padding: EdgeInsets.only(left: 20),
-                        child: VerticalDivider(
-                          thickness: 2,
-                          color: AppColors.white,
+                return Column(
+                  children: [
+                    Text('sgolsflgsdfig'),
+                    GestureDetector(
+                      onTap: () => Get.to(
+                        () => NonMuslimTopicsScreen(
+                          topics: topics[index].topics,
+                          title: topics[index].sectionName,
+                        ),
+                        transition: Transition.cupertino,
+                      ),
+                      child: Card(
+                        color: AppColors.kGreenColor,
+                        child: ListTile(
+                          leading: const Padding(
+                            padding: EdgeInsets.only(left: 20),
+                            child: VerticalDivider(
+                              thickness: 2,
+                              color: AppColors.white,
+                            ),
+                          ),
+                          title: Text(
+                            topics[index].sectionName,
+                            style: Styles.textStyle18Godlen,
+                          ),
+                          subtitle: Text(
+                            topics[index].topics.first.header,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          trailing: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.info,
+                                color: AppColors.white,
+                              ),
+                              Container(
+                                width: 10,
+                              ),
+                              const Icon(
+                                Icons.arrow_forward_ios,
+                                color: AppColors.white,
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                      title: Text(
-                        topics[index].sectionName,
-                        style: Styles.textStyle18Godlen,
-                      ),
-                      subtitle: Text(
-                        topics[index].topics.first.header,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                      trailing: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.info,
-                            color: AppColors.white,
-                          ),
-                          Container(
-                            width: 10,
-                          ),
-                          const Icon(
-                            Icons.arrow_forward_ios,
-                            color: AppColors.white,
-                          )
-                        ],
-                      ),
                     ),
-                  ),
+                  ],
                 );
               },
             );

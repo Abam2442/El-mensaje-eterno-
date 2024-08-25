@@ -15,10 +15,10 @@ class AdvancedSites extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(Advanced_LearningController());
+    Get.put(AdvancedLearningController());
     return CustomScrollView(
       slivers: [
-        GetBuilder<Advanced_LearningController>(
+        GetBuilder<AdvancedLearningController>(
           builder: (controller) => SliverToBoxAdapter(
             child: Column(
               children: [

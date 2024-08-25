@@ -58,45 +58,6 @@ class HadithController extends GetxController
   HaditencHadithModel? hadithencHadithes;
   List<Map> categoryHadithes = [];
 
-  void searchFun(String val) {
-    if (formState.currentState!.validate()) {
-      searchResultArabic.clear();
-      sunnahHadithes?.sunnahHadithes.forEach(
-        (_, value) {
-          value.forEach((key, value1) {
-            value1.forEach((key, value) {
-              if (value.toString().contains(val)) {
-                searchResultArabic.add(value1['Arabic']);
-                searchResultEs.add(value1['Español']);
-              }
-            });
-          });
-        },
-      );
-      hadithencHadithes?.hadithencHadithes.forEach(
-        (_, value) {
-          value.forEach((key, value1) {
-            value1.forEach((key, value) {
-              if (value.toString().contains(val)) {
-                searchResultArabic.add(value1['Arabic']);
-                searchResultEs.add(value1['Español']);
-              }
-            });
-          });
-        },
-      );
-      // searchResultArabic = searchResultArabic.toSet().toList();
-      // searchResultEs = searchResultEs.toSet().toList();
-
-      // log('$test');prin
-      print(searchResultEs);
-      print(searchResultArabic);
-
-      // Get.to(() => const HadithSearchScreen());
-      update();
-    }
-  }
-
   // States
   StateType getSunnahHadithesState = StateType.init;
   StateType getHadithencHadithesState = StateType.init;

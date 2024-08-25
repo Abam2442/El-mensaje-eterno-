@@ -16,9 +16,20 @@ import 'package:location/location.dart' as locationPackage;
 import '../../../../data/local/local_data.dart';
 
 class HomeController extends GetxController {
+  static HomeController get instance => Get.find<HomeController>();
   JHijri hijriNow = JHijri.now();
   DateTime now = DateTime.now().toLocal();
   RxList<HomeCardData> newMuslimHomeCardsDataNewList = <HomeCardData>[].obs;
+
+  final List<HomeCardData> searchResult = [];
+
+  void search(String query) {
+    final result = newMuslimHomeCardsData
+        .where((element) => element.title.contains(query))
+        .toList();
+    print(result);
+    searchResult.assignAll(result);
+  }
 
   void filterNewMuslimHomeCardsData(String searchText) {
     newMuslimHomeCardsDataNewList.clear();
@@ -259,7 +270,7 @@ class HomeController extends GetxController {
       locationPackage.Location location = locationPackage.Location();
       locationData = await location.getLocation();
       AppPublicVar.coordinates =
-          Coordinates(locationData.latitude??0, locationData.longitude??0);
+          Coordinates(locationData.latitude ?? 0, locationData.longitude ?? 0);
     } else {
       AppPublicVar.coordinates = Coordinates(
           double.parse(storedLocation!.split(':').first),
@@ -271,9 +282,14 @@ class HomeController extends GetxController {
   }
 
   Future<void> calcTimes() async {
-    params =  CalculationMethodSelector.getCalculationMethod(AppPublicVar.coordinates!.latitude, AppPublicVar.coordinates!.longitude);
+    params = CalculationMethodSelector.getCalculationMethod(
+        AppPublicVar.coordinates!.latitude,
+        AppPublicVar.coordinates!.longitude);
     params.madhab = Madhab.shafi;
-    prayerTimes = PrayerTimes(date:DateTime.now() ,coordinates:  AppPublicVar.coordinates!,calculationParameters:  params,
+    prayerTimes = PrayerTimes(
+        date: DateTime.now(),
+        coordinates: AppPublicVar.coordinates!,
+        calculationParameters: params,
         precision: true);
     current = prayerTimes.currentPrayer(date: DateTime.now());
     next = prayerTimes.nextPrayer(date: DateTime.now());
@@ -321,8 +337,11 @@ class HomeController extends GetxController {
       now = now.add(const Duration(days: 1));
       nowHijri = JHijri(fDate: now);
     }
-    prayerTimes =
-        PrayerTimes(coordinates:  AppPublicVar.coordinates!,date:  now,calculationParameters:  params, precision: true);
+    prayerTimes = PrayerTimes(
+        coordinates: AppPublicVar.coordinates!,
+        date: now,
+        calculationParameters: params,
+        precision: true);
     selectedPage.value = page;
     update();
   }

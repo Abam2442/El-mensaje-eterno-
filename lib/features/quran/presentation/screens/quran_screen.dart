@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/surah_entity.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/screens/surah_screen.dart';
@@ -13,73 +12,11 @@ class QuranScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     QuranBindings().dependencies();
-   final controller  = Get.put(QuranController());
-    final Rx<bool> _isSearching = Rx<bool>(false);
-    final TextEditingController _searchController =
-        Get.find<QuranController>().searchController.value;
-    return Obx(
-      () => CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.blueGrey),
-                  child: IconButton(
-                    icon: const Icon(Icons.search, color: Colors.white),
-                    onPressed: () {
-                      _isSearching.value = !_isSearching.value;
-                      if (_isSearching.value) {
-                        controller.search(_searchController.text);
-                      } else {
-                        controller.search('');
-                      }
-                    },
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                _isSearching.value
-                    ? SizedBox(
-                        width: 200,
-                        child: TextField(
-                          style: Styles.textStyle18White,
-                          onChanged: (value) {
-                            controller.search(value);
-                          },
-                          controller: _searchController,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.blueGrey,
-                            hintText: 'Search...',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide.none),
-                            hintStyle: Styles.textStyle18White,
-                          ),
-                        ),
-                      )
-                    : Container()
-              ],
-            ),
-          ),
-          controller.isSearching.value
-              ? SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) => SearchResultWidget(
-                      searchResult: controller.searchResults[index],
-                    ),
-                    childCount: controller.searchResults.length,
-                  ),
-                )
-              : SurahSelectSliver(surahs: controller.surahs),
-        ],
-      ),
+    final controller = Get.put(QuranController());
+    return CustomScrollView(
+      slivers: [
+        SurahSelectSliver(surahs: controller.surahs),
+      ],
     );
   }
 }
