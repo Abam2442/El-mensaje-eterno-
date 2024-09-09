@@ -19,7 +19,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Color(0xFFbac2b9),
+      backgroundColor: const Color(0xFFbac2b9),
       title: GestureDetector(
         onTap: () {
           launchUrl(Uri.parse(

@@ -17,7 +17,7 @@ class SliverAppBarTabWidget extends StatelessWidget {
   const SliverAppBarTabWidget({
     super.key,
     this.backgroundColor = AppColors.transparent,
-    this.iconColor = AppColors.kWhiteColor,
+    this.iconColor = AppColors.transparent,
     this.isPinned = false,
     this.title = '',
     required this.tabs,

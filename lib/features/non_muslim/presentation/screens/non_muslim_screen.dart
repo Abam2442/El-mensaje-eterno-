@@ -32,7 +32,7 @@ class NonMuslimSectionScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    Text('sgolsflgsdfig'),
+                    const Text('sgolsflgsdfig'),
                     GestureDetector(
                       onTap: () => Get.to(
                         () => NonMuslimTopicsScreen(

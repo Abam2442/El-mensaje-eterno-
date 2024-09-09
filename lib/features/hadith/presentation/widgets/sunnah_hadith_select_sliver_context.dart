@@ -8,20 +8,19 @@ import '../../../../core/constants/app_pages_routes.dart';
 import '../../../../core/widgets/primary_list_tile.dart';
 
 class SunnahBookSelectSliver extends GetView<HadithController> {
-  final String title;
-  const SunnahBookSelectSliver(this.title, {super.key});
+  const SunnahBookSelectSliver({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: GetBuilder<HadithController>(
         builder: (controller) {
-          controller.getbookHadithesName(title);
+          controller.getbookHadithesName ?? [];
           if (controller.pageNumber == 0) {
             controller.bookHadithesNameForList.clear();
             controller.bookHadithesNameForList.addAll(controller
-                .bookHadithesName
-                .getRange(0, controller.bookHadithesName.take(20).length));
+                .getbookHadithesName!
+                .getRange(0, controller.getbookHadithesName!.take(20).length));
           }
           return Column(
             children: [
@@ -40,12 +39,13 @@ class SunnahBookSelectSliver extends GetView<HadithController> {
                             const SizedBox(height: 10),
                             NumberPaginator(
                               // by default, the paginator shows numbers as center content
-                              numberPages: controller.bookHadithesName
+                              numberPages: controller.getbookHadithesName!
                                           .take(20)
                                           .length <
                                       20
                                   ? 1
-                                  : (controller.bookHadithesName.length / 20)
+                                  : (controller.getbookHadithesName!.length /
+                                          20)
                                       .round(),
                               onPageChange: (int pageNumber) {
                                 controller.pageNumber = pageNumber;
@@ -54,16 +54,16 @@ class SunnahBookSelectSliver extends GetView<HadithController> {
                                     <String>[].obs;
                                 if (pageNumber == 0) {
                                   controller.bookHadithesNameForList.addAll(
-                                      controller.bookHadithesName.getRange(
+                                      controller.getbookHadithesName!.getRange(
                                           0,
-                                          controller.bookHadithesName
+                                          controller.getbookHadithesName!
                                               .take(20)
                                               .length));
                                 } else {
                                   controller.bookHadithesNameForList.addAll(
-                                      controller.bookHadithesName.getRange(
+                                      controller.getbookHadithesName!.getRange(
                                     (pageNumber * 20),
-                                    controller.bookHadithesName
+                                    controller.getbookHadithesName!
                                         .take(((pageNumber + 1) * 20))
                                         .length,
                                   ));
@@ -114,7 +114,8 @@ class SunnahBookSelectSliver extends GetView<HadithController> {
                                               "title": controller
                                                       .bookHadithesNameForList[
                                                   index],
-                                              "bookName": title,
+                                              "bookName":
+                                                  Get.arguments['title'],
                                               "webside": "sunnah",
                                             },
                                           );

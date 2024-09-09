@@ -5,19 +5,26 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/domain/usecases/get_hadithenc_hadithes_use_case.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/domain/usecases/get_sunnah_hadithes_use_case.dart';
+import 'package:logger/logger.dart';
 import 'package:number_paginator/number_paginator.dart';
 
 class HadithController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  static HadithController get instance => Get.find<HadithController>();
+  static HadithController get instance => Get.find();
 
   // Data
   SunnahHadithModel? sunnahHadithes;
-  var searchResultArabic = [].obs;
-  var searchResultEs = [].obs;
 
   GlobalKey<FormState> formState = GlobalKey();
+
+  HaditencHadithModel? hadithencHadithes;
+  List<Map> categoryHadithes = [];
+
+  // List searchResult = [];
+  var searchResultArabic = [].obs;
+  var searchResultEs = [].obs;
   Rx<TextEditingController> searchController = TextEditingController().obs;
+
   void search(String query) {
     isSearching.value = query.isNotEmpty;
     searchResultArabic.clear();
@@ -55,9 +62,6 @@ class HadithController extends GetxController
     update();
   }
 
-  HaditencHadithModel? hadithencHadithes;
-  List<Map> categoryHadithes = [];
-
   // States
   StateType getSunnahHadithesState = StateType.init;
   StateType getHadithencHadithesState = StateType.init;
@@ -87,13 +91,16 @@ class HadithController extends GetxController
 
   @override
   void onInit() async {
+    Get.find<Logger>().i("Start onInit HadithController");
     super.onInit();
     tabController = TabController(length: 2, vsync: this);
     await getSunnahHadithes();
     await getHadithencHadithes();
+    Get.find<Logger>().w("End onInit HadithController");
   }
 
   Future<void> getSunnahHadithes() async {
+    Get.find<Logger>().i("Start `getHadithes` in |HadithController|");
     getSunnahHadithesState = StateType.loading;
     update();
     GetSunnahHadithesUseCase getSunnahHadithesUseCase =
@@ -114,15 +121,16 @@ class HadithController extends GetxController
         update();
       },
     );
+    Get.find<Logger>()
+        .w("End `getHadithes` in |HadithController| $getSunnahHadithesState");
   }
 
-  List<String> bookHadithesName = [];
-  List<String> getbookHadithesName(String title) {
-    bookHadithesName.clear();
+  List<String>? get getbookHadithesName {
     print("getData");
+    List<String>? bookHadithesName = [];
     sunnahHadithes?.sunnahHadithes.forEach(
       (key, value) {
-        if (key == title) {
+        if (key == Get.arguments['title']) {
           value.forEach((key, value) {
             if (isSearching.value) {
               if (value != null) {
@@ -152,18 +160,17 @@ class HadithController extends GetxController
             if (key == hadithName) {
               value.forEach((key, value) {
                 hadith.add(value);
-                // print(hadith);
               });
             }
           });
         }
       },
     );
-    print(hadith);
     return hadith;
   }
 
   Future<void> getHadithencHadithes() async {
+    Get.find<Logger>().i("Start `getHadithes` in |HadithController|");
     getHadithencHadithesState = StateType.loading;
     update();
     GetHadithencHadithesUseCase getHadithencHadithesUseCase =
@@ -183,6 +190,8 @@ class HadithController extends GetxController
         update();
       },
     );
+    Get.find<Logger>().w(
+        "End `getHadithes` in |HadithController| $getHadithencHadithesState");
   }
 
   List<String>? get getCategorySubCategoriesName {
@@ -249,7 +258,6 @@ class HadithController extends GetxController
         }
       },
     );
-    print(hadith);
     return hadith;
   }
 }

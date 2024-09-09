@@ -144,7 +144,7 @@ class SurahScreen extends StatelessWidget {
                       ),
                     )
                   : const SizedBox()),
-              QuranAudioControlsWidget(),
+              const QuranAudioControlsWidget(),
             ],
           ),
         ],

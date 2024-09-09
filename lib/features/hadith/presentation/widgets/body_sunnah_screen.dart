@@ -1,12 +1,13 @@
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/handle_states_widget.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/primary_list_tile.dart';
-import 'package:hiwayda_oracion_islamica/core/widgets/primary_shimmer.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller/hadith_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/state_manager.dart';
-import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/book_hadithes_screen.dart';
+
+import '../../../../core/constants/app_pages_routes.dart';
+import '../../../../core/widgets/primary_shimmer.dart';
 
 class BodySunnahScreen extends GetView<HadithController> {
   const BodySunnahScreen({super.key});
@@ -45,11 +46,17 @@ class BodySunnahScreen extends GetView<HadithController> {
                         controller.sunnahHadithes!.booksName[index];
                     return PrimaryListTile(
                       onTap: () {
-                        controller.pageNumber = 0;
+                        // controller.pageNumber = 0;
                         // controller.getbookHadithesName?.clear();
-                        controller.update();
-
-                        Get.to(BookHadithesScreen(bookName, 'sunnah', 'false'));
+                        // controller.update();
+                        Get.toNamed(
+                          AppPagesRoutes.bookHadithesScreen,
+                          arguments: {
+                            "isHadithenc": "false",
+                            "title": bookName,
+                            "webside": "sunnah",
+                          },
+                        );
                       },
                       es: bookName,
                       itemNumber: index + 1,
@@ -58,7 +65,7 @@ class BodySunnahScreen extends GetView<HadithController> {
                     );
                   },
                 ),
-                const SizedBox(height: 300),
+                const SizedBox(height: 20),
               ],
             ),
           ),

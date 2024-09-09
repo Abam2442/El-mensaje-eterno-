@@ -70,7 +70,7 @@ class QuranPageWidget extends StatelessWidget {
                             }
                           },
                           activeColor: Colors.black,
-                          fillColor: MaterialStateColor.resolveWith(
+                          fillColor: WidgetStateColor.resolveWith(
                               (states) => AppColors.kWhiteColor),
                           checkColor: Colors.black,
                         ))

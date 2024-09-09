@@ -56,12 +56,12 @@ class SurahController extends GetxController {
         double? size = keys[0]?.currentContext?.size?.height;
         if (size != null) {
           await scrollController.animateTo((ayaNumber * size),
-              duration: Duration(seconds: 2), curve: Curves.linear);
+              duration: const Duration(seconds: 2), curve: Curves.linear);
           final keyContext = keys[ayaNumber - 1]?.currentContext;
           if (keyContext != null) {
             Scrollable.ensureVisible(
               keyContext,
-              duration: Duration(seconds: 1),
+              duration: const Duration(seconds: 1),
               curve: Curves.easeInOut,
             );
           }
@@ -96,7 +96,7 @@ class SurahController extends GetxController {
     if (keyContext != null) {
       Scrollable.ensureVisible(
         keyContext,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         curve: Curves.easeInOut,
       );
     }
