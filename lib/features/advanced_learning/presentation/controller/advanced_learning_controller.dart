@@ -9,6 +9,11 @@ class AdvancedLearningController extends GetxController {
   static AdvancedLearningController get instance =>
       Get.find<AdvancedLearningController>();
   int selectedPart = 0;
+  changeSelectedPart(val) {
+    selectedPart = val;
+
+    update();
+  }
 
   List titlePart = [
     'El buscador de la verdad',
@@ -578,12 +583,6 @@ class AdvancedLearningController extends GetxController {
       // }
     ]
   ];
-
-  changeSelectedPart(val) {
-    selectedPart = val;
-
-    update();
-  }
 
   @override
   void onInit() {

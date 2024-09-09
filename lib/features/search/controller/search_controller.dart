@@ -31,6 +31,7 @@ class SearchScreenController extends GetxController {
         {
           quranController.search(searchQuery);
           itemCount = quranController.searchResults.length;
+          print(quranController.searchResults[0]);
         }
         break;
       case 1:

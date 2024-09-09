@@ -4,6 +4,8 @@ import 'package:hiwayda_oracion_islamica/features/hadith/hadith_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller/hadith_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/controller/home_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/navigation_screen/navigation_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/non_muslim/non_muslim_bindings.dart';
+import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/controller/non_muslim_controller.dart';
 
 class SplashPageController extends GetxController {
   @override
@@ -15,6 +17,9 @@ class SplashPageController extends GetxController {
     Get.put(HadithController());
 
     Get.put(AdvancedLearningController());
+
+    NonMuslimBindings().dependencies();
+    Get.put(NonMuslimController());
 
     goToNextView();
     super.onInit();
