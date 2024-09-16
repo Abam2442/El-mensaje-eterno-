@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
-import '../../../styles/text_styles.dart';
 import 'direction_aware.dart';
-
 
 class SliverAppBarTabWidget extends StatelessWidget {
   final Color backgroundColor;
@@ -18,11 +16,11 @@ class SliverAppBarTabWidget extends StatelessWidget {
 
   const SliverAppBarTabWidget({
     super.key,
-    this.backgroundColor = AppColors.kPrimaryColor,
-    this.iconColor = AppColors.kWhiteColor,
+    this.backgroundColor = AppColors.transparent,
+    this.iconColor = AppColors.transparent,
     this.isPinned = false,
     this.title = '',
-    required this.tabs, 
+    required this.tabs,
     required this.tabController,
   });
 
@@ -48,11 +46,6 @@ class SliverAppBarTabWidget extends StatelessWidget {
                 ),
               ),
             ),
-      centerTitle: true,
-      title: Text(
-        title,
-        style: Styles.textStyle18Godlen,
-      ),
       floating: true,
       snap: true,
       elevation: 0,

@@ -40,9 +40,9 @@ class BodySonanScreen extends StatelessWidget {
                 Get.to(() => const UnTimedSonanScreen());
               },
             )
-            // Item_Card(titleSite: ''),
-            // Item_Card(titleSite: 'سنن موقوتة'),
-            // Item_Card(titleSite: 'سنن غير موقوتة'),
+            // ItemCard(titleSite: ''),
+            // ItemCard(titleSite: 'سنن موقوتة'),
+            // ItemCard(titleSite: 'سنن غير موقوتة'),
           ],
         ),
       ),

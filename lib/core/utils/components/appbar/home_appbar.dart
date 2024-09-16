@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/features/about/about_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/about/view/about_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/question/question_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/copy_right_page.dart';
+import 'package:hiwayda_oracion_islamica/features/search/search_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../../constants/app_assets.dart';
-import '../../../constants/app_colors.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({
@@ -19,7 +19,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.kPrimaryColor,
+      backgroundColor: const Color(0xFFbac2b9),
       title: GestureDetector(
         onTap: () {
           launchUrl(Uri.parse(
@@ -30,8 +30,12 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           height: 50,
         ),
       ),
-      actions: const [
-        CustomPopupMenuButton(),
+      actions: [
+        const CustomPopupMenuButton(),
+        IconButton(
+          icon: const Icon(Icons.search),
+          onPressed: () => Get.to(() => const SearchScreen()),
+        )
       ],
       elevation: 0,
     );
@@ -49,6 +53,7 @@ class CustomPopupMenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
+      iconColor: Colors.black,
       onSelected: (value) {},
       itemBuilder: (BuildContext context) => [
         _buildPopupMenuItem('Guía para usar la aplicación.',
@@ -75,7 +80,10 @@ class CustomPopupMenuButton extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Transform.flip(
           flipX: true,
-          child: SvgPicture.asset(AppAssets.menuIcon),
+          child: SvgPicture.asset(
+            AppAssets.menuIcon,
+            color: Colors.black,
+          ),
         ),
       ),
     );

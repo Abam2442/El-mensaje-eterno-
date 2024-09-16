@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/widgets/item%20_card.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
 
 import '../../../sites/presentation/widget/app_bar_custom.dart';
 import '../controller/azkar_doaa_controller.dart';
@@ -29,7 +29,7 @@ class UnTimedSonanScreen extends StatelessWidget {
                       dayAndNightSonan: c.sonan!.notTimedSonan[index],
                     ));
               },
-              child: Item_Card(
+              child: ItemCard(
                 titleSite: c.sonan!.notTimedSonan[index].title,
                 subtitle: '',
                 hasCopyRights: false,

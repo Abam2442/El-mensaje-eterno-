@@ -46,9 +46,9 @@ class BodySunnahScreen extends GetView<HadithController> {
                         controller.sunnahHadithes!.booksName[index];
                     return PrimaryListTile(
                       onTap: () {
-                        controller.pageNumber = 0;
-                        controller.getbookHadithesName?.clear();
-                        controller.update();
+                        // controller.pageNumber = 0;
+                        // controller.getbookHadithesName?.clear();
+                        // controller.update();
                         Get.toNamed(
                           AppPagesRoutes.bookHadithesScreen,
                           arguments: {
@@ -65,7 +65,7 @@ class BodySunnahScreen extends GetView<HadithController> {
                     );
                   },
                 ),
-                const SizedBox(height: 300),
+                const SizedBox(height: 20),
               ],
             ),
           ),

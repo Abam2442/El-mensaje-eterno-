@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
-import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/surrah_controller.dart';
+import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/surah_controller.dart';
 
 class AyaWordsWidget extends StatefulWidget {
   const AyaWordsWidget({super.key, required this.aya, required this.ayaNumber});

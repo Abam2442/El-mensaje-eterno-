@@ -5,6 +5,7 @@ import 'package:hiwayda_oracion_islamica/features/newMuslims/model/category_Sp_m
 import '../model/NewMuslimsModel.dart';
 
 class NewMuslimsController extends GetxController {
+  static NewMuslimsController get instance => Get.find<NewMuslimsController>();
   RxBool isLoading = true.obs;
   RxBool isLoading1 = true.obs;
   @override

@@ -161,7 +161,7 @@ class UiRoneScreen extends StatelessWidget {
                                                               radius:
                                                                   20.cBorder,
                                                             )
-                                                          : Text('jkasksjka'),
+                                                          : const Text('jkasksjka'),
                                                       Container(
                                                         padding: EdgeInsets
                                                             .symmetric(
@@ -221,7 +221,7 @@ class UiRoneScreen extends StatelessWidget {
                                                             )
                                                           ],
                                                         )
-                                                      : SizedBox()
+                                                      : const SizedBox()
                                                 ],
                                               ),
                                             ],
@@ -232,7 +232,7 @@ class UiRoneScreen extends StatelessWidget {
                                     Column(
                                       children: [
                                         IconButton(
-                                          icon: Icon(
+                                          icon: const Icon(
                                               Icons.remove_red_eye_outlined),
                                           onPressed: () {
                                             Get.defaultDialog(
@@ -273,7 +273,7 @@ class UiRoneScreen extends StatelessWidget {
                                         ),
                                         SizedBox(height: 32.v),
                                         IconButton(
-                                          icon: Icon(Icons.info),
+                                          icon: const Icon(Icons.info),
                                           onPressed: () {
                                             Get.defaultDialog(
                                               title: 'descripción',
@@ -351,7 +351,7 @@ class UiRoneScreen extends StatelessWidget {
                     child: Text(text, style: Styles.textStyle18Black),
                   ),
                   IconButton(
-                    icon: Icon(Icons.spatial_audio),
+                    icon: const Icon(Icons.spatial_audio),
                     onPressed: () {
                       if (!AppPublicVar.assetsAudioPlayer.playing) {
                         AppPublicVar.assetsAudioPlayer.setAsset(audioPath);
@@ -366,7 +366,7 @@ class UiRoneScreen extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: Icon(Icons.remove_red_eye),
+            icon: const Icon(Icons.remove_red_eye),
             onPressed: () async {
               videoPlayerController = VideoPlayerController.asset(videoPath);
               await videoPlayerController.initialize();

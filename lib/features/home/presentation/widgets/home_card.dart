@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/pub_up_custom.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/controller/home_controller.dart';
-
-import '../../../advanced_learning/presentation/widgets/pub_up_custom.dart';
 
 class HomeCard extends StatelessWidget {
   final HomeCardData homeCardData;

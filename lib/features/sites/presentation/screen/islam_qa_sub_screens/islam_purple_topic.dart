@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../advanced_learning/presentation/widgets/item _card.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
 import '../../../data/models/islam_qa.dart';
 import '../../widget/app_bar_custom.dart';
 import 'islam_purple_topic_view.dart';
@@ -29,7 +29,7 @@ class IslamPurpleTopic extends StatelessWidget {
                         title: islamQaSubTopic![index].name,
                       ));
                 },
-                child: Item_Card(
+                child: ItemCard(
                   titleSite: islamQaSubTopic![index].name,
                   // subtitle: '',
                 ),

@@ -17,30 +17,30 @@ class ApiService extends GetxService {
     required this.networkInfo,
   });
 
-  Future<Map<String, dynamic>> post({
-    required String subUrl,
-    required Map<String, dynamic> data,
-    bool needToken = false,
-  }) async {
-    try {
-      if (!(await networkInfo.isConnected)) {
-        throw OfflineException();
-      }
-      final response = await client.post(
-        Uri.http(
-          AppApiRoutes.baseUrl,
-          subUrl,
-        ),
-        body: json.encode(data),
-        headers: setHeaders(),
-      );
-      getExceptionStatusCode(response);
+  // Future<Map<String, dynamic>> post({
+  //   required String subUrl,
+  //   required Map<String, dynamic> data,
+  //   bool needToken = false,
+  // }) async {
+  //   try {
+  //     if (!(await networkInfo.isConnected)) {
+  //       throw OfflineException();
+  //     }
+  //     final response = await client.post(
+  //       Uri.http(
+  //         AppApiRoutes.baseUrl,
+  //         subUrl,
+  //       ),
+  //       body: json.encode(data),
+  //       headers: setHeaders(),
+  //     );
+  //     getExceptionStatusCode(response);
 
-      return Future.value(json.decode(response.body));
-    } catch (e) {
-      rethrow;
-    }
-  }
+  //     return Future.value(json.decode(response.body));
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 
   Future<Map<String, dynamic>> get({
     required String subUrl,

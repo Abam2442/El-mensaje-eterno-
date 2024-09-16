@@ -85,6 +85,7 @@ flutter:
     - assets/svg/
     - assets/
     - assets/json/
+    - assets/json/quran.json
     - assets/audio/
     - assets/video/
     - assets/svg/icons/

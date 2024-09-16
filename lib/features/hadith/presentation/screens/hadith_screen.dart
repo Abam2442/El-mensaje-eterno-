@@ -1,36 +1,28 @@
-import 'package:hiwayda_oracion_islamica/core/utils/components/appbar/build_sliver_tapbar.dart';
-import 'package:hiwayda_oracion_islamica/core/widgets/search_field_widget.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller/hadith_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/hadith_webside_select_sliver_context.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 
-class HadithScreen extends GetView<HadithController> {
+class HadithScreen extends StatelessWidget {
   const HadithScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HadithController());
-    Get.put(QuranController());
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBarTabWidget(
-            title: "Hadith",
+    final controller = HadithController.instance;
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: TabBar(
             tabs: controller.tabs,
-            tabController: controller.tabController,
+            controller: controller.tabController,
+            labelColor: AppColors.black,
+            unselectedLabelColor: const Color(0xFFffE4AC),
+            indicatorSize: TabBarIndicatorSize.label,
+            indicatorColor: AppColors.kGreenColor,
           ),
-          SliverToBoxAdapter(
-            child: SearchFieldWidget(
-              text: 'Buscar en hadices',
-              formState: controller.formState,
-              onSubmitted: (val) => controller.searchFun(val),
-            ),
-          ),
-          const HadithWebsideSelectSliver(),
-        ],
-      ),
+        ),
+        const HadithWebsideSelectSliver()
+      ],
     );
   }
 }

@@ -7,7 +7,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/services/easy_loader_service.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/utils/components/appbar/direction_aware.dart';
-import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/widgets/pub_up_custom.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/pub_up_custom.dart';
 import 'package:hiwayda_oracion_islamica/features/youtubechannels/data/models/youtube_model.dart';
 import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/screens/web_view_screen.dart';
 //import 'package:url_launcher/url_launcher.dart';

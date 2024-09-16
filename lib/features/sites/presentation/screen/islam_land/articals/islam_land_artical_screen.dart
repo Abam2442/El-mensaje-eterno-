@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/custom_paginator.dart';
-import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/screens/advanced_sites_search.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/fixed_entities.dart';
 import '../../../controller/islam_land/islam_land_controller.dart';
 import '../../../widget/app_bar_custom.dart';
@@ -25,7 +24,7 @@ class IslamLandArticalScreen extends StatelessWidget {
               child: TextFormField(
                 onFieldSubmitted: (val) {
                   controller.searchArticle();
-                  Get.to(() => const IslamLandSearch());
+                  // Get.to(() => const IslamLandSearch());
                 },
                 controller: controller.searchController,
                 decoration: InputDecoration(

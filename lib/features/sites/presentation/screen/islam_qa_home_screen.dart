@@ -4,9 +4,9 @@
 // import 'package:elresala/features/sites/presentation/screen/islam_qa_sub_screens/islamqa_sub_topics.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
 
 import '../../../../core/widgets/primary_shimmer.dart';
-import '../../../advanced_learning/presentation/widgets/item _card.dart';
 import '../controller/islam_qa_controller.dart';
 import '../widget/app_bar_custom.dart';
 import 'islam_qa_sub_screens/islam_qa_view.dart';
@@ -53,7 +53,7 @@ class IslamQAScreen extends StatelessWidget {
                           title: c.articals[index].name,
                         ));
                   },
-                  child: Item_Card(
+                  child: ItemCard(
                     titleSite: c.articals[index].name,
                     // subtitle: '',
                     // ),

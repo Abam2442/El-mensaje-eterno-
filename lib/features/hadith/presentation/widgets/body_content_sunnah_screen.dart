@@ -14,23 +14,24 @@ class BodyContentSunnahScreen extends GetView<HadithController> {
     String hadithName = Get.arguments["title"];
     List<String>? hadith =
         controller.getSunnahHadith(Get.arguments["bookName"], hadithName);
-
     return SliverToBoxAdapter(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 13,
-              vertical: 8,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 13,
+                vertical: 8,
+              ),
+              child: Text(
+                hadithName,
+                style: Styles.textStyle18Godlen,
+              ),
             ),
-            child: Text(
-              hadithName,
-              style: Styles.textStyle18Godlen,
-            ),
-          ),
-          const SizedBox(height: 12),
-          HadithContainer(hadith: hadith ?? []),
-        ],
+            const SizedBox(height: 12),
+            HadithContainer(hadith: hadith ?? []),
+          ],
+        ),
       ),
     );
   }

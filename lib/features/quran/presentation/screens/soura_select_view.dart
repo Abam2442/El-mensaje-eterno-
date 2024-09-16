@@ -1,5 +1,5 @@
-import 'package:hiwayda_oracion_islamica/core/utils/components/appbar/build_sliver_appbar.dart';
-import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/soura_select_sliver_context.dart';
+import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/quran_screen_widgets/build_sliver_appbar.dart';
+import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/quran_screen_widgets/soura_select_sliver_context.dart';
 import 'package:flutter/material.dart';
 
 class SuoraSelectView extends StatelessWidget {
