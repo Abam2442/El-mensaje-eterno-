@@ -3,7 +3,7 @@ import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'body_hadithenc_screen.dart';
+import 'sunnah_widgets/body_hadithenc_screen.dart';
 import 'body_sunnah_screen.dart';
 
 class HadithWebsideSelectSliver extends GetView<HadithController> {

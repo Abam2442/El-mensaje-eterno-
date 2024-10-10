@@ -1,5 +1,4 @@
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller/hadith_controller.dart';
-import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/trash/hadithenc_hadith_select_sliver_context.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,11 +11,8 @@ class BookHadithesScreen extends GetView<HadithController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.isBack.value = true;
     return Scaffold(
-      body: ListView(
-        children: [SunnahBookSelectSliver(index, name)],
-      ),
+      body: SunnahBookSelectSliver(index, name),
     );
   }
 }

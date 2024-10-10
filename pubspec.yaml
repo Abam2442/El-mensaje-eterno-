@@ -62,6 +62,7 @@ dependencies:
   flutter_native_splash: ^2.4.0
 
   http: any
+  pdfx: ^2.8.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -80,17 +81,14 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/lang/
     - assets/images/
-    - assets/svg/
-    - assets/
     - assets/json/
     - assets/json/quran.json
     - assets/audio/
     - assets/video/
     - assets/svg/icons/
     - assets/svg/images/
-    - assets/books/book1.pdf
+    - assets/books/
     - assets/Json.zip
 
   fonts:
