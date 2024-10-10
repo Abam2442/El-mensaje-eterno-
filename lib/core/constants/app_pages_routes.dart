@@ -401,11 +401,11 @@ abstract class AppPagesRoutes {
       binding: SaberElIslamBindings(),
       transition: Transition.cupertino,
     ),
-    GetPage(
-      name: subCategoryScreen,
-      page: () => const SubCategoryScreen(),
-      transition: Transition.cupertino,
-    ),
+    // GetPage(
+    //   name: subCategoryScreen,
+    //   page: () => const SubCategoryScreen(),
+    //   transition: Transition.cupertino,
+    // ),
     // GetPage(
     //   name: bookHadithesScreen,
     //   page: () => const BookHadithesScreen(),

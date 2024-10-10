@@ -5,14 +5,14 @@ import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'pub_up_custom.dart';
 
-class Item_Card extends StatelessWidget {
+class ItemCard extends StatelessWidget {
   final String titleSite;
   final String subtitle;
   final String copyRights;
   final String link;
   final IconData? icon;
   final bool hasCopyRights;
-  const Item_Card(
+  const ItemCard(
       {super.key,
       required this.titleSite,
       this.subtitle = '',

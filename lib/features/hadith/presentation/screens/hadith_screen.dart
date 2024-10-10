@@ -12,12 +12,12 @@ class HadithScreen extends StatelessWidget {
     return ListView(
       physics: const NeverScrollableScrollPhysics(),
       children: [
-        ElevatedButton(
-          onPressed: () {
-            controller.testFun();
-          },
-          child: Text('test'),
-        ),
+        // ElevatedButton(
+        //   onPressed: () {
+        //     controller.testFun();
+        //   },
+        //   child: Text('test'),
+        // ),
         TabBar(
           tabs: controller.tabs,
           controller: controller.tabController,

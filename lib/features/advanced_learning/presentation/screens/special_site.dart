@@ -49,7 +49,7 @@ class SpecialSite extends StatelessWidget {
                     }
                   }
                 },
-                child: Item_Card(
+                child: ItemCard(
                   hasCopyRights: controller.selectedPart == 0
                       ? false
                       : (controller.page[controller.selectedPart][index])

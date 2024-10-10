@@ -21,7 +21,7 @@ class AdvancedSites extends StatelessWidget {
                 controller.changeSelectedPart(index);
                 Get.to(() => const SpecialSite());
               },
-              child: Item_Card(
+              child: ItemCard(
                 titleSite: controller.titlePart[index],
               ),
             );

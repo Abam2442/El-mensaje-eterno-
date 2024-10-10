@@ -75,7 +75,7 @@ class AdvancedSiteMediaMainScreen extends StatelessWidget {
                                   );
                                 }
                               },
-                              child: Item_Card(
+                              child: ItemCard(
                                 hasCopyRights:
                                     selectedPage.containsKey('copyRight'),
                                 titleSite: selectedPage['title'],

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/primary_list_tile.dart';
-import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/body_content_sunnah_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/albukhary_muslim_screens/albikhary_muslim_second_screen.dart';
 
-class SunnahHadithSecondSelectedScreen extends StatelessWidget {
-  final List titles;
-  final Map<String, dynamic> data;
-  const SunnahHadithSecondSelectedScreen(
-      {super.key, required this.titles, required this.data});
+class AlbukharyMuslimScreen extends StatelessWidget {
+  final SunnahHadithModel data;
+  const AlbukharyMuslimScreen({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
+    final List titles = data.hadiths.keys.toList();
     return Scaffold(
       body: ListView.builder(
           itemCount: titles.length,
@@ -21,11 +21,10 @@ class SunnahHadithSecondSelectedScreen extends StatelessWidget {
                 ar: '',
                 isSaved: false,
                 onTap: () {
-                  List selectedHadith = data[titles[index]].values.toList();
+                  final ref = data.hadiths[titles[index]];
+                  print(ref);
                   Get.to(
-                    () => BodyContentSunnahScreen(
-                      data: selectedHadith,
-                    ),
+                    () => AlbikharyMuslimSecondScreen(data: ref),
                   );
                 });
           }),

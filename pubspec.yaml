@@ -90,7 +90,7 @@ flutter:
     - assets/video/
     - assets/svg/icons/
     - assets/svg/images/
-    - assets/books/
+    - assets/books/book1.pdf
     - assets/Json.zip
 
   fonts:
