@@ -10,7 +10,7 @@ class GetSunnahHadithesUseCase {
 
   GetSunnahHadithesUseCase(this.hadithRepo);
 
-  Future<Either<Failure, SunnahHadithModel>> call() async {
+  Future<Either<Failure, List<SunnahHadithModel>>> call() async {
     Get.find<Logger>().i("Call GetHadithesUseCase");
     return await hadithRepo.getSunnahHadithes();
   }

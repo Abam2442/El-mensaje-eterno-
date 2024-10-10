@@ -9,19 +9,24 @@ class HadithScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = HadithController.instance;
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: TabBar(
-            tabs: controller.tabs,
-            controller: controller.tabController,
-            labelColor: AppColors.black,
-            unselectedLabelColor: const Color(0xFFffE4AC),
-            indicatorSize: TabBarIndicatorSize.label,
-            indicatorColor: AppColors.kGreenColor,
-          ),
+    return ListView(
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            controller.testFun();
+          },
+          child: Text('test'),
         ),
-        const HadithWebsideSelectSliver()
+        TabBar(
+          tabs: controller.tabs,
+          controller: controller.tabController,
+          labelColor: AppColors.black,
+          unselectedLabelColor: const Color(0xFFffE4AC),
+          indicatorSize: TabBarIndicatorSize.label,
+          indicatorColor: AppColors.kGreenColor,
+        ),
+        const HadithWebsideSelectSliver(),
       ],
     );
   }

@@ -14,66 +14,61 @@ class BodyHadithencScreen extends GetView<HadithController> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HadithController>(
-      builder: (controller) => SingleChildScrollView(
-        child: HandleStatesWidget(
-          stateType: controller.getHadithencHadithesState,
-          hasShimmer: true,
-          shimmerChild: ListView.separated(
-            physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(15),
-            shrinkWrap: true,
-            itemBuilder: (context, index) => PrimaryShimmer.rectangle(
-              height: Get.height * 0.09,
-              color: AppColors.kGreenColor,
-              border: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-            ),
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 15,
-            ),
-            itemCount: 6,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              children: [
-                ...List.generate(
-                  controller.hadithencHadithes?.categoriesName.length ?? 0,
-                  (index) {
-                    // String categoryName =
-                    //     controller.hadithencHadithes!.categoriesName[index];
-                    return PrimaryListTile(
-                      onTap: () {
-                        Get.toNamed(
-                          AppPagesRoutes.subCategoryScreen,
-                          arguments: {
-                            "title": controller
-                                .hadithencHadithes!.categoriesName[index],
-                          },
-                        );
-                        // Get.toNamed(
-                        //   AppPagesRoutes.bookHadithesScreen,
-                        //   arguments: {
-                        //     "title": categoryName,
-                        //     "webside": "hadithenc",
-                        //   },
-                        // );
-                      },
-                      es: controller.hadithencHadithes!.categoriesName[index],
-                      ar: '',
-                      itemNumber: index + 1,
-                      isSaved: false,
-                    );
-                  },
-                ),
-                const SizedBox(height: 20),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+    return Text('Sunnah');
+    // return GetBuilder<HadithController>(
+    //   builder: (controller) => HandleStatesWidget(
+    //     stateType: controller.getHadithencHadithesState,
+    //     hasShimmer: true,
+    //     shimmerChild: ListView.separated(
+    //       physics: const NeverScrollableScrollPhysics(),
+    //       padding: const EdgeInsets.all(15),
+    //       shrinkWrap: true,
+    //       itemBuilder: (context, index) => PrimaryShimmer.rectangle(
+    //         height: Get.height * 0.09,
+    //         color: AppColors.kGreenColor,
+    //         border: RoundedRectangleBorder(
+    //           borderRadius: BorderRadius.circular(15),
+    //         ),
+    //       ),
+    //       separatorBuilder: (context, index) => const SizedBox(
+    //         height: 15,
+    //       ),
+    //       itemCount: 6,
+    //     ),
+    //     child: Padding(
+    //       padding: const EdgeInsets.all(15),
+    //       child: Column(
+    //         children: [
+    //           ...List.generate(
+    //             controller.sunnahHadithes?.booksName.length ?? 0,
+    //             (index) {
+    //               String bookName = controller.sunnahHadithes!.booksName[index];
+    //               return PrimaryListTile(
+    //                 onTap: () {
+    //                   // controller.pageNumber = 0;
+    //                   // controller.getbookHadithesName?.clear();
+    //                   // controller.update();
+    //                   Get.toNamed(
+    //                     AppPagesRoutes.bookHadithesScreen,
+    //                     arguments: {
+    //                       "isHadithenc": "false",
+    //                       "title": bookName,
+    //                       "webside": "sunnah",
+    //                     },
+    //                   );
+    //                 },
+    //                 es: bookName,
+    //                 itemNumber: index + 1,
+    //                 ar: '',
+    //                 isSaved: false,
+    //               );
+    //             },
+    //           ),
+    //           const SizedBox(height: 100),
+    //         ],
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 }

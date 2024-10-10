@@ -13,26 +13,14 @@ class HadithWebsideSelectSliver extends GetView<HadithController> {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: SingleChildScrollView(
-        child: Stack(
-          children: [
-            SizedBox(
-              height: Get.height,
-              child: TabBarView(
-                controller: controller.tabController,
-                children: controller.tabs.map(
-                  (Tab tab) {
-                    final String label = tab.text!.toLowerCase();
-                    return label == "sunnah"
-                        ? const BodySunnahScreen()
-                        : const BodyHadithencScreen();
-                  },
-                ).toList(),
-              ),
-            ),
-          ],
-        ),
+    return SizedBox(
+      height: Get.height,
+      child: TabBarView(
+        controller: controller.tabController,
+        children: const [
+          BodySunnahScreen(),
+          BodyHadithencScreen(),
+        ],
       ),
     );
   }

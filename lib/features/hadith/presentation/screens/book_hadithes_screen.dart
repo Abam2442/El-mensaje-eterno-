@@ -7,35 +7,25 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/app_
 import '../widgets/sunnah_hadith_select_sliver_context.dart';
 
 class BookHadithesScreen extends GetView<HadithController> {
-  const BookHadithesScreen({super.key});
+  final int index;
+  final String webside, name;
+  const BookHadithesScreen(this.index, this.webside, this.name, {super.key});
 
   @override
   Widget build(BuildContext context) {
     controller.isBack.value = true;
-    return PopScope(
-        canPop: false,
-        onPopInvoked: (isPoped) async {
-          if (controller.isBack.isTrue) {
-            controller.isBack.value = false;
-            controller.searchTextController.text = "";
-            controller.isSearching.value = false;
-            Navigator.pop(context);
-            controller.getbookHadithesName;
-            controller.update();
-          }
-        },
-        child: Scaffold(
-          body: CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: AppBarCustom(title: Get.arguments['title'])
-                    .customAppBar(context),
-              ),
-              Get.arguments["webside"] == "sunnah"
-                  ? const SunnahBookSelectSliver()
-                  : const HadithencCategorySelectSliver(),
-            ],
-          ),
-        ));
+    return Scaffold(
+      body: ListView(
+        children: [
+          // SliverToBoxAdapter(
+          //   child: AppBarCustom(title: Get.arguments['title'])
+          //       .customAppBar(context),
+          // ),
+          webside == "sunnah"
+              ? SunnahBookSelectSliver(index, name)
+              : const HadithencCategorySelectSliver(),
+        ],
+      ),
+    );
   }
 }

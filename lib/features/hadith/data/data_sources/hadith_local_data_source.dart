@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
 import 'package:hiwayda_oracion_islamica/core/services/archive_service.dart';
@@ -8,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
 abstract class HadithLocalDataSource {
-  Future<SunnahHadithModel> getSunnahHadithes();
+  Future<List<SunnahHadithModel>> getSunnahHadithes();
   Future<HaditencHadithModel> getHadithencHadithes();
 }
 
@@ -22,23 +23,23 @@ class HadithLocalDataSourceImpl extends HadithLocalDataSource {
   });
 
   @override
-  Future<SunnahHadithModel> getSunnahHadithes() async {
+  Future<List<SunnahHadithModel>> getSunnahHadithes() async {
     try {
       Get.find<Logger>()
           .i("Start `getHadithes` in |HadithLocalDataSourceImpl|");
       String? fileContent = await archiveService.readFile(name: AppKeys.hadith);
 
-      late SunnahHadithModel sunnahHadithes;
+      List<SunnahHadithModel> sunnahHadithes = [];
       if (fileContent != null) {
-        var jsonData = json.decode(fileContent);
-        sunnahHadithes = SunnahHadithModel.fromJson(jsonData);
+        var jsonData = json.decode(fileContent) as Map<String, dynamic>;
+        sunnahHadithes = jsonData.entries
+            .map((entry) => SunnahHadithModel.fromJson(entry.value, entry.key))
+            .toList();
       }
       Get.find<Logger>().w("End `getHadithes` in |HadithLocalDataSourceImpl|");
       return sunnahHadithes;
     } catch (e) {
-      Get.find<Logger>().e(
-        "End `getHadithes` in |HadithLocalDataSourceImpl| Exception: ${e.runtimeType}",
-      );
+      log(e.toString());
       rethrow;
     }
   }

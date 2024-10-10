@@ -8,7 +8,7 @@ import '../../../../core/services/easy_loader_service.dart';
 import '../../../../core/styles/text_styles.dart';
 
 class HadithContainer extends StatelessWidget {
-  final List<String> hadith;
+  final List hadith;
 
   const HadithContainer({required this.hadith, super.key});
   @override

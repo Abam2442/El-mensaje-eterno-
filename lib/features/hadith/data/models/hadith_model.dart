@@ -1,17 +1,29 @@
+// class SunnahHadithModel {
+//   List<String> booksName;
+//   Map sunnahHadithes;
+
+//   SunnahHadithModel({
+//     required this.booksName,
+//     required this.sunnahHadithes,
+//   });
+
+//   factory SunnahHadithModel.fromJson(Map<String, dynamic> json) {
+//     return SunnahHadithModel(
+//       booksName: json.keys.toList(),
+//       sunnahHadithes: json,
+//     );
+//   }
+// }
+
 class SunnahHadithModel {
-  List<String> booksName;
-  Map sunnahHadithes;
+  Map<String, dynamic> hadiths;
+  String bookName;
 
-  SunnahHadithModel({
-    required this.booksName,
-    required this.sunnahHadithes,
-  });
+  SunnahHadithModel({required this.hadiths, required this.bookName});
 
-  factory SunnahHadithModel.fromJson(Map<String, dynamic> json) {
-    return SunnahHadithModel(
-      booksName: json['Hadith']['la-sunnah'].keys.toList(),
-      sunnahHadithes: json['Hadith']['la-sunnah'],
-    );
+  factory SunnahHadithModel.fromJson(
+      Map<String, dynamic> hadiths, String bookName) {
+    return SunnahHadithModel(hadiths: hadiths, bookName: bookName);
   }
 }
 

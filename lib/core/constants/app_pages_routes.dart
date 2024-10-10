@@ -406,16 +406,16 @@ abstract class AppPagesRoutes {
       page: () => const SubCategoryScreen(),
       transition: Transition.cupertino,
     ),
-    GetPage(
-      name: bookHadithesScreen,
-      page: () => const BookHadithesScreen(),
-      transition: Transition.cupertino,
-    ),
-    GetPage(
-      name: contentHadithScreen,
-      page: () => const ContentHadithScreen(),
-      transition: Transition.cupertino,
-    ),
+    // GetPage(
+    //   name: bookHadithesScreen,
+    //   page: () => const BookHadithesScreen(),
+    //   transition: Transition.cupertino,
+    // ),
+    // GetPage(
+    //   name: contentHadithScreen,
+    //   page: () => const ContentHadithScreen(),
+    //   transition: Transition.cupertino,
+    // ),
     GetPage(
       name: hadithScreen,
       page: () => const HadithScreen(),

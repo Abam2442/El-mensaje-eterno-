@@ -18,19 +18,22 @@ class HadithRepoImpl implements HadithRepo {
   });
 
   @override
-  Future<Either<Failure, SunnahHadithModel>> getSunnahHadithes() async {
+  Future<Either<Failure, List<SunnahHadithModel>>> getSunnahHadithes() async {
     try {
       Get.find<Logger>().i("Start `getHadithes` in |HadithRepoImpl|");
-      SunnahHadithModel sunnahHadithes = await hadithLocalDataSource.getSunnahHadithes();
-      Get.find<Logger>().w("End `getHadithes` in |HadithRepoImpl| $sunnahHadithes");
+      List<SunnahHadithModel> sunnahHadithes =
+          await hadithLocalDataSource.getSunnahHadithes();
+      Get.find<Logger>()
+          .w("End `getHadithes` in |HadithRepoImpl| $sunnahHadithes");
       return Right(sunnahHadithes);
     } catch (e) {
-      Get.find<Logger>().e("End `getHadithes` in |HadithRepoImpl| Exception: ${e.runtimeType}");
+      Get.find<Logger>().e(
+          "End `getHadithes` in |HadithRepoImpl| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }
 
-    @override
+  @override
   Future<Either<Failure, HaditencHadithModel>> getHadithencHadithes() async {
     try {
       Get.find<Logger>().i("Start `getHadithes` in |HadithRepoImpl|");
@@ -38,7 +41,8 @@ class HadithRepoImpl implements HadithRepo {
       Get.find<Logger>().w("End `getHadithes` in |HadithRepoImpl| $hadithes");
       return Right(hadithes);
     } catch (e) {
-      Get.find<Logger>().e("End `getHadithes` in |HadithRepoImpl| Exception: ${e.runtimeType}");
+      Get.find<Logger>().e(
+          "End `getHadithes` in |HadithRepoImpl| Exception: ${e.runtimeType}");
       return Left(getFailureFromException(e));
     }
   }

@@ -7,7 +7,7 @@ class AppKeys {
 
   // For Main Files
   static const String quran = 'quran.json';
-  static const String hadith = 'hadith.json';
+  static const String hadith = 'Hadiths.json';
   static const String azkarDua = 'Azkar_hisnulmuslim_new.json';
   static const String doaa = 'new-douaa.json';
   static const String muslims = 'muslims.json';
@@ -86,7 +86,6 @@ class AppKeys {
   static const String goldNote = 'Gold-note.json';
   static const String copyRights = 'Copy-Rights.json';
   static const String sonan = 'Sonan.json';
-
 
   static const String selectedReciter = "selectedReciter";
   static const String isFirstRun = "isFirstRun";

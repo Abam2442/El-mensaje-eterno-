@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/core/helpers/get_state_from_failure.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
@@ -13,8 +15,7 @@ class HadithController extends GetxController
   static HadithController get instance => Get.find();
 
   // Data
-  SunnahHadithModel? sunnahHadithes;
-
+  List<SunnahHadithModel> hadithsData = [];
   GlobalKey<FormState> formState = GlobalKey();
 
   HaditencHadithModel? hadithencHadithes;
@@ -31,18 +32,18 @@ class HadithController extends GetxController
 
     searchController.value.text = query;
     searchResultArabic.clear();
-    sunnahHadithes?.sunnahHadithes.forEach(
-      (_, value) {
-        value.forEach((key, value1) {
-          value1.forEach((key, value) {
-            if (value.toString().contains(query)) {
-              searchResultArabic.add(value1['Arabic']);
-              searchResultEs.add(value1['Español']);
-            }
-          });
-        });
-      },
-    );
+    // sunnahHadithes?.sunnahHadithes.forEach(
+    //   (_, value) {
+    //     value.forEach((key, value1) {
+    //       value1.forEach((key, value) {
+    //         if (value.toString().contains(query)) {
+    //           searchResultArabic.add(value1['Arabic']);
+    //           searchResultEs.add(value1['Español']);
+    //         }
+    //       });
+    //     });
+    //   },
+    // );
     hadithencHadithes?.hadithencHadithes.forEach(
       (_, value) {
         value.forEach((key, value1) {
@@ -60,6 +61,13 @@ class HadithController extends GetxController
 
     print(searchResultArabic[0]);
     update();
+  }
+
+  testFun() {
+    print(hadithsData[0]
+        .hadiths['La revelación del Corán y su colección. (5)'][
+            'Desde Aisha- que Al-láh esté complacido con ella- dijo: \"CUando el mensajero de Al-láh -que la paz y las bendiciones de Al-láh sean con él- recibía la revelación su frente sudaba, aunque hacía frío\".']
+        .values);
   }
 
   // States
@@ -116,8 +124,9 @@ class HadithController extends GetxController
       },
       (r) {
         getSunnahHadithesState = StateType.success;
-        sunnahHadithes = r;
-        print(sunnahHadithes?.sunnahHadithes.values);
+        print(r);
+        hadithsData.addAll(r);
+        print('success-******************************');
         update();
       },
     );
@@ -125,49 +134,49 @@ class HadithController extends GetxController
         .w("End `getHadithes` in |HadithController| $getSunnahHadithesState");
   }
 
-  List<String>? get getbookHadithesName {
-    print("getData");
-    List<String>? bookHadithesName = [];
-    sunnahHadithes?.sunnahHadithes.forEach(
-      (key, value) {
-        if (key == Get.arguments['title']) {
-          value.forEach((key, value) {
-            if (isSearching.value) {
-              if (value != null) {
-                if (value.toString().contains(searchTextController.text)) {
-                  bookHadithesName.add(key);
-                }
-              }
-            } else {
-              bookHadithesName.add(key);
-            }
-          });
-        }
-      },
-    );
-    return bookHadithesName;
-  }
+  // List<String>? get getbookHadithesName {
+  //   print("getData");
+  //   List<String>? bookHadithesName = [];
+  //   sunnahHadithes?.sunnahHadithes.forEach(
+  //     (key, value) {
+  //       if (key == Get.arguments['title']) {
+  //         value.forEach((key, value) {
+  //           if (isSearching.value) {
+  //             if (value != null) {
+  //               if (value.toString().contains(searchTextController.text)) {
+  //                 bookHadithesName.add(key);
+  //               }
+  //             }
+  //           } else {
+  //             bookHadithesName.add(key);
+  //           }
+  //         });
+  //       }
+  //     },
+  //   );
+  //   return bookHadithesName;
+  // }
 
-  List<String>? getSunnahHadith(
-    String bookName,
-    String hadithName,
-  ) {
-    List<String>? hadith = [];
-    sunnahHadithes?.sunnahHadithes.forEach(
-      (key, value) {
-        if (key == bookName) {
-          value.forEach((key, value) {
-            if (key == hadithName) {
-              value.forEach((key, value) {
-                hadith.add(value);
-              });
-            }
-          });
-        }
-      },
-    );
-    return hadith;
-  }
+  // List<String>? getSunnahHadith(
+  //   String bookName,
+  //   String hadithName,
+  // ) {
+  //   List<String>? hadith = [];
+  //   sunnahHadithes?.sunnahHadithes.forEach(
+  //     (key, value) {
+  //       if (key == bookName) {
+  //         value.forEach((key, value) {
+  //           if (key == hadithName) {
+  //             value.forEach((key, value) {
+  //               hadith.add(value);
+  //             });
+  //           }
+  //         });
+  //       }
+  //     },
+  //   );
+  //   return hadith;
+  // }
 
   Future<void> getHadithencHadithes() async {
     Get.find<Logger>().i("Start `getHadithes` in |HadithController|");
