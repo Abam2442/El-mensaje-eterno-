@@ -8,8 +8,8 @@ import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/bo
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/albukhary_muslim_screens/albukhary_muslim_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/book_screens/book_screen.dart';
 
-class BodySunnahScreen extends StatelessWidget {
-  const BodySunnahScreen({super.key});
+class BodyHadithScreen extends StatelessWidget {
+  const BodyHadithScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

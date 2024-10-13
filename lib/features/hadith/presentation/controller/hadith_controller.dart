@@ -1,11 +1,13 @@
-import 'dart:convert';
-import 'package:flutter/services.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/domain/usecases/get_hadithenc_hadithes_use_case.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/domain/usecases/get_sunnah_hadithes_use_case.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/model/sunnah_data_model.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/model/sunnah_item_model.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/sunnah_widgets/sunnah_json_data_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/sunnah_widgets/sunnah_pdf_data_screen.dart';
 
 class HadithController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -79,16 +81,37 @@ class HadithController extends GetxController
     update();
   }
 
-  Future<void> getSunnah(String path) async {
-    try {
-      String file = await rootBundle.loadString(path);
-      List data = json.decode(file);
-      final ref =
-          data.map((element) => SunnahDataModel.fromjson(element)).toList();
-      sunnahJsonData = ref;
-    } catch (e) {
-      print(e);
+  Future<void> selectSection(int index) async {
+    if (sunnahData[index].extenstion == 'pdf') {
+      Get.to(() => SunnahPdfDataScreen(
+            path: sunnahData[index].filePath,
+          ));
+    } else {
+      await getSunnah(sunnahData[index].filePath);
     }
+  }
+
+  late StateType stateType;
+  Future<void> getSunnah(String path) async {
+    stateType = StateType.loading;
+    update();
+    GetHadithencHadithesUseCase getHadithencHadithesUseCase =
+        GetHadithencHadithesUseCase(hadithRepo: Get.find());
+
+    var result = await getHadithencHadithesUseCase(path);
+    result.fold(
+      (l) {
+        stateType = StateType.badRequest;
+        update();
+      },
+      (r) {
+        sunnahJsonData = r;
+        stateType = StateType.success;
+        Get.to(() => const SunnahJsonDataScreen());
+
+        update();
+      },
+    );
   }
 
   Future<void> getHadithes() async {
@@ -110,6 +133,7 @@ class HadithController extends GetxController
   void onInit() async {
     super.onInit();
     tabController = TabController(length: 2, vsync: this);
+    stateType = StateType.init;
     await getHadithes();
   }
 }

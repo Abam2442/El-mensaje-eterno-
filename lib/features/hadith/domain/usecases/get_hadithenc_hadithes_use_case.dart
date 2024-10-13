@@ -1,17 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:hiwayda_oracion_islamica/core/errors/failures.dart';
-import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/domain/repository/hadith_repo.dart';
-import 'package:get/get.dart';
-import 'package:logger/logger.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/presentation/model/sunnah_data_model.dart';
 
 class GetHadithencHadithesUseCase {
-  final HadithRepo hadithRepo;
+  final HadithRepo _hadithRepo;
 
-  GetHadithencHadithesUseCase(this.hadithRepo);
+  GetHadithencHadithesUseCase({required HadithRepo hadithRepo})
+      : _hadithRepo = hadithRepo;
 
-  Future<Either<Failure, HaditencHadithModel>> call() async {
-    Get.find<Logger>().i("Call GetHadithesUseCase");
-    return await hadithRepo.getHadithencHadithes();
+  Future<Either<Failure, List<SunnahDataModel>>> call(String path) async {
+    return await _hadithRepo.getSunnah(path);
   }
 }

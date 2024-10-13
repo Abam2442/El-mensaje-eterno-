@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/utils/components/appbar/home_appbar.dart';
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/screens/advanced_sites.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/hadith_screen.dart';
@@ -15,7 +16,7 @@ class NavigationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     NavigationController controller = Get.put(NavigationController());
     return Scaffold(
-      backgroundColor: const Color(0xFFbac2b9),
+      backgroundColor: AppColors.kPrimaryColor,
       appBar: const HomeAppBar(),
       body: Stack(
         alignment: Alignment.bottomCenter,

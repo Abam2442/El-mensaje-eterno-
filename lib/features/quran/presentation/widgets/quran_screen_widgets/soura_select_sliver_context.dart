@@ -22,39 +22,49 @@ class SurahSelectSliver extends StatelessWidget {
         builder: (controller) => SingleChildScrollView(
           child: Column(
             children: [
-              HandleStatesWidget(
-                stateType: controller.getSurahsState,
-                hasShimmer: true,
-                shimmerChild: ListView.separated(
-                  physics: const NeverScrollableScrollPhysics(),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) => PrimaryShimmer.rectangle(
-                    height: Get.height * 0.09,
-                    color: AppColors.kGreenColor,
-                    border: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Color(0xFFbac2b9),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
                   ),
-                  separatorBuilder: (context, index) => const SizedBox(
-                    height: 15,
-                  ),
-                  itemCount: 8,
                 ),
-                child: Column(children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  ...List.generate(
-                    controller.surahs.length,
-                    (index) => SouraItem(
-                      souraNumber: index + 1,
-                      souraName: controller.surahs[index].name,
-                      isSaved: false,
+                child: HandleStatesWidget(
+                  stateType: controller.getSurahsState,
+                  hasShimmer: true,
+                  shimmerChild: ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 10),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) => PrimaryShimmer.rectangle(
+                      height: Get.height * 0.09,
+                      color: AppColors.kGreenColor,
+                      border: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
                     ),
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 15,
+                    ),
+                    itemCount: 8,
                   ),
-                ]),
+                  child: Column(children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    ...List.generate(
+                      controller.surahs.length,
+                      (index) => SouraItem(
+                        souraNumber: index + 1,
+                        souraName: controller.surahs[index].name,
+                        isSaved: false,
+                      ),
+                    ),
+                  ]),
+                ),
               ),
               const SizedBox(
                 height: 100,

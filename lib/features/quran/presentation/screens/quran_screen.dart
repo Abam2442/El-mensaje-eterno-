@@ -15,6 +15,11 @@ class QuranScreen extends StatelessWidget {
     final controller = Get.put(QuranController());
     return CustomScrollView(
       slivers: [
+        SliverToBoxAdapter(
+            child: Image.asset(
+          'assets/images/quran.png',
+          height: 300,
+        )),
         SurahSelectSliver(surahs: controller.surahs),
       ],
     );
@@ -94,4 +99,20 @@ class SearchResultWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+class MyClipper extends CustomClipper<Path> {
+  @override
+  getClip(Size size) {
+    final path = Path();
+    path.lineTo(0, size.height);
+    path.quadraticBezierTo(
+        size.width * 0.5, size.height - 100, size.width, size.height);
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper oldClipper) => false;
 }

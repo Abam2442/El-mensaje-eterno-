@@ -90,6 +90,7 @@ flutter:
     - assets/svg/images/
     - assets/books/
     - assets/Json.zip
+    - assets/images/quran.png
 
   fonts:
     - family: Poppins
