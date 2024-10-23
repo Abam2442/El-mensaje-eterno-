@@ -27,7 +27,7 @@ class PrimaryListTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(28),
-          color: AppColors.kGreenColor,
+          color: AppColors.kPrimaryColor,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,

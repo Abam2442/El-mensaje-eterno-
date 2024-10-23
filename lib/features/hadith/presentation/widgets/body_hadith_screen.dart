@@ -14,9 +14,8 @@ class BodyHadithScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HadithController controller = HadithController.instance;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 220),
-      child: ListView.builder(
+    return Scaffold(
+      body: ListView.builder(
           shrinkWrap: true,
           itemCount: controller.hadithsData.length,
           itemBuilder: (context, index) {

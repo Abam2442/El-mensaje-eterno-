@@ -24,7 +24,7 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: AppColors.kGreenColor,
+      color: AppColors.kPrimaryColor,
       child: ListTile(
         leading: const Padding(
           padding: EdgeInsets.only(left: 20),

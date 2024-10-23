@@ -6,51 +6,48 @@ import '../../../../features/home/presentation/widgets/pray_time_widget_item.dar
 import 'package:flutter/material.dart';
 
 class PrayTimeWidgetSectionHomeScreen extends StatelessWidget {
-  final HomeController homeController = Get.put(HomeController());
-  PrayTimeWidgetSectionHomeScreen({super.key});
+  // final HomeController homeController = Get.put(HomeController());
+  const PrayTimeWidgetSectionHomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    print(homeController.current);
-    return Obx(()=> homeController.isLoading.value?
-        const CircularProgressIndicator():
-    Column(
+    final HomeController controller = Get.find();
+    // print(homeController.current);
+    return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Obx(
-              () => PrayTimeWidgetItem(
-                  isEnabled: (homeController.current == 'fajr')? true : false,
-                  prayIcon: AppAssets.moonFajrIcon,
-                  prayName: 'Fajr',
-                  prayTime: homeController.fajrTime.value ),
-            ),
-            Obx(() => PrayTimeWidgetItem(
-                isEnabled: (homeController.current == 'dhuhr')? true : false,
+            PrayTimeWidgetItem(
+                isEnabled: false,
+                prayIcon: AppAssets.moonFajrIcon,
+                prayName: 'Fajr',
+                prayTime: controller.timingsData.timings['Fajr']),
+            PrayTimeWidgetItem(
+                isEnabled: false,
                 prayIcon: AppAssets.sunDuhurIcon,
                 prayName: 'Duhur',
-                prayTime: homeController.duhurTime.value)),
-            Obx(() => PrayTimeWidgetItem(
-                isEnabled: (homeController.current == 'asr')? true : false,
+                prayTime: controller.timingsData.timings['Dhuhr']),
+            PrayTimeWidgetItem(
+                isEnabled: false,
                 prayIcon: AppAssets.sunAsrIcon,
                 prayName: 'Asr',
-                prayTime: homeController.asrTime.value)),
-            Obx(() => PrayTimeWidgetItem(
-                isEnabled: (homeController.current == 'maghrib')? true : false,
+                prayTime: controller.timingsData.timings['Asr']),
+            PrayTimeWidgetItem(
+                isEnabled: false,
                 prayIcon: AppAssets.sunMaghribIcon,
                 prayName: 'Maghrib',
-                prayTime: homeController.maghribTime.value)),
-            Obx(() => PrayTimeWidgetItem(
-                isEnabled: (homeController.current == 'isha')? true : false,
+                prayTime: controller.timingsData.timings['Maghrib']),
+            PrayTimeWidgetItem(
+                isEnabled: false,
                 prayIcon: AppAssets.moonIshaIcon,
                 prayName: 'Isha',
-                prayTime: homeController.ishaTime.value)),
+                prayTime: controller.timingsData.timings['Isha']),
           ],
         ),
         const SizedBox(
           height: 35,
         ),
       ],
-    ));
+    );
   }
 }

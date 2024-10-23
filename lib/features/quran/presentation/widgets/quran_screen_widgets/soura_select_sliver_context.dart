@@ -41,7 +41,7 @@ class SurahSelectSliver extends StatelessWidget {
                     shrinkWrap: true,
                     itemBuilder: (context, index) => PrimaryShimmer.rectangle(
                       height: Get.height * 0.09,
-                      color: AppColors.kGreenColor,
+                      color: AppColors.kPrimaryColor,
                       border: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25),
                       ),

@@ -8,14 +8,16 @@ class BodySunnahScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HadithController controller = HadithController.instance;
-    return ListView.builder(
-        itemCount: controller.sunnahData.length,
-        itemBuilder: (context, index) {
-          return CustomItemCard(
-            titleSite: controller.sunnahData[index].title,
-            subtitle: controller.sunnahData[index].subTitle,
-            onPress: () async => await controller.selectSection(index),
-          );
-        });
+    return Scaffold(
+      body: ListView.builder(
+          itemCount: controller.sunnahData.length,
+          itemBuilder: (context, index) {
+            return CustomItemCard(
+              titleSite: controller.sunnahData[index].title,
+              subtitle: controller.sunnahData[index].subTitle,
+              onPress: () async => await controller.selectSection(index),
+            );
+          }),
+    );
   }
 }

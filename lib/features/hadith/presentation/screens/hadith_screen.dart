@@ -1,9 +1,11 @@
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller/hadith_controller.dart';
-import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/body_hadith_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/body_hadith_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/sunnah_widgets/body_sunnah_screen.dart';
 
 class HadithScreen extends StatelessWidget {
@@ -18,28 +20,41 @@ class HadithScreen extends StatelessWidget {
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
-              : ListView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    TabBar(
-                      tabs: controller.tabs,
-                      controller: controller.tabController,
-                      labelColor: AppColors.black,
-                      unselectedLabelColor: const Color(0xFFffE4AC),
-                      indicatorSize: TabBarIndicatorSize.label,
-                      indicatorColor: AppColors.kGreenColor,
-                    ),
-                    SizedBox(
-                      height: Get.height,
-                      child: TabBarView(
-                        controller: controller.tabController,
-                        children: const [
-                          BodyHadithScreen(),
-                          BodySunnahScreen(),
-                        ],
+              : SingleChildScrollView(
+                  child: Column(
+                    // mainAxisSize: MainAxisSize.max,
+                    children: [
+                      SvgPicture.asset(
+                        AppAssets.hadith,
+                        height: 300,
                       ),
-                    )
-                  ],
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFbac2b9),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20),
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            GestureDetector(
+                                onTap: () =>
+                                    Get.to(() => const BodyHadithScreen()),
+                                child: const ItemCard(titleSite: 'Hadith')),
+                            GestureDetector(
+                                onTap: () =>
+                                    Get.to(() => const BodySunnahScreen()),
+                                child: const ItemCard(titleSite: 'Sunnah')),
+                            const SizedBox(
+                              height: 300,
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 );
         });
   }

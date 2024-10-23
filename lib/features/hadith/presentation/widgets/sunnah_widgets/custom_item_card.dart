@@ -19,7 +19,7 @@ class CustomItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: AppColors.kGreenColor,
+      color: AppColors.kPrimaryColor,
       child: ListTile(
         onTap: onPress,
         leading: const Padding(

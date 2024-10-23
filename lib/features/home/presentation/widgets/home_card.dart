@@ -18,7 +18,7 @@ class HomeCard extends StatelessWidget {
       child: Container(
         height: Get.height * 0.1,
         decoration: const BoxDecoration(
-          color: AppColors.kGreenColor,
+          color: AppColors.kPrimaryColor,
           borderRadius: BorderRadius.all(
             Radius.circular(15),
           ),

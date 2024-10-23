@@ -1,27 +1,74 @@
-import 'dart:async';
+import 'dart:convert';
 
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_pages_routes.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/services/archive_service.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/model/praying_time_method_selector.dart';
+import 'package:hiwayda_oracion_islamica/features/home/presentation/controller/test_model.dart';
 import 'package:intl/intl.dart';
-import 'package:jhijri/jHijri.dart';
-import 'package:location/location.dart' as locationPackage;
+import 'package:location/location.dart';
+import 'package:http/http.dart' as http;
 
 import '../../../../data/local/local_data.dart';
 
 class HomeController extends GetxController {
   static HomeController get instance => Get.find<HomeController>();
-  JHijri hijriNow = JHijri.now();
-  DateTime now = DateTime.now().toLocal();
   RxList<HomeCardData> newMuslimHomeCardsDataNewList = <HomeCardData>[].obs;
 
   final List<HomeCardData> searchResult = [];
+  var todayDate = DateTime.now();
+  late var formattedDate;
+  final String apiLink = 'https://api.aladhan.com/v1/timings';
+  Location location = new Location();
+  String locationMessage = "Getting location...";
+  TestModel timingsData = TestModel(hijriDate: '', timings: {});
+
+  late LocationData _locationData;
+  Future<void> getData() async {
+    try {
+      final data = await http.get(Uri.parse(
+          '$apiLink/$formattedDate?latitude=${_locationData.latitude}&longitude=${_locationData.longitude}'));
+
+      final finalData = json.decode(data.body);
+
+      timingsData = TestModel.fromJson(finalData);
+
+      print(timingsData.hijriDate);
+      print(timingsData.timings);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> _getCurrentLocation() async {
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return;
+      }
+    }
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    _locationData = await location.getLocation();
+    // _locationData;
+    locationMessage =
+        "Latitude: ${_locationData.latitude}, Longitude: ${_locationData.longitude}";
+    update();
+  }
 
   void search(String query) {
     final result = newMuslimHomeCardsData
@@ -74,9 +121,6 @@ class HomeController extends GetxController {
     ),
     HomeCardData(
       title: "Equipaje del nuevo musulmán",
-      // link: 'https://www.newmuslimguide.com',
-      // copyRight:
-      //     'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
       giude:
           'Contiene los primeros pasos para el nuevo musulmán, comenzando con pronunciar el testimonio de fe y abrazando el Islam, luego explicando la sana doctrina islámica, luego explicando los pilares del Islam, explicando cómo orar, luego explicando los buenos ajustes en el ámbito social y moral. vida de un musulmán, cómo tratar a tus padres, a tus hijos, a tu marido o a tu esposa, cómo comer y beber, cómo tratar a las personas, transacciones financieras y otros asuntos.\n Y cambios morales mediante la enseñanza de valores islámicos.\n Luego explicó aspectos de la vida del Profeta, la paz y las bendiciones de Al-lah sean con él \n También hay una sección de súplicas diarias para todos los asuntos de la vida.\n\n Debes aprender paso a paso.\n\n🌷✨Lo más importante que aprendes es la creencia, que es el primero de los cinco pilares del Islam, luego aprendes las 5 oraciones, que es el segundo de los cinco pilares del Islam, y es lo más importante que puede hacer un musulmán. .\n\n Después de eso, aprenderá los tres pilares restantes a intervalos junto con el resto de las otras lecciones, como la moral, las transacciones y otros asuntos.',
       description: "Aprende el nuevo musulmán en pasos ordenados.",
@@ -169,181 +213,21 @@ class HomeController extends GetxController {
     ),
   ];
 
-  String getHijriFormat() {
-    return '${hijriNow.day}, ${enMonth(hijriNow.month)}, ${hijriNow.year}';
-  }
-
-  String enMonth(var month) {
-    switch (month) {
-      case 1:
-        return "Muharram";
-      case 2:
-        return "Safar";
-      case 3:
-        return "Rabi' Al-Awwal";
-      case 4:
-        return "Rabi' Al-Thani";
-      case 5:
-        return "Jumada Al-Awwal";
-      case 6:
-        return "Jumada Al-Thani";
-      case 7:
-        return "Rajab";
-      case 8:
-        return "Sha'aban";
-      case 9:
-        return "Ramadan";
-      case 10:
-        return "Shawwal";
-      case 11:
-        return "Dhu Al-Qi'dah";
-      case 12:
-        return "Dhu Al-Hijjah";
-      default:
-        return "";
-    }
-  }
-
-  String getSystemTime() {
-    var now = DateTime.now();
-    return DateFormat("H:m:s").format(now);
-  }
-
-  Timer? timer;
-
   @override
-  void onInit() {
-    selectedPage = 0.obs;
-    pageController = PageController(initialPage: selectedPage.value);
-    storedLocation = LocalData.getString('prayerTime');
-    calcPrayerTimes();
-    startTimer();
+  void onInit() async {
     newMuslimHomeCardsDataNewList = newMuslimHomeCardsData.obs;
+    formattedDate = DateFormat('dd-MM-yyyy').format(todayDate);
+    await _getCurrentLocation();
+    getData();
     Get.put(
       ArchiveService(sharedPreferencesService: Get.find()),
     );
     super.onInit();
   }
 
-  void startTimer() {
-    timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      decrement();
-    });
-  }
-
-  late RxInt selectedPage;
-  RxBool isLoading = true.obs;
-  late CalculationParameters params;
-  late locationPackage.LocationData locationData;
-  DateTime dateToCalc = DateTime.now();
-  late Rx<String> fajrTime, duhurTime, asrTime, maghribTime, ishaTime;
-  String? current;
-  String? next;
-  late final PageController pageController;
-
-  JHijri nowHijri = JHijri.now();
-  String? storedLocation;
-
-  Rx<Duration> duration = Rx<Duration>(Duration.zero);
-
-  void decrement() {
-    var seconds = duration.value.inSeconds - 1;
-    if (seconds <= 0) {
-      //seconds = 0;
-      if (AppPublicVar.coordinates != null) {
-        calcTimes();
-      }
-      return;
-    }
-    duration.value = Duration(seconds: seconds);
-  }
-
-  late PrayerTimes prayerTimes;
-  Rx<String> cityName = Rx<String>('');
-
-  void setCityName(String name) {
-    cityName.value = name;
-  }
-
-  void calcPrayerTimes() async {
-    if (storedLocation == null) {
-      locationPackage.Location location = locationPackage.Location();
-      locationData = await location.getLocation();
-      AppPublicVar.coordinates =
-          Coordinates(locationData.latitude ?? 0, locationData.longitude ?? 0);
-    } else {
-      AppPublicVar.coordinates = Coordinates(
-          double.parse(storedLocation!.split(':').first),
-          double.parse(storedLocation!.split(':').last));
-    }
-    print('AppPublicVar.coordinates ${AppPublicVar.coordinates}');
-    calcTimes();
-    isLoading.value = false;
-  }
-
-  Future<void> calcTimes() async {
-    params = CalculationMethodSelector.getCalculationMethod(
-        AppPublicVar.coordinates!.latitude,
-        AppPublicVar.coordinates!.longitude);
-    params.madhab = Madhab.shafi;
-    prayerTimes = PrayerTimes(
-        date: DateTime.now(),
-        coordinates: AppPublicVar.coordinates!,
-        calculationParameters: params,
-        precision: true);
-    current = prayerTimes.currentPrayer(date: DateTime.now());
-    next = prayerTimes.nextPrayer(date: DateTime.now());
-    switch (next) {
-      case 'fajr':
-        duration.value = prayerTimes.fajr!.difference(DateTime.now());
-        break;
-      case 'dhuhr':
-        duration.value = prayerTimes.dhuhr!.difference(DateTime.now());
-        break;
-      case 'asr':
-        duration.value = prayerTimes.asr!.difference(DateTime.now());
-        break;
-      case 'maghrib':
-        duration.value = prayerTimes.maghrib!.difference(DateTime.now());
-        break;
-      case 'isha':
-        duration.value = prayerTimes.isha!.difference(DateTime.now());
-        break;
-      case 'fajrafter':
-        duration.value = prayerTimes.fajrafter!.difference(DateTime.now());
-        break;
-    }
-    saveData(AppPublicVar.coordinates!);
-    fajrTime = DateFormat(('hh:mm a')).format(prayerTimes.fajr!.toLocal()).obs;
-    duhurTime =
-        DateFormat(('hh:mm a')).format(prayerTimes.dhuhr!.toLocal()).obs;
-    asrTime = DateFormat(('hh:mm a')).format(prayerTimes.asr!.toLocal()).obs;
-    maghribTime =
-        DateFormat(('hh:mm a')).format(prayerTimes.maghrib!.toLocal()).obs;
-    ishaTime = DateFormat(('hh:mm a')).format(prayerTimes.isha!.toLocal()).obs;
-  }
-
   void saveData(Coordinates coordinates) async {
     await LocalData.setString(
         'prayerTime', '${coordinates.latitude}:${coordinates.longitude}');
-  }
-
-  void changePage(int page) {
-    //print(page);
-    if (page < selectedPage.value) {
-      now = now.subtract(const Duration(days: 1));
-      nowHijri = JHijri(fDate: now);
-    } else {
-      now = now.add(const Duration(days: 1));
-      nowHijri = JHijri(fDate: now);
-    }
-    prayerTimes = PrayerTimes(
-        coordinates: AppPublicVar.coordinates!,
-        date: now,
-        calculationParameters: params,
-        precision: true);
-    selectedPage.value = page;
-    update();
   }
 }
 
