@@ -6,14 +6,17 @@ import 'package:hiwayda_oracion_islamica/core/services/easy_loader_service.dart'
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller/hadith_controller.dart';
 
 class HadithSearchScreen extends StatelessWidget {
-  final String arabicSearch, esSearch;
-  const HadithSearchScreen(
-      {super.key, required this.arabicSearch, required this.esSearch});
+  final SunnahHadithModel data;
+  // final ;
+  const HadithSearchScreen({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
+    final HadithController controller = HadithController.instance;
     return Column(
       children: [
         Container(
@@ -30,8 +33,8 @@ class HadithSearchScreen extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () async {
-                  var data = ClipboardData(text: arabicSearch);
-                  await Clipboard.setData(data);
+                  var mm = ClipboardData(text: data.hadiths.toString());
+                  await Clipboard.setData(mm);
                   EasyLoaderService.showToast(message: "Copied");
                 },
                 child: SvgPicture.asset(
@@ -45,7 +48,7 @@ class HadithSearchScreen extends StatelessWidget {
                   constraints: BoxConstraints(
                       maxWidth: MediaQuery.sizeOf(context).width - 50),
                   child: Text(
-                    arabicSearch,
+                    data.hadiths.toString(),
                     style: Styles.textStyle18Godlen,
                     textDirection: TextDirection.rtl,
                   ),
@@ -64,17 +67,17 @@ class HadithSearchScreen extends StatelessWidget {
                 constraints: BoxConstraints(
                     maxWidth: MediaQuery.sizeOf(context).width - 70),
                 child: Text(
-                  esSearch,
+                  data.hadiths.toString(),
                   style: Styles.textStyle18Black,
                   textDirection: TextDirection.ltr,
                 ),
               ),
               InkWell(
                 onTap: () async {
-                  var data = ClipboardData(
-                    text: esSearch,
+                  var mm = ClipboardData(
+                    text: data.hadiths.toString(),
                   );
-                  await Clipboard.setData(data);
+                  await Clipboard.setData(mm);
                   EasyLoaderService.showToast(message: "Copied");
                 },
                 child: SvgPicture.asset(

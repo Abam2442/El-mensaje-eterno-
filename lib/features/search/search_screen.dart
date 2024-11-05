@@ -80,12 +80,8 @@ class SearchScreen extends StatelessWidget {
                                             .homeController.searchResult[index])
                                     : controller.selectedSection == 2
                                         ? HadithSearchScreen(
-                                            arabicSearch: controller
-                                                .hadithController
+                                            data: controller.hadithController
                                                 .searchResultArabic[index],
-                                            esSearch: controller
-                                                .hadithController
-                                                .searchResultEs[index],
                                           )
                                         : const SizedBox(),
                       ),

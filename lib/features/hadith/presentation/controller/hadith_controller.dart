@@ -16,7 +16,7 @@ class HadithController extends GetxController
   List<SunnahHadithModel> hadithsData = [];
   GlobalKey<FormState> formState = GlobalKey();
   List<Map> categoryHadithes = [];
-  var searchResultArabic = [].obs;
+  List<SunnahHadithModel> searchResultArabic = <SunnahHadithModel>[].obs;
   var searchResultEs = [].obs;
   Rx<TextEditingController> searchController = TextEditingController().obs;
   var pageNumber = 0;
@@ -58,26 +58,16 @@ class HadithController extends GetxController
   ];
 
   void search(String query) {
-    // isSearching.value = query.isNotEmpty;
     searchResultArabic.clear();
 
     searchController.value.text = query;
     searchResultArabic.clear();
+    hadithsData.forEach((item) {
+      item.hadiths.containsValue(query);
+      searchResultArabic.add(item);
+      print(item.hadiths);
+    });
 
-    // hadithencHadithes?.hadithencHadithes.forEach(
-    //   (_, value) {
-    //     value.forEach((key, value1) {
-    //       value1.forEach((key, value) {
-    //         if (value.toString().contains(query)) {
-    //           searchResultArabic.add(value1['Arabic']);
-    //           searchResultEs.add(value1['Español']);
-    //         }
-    //       });
-    //     });
-    //   },
-    // );
-
-    print(searchResultArabic[0]);
     update();
   }
 
