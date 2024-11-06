@@ -17,7 +17,7 @@ class HadithController extends GetxController
   GlobalKey<FormState> formState = GlobalKey();
   List<Map> categoryHadithes = [];
   List<SunnahHadithModel> searchResultArabic = <SunnahHadithModel>[].obs;
-  var searchResultEs = [].obs;
+  // List<SunnahHadithModel> searchResultEs = <SunnahHadi>[].obs;
   Rx<TextEditingController> searchController = TextEditingController().obs;
   var pageNumber = 0;
   List<SunnahDataModel> sunnahJsonData = [];
@@ -61,12 +61,31 @@ class HadithController extends GetxController
     searchResultArabic.clear();
 
     searchController.value.text = query;
-    searchResultArabic.clear();
-    hadithsData.forEach((item) {
-      item.hadiths.containsValue(query);
-      searchResultArabic.add(item);
-      print(item.hadiths);
-    });
+    final arabicPattern = RegExp(r'[\u0600-\u06FF]');
+
+    if (arabicPattern.hasMatch(query)) {
+      for (int i = 0; i < hadithsData.length - 9; i++) {
+        for (var items in hadithsData[i].hadiths.values) {
+          items.forEach((key, value) {
+            value['ar'].contains(query)
+                ? searchResultArabic
+                    .add(SunnahHadithModel(hadiths: value, bookName: ''))
+                : null;
+          });
+        }
+      }
+    } else {
+      for (int i = 0; i < hadithsData.length - 9; i++) {
+        for (var items in hadithsData[i].hadiths.values) {
+          items.forEach((key, value) {
+            value['es'].contains(query)
+                ? searchResultArabic
+                    .add(SunnahHadithModel(hadiths: value, bookName: ''))
+                : null;
+          });
+        }
+      }
+    }
 
     update();
   }
@@ -114,6 +133,7 @@ class HadithController extends GetxController
       },
       (r) {
         hadithsData.addAll(r);
+        print(hadithsData);
         update();
       },
     );

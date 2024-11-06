@@ -14,36 +14,40 @@ class PrayTimeWidgetSectionHomeScreen extends StatelessWidget {
     // print(homeController.current);
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            PrayTimeWidgetItem(
-                isEnabled: false,
-                prayIcon: AppAssets.moonFajrIcon,
-                prayName: 'Fajr',
-                prayTime: controller.timingsData.timings['Fajr']),
-            PrayTimeWidgetItem(
-                isEnabled: false,
-                prayIcon: AppAssets.sunDuhurIcon,
-                prayName: 'Duhur',
-                prayTime: controller.timingsData.timings['Dhuhr']),
-            PrayTimeWidgetItem(
-                isEnabled: false,
-                prayIcon: AppAssets.sunAsrIcon,
-                prayName: 'Asr',
-                prayTime: controller.timingsData.timings['Asr']),
-            PrayTimeWidgetItem(
-                isEnabled: false,
-                prayIcon: AppAssets.sunMaghribIcon,
-                prayName: 'Maghrib',
-                prayTime: controller.timingsData.timings['Maghrib']),
-            PrayTimeWidgetItem(
-                isEnabled: false,
-                prayIcon: AppAssets.moonIshaIcon,
-                prayName: 'Isha',
-                prayTime: controller.timingsData.timings['Isha']),
-          ],
-        ),
+        controller.timingsData.timings.isEmpty
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  PrayTimeWidgetItem(
+                      isEnabled: false,
+                      prayIcon: AppAssets.moonFajrIcon,
+                      prayName: 'Fajr',
+                      prayTime: controller.timingsData.timings['Fajr']),
+                  PrayTimeWidgetItem(
+                      isEnabled: false,
+                      prayIcon: AppAssets.sunDuhurIcon,
+                      prayName: 'Duhur',
+                      prayTime: controller.timingsData.timings['Dhuhr']),
+                  PrayTimeWidgetItem(
+                      isEnabled: false,
+                      prayIcon: AppAssets.sunAsrIcon,
+                      prayName: 'Asr',
+                      prayTime: controller.timingsData.timings['Asr']),
+                  PrayTimeWidgetItem(
+                      isEnabled: false,
+                      prayIcon: AppAssets.sunMaghribIcon,
+                      prayName: 'Maghrib',
+                      prayTime: controller.timingsData.timings['Maghrib']),
+                  PrayTimeWidgetItem(
+                      isEnabled: false,
+                      prayIcon: AppAssets.moonIshaIcon,
+                      prayName: 'Isha',
+                      prayTime: controller.timingsData.timings['Isha']),
+                ],
+              ),
         const SizedBox(
           height: 35,
         ),

@@ -7,7 +7,7 @@ import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
-import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller/hadith_controller.dart';
+// import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller/hadith_controller.dart';
 
 class HadithSearchScreen extends StatelessWidget {
   final SunnahHadithModel data;
@@ -16,7 +16,7 @@ class HadithSearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HadithController controller = HadithController.instance;
+    // final HadithController controller = HadithController.instance;
     return Column(
       children: [
         Container(
@@ -33,7 +33,7 @@ class HadithSearchScreen extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () async {
-                  var mm = ClipboardData(text: data.hadiths.toString());
+                  var mm = ClipboardData(text: data.hadiths['ar'].toString());
                   await Clipboard.setData(mm);
                   EasyLoaderService.showToast(message: "Copied");
                 },
@@ -48,7 +48,7 @@ class HadithSearchScreen extends StatelessWidget {
                   constraints: BoxConstraints(
                       maxWidth: MediaQuery.sizeOf(context).width - 50),
                   child: Text(
-                    data.hadiths.toString(),
+                    data.hadiths['ar'].toString(),
                     style: Styles.textStyle18Godlen,
                     textDirection: TextDirection.rtl,
                   ),
@@ -67,7 +67,7 @@ class HadithSearchScreen extends StatelessWidget {
                 constraints: BoxConstraints(
                     maxWidth: MediaQuery.sizeOf(context).width - 70),
                 child: Text(
-                  data.hadiths.toString(),
+                  data.hadiths['es'].toString(),
                   style: Styles.textStyle18Black,
                   textDirection: TextDirection.ltr,
                 ),
@@ -75,7 +75,7 @@ class HadithSearchScreen extends StatelessWidget {
               InkWell(
                 onTap: () async {
                   var mm = ClipboardData(
-                    text: data.hadiths.toString(),
+                    text: data.hadiths['es'].toString(),
                   );
                   await Clipboard.setData(mm);
                   EasyLoaderService.showToast(message: "Copied");
