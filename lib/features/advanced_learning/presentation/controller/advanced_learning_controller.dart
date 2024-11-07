@@ -584,6 +584,18 @@ class AdvancedLearningController extends GetxController {
     ]
   ];
 
+  List<Map> searchResult = [];
+
+  void search(String query) {
+    searchResult.clear();
+    page.forEach((item) {
+      item.forEach((items) {
+        items['title'].contains(query) ? searchResult.add(items) : null;
+      });
+    });
+    print(searchResult);
+  }
+
   @override
   void onInit() {
     selectedPart;

@@ -12,7 +12,7 @@ class SearchScreenController extends GetxController {
   final QuranController quranController = QuranController.instance;
   final HomeController homeController = HomeController.instance;
   final HadithController hadithController = HadithController.instance;
-  final AdvancedLearningController _advancedLearningController =
+  final AdvancedLearningController advancedLearningController =
       AdvancedLearningController.instance;
 
   late TextEditingController search;
@@ -44,6 +44,13 @@ class SearchScreenController extends GetxController {
         {
           hadithController.search(searchQuery);
           itemCount = hadithController.searchResultArabic.length;
+        }
+
+      case 3:
+        {
+          advancedLearningController.search(searchQuery);
+          itemCount = advancedLearningController.searchResult.length;
+          update();
         }
         break;
     }

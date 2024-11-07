@@ -25,6 +25,9 @@ class SpecialSite extends StatelessWidget {
               return InkWell(
                 onTap: () {
                   if (controller.selectedPart == 0) {
+                    // final cc = Get.put(NonMuslimController());
+                    // print(cc.hadithes);
+
                     Get.to(
                       () => NonMuslimTopicsScreen(
                         topics: Get.find<NonMuslimController>()

@@ -23,7 +23,7 @@ class AdvancedSites extends StatelessWidget {
               color: Colors.white,
             ),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFFbac2b9),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
@@ -34,7 +34,7 @@ class AdvancedSites extends StatelessWidget {
                 children: [
                   ListView.builder(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       itemCount: controller.titlePart.length,
                       itemBuilder: (context, index) {

@@ -37,6 +37,7 @@ class NonMuslimController extends GetxController {
       (r) {
         getCoursesState = StateType.success;
         hadithes = r;
+        print(hadithes);
         update();
       },
     );

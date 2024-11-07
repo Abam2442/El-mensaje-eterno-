@@ -34,6 +34,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/guid_to_islam_books_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/guid_to_islam_videos_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_for_christian_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_fatwa_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_audio_banding.dart';
@@ -79,6 +80,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/huma
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam%20_religion/islam_religion_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_for_christians/islam_for_christians_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_guide_1/islam_guide_1_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_artical.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_books_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_fatwa.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/audio/islam_land_books_main_audios_screen.dart';
@@ -438,12 +440,12 @@ abstract class AppPagesRoutes {
       page: () => const NewMuslimHomeScreen(),
       transition: Transition.cupertino,
     ),
-    // GetPage(
-    //   name: islamHouse,
-    //   page: () => const IslamHouseMainScreen(),
-    //   binding: IslamHouseBindings(),
-    //   transition: Transition.cupertino,
-    // ),
+    GetPage(
+      name: islamHouse,
+      page: () => const IslamHouseArticalScreen(),
+      binding: IslamHouseBindings(),
+      transition: Transition.cupertino,
+    ),
     GetPage(
       name: islamHouseBooks,
       page: () => const IslamHouseBooksMainScreen(),

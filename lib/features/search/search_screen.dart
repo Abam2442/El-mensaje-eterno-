@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
+import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/screens/section_four_search_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/screens/special_site.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/search/hadith_search_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/widgets/home_card.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/screens/quran_screen.dart';
@@ -66,22 +69,37 @@ class SearchScreen extends StatelessWidget {
                       child: ListView.builder(
                         itemCount: controller.itemCount,
                         shrinkWrap: true,
-                        itemBuilder: (context, index) =>
-                            controller.selectedSection == 0 &&
-                                    controller.quranController.searchResults
-                                        .isNotEmpty
-                                ? SearchResultWidget(
-                                    searchResult: controller
-                                        .quranController.searchResults[index],
-                                  )
-                                : controller.selectedSection == 1
-                                    ? HomeCard(
-                                        homeCardData: controller
-                                            .homeController.searchResult[index])
-                                    : controller.selectedSection == 2
-                                        ? HadithSearchScreen(
-                                            data: controller.hadithController
-                                                .searchResultArabic[index],
+                        itemBuilder: (context, index) => controller
+                                        .selectedSection ==
+                                    0 &&
+                                controller
+                                    .quranController.searchResults.isNotEmpty
+                            ? SearchResultWidget(
+                                searchResult: controller
+                                    .quranController.searchResults[index],
+                              )
+                            : controller.selectedSection == 1
+                                ? HomeCard(
+                                    homeCardData: controller
+                                        .homeController.searchResult[index])
+                                : controller.selectedSection == 2
+                                    ? HadithSearchScreen(
+                                        data: controller.hadithController
+                                            .searchResultArabic[index],
+                                      )
+                                    : controller.selectedSection == 3
+                                        ? InkWell(
+                                            onTap: () {
+                                              controller
+                                                  .advancedLearningController
+                                                  .changeSelectedPart(index);
+                                              Get.to(() => const SpecialSite());
+                                            },
+                                            child: ItemCard(
+                                              titleSite: controller
+                                                  .advancedLearningController
+                                                  .searchResult[index]['title'],
+                                            ),
                                           )
                                         : const SizedBox(),
                       ),
