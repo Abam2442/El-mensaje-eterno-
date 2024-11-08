@@ -35,6 +35,7 @@ class HomeController extends GetxController {
       final finalData = json.decode(data.body);
 
       timingsData = TestModel.fromJson(finalData);
+      update();
 
       print(timingsData.hijriDate);
       print(timingsData.timings);
@@ -64,6 +65,7 @@ class HomeController extends GetxController {
     }
 
     _locationData = await location.getLocation();
+    // update();
     // _locationData;
     locationMessage =
         "Latitude: ${_locationData.latitude}, Longitude: ${_locationData.longitude}";

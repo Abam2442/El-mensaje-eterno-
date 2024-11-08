@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/controller/home_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/home_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/home/presentation/widgets/pray_time_widget_section_home_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/widgets/sections_widgets_home_screen.dart';
 
 class NewMuslimHomeScreen extends StatelessWidget {
@@ -15,7 +16,7 @@ class NewMuslimHomeScreen extends StatelessWidget {
       child: GetBuilder<HomeController>(builder: (context) {
         return Column(
           children: [
-            const HomeScreen(),
+            const PrayTimeWidgetSectionHomeScreen(),
             const SizedBox(
               height: 20,
             ),

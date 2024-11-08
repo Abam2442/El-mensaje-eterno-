@@ -17,11 +17,6 @@ class TimeAndHourWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          controller.timingsData.hijriDate,
-          style: Styles.textStyle18Golden,
-        ),
-
         // Row(
         //   mainAxisAlignment: MainAxisAlignment.center,
         //   children: [
