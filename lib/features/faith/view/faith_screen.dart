@@ -15,42 +15,43 @@ class FaithScreen extends GetView<FaithController> {
       length: 2,
       child: Obx(() => controller.isLoading.value
           ? Scaffold(
-        appBar: CustomAppbar(
-            title: Get.arguments['title'],
-            tabs: const [Tab(text: '',),
-              Tab(text: ''),]
-        ),
-        body: ListView.separated(
-          physics: const NeverScrollableScrollPhysics(),
-          padding:
-          const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-          shrinkWrap: true,
-          itemBuilder: (context, index) => PrimaryShimmer.rectangle(
-            height: Get.height * 0.09,
-            color: AppColors.kGreenColor,
-            border: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(25),
-            ),
-          ),
-          separatorBuilder: (context, index) => const SizedBox(
-            height: 15,
-          ),
-          itemCount: 8,
-        ),
-      )
+              appBar: CustomAppbar(title: Get.arguments['title'], tabs: const [
+                Tab(
+                  text: '',
+                ),
+                Tab(text: ''),
+              ]),
+              body: ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                shrinkWrap: true,
+                itemBuilder: (context, index) => PrimaryShimmer.rectangle(
+                  height: Get.height * 0.09,
+                  color: AppColors.kGreenColor,
+                  border: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                ),
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 15,
+                ),
+                itemCount: 8,
+              ),
+            )
           : Scaffold(
-        appBar: CustomAppbar(
-          title: Get.arguments['title'],
-          tabs: controller.tabs,
-        ),
-        backgroundColor: AppColors.kWhiteColor,
-        body: const TabBarView(
-          children: [
-            FaithCourseScreen(index: 0),
-            FaithCourseScreen(index: 1)
-          ],
-        ),
-      )),
+              appBar: CustomAppbar(
+                title: Get.arguments['title'],
+                tabs: controller.tabs,
+              ),
+              backgroundColor: AppColors.kWhiteColor,
+              body: const TabBarView(
+                children: [
+                  FaithCourseScreen(index: 0),
+                  FaithCourseScreen(index: 1)
+                ],
+              ),
+            )),
     );
   }
 }

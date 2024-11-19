@@ -52,7 +52,9 @@ class _QiblaCompassState extends State<QiblaCompass> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   //snapshot.data;
-                  AppPublicVar.coordinates = Coordinates(snapshot.data!.latitude??0, snapshot.data!.longitude??0);
+                  AppPublicVar.coordinates = Coordinates(
+                      snapshot.data!.latitude ?? 0,
+                      snapshot.data!.longitude ?? 0);
                   double degree = Qibla.qibla(AppPublicVar.coordinates);
                   var qibla = degree * (pi / 180);
                   return Center(
@@ -69,7 +71,8 @@ class _QiblaCompassState extends State<QiblaCompass> {
                           builder: (context, snapshot2) {
                             if (snapshot2.hasData) {
                               //print(snapshot2.data!.heading!);
-                              double compass = (-snapshot2.data!.heading! * (pi / 180));
+                              double compass =
+                                  (-snapshot2.data!.heading! * (pi / 180));
                               var range = degree + snapshot2.data!.heading!;
                               return Column(
                                 children: [
@@ -97,7 +100,9 @@ class _QiblaCompassState extends State<QiblaCompass> {
                                           Transform.rotate(
                                             angle: qibla,
                                             child: SvgPicture.asset(
-                                              (range < 5 && range > -5) ? 'assets/images/5.svg' : 'assets/images/4.svg',
+                                              (range < 5 && range > -5)
+                                                  ? 'assets/images/5.svg'
+                                                  : 'assets/images/4.svg',
                                               width: 150,
                                               height: 150,
                                             ),
@@ -135,7 +140,8 @@ class _QiblaCompassState extends State<QiblaCompass> {
   }
 
   Future<void> _checkLocationStatus() async {
-    if (await Location().serviceEnabled() && locationData == PermissionStatus.denied) {
+    if (await Location().serviceEnabled() &&
+        locationData == PermissionStatus.denied) {
       await location.requestPermission();
       //final s = await PermissionStatus.checkLocationStatus();
       //_locationStreamController.sink.add(s);

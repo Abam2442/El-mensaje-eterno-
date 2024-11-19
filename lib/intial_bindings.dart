@@ -17,6 +17,7 @@ class InitialBindings extends Bindings {
     Get.put(EasyLoaderService());
 
     Get.put(SharedPreferencesService(pref: Get.find()));
+    Get.put(ArchiveService(sharedPreferencesService: Get.find()));
     Get.put(InternetConnectionChecker());
     Get.put<NetworkInfo>(NetworkInfoImpl(Get.find()));
     Get.put(
@@ -25,7 +26,6 @@ class InitialBindings extends Bindings {
         networkInfo: Get.find(),
       ),
     );
-    Get.put(ArchiveService(sharedPreferencesService: Get.find()));
 
     Get.lazyPut(() => DownloadServices());
   }

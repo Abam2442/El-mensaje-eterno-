@@ -15,11 +15,12 @@ class ProphetScreen extends GetView<ProphetController> {
       length: 2,
       child: Obx(() => controller.isLoading.value
           ? Scaffold(
-              appBar: CustomAppbar(
-                title: Get.arguments['title'],
-                tabs: const [Tab(text: '',),
-                  Tab(text: ''),]
-              ),
+              appBar: CustomAppbar(title: Get.arguments['title'], tabs: const [
+                Tab(
+                  text: '',
+                ),
+                Tab(text: ''),
+              ]),
               body: ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),
                 padding:

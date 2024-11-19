@@ -39,12 +39,12 @@ dependencies:
   page_view_dot_indicator: ^2.3.0
   adhan_dart: ^1.1.2
   timezone:
-  connectivity_plus: ^2.3.9
+  # connectivity_plus: ^2.3.9
   geolocator: ^9.0.2
 #  #flutter_qiblah: ^2.0.0
 #  #location:
   location: ^5.0.3
-  flutter_compass:
+  # flutter_compass:
   jhijri: ^0.0.1
   timer_builder: ^2.0.0
   flutter_archive:
@@ -63,6 +63,7 @@ dependencies:
 
   http: any
   pdfx: ^2.8.0
+  flutter_compass: ^0.8.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

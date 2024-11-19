@@ -80,7 +80,7 @@ class DownloadServices extends GetxService {
           final path = await _getDownloadDirectory();
 
           final Dio dio = _createDio(baseUrl: baseUrl);
-         
+
           int i = 0;
           dio.download(urlFileName, "$path/$fileName",
               onReceiveProgress: (rec, tot) {

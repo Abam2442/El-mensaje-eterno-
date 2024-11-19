@@ -33,7 +33,8 @@ class AudioService extends GetxService {
       }
     });
 
-    player.playbackEventStream.listen((event) {}, onError: (Object e, StackTrace st) {
+    player.playbackEventStream.listen((event) {},
+        onError: (Object e, StackTrace st) {
       _onErrorDownloading();
     });
   }
@@ -73,11 +74,11 @@ class AudioService extends GetxService {
 
   void _onErrorDownloading() {
     pause();
-   EasyLoaderService.showToast(message: 'No se puede obtener el audio. Conéctese a Internet.');
-
+    EasyLoaderService.showToast(
+        message: 'No se puede obtener el audio. Conéctese a Internet.');
   }
 
-   void _onFinishedPlaying() {
+  void _onFinishedPlaying() {
     if (onFinishedCallback != null) {
       onFinishedCallback!();
     }

@@ -7,13 +7,16 @@ import 'newMuslims_course_Screen.dart';
 class NewMuslimsScreen extends StatelessWidget {
   NewMuslimsScreen({super.key});
 
-  final NewMuslimsController newMuslimsController = Get.put(NewMuslimsController());
+  final NewMuslimsController newMuslimsController =
+      Get.put(NewMuslimsController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:const Center(child: Text('NewMuslims Lessons'),),
+        title: const Center(
+          child: Text('NewMuslims Lessons'),
+        ),
       ),
       body: Obx(
         () => newMuslimsController.isLoading.value
@@ -23,9 +26,10 @@ class NewMuslimsScreen extends StatelessWidget {
                 itemBuilder: ((context, index) {
                   return CustomListTile(
                     index: index,
-                    title: newMuslimsController.newMuslimsModel.courses![index].title!,
+                    title: newMuslimsController
+                        .newMuslimsModel.courses![index].title!,
                     onTap: () {
-                      Get.to(()=> NewMuslimsCourseScreen(index:index));
+                      Get.to(() => NewMuslimsCourseScreen(index: index));
                     },
                   );
                 }),

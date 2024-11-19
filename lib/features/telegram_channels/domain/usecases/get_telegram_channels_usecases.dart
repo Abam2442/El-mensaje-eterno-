@@ -9,7 +9,6 @@ class GetTelegramChannelsUseCase {
   GetTelegramChannelsUseCase(this.telegramChannelsRepo);
 
   Future<Either<Failure, TelegramChannels>> call() async {
-    
     return await telegramChannelsRepo.getChannels();
   }
 }

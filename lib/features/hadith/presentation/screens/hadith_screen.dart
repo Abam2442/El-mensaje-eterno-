@@ -40,8 +40,12 @@ class HadithScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             GestureDetector(
-                                onTap: () =>
-                                    Get.to(() => const BodyHadithScreen()),
+                                onTap: () async {
+                                  Get.to(() => const BodyHadithScreen());
+                                  controller.hadithsData.isEmpty
+                                      ? await controller.getHadithes()
+                                      : null;
+                                },
                                 child: const ItemCard(titleSite: 'Hadith')),
                             GestureDetector(
                                 onTap: () =>

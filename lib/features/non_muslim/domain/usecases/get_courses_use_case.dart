@@ -9,7 +9,6 @@ class GetCoursesUseCase {
   GetCoursesUseCase(this.nonMuslimRepo);
 
   Future<Either<Failure, List<NonMuslimModel>>> call() async {
-    
     return await nonMuslimRepo.getCourses();
   }
 }

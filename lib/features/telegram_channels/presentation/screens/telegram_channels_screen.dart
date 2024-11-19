@@ -73,8 +73,7 @@ class TelegramChannelsScreen extends StatelessWidget {
                   onTap: () {
                     Get.to(
                       () => TelegramChannelsMessagesScreen(
-                        channelMessages:
-                            controller.channelMessagesList[index],
+                        channelMessages: controller.channelMessagesList[index],
                         channelName: controller.channelsNames[index],
                       ),
                     );
@@ -93,17 +92,18 @@ class TelegramChannelsScreen extends StatelessWidget {
                             ),
                           ),
                           IconButton(
-                              icon:const Icon(Icons.info),onPressed:(){
-                                  launchUrl(Uri.parse('https://t.me/${controller.channelsNames[index]}'));
-                          }),
+                              icon: const Icon(Icons.info),
+                              onPressed: () {
+                                launchUrl(Uri.parse(
+                                    'https://t.me/${controller.channelsNames[index]}'));
+                              }),
                         ],
                       ),
                       leading: CircleAvatar(
-                        backgroundImage:
-                            const AssetImage('assets/svg/images/zaghrafa.png'),
-                        backgroundColor: AppColors.kGreenColor,
-                        child: Text('${index+1}')
-                      ),
+                          backgroundImage: const AssetImage(
+                              'assets/svg/images/zaghrafa.png'),
+                          backgroundColor: AppColors.kGreenColor,
+                          child: Text('${index + 1}')),
                       // subtitle: Text(
                       //   '${controller.channelMessagesList[index].messages.values.toList().last} Messages',
                       //   maxLines: 2,
@@ -117,11 +117,10 @@ class TelegramChannelsScreen extends StatelessWidget {
                           color: AppColors.kPrimaryColor,
                         ),
                         child: Center(
-                          child:
-                            Text(
-                              '${controller.channelMessagesList[index].messages.length}',
-                              style: const TextStyle(color: Colors.white),
-                            ),
+                          child: Text(
+                            '${controller.channelMessagesList[index].messages.length}',
+                            style: const TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                     ),

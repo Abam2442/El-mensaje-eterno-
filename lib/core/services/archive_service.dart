@@ -23,41 +23,41 @@ class ArchiveService extends GetxService {
 
   Future<void> extractFile() async {
     try {
-      
-      bool? isExtracted = sharedPreferencesService.getData<bool>(key: AppKeys.isExtracted);
+      bool? isExtracted =
+          sharedPreferencesService.getData<bool>(key: AppKeys.isExtracted);
       if ((isExtracted != null && !isExtracted) || isExtracted == null) {
-        EasyLoaderService.showLoading();
+        // EasyLoaderService.showLoading();
         ByteData data = await rootBundle.load(AppAssets.json);
-        List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+        List<int> bytes =
+            data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 
         Directory appDir = await getApplicationDocumentsDirectory();
-        final zipFile = await File('${appDir.path}/Json.zip').writeAsBytes(bytes);
+        final zipFile =
+            await File('${appDir.path}/Json.zip').writeAsBytes(bytes);
 
         await ZipFile.extractToDirectory(
             zipFile: zipFile,
             destinationDir: appDir,
             onExtracting: (zipEntry, progress) {
-              
               sharedPreferencesService.setData(
                 key: zipEntry.name,
                 value: '${appDir.path}/${zipEntry.name}',
               );
               return ZipFileOperation.includeItem;
             });
-        await sharedPreferencesService.setData(key: AppKeys.isExtracted, value: true);
+        await sharedPreferencesService.setData(
+            key: AppKeys.isExtracted, value: true);
         zipFile.deleteSync();
-        EasyLoaderService.dismiss();
+        // EasyLoaderService.dismiss();
       }
     } catch (e) {
-      EasyLoaderService.dismiss();
-      EasyLoaderService.showError(message: "Error in Extracting");
-      
+      // EasyLoaderService.dismiss();
+      // EasyLoaderService.showError(message: "Error in Extracting");
     }
   }
 
   Future<String?> readFile({required String name}) async {
     try {
-      
       bool? isExtracted = sharedPreferencesService.getData<bool>(
         key: AppKeys.isExtracted,
       );
@@ -67,22 +67,26 @@ class ArchiveService extends GetxService {
           final file = File(path);
           if (await file.exists()) {
             String fileContent = await file.readAsString();
-            
+
             return fileContent;
           } else {
-            EasyLoaderService.showToast(message: "File not exist");
+            print('1');
+            // EasyLoaderService.showToast(message: "File not exist");
           }
         } else {
-          EasyLoaderService.showToast(message: "File path not found");
+          print('11111111');
+
+          // EasyLoaderService.showToast(message: "File path not found");
         }
       } else {
+        print('asdadadsas');
         await extractFile();
         await readFile(name: name);
       }
-      
+      print('adasdasdasdasdasdafadf');
       return null;
     } catch (e) {
-      
+      print(e);
       rethrow;
     }
   }

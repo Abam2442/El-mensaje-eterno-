@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_pages_routes.dart';
@@ -9,7 +11,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/services/archive_service.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/controller/test_model.dart';
 import 'package:intl/intl.dart';
-import 'package:location/location.dart';
+// import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../../data/local/local_data.dart';
@@ -22,15 +24,15 @@ class HomeController extends GetxController {
   var todayDate = DateTime.now();
   late var formattedDate;
   final String apiLink = 'https://api.aladhan.com/v1/timings';
-  Location location = new Location();
+  // Location location = new Location();
   String locationMessage = "Getting location...";
   TestModel timingsData = TestModel(hijriDate: '', timings: {});
 
-  late LocationData _locationData;
+  // late LocationData _locationData;
   Future<void> getData() async {
     try {
       final data = await http.get(Uri.parse(
-          '$apiLink/$formattedDate?latitude=${_locationData.latitude}&longitude=${_locationData.longitude}'));
+          '$apiLink/$formattedDate?latitude=${_position.latitude}&longitude=${_position.longitude}'));
 
       final finalData = json.decode(data.body);
 
@@ -44,33 +46,32 @@ class HomeController extends GetxController {
     }
   }
 
-  Future<void> _getCurrentLocation() async {
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
+  // Future<void> _getCurrentLocation() async {
+  //   try {
+  //     bool _serviceEnabled;
+  //     PermissionStatus _permissionGranted;
 
-    _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
-        return;
-      }
-    }
+  //     _serviceEnabled = await location.serviceEnabled();
+  //     if (!_serviceEnabled) {
+  //       _serviceEnabled = await location.requestService();
+  //     }
 
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
-        return;
-      }
-    }
+  //     _permissionGranted = await location.hasPermission();
+  //     if (_permissionGranted == PermissionStatus.denied) {
+  //       _permissionGranted = await location.requestPermission();
+  //     }
 
-    _locationData = await location.getLocation();
-    // update();
-    // _locationData;
-    locationMessage =
-        "Latitude: ${_locationData.latitude}, Longitude: ${_locationData.longitude}";
-    update();
-  }
+  //     _locationData = await location.getLocation();
+  //     log(_locationData.toString());
+  //     // update();
+  //     // _locationData;
+  //     locationMessage =
+  //         "Latitude: ${_locationData.latitude}, Longitude: ${_locationData.longitude}";
+  //     update();
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
   void search(String query) {
     final result = newMuslimHomeCardsData
@@ -215,12 +216,55 @@ class HomeController extends GetxController {
     ),
   ];
 
+  late Position _position;
+
+  Future<void> _getCurrentLocation() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        locationMessage = "Location permissions are denied.";
+        update();
+        return;
+      }
+    }
+    // Check if location services are enabled
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      locationMessage = "Location services are disabled.";
+      await Geolocator.openLocationSettings();
+      update();
+      // return;
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      locationMessage = "Location permissions are permanently denied.";
+      update();
+      return;
+    }
+
+    // When permissions are granted, get the position of the device
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+
+    _position = position;
+
+    locationMessage =
+        "Latitude: ${position.latitude}, Longitude: ${position.longitude}";
+    log(locationMessage);
+    update();
+  }
+
   @override
   void onInit() async {
     newMuslimHomeCardsDataNewList = newMuslimHomeCardsData.obs;
     formattedDate = DateFormat('dd-MM-yyyy').format(todayDate);
     await _getCurrentLocation();
-    getData();
+    await getData();
     Get.put(
       ArchiveService(sharedPreferencesService: Get.find()),
     );

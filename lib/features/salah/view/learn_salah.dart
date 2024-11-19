@@ -145,26 +145,7 @@ De Abu Málik Al Hariz Ibn Asim Al Asharí, Allah esté complacido con él que e
                       //     sectionIcon: AppSvgs.salahrokoa,
                       //     sectionName: 'Educación avanzada',
                       //     sectionSubtitle: ''),
-//                       SectionItemHomePageWidget(
-//                         onTap: () {
-//                           Get.to(() => const PermissionprayerPage());
-//                         },
-//                         sectionIcon: AppSvgs.prayerTimes,
-//                         sectionName: 'Tiempos de oracio\'n',
-//                         sectionSubtitle: '',
-//                         textInfo: '''
-// Horarios de oración
 
-//  Puedes conocer los cinco tiempos de oración desde aquí.
-
-//  Sin embargo, tenga en cuenta que en esta versión de la aplicación, los tiempos de oración no son 100% precisos.
-
-// Habrá una diferencia de uno o dos minutos, hasta un máximo de 10 minutos, más o menos
-
-// Ten cuidado, añade 10 minutos al tiempo que aparece
-
-// También 10 minutos antes del final del tiempo de oración.''',
-//                       ),
                       SectionItemHomePageWidget(
                         onTap: () {
                           Get.to(() => const QiblaCompass());

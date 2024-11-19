@@ -18,12 +18,10 @@ class NonMuslimRepoImpl implements NonMuslimRepo {
   @override
   Future<Either<Failure, List<NonMuslimModel>>> getCourses() async {
     try {
-      
       var hadithes = await nonMuslimLocalDataSource.getCourses();
-      
+
       return Right(hadithes);
     } catch (e) {
-      
       return Left(getFailureFromException(e));
     }
   }

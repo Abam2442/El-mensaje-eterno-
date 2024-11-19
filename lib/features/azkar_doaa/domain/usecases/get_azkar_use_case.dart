@@ -10,7 +10,6 @@ class GetAzkarUseCase {
   GetAzkarUseCase(this.azkarDoaaRepo);
 
   Future<Either<Failure, List<Azkar>>> call() async {
-    
     return await azkarDoaaRepo.getAzkar();
   }
 }

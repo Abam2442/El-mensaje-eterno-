@@ -179,7 +179,8 @@ class TelegramSearchDelegate extends SearchDelegate {
                         style: Styles.textStyle18Godlen,
                       ),
                       leading: const CircleAvatar(
-                        backgroundImage: AssetImage('assets/svg/images/zaghrafa.png'),
+                        backgroundImage:
+                            AssetImage('assets/svg/images/zaghrafa.png'),
                         backgroundColor: AppColors.kGreenColor,
                       ),
                       subtitle: Text(
@@ -208,7 +209,9 @@ class TelegramSearchDelegate extends SearchDelegate {
             ),
           );
         } else {
-          channelsNameFilterList = channelsNameList.where((element) => element.contains(query)).toList();
+          channelsNameFilterList = channelsNameList
+              .where((element) => element.contains(query))
+              .toList();
           return Scaffold(
             backgroundColor: AppColors.kWhiteColor,
             body: ListView.builder(
@@ -235,7 +238,8 @@ class TelegramSearchDelegate extends SearchDelegate {
                         style: Styles.textStyle18Godlen,
                       ),
                       leading: const CircleAvatar(
-                        backgroundImage: AssetImage('assets/svg/images/zaghrafa.png'),
+                        backgroundImage:
+                            AssetImage('assets/svg/images/zaghrafa.png'),
                         backgroundColor: AppColors.kGreenColor,
                       ),
                       subtitle: Text(

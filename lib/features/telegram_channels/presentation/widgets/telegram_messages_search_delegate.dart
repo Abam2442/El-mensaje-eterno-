@@ -125,7 +125,9 @@ class TelegramMessagesSearcDelegate extends SearchDelegate {
             ),
           );
         } else {
-          channelFilterdMessages = channelMessages.where((element) => element.contains(query)).toList();
+          channelFilterdMessages = channelMessages
+              .where((element) => element.contains(query))
+              .toList();
           return Scaffold(
             backgroundColor: AppColors.kWhiteColor,
             body: ListView.builder(

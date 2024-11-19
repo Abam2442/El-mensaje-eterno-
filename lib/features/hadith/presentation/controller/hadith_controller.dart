@@ -124,16 +124,20 @@ class HadithController extends GetxController
   }
 
   Future<void> getHadithes() async {
+    stateType = StateType.loading;
+    update();
     GetSunnahHadithesUseCase getSunnahHadithesUseCase =
         GetSunnahHadithesUseCase(Get.find());
     var result = await getSunnahHadithesUseCase();
     result.fold(
       (l) async {
         await Future.delayed(const Duration(milliseconds: 50));
+        stateType = StateType.badRequest;
+        update();
       },
       (r) {
         hadithsData.addAll(r);
-        print(hadithsData);
+        stateType = StateType.success;
         update();
       },
     );

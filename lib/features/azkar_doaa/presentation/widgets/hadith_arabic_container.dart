@@ -28,36 +28,35 @@ class HadithArabicContainer extends StatelessWidget {
       ),
       alignment: Alignment.center,
       child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                onTap: () async {
-                  var data = ClipboardData(text: hadithArabic);
-                  await Clipboard.setData(data);
-                  EasyLoaderService.showToast(message: "Copied");
-                },
-                child: SvgPicture.asset(
-                  AppAssets.kCopyIcon,
-                  //color: Colors.black,
-                ),
-              ),
-              SizedBox(
-                width: context.width*0.7,
-                child: Container(
-                  // padding: const EdgeInsets.only(right: 12),
-                  constraints: BoxConstraints(
-                      maxWidth: MediaQuery.sizeOf(context).width - 50),
-                  child: Text(
-                    hadithArabic,
-                    style: Styles.textStyle18Godlen,
-                    textDirection: TextDirection.rtl,
-                  ),
-                ),
-              ),
-              
-            ],
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            onTap: () async {
+              var data = ClipboardData(text: hadithArabic);
+              await Clipboard.setData(data);
+              EasyLoaderService.showToast(message: "Copied");
+            },
+            child: SvgPicture.asset(
+              AppAssets.kCopyIcon,
+              //color: Colors.black,
+            ),
           ),
-      
+          SizedBox(
+            width: context.width * 0.7,
+            child: Container(
+              // padding: const EdgeInsets.only(right: 12),
+              constraints: BoxConstraints(
+                  maxWidth: MediaQuery.sizeOf(context).width - 50),
+              child: Text(
+                hadithArabic,
+                style: Styles.textStyle18Godlen,
+                textDirection: TextDirection.rtl,
+              ),
+            ),
+          ),
+        ],
+      ),
+
       // AyaText(aya: hadithArabic, ayaNumber: 1),
     );
   }

@@ -9,7 +9,6 @@ class GetSurahsUseCase {
   GetSurahsUseCase(this.quranRepo);
 
   Future<Either<Failure, List<Surah>>> call() async {
-    
     return await quranRepo.getSurahs();
   }
 }

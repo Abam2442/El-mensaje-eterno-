@@ -104,7 +104,9 @@ class YoutubeChannelsScreen extends StatelessWidget {
                                               Urlweb: controller
                                                   .youtube_model[index]
                                                   .urlchannel!,
-                                              title: controller.youtube_model[index].namechannel!),
+                                              title: controller
+                                                  .youtube_model[index]
+                                                  .namechannel!),
                                           transition: Transition.cupertino);
                                     }),
                               ],

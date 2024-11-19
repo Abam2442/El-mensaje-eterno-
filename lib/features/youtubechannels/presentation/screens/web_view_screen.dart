@@ -17,8 +17,6 @@ class WebViweScreen extends StatefulWidget {
 }
 
 class _WebViweScreenState extends State<WebViweScreen> {
-
-  
   late final controller = WebViewController()
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
     ..loadRequest(
@@ -26,7 +24,6 @@ class _WebViweScreenState extends State<WebViweScreen> {
         widget.Urlweb,
       ),
     );
-
 
   @override
   Widget build(BuildContext context) {

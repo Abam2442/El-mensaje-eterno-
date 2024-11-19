@@ -6,7 +6,8 @@ import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/features/faith/model/faithModel.dart';
 
-class FaithController extends GetxController with GetSingleTickerProviderStateMixin {
+class FaithController extends GetxController
+    with GetSingleTickerProviderStateMixin {
   RxBool isLoading = true.obs;
 
   late TabController tabController;
@@ -16,7 +17,6 @@ class FaithController extends GetxController with GetSingleTickerProviderStateMi
 
   @override
   void onInit() async {
-    
     super.onInit();
     await loadJsonFile();
     tabs = [
@@ -26,7 +26,7 @@ class FaithController extends GetxController with GetSingleTickerProviderStateMi
       Tab(text: faithModel.courses![1].title!),
     ];
     tabController = TabController(length: 2, vsync: this);
-    
+
     getLessonsState = StateType.success;
   }
 

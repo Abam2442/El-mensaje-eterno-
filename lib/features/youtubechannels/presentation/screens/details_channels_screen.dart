@@ -44,15 +44,27 @@ class DetailsChannelsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          CardDetailsChannels(text: 'Playlist Channels', num: '1',data: data,),
+          CardDetailsChannels(
+            text: 'Playlist Channels',
+            num: '1',
+            data: data,
+          ),
           const SizedBox(
             height: 20,
           ),
-          CardDetailsChannels(text: 'Videos Channels', num: '2',data: data,),
+          CardDetailsChannels(
+            text: 'Videos Channels',
+            num: '2',
+            data: data,
+          ),
           const SizedBox(
             height: 20,
           ),
-          CardDetailsChannels(text: 'Shorts Channels', num: '3',data: data,),
+          CardDetailsChannels(
+            text: 'Shorts Channels',
+            num: '3',
+            data: data,
+          ),
         ],
       ),
     );

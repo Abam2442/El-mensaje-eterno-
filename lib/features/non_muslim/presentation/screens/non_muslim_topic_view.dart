@@ -10,7 +10,8 @@ class NonMuslimTopicView extends StatelessWidget {
   final String header;
   final String body;
 
-  const NonMuslimTopicView({super.key, required this.header, required this.body});
+  const NonMuslimTopicView(
+      {super.key, required this.header, required this.body});
 
   @override
   Widget build(BuildContext context) {

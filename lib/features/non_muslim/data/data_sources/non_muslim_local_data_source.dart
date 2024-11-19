@@ -21,8 +21,7 @@ class NonMuslimLocalDataSourceImpl extends NonMuslimLocalDataSource {
   @override
   Future<List<NonMuslimModel>> getCourses() async {
     try {
-      
-       String? fileContent =
+      String? fileContent =
           await archiveService.readFile(name: AppKeys.nonMuslims);
 
       List<NonMuslimModel> hadithes = [];
@@ -35,11 +34,9 @@ class NonMuslimLocalDataSourceImpl extends NonMuslimLocalDataSource {
             .toList();
       }
       // /  `
-      
+
       return Future.value(hadithes /** hadithes **/);
     } catch (e) {
-      
-     
       rethrow;
     }
   }

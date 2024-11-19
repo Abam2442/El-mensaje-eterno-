@@ -1,0 +1,4 @@
+storePassword=label1
+keyPassword=label1
+keyAlias=upload
+storeFile=../app/el_muslim_pray.jks

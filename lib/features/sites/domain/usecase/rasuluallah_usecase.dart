@@ -11,17 +11,14 @@ class RasuluallahUseCase {
   );
 
   Future<Either<Failure, List<CategoryFixedEntity>>> call() async {
-    
     return repository.getContent();
   }
 
   Future<Either<Failure, List<MediaEntity>>> getAudios() async {
-    
     return repository.getAudios();
   }
 
   Future<Either<Failure, List<MediaCategoryEntity>>> getVideos() async {
-    
     return repository.getVideos();
   }
 }

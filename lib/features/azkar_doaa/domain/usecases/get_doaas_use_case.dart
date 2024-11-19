@@ -10,7 +10,6 @@ class GetDoaasUseCase {
   GetDoaasUseCase(this.azkarDoaaRepo);
 
   Future<Either<Failure, List<DoaaModel>>> call() async {
-    
     return await azkarDoaaRepo.getDoaas();
   }
 }

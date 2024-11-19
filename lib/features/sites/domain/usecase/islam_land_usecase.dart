@@ -11,7 +11,6 @@ class IslamLandUseCase {
     this.islamLandRepository,
   );
   Future<Either<Failure, List<List<FixedEntities>>>> call() async {
-    
     return islamLandRepository.getContent();
   }
 

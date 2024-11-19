@@ -11,27 +11,22 @@ class IslamMessageUseCase {
   );
   Future<Either<Failure, List<IslamMessageArticalEntities>>>
       callArtical() async {
-    
     return await islamMessageRepository.getArtical();
   }
 
   Future<Either<Failure, List<MediaCategoryEntity>>> callBook() async {
-    
     return await islamMessageRepository.getBook();
   }
 
   Future<Either<Failure, List<MediaEntity>>> callAudio() async {
-    
     return await islamMessageRepository.getAudio();
   }
 
   Future<Either<Failure, List<MediaEntity>>> callVideos() async {
-    
     return await islamMessageRepository.getVideos();
   }
 
   Future<Either<Failure, List<MediaEntity>>> callQuranVideos() async {
-    
     return await islamMessageRepository.getQuranVideos();
   }
 }

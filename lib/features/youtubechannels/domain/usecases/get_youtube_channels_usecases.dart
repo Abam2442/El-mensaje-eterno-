@@ -10,7 +10,6 @@ class GetYoutubeChannelsUseCase {
   GetYoutubeChannelsUseCase(this.youtubeChannelsRepo);
 
   Future<Either<Failure, List<YoutubeModel>>> call() async {
-    
     return await youtubeChannelsRepo.getChannels();
   }
 }

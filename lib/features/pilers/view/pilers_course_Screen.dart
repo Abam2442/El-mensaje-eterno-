@@ -20,12 +20,15 @@ class PilersCourseScreen extends StatelessWidget {
       child: Padding(
         padding: 10.aEdge,
         child: ListView.builder(
-            itemCount: pilersController.pilersModel.courses![index].lessons!.length,
+            itemCount:
+                pilersController.pilersModel.courses![index].lessons!.length,
             itemBuilder: (context, i) => CustomListTile(
                   index: i,
-                  title: '${pilersController.pilersModel.courses![index].lessons![i].title}',
+                  title:
+                      '${pilersController.pilersModel.courses![index].lessons![i].title}',
                   onTap: () {
-                    Get.to(() => PilersLessonScreen(courseIndex: index, lessonIndex: i));
+                    Get.to(() =>
+                        PilersLessonScreen(courseIndex: index, lessonIndex: i));
                   },
                 )),
       ),

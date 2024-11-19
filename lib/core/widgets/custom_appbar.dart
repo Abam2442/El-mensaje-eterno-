@@ -3,8 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppbar({required this.title,required this.tabs, super.key});
+  const CustomAppbar({required this.title, required this.tabs, super.key});
 
   final String title;
   final List<Tab> tabs;
@@ -18,7 +19,12 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(child: Text(title,style: Styles.textStyle18Godlen.copyWith(overflow: TextOverflow.ellipsis),)),
+          Expanded(
+              child: Text(
+            title,
+            style: Styles.textStyle18Godlen
+                .copyWith(overflow: TextOverflow.ellipsis),
+          )),
           SvgPicture.asset(AppAssets.logoApp)
         ],
       ),
@@ -36,7 +42,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(100);
 }
 
-class SalahAppbar extends StatelessWidget implements PreferredSizeWidget{
+class SalahAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
   const SalahAppbar({super.key, required this.title});
@@ -50,10 +56,10 @@ class SalahAppbar extends StatelessWidget implements PreferredSizeWidget{
       iconTheme: const IconThemeData(
         color: AppColors.kGoldenColor,
       ),
-
       backgroundColor: AppColors.kPrimaryColor,
     );
   }
+
   @override
   Size get preferredSize => const Size.fromHeight(60);
 }

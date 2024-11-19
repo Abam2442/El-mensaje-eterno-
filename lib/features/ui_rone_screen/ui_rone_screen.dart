@@ -161,7 +161,8 @@ class UiRoneScreen extends StatelessWidget {
                                                               radius:
                                                                   20.cBorder,
                                                             )
-                                                          : const Text('jkasksjka'),
+                                                          : const Text(
+                                                              'jkasksjka'),
                                                       Container(
                                                         padding: EdgeInsets
                                                             .symmetric(

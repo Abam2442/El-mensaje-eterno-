@@ -10,22 +10,18 @@ class KnowingAllahUseCase {
     this.knowingAllahRepository,
   );
   Future<Either<Failure, List<KnowingAllahSubCategoryModel>>> call() async {
-    
     return knowingAllahRepository.getArtical();
   }
 
   Future<Either<Failure, List<MediaEntity>>> getBooks() async {
-    
     return knowingAllahRepository.getBooks();
   }
 
   Future<Either<Failure, List<MediaEntity>>> getAudios() async {
-    
     return knowingAllahRepository.getAudios();
   }
 
   Future<Either<Failure, List<MediaCategoryEntity>>> getVideos() async {
-    
     return knowingAllahRepository.getVideos();
   }
 }

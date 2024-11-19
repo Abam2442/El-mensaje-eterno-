@@ -380,17 +380,11 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
     if (AppPublicVar.coordinates == null) {
       Location location = Location();
       locationData = await location.getLocation();
-      AppPublicVar.coordinates =
-          Coordinates(locationData.latitude ?? 0, locationData.longitude ?? 0);
+      AppPublicVar.coordinates =    Coordinates(locationData.latitude??0, locationData.longitude??0);
     }
-    CalculationParameters params =
-        CalculationMethodSelector.getCalculationMethod(
-            locationData.latitude ?? 0, locationData.longitude ?? 0);
+    CalculationParameters params = CalculationMethodSelector.getCalculationMethod(locationData.latitude??0, locationData.longitude??0);
     params.madhab = Madhab.shafi;
-    prayerTimes = PrayerTimes(
-        coordinates: AppPublicVar.coordinates!,
-        date: dateToCalc,
-        calculationParameters: params,
+    prayerTimes = PrayerTimes(coordinates:  AppPublicVar.coordinates!,date:  dateToCalc,calculationParameters:  params,
         precision: true);
     current = prayerTimes.currentPrayer(date: DateTime.now());
     saveData(AppPublicVar.coordinates!);
@@ -547,102 +541,105 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
       ),
     );
   }
+  
+ 
+  
 }
 
-// class PermissionprayerPage extends StatefulWidget {
-//   const PermissionprayerPage({Key? key}) : super(key: key);
+class PermissionprayerPage extends StatefulWidget {
+  const PermissionprayerPage({Key? key}) : super(key: key);
 
-//   @override
-//   State<PermissionprayerPage> createState() => _PermissionprayerPageState();
-// }
+  @override
+  State<PermissionprayerPage> createState() => _PermissionprayerPageState();
+}
 
-// class _PermissionprayerPageState extends State<PermissionprayerPage> {
-//   Location location = Location();
+class _PermissionprayerPageState extends State<PermissionprayerPage> {
+  Location location = Location();
 
-//   @override
-//   void initState() {
-//     super.initState();
-//   }
+  @override
+  void initState() {
+    super.initState();
+  }
 
-//   Future<PermissionStatus> checkPermission() async {
-//     return await location.hasPermission();
-//   }
+  Future<PermissionStatus> checkPermission() async {
+    return await location.hasPermission();
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: AppColors.kPrimaryColor,
-//       body: SafeArea(
-//         child: Container(
-//           margin: const EdgeInsets.only(top: 35),
-//           //margin: 10.aEdge,
-//           padding: 10.aEdge,
-//           decoration: const BoxDecoration(
-//             borderRadius: BorderRadius.only(topLeft: Radius.circular(100)),
-//             color: AppColors.kGreenColor,
-//           ),
-//           child: FutureBuilder<PermissionStatus>(
-//             future: checkPermission(),
-//             builder: (context, snapshot) {
-//               String? localData = LocalData.getString('prayerTime');
-//               if (localData == '' || localData == null) {
-//                 if (snapshot.connectionState == ConnectionState.waiting) {
-//                   return const Center(
-//                     child: CircularProgressIndicator(
-//                       strokeWidth: 2,
-//                     ),
-//                   );
-//                 }
-//                 if (snapshot.hasError) {
-//                   return Center(
-//                     child: Text('Error: ${snapshot.error.toString()}'),
-//                   );
-//                 }
-//                 if (snapshot.hasData) {
-//                   if (snapshot.data == PermissionStatus.denied) {
-//                     return Center(
-//                         child: InkWell(
-//                             onTap: () async {
-//                               await location.requestPermission();
-//                               setState(() {});
-//                             },
-//                             child: const Text('Denied Click To Enable')));
-//                   } else {
-//                     return const PrayerTimesPage();
-//                   }
-//                 } else {
-//                   return Center(
-//                       child: InkWell(
-//                           onTap: () async {
-//                             await location.requestPermission();
-//                             setState(() {});
-//                           },
-//                           child: const Text('Error')));
-//                 }
-//               } else {
-//                 AppPublicVar.coordinates = Coordinates(
-//                     LocalData.getString('prayerTime')!
-//                         .split(':')[0]
-//                         .toDoubleNum,
-//                     LocalData.getString('prayerTime')!
-//                         .split(':')[1]
-//                         .toDoubleNum);
-//                 return const PrayerTimesPage();
-//               }
-//             },
-//           ),
-//         ),
-//       ),
-//       floatingActionButton: FloatingActionButton.small(
-//         child: const Icon(Icons.refresh),
-//         onPressed: () async {
-//           AppPublicVar.coordinates = null;
-//           await LocalData.setString('prayerTime', '');
-//           setState(() {});
-//         },
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.kPrimaryColor,
+      body: SafeArea(
+        child: Container(
+          margin: const EdgeInsets.only(top: 35),
+          //margin: 10.aEdge,
+          padding: 10.aEdge,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(100)),
+            color: AppColors.kGreenColor,
+          ),
+          child: FutureBuilder<PermissionStatus>(
+            future: checkPermission(),
+            builder: (context, snapshot) {
+              String? localData = LocalData.getString('prayerTime');
+              if (localData == '' || localData == null) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text('Error: ${snapshot.error.toString()}'),
+                  );
+                }
+                if (snapshot.hasData) {
+                  if (snapshot.data == PermissionStatus.denied) {
+                    return Center(
+                        child: InkWell(
+                            onTap: () async {
+                              await location.requestPermission();
+                              setState(() {});
+                            },
+                            child: const Text('Denied Click To Enable')));
+                  } else {
+                    return const PrayerTimesPage();
+                  }
+                } else {
+                  return Center(
+                      child: InkWell(
+                          onTap: () async {
+                            await location.requestPermission();
+                            setState(() {});
+                          },
+                          child: const Text('Error')));
+                }
+              } else {
+                AppPublicVar.coordinates = Coordinates(
+                    LocalData.getString('prayerTime')!
+                        .split(':')[0]
+                        .toDoubleNum,
+                    LocalData.getString('prayerTime')!
+                        .split(':')[1]
+                        .toDoubleNum);
+                return const PrayerTimesPage();
+              }
+            },
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.small(
+        child: const Icon(Icons.refresh),
+        onPressed: () async {
+          AppPublicVar.coordinates = null;
+          await LocalData.setString('prayerTime', '');
+          setState(() {});
+        },
+      ),
+    );
+  }
+}
 
 

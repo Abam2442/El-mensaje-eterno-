@@ -50,9 +50,9 @@ class AdvancedSiteMediaMainScreen extends StatelessWidget {
                             final selectedPage = page['targetScreen'][index];
                             return InkWell(
                               onTap: () async {
-                                if ((selectedPage).containsKey('fun')) {
+                                if ((selectedPage).containsKey('fun') &&
+                                    selectedPage['fun'] == true) {
                                   try {
-                                    print("dfdfd");
                                     var data = await rootBundle
                                         .load("assets/books/book1.pdf");
                                     Directory tempDir =
@@ -69,6 +69,19 @@ class AdvancedSiteMediaMainScreen extends StatelessWidget {
                                     print('there is error');
                                     print(e);
                                   }
+                                } else if ((selectedPage).containsKey('fun') &&
+                                    selectedPage['fun'] == false) {
+                                  var data = await rootBundle
+                                      .load("assets/books/dawah.docx");
+                                  Directory tempDir =
+                                      await getTemporaryDirectory();
+                                  String tempPath = tempDir.path;
+                                  var filePath = '$tempPath/dawah.docx';
+                                  File file = await File(filePath).writeAsBytes(
+                                      data.buffer.asUint8List(
+                                          data.offsetInBytes,
+                                          data.lengthInBytes));
+                                  OpenFile.open(file.path);
                                 } else {
                                   Get.toNamed(
                                     selectedPage['targetScreen'],

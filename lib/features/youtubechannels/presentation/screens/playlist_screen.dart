@@ -53,7 +53,12 @@ class PlaylistScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              Get.to(() => ClipsScreen(data: data, indexplay: index,),transition: Transition.cupertino);
+              Get.to(
+                  () => ClipsScreen(
+                        data: data,
+                        indexplay: index,
+                      ),
+                  transition: Transition.cupertino);
             },
             child: Card(
               elevation: 0,
@@ -88,12 +93,12 @@ class PlaylistScreen extends StatelessWidget {
                               color: Color.fromARGB(255, 193, 193, 13),
                             ),
                             onPressed: () {
-                               Get.to(
-                                          () => WebViweScreen(
-                                              Urlweb: data.playlists![index].listlink!,
-                                              title: data.playlists![index].listname!),
-                                          transition: Transition.cupertino);
-                               //launchUrl(Uri.parse(data.playlists![index].listlink!));
+                              Get.to(
+                                  () => WebViweScreen(
+                                      Urlweb: data.playlists![index].listlink!,
+                                      title: data.playlists![index].listname!),
+                                  transition: Transition.cupertino);
+                              //launchUrl(Uri.parse(data.playlists![index].listlink!));
                             }),
                       ],
                     ),
@@ -104,7 +109,6 @@ class PlaylistScreen extends StatelessWidget {
                         const AssetImage('assets/svg/images/zaghrafa.png'),
                     backgroundColor: AppColors.kGreenColor,
                     child: Text('${index + 1}')),
-                
               ),
             ),
           );

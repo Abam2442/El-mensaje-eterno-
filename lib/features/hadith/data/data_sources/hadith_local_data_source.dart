@@ -28,11 +28,12 @@ class HadithLocalDataSourceImpl extends HadithLocalDataSource {
 
       List<SunnahHadithModel> sunnahHadithes = [];
       if (fileContent != null) {
-        var jsonData = json.decode(fileContent) as Map<String, dynamic>;
+        var jsonData = await json.decode(fileContent) as Map<String, dynamic>;
         sunnahHadithes = jsonData.entries
             .map((entry) => SunnahHadithModel.fromJson(entry.value, entry.key))
             .toList();
       }
+      print({sunnahHadithes});
       return sunnahHadithes;
     } catch (e) {
       rethrow;

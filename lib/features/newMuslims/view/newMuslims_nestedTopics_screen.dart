@@ -5,8 +5,13 @@ import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/copy_button.dart';
 import 'package:hiwayda_oracion_islamica/features/newMuslims/controller/newMuslims_controller.dart';
+
 class NewMuslimsNestedTopicsScreen extends StatelessWidget {
-  NewMuslimsNestedTopicsScreen({required this.courseIndex,required this.lessonIndex ,super.key, required this.nestedTopicsIndex});
+  NewMuslimsNestedTopicsScreen(
+      {required this.courseIndex,
+      required this.lessonIndex,
+      super.key,
+      required this.nestedTopicsIndex});
   final int courseIndex;
   final int lessonIndex;
   final int nestedTopicsIndex;
@@ -16,14 +21,19 @@ class NewMuslimsNestedTopicsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            '${newMuslimsController.newMuslimsModel.courses![courseIndex].lessons![lessonIndex].nestedTopics![nestedTopicsIndex].title}'
-        ),
+            '${newMuslimsController.newMuslimsModel.courses![courseIndex].lessons![lessonIndex].nestedTopics![nestedTopicsIndex].title}'),
         actions: [
-          CopyButton(text: newMuslimsController.newMuslimsModel.courses![courseIndex].lessons![lessonIndex].nestedTopics![nestedTopicsIndex].body ?? '')
+          CopyButton(
+              text: newMuslimsController
+                      .newMuslimsModel
+                      .courses![courseIndex]
+                      .lessons![lessonIndex]
+                      .nestedTopics![nestedTopicsIndex]
+                      .body ??
+                  '')
         ],
       ),
-      body:
-      SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Container(
           color: AppColors.kPrimaryColor,
           child: Padding(
@@ -34,7 +44,6 @@ class NewMuslimsNestedTopicsScreen extends StatelessWidget {
               )),
         ),
       ),
-
     );
   }
 }

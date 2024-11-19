@@ -18,7 +18,7 @@ class MainBindings extends Bindings {
     // );
     //
     // Get.put(MainController());
-    
+
     Get.put(
       ArchiveService(sharedPreferencesService: Get.find()),
     );

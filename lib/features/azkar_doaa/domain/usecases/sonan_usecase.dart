@@ -9,7 +9,6 @@ class GetSonanUseCase {
   GetSonanUseCase(this.azkarDoaaRepo);
 
   Future<Either<Failure, Sonan>> call() async {
-    
     return await azkarDoaaRepo.getSonan();
   }
 }

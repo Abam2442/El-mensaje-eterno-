@@ -46,7 +46,8 @@ class _SliverAppBarWidgetState extends State<SliverAppBarWidget> {
               // من شان تدوير الايقونة بزاوية 90
               //DirectionAware for rotate the icon to other side rtl or ltr
               child: IconButton(
-                  onPressed: () => Get.back(), icon: const Icon(Icons.arrow_back)),
+                  onPressed: () => Get.back(),
+                  icon: const Icon(Icons.arrow_back)),
             ),
       centerTitle: true,
       title: Text(
