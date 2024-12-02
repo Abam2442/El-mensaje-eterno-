@@ -73,7 +73,9 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/ras
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_video_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/romance_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/terminology_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/women_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/zad_daeya/zad_daeya_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/beginning_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/bidaa_in_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/explore_islam_screen.dart';
@@ -122,10 +124,13 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasu
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Audio/rasul_uallah_audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Video/video_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/romance_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminology/terminolgy_screen.dart';
 // import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminolgy_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/the_key_to_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/woman_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/learn_salah.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/zad_da3ia/zad_da3ia_topics_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/zad_da3ia/zad_daeia_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation/screens/telegram_channels_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation/telegram_channels_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/screens/details_channels_screen.dart';
@@ -238,6 +243,7 @@ abstract class AppPagesRoutes {
   static const String knowingAllahVideos = "/knowing_allah_videos";
   static const String saberElIslam = "/saber_el_islam";
   static const String detailsChannelsScreen = "/DetailsChannelsScreen";
+  static const String zadDa3iaTopicsScreen = "/zadDa3iaTopicsScreen";
   static List<GetPage<dynamic>> appPages = [
     GetPage(
       name: mainScreen,
@@ -469,6 +475,14 @@ abstract class AppPagesRoutes {
       page: () => const NewMuslimHomeScreen(),
       transition: Transition.cupertino,
     ),
+
+    GetPage(
+      name: zadDa3iaTopicsScreen,
+      page: () => const ZadDaeiaScreen(),
+      binding: ZadDaeyaBinding(),
+      transition: Transition.cupertino,
+    ),
+
     GetPage(
       name: islamHouse,
       page: () => const IslamHouseArticalScreen(),
@@ -685,12 +699,12 @@ abstract class AppPagesRoutes {
       binding: BidaaInIslamBindings(),
       transition: Transition.cupertino,
     ),
-    // GetPage(
-    //   name: terminology,
-    //   page: () => const TerminologyScreen(),
-    //   binding: TerminologyBindings(),
-    //   transition: Transition.cupertino,
-    // ),
+    GetPage(
+      name: terminology,
+      page: () => const TerminologyScreen(),
+      binding: TerminologyBindings(),
+      transition: Transition.cupertino,
+    ),
     // GetPage(
     //   name: advanced_learning,
     //   page: () => const AdvancedSites(),

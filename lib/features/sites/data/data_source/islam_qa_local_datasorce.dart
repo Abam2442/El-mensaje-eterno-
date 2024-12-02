@@ -26,7 +26,7 @@ class IslamQALocalDataSourceImpl extends IslamqaLocalDataSource {
       List<Islamqa> articals = [];
       if (learningIslamJson != null) {
         var jsonData = json.decode(learningIslamJson);
-        articals = jsonData['islamqa']
+        articals = jsonData['Español']
             .map<Islamqa>(
               (artical) => Islamqa.fromJson(artical),
             )

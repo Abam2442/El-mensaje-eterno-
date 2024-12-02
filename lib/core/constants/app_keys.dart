@@ -57,7 +57,8 @@ class AppKeys {
   static const String islamHouseBooks = 'book-islamhouse.json';
   static const String islamHouseVideos = 'video-islamhouse.json';
   static const String islamHouseAudios = 'audio-islamhouse.json';
-  static const String islamQA = 'islamqa.json';
+  // static const String islamQA = 'islamqa.json';
+  static const String islamQA = 'Fatwa-islamqa.json';
   static const String islamWeb = 'islamweb.json';
   static const String jesusMuslim = 'jesus_muslim.json';
   static const String jesusQuran = 'jesus_quran.json';
@@ -75,7 +76,9 @@ class AppKeys {
   static const String rasuluAllahVideos = 'video-rasulu_allah.json';
   static const String romanceInIslam = 'romance_in_islam.json';
   static const String saberElIslam = 'new-saber-islam.json';
-  static const String terminology = 'terminology.json';
+  static const String zadDaeia = "New-zad-da3ia.json";
+  // static const String terminology = 'terminology.json';
+  static const String terminology = 'terminologyenc_Spanish.json';
   static const String theKeyToIslam1 = 'the_key_to_islam_1.json';
   static const String theKeyToIslam2 = 'the_key_to__islam_2.json';
   static const String thePurity = 'the_purity.json';

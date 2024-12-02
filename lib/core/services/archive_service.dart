@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_archive/flutter_archive.dart';
 import 'package:get/get.dart';
@@ -67,7 +68,7 @@ class ArchiveService extends GetxService {
           final file = File(path);
           if (await file.exists()) {
             String fileContent = await file.readAsString();
-
+            // debugPrint(fileContent);
             return fileContent;
           } else {
             print('1');

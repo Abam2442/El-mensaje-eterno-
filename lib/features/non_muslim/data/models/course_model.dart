@@ -35,16 +35,12 @@ class IslamTopic {
   });
 
   factory IslamTopic.fromJson(Map<String, dynamic> json) {
-    List<IslamNestedTopic> nestedTopics = [];
-    if (json['nestedTopics'] != null) {
-      for (var nestedTopic in json['nestedTopics']) {
-        nestedTopics.add(IslamNestedTopic.fromJson(nestedTopic));
-      }
-    }
-
     return IslamTopic(
-      header: json['header'],
-      nestedTopics: nestedTopics,
+      header: json['header'] ?? '', // Assurez-vous que header existe
+      nestedTopics:
+          (json['nestedTopics'] as List<dynamic>? ?? []).map((nested) {
+        return IslamNestedTopic.fromJson(nested);
+      }).toList(),
     );
   }
 }
@@ -60,8 +56,8 @@ class IslamNestedTopic {
 
   factory IslamNestedTopic.fromJson(Map<String, dynamic> json) {
     return IslamNestedTopic(
-      title: json['title'],
-      body: json['body'],
+      title: json['title'] ?? '',
+      body: json['body'] ?? '',
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/repository/fixed_category_repo.dart';
 import '../../../core/services/archive_service.dart';
 import '../data/data_source/terminology_local_data_source.dart';
 import '../data/repository/terminology_repo_impl.dart';
@@ -15,7 +16,7 @@ class TerminologyBindings extends Bindings {
             Get.put(ArchiveService(sharedPreferencesService: Get.find())),
       ),
     );
-    Get.put<FixedRepository>(
+    Get.put<FixedCategoryRepository>(
       TerminologyRepositoryImp(
         terminologyLocalDataSource: Get.find(),
       ),

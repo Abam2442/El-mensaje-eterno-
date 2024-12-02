@@ -8,7 +8,7 @@ import 'package:logger/logger.dart';
 import '../../domain/entities/fixed_entities.dart';
 
 abstract class TerminologyLocalDataSource {
-  Future<List<FixedEntities>> getArtical();
+  Future<List<CategoryFixedEntity>> getArtical();
 }
 
 class TerminologyLocalDataSourceImp extends TerminologyLocalDataSource {
@@ -20,16 +20,26 @@ class TerminologyLocalDataSourceImp extends TerminologyLocalDataSource {
     required this.archiveService,
   });
   @override
-  Future<List<FixedEntities>> getArtical() async {
+  Future<List<CategoryFixedEntity>> getArtical() async {
     Get.find<Logger>()
         .i("Start `getArtical` in |TerminologyLocalDataSourceImp|");
     String? fileContent =
         await archiveService.readFile(name: AppKeys.terminology);
-    List<FixedEntities> articals = [];
+    List<CategoryFixedEntity> articals = [];
+    // List<FixedEntities> articals = [];
     if (fileContent != null) {
+      // Map jsonData = json.decode(fileContent);
+      // jsonData['terminology'].forEach((key, value) {
+      //   articals.add(FixedEntities(name: key, content: value));
+      // });
       Map jsonData = json.decode(fileContent);
-      jsonData['terminology'].forEach((key, value) {
-        articals.add(FixedEntities(name: key, content: value));
+      jsonData.forEach((key, value) {
+        List<FixedEntities> categoryFixedEntityData = [];
+        value.forEach((key, value) => categoryFixedEntityData
+            .add(FixedEntities(name: key, content: value)));
+
+        articals.add(
+            CategoryFixedEntity(category: key, data: categoryFixedEntityData));
       });
     }
     Get.find<Logger>().w("End `getArtical` in |TerminologyLocalDataSourceImp|");

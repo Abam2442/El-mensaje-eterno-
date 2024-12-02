@@ -28,6 +28,8 @@ class SpecialSite extends StatelessWidget {
                     // final cc = Get.put(NonMuslimController());
                     // print(cc.hadithes);
 
+                    debugPrint("final cc = Get.put(Non");
+
                     Get.to(
                       () => NonMuslimTopicsScreen(
                         topics: Get.find<NonMuslimController>()
@@ -40,6 +42,7 @@ class SpecialSite extends StatelessWidget {
                       transition: Transition.cupertino,
                     );
                   } else {
+                    debugPrint("selected part is ,${controller.selectedPart}");
                     if (controller.page[controller.selectedPart][index]
                         ['targetScreen'] is String) {
                       Get.toNamed(
@@ -47,7 +50,7 @@ class SpecialSite extends StatelessWidget {
                             ['targetScreen'],
                       );
                     } else {
-                      Get.to(AdvancedSiteMediaMainScreen(
+                      Get.to(() => AdvancedSiteMediaMainScreen(
                           controller.page[controller.selectedPart][index]));
                     }
                   }

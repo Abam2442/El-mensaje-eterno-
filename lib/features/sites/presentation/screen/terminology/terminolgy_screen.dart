@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/search_field_widget.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminology/terminology_contain_screen.dart';
 import '../../controller/terminology_controller.dart';
 import '../../widget/app_bar_custom.dart';
 import '../../widget/artical_custom.dart';
@@ -34,11 +35,14 @@ class TerminologyScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return InkwellCustom(
                       catigory: false,
-                      dataText: controller.articals[index].name,
+                      iconData: Icons.category,
+                      dataText: controller.articals[index].category,
                       onTap: () {
-                        Get.to(ArticalCustom(
-                          dataText: controller.articals[index].content,
-                        ));
+                        Get.to(() => TerminologyContainScreen(
+                              title: controller.articals[index].category,
+                              dataText: controller.articals[index].data,
+                              itemCount: controller.articals[index].data.length,
+                            ));
                       },
                     );
                   }),

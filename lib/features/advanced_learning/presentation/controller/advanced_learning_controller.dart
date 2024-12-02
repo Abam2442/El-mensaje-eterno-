@@ -236,7 +236,6 @@ class AdvancedLearningController extends GetxController {
         "description": "Una explicación del Islam",
         "targetScreen": AppPagesRoutes.islamPort,
       },
-
       // {
       //   "title": "Islam guide_2",
       //   "description": "Learn more about islam",
@@ -325,14 +324,14 @@ class AdvancedLearningController extends GetxController {
         "description": "Los primeros pasos en el Islam",
         "targetScreen": AppPagesRoutes.learningIslam,
       },
-      // {
-      //   "title": "Los Términos",
-      //   "copyRight":
-      //       'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
-      //   "link": 'https://terminologyenc.com',
-      //   "description": "Términos islámicos en español",
-      //   "targetScreen": AppPagesRoutes.terminology,
-      // },
+      {
+        "title": "Los Términos",
+        "copyRight":
+            'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+        "link": 'https://terminologyenc.com',
+        "description": "Términos islámicos en español",
+        "targetScreen": AppPagesRoutes.terminology,
+      },
     ],
     //6
     [
@@ -567,8 +566,16 @@ class AdvancedLearningController extends GetxController {
             "targetScreen": AppPagesRoutes.islamWeb,
           },
         ],
+      },
+      {
+        "title": "زاد الداعية ",
+        "description": "",
+        "targetScreen": AppPagesRoutes.zadDa3iaTopicsScreen,
+        "copyRight":
+            "El siguiente contenido es una recopilación de videoclips en canales islámicos.\nEl contenido de estos canales no ha sido revisado.\nAviso :\nNo está permitido que un hombre o una mujer musulmana escuche música si el vídeo contiene música.\nSi eres hombre, no está permitido que mires a mujeres si hay mujeres en el vídeo."
       }
     ],
+    //7
     [
       {
         'title': 'Azkar',
@@ -585,6 +592,7 @@ class AdvancedLearningController extends GetxController {
         'description': '',
         'targetScreen': AppPagesRoutes.bodySonanScreen,
       },
+
       // {
       //   'title'
       // }

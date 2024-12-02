@@ -21,4 +21,6 @@ class IslamReligionOfPaceRepositoryImp extends FixedRepository {
       return Left(getFailureFromException(e));
     }
   }
+
+  
 }

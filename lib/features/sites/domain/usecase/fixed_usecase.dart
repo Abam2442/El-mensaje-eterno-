@@ -9,7 +9,6 @@ class FixedUseCase {
     this.fixedRepository,
   );
   Future<Either<Failure, List<FixedEntities>>> call() async {
-    
     return fixedRepository.getArtical();
   }
 }

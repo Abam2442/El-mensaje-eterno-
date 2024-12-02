@@ -21,4 +21,5 @@ class IslamPortRepositoryImp extends FixedRepository {
       return Left(getFailureFromException(e));
     }
   }
+
 }
