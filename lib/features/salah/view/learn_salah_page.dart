@@ -4,15 +4,16 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/model/tahara_lesson_model.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/data/model/tahara_lesson_model.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/salah_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/options.dart';
-
 
 class LearnSalahPage extends StatelessWidget {
   const LearnSalahPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final SalahController controller = SalahController.instance;
     return Scaffold(
         backgroundColor: AppColors.kPrimaryColor,
         body: SafeArea(
@@ -37,30 +38,31 @@ class LearnSalahPage extends StatelessWidget {
                         ),
                       ),
                       20.hSize,
-                      SizedBox(
-                        height: context.height * 0.5,
-                        child: FutureBuilder<List<TaharaLessonModel>>(
-                          future: TaharaLessonFromJson.getData(),
-                          builder: (context, snapshot) {
-                            final taharaLessons = snapshot.data;
-                            switch (snapshot.connectionState) {
-                              case ConnectionState.waiting:
-                                return const Center(
-                                  child: CircularProgressIndicator(),
-                                );
-                              default:
-                                if (snapshot.hasError) {
-                                  print('snapshot.error ${snapshot.error}');
-                                  return Center(
-                                    child: Text('Some error occurred ${snapshot.error}'),
-                                  );
-                                } else {
-                                  return buildLessons(taharaLessons!);
-                                }
-                            }
-                          },
-                        ),
-                      )
+                      // SizedBox(
+                      //   height: context.height * 0.5,
+                      //   child: FutureBuilder(
+                      //     future: controller.getData(),
+                      //     builder: (context, snapshot) {
+                      //       final taharaLessons = snapshot.data;
+                      //       switch (snapshot.connectionState) {
+                      //         case ConnectionState.waiting:
+                      //           return const Center(
+                      //             child: CircularProgressIndicator(),
+                      //           );
+                      //         default:
+                      //           if (snapshot.hasError) {
+                      //             print('snapshot.error ${snapshot.error}');
+                      //             return Center(
+                      //               child: Text(
+                      //                   'Some error occurred ${snapshot.error}'),
+                      //             );
+                      //           } else {
+                      //           }
+                      //       }
+                      //     },
+                      //   ),
+                      // )
+                      buildLessons(controller.lessonTahara)
                     ],
                   ),
                 ),

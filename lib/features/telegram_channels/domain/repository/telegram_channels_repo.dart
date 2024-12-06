@@ -4,4 +4,5 @@ import 'package:hiwayda_oracion_islamica/features/telegram_channels/data/models/
 
 abstract class TelegramChannelsRepo {
   Future<Either<Failure, TelegramChannels>> getChannels();
+  Future<Either<Failure, TelegramChannels>> getOnlineChannels();
 }

@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/local_data_source/the_key_to_islam_local_date_source.dart';
 // import 'package:elresala/features/sites/data/data_source/the_key_to_islam_local_date_source.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/helpers/get_failure_from_exception.dart';
 import '../../domain/repository/the_key_to_islam_repo.dart';
-import '../data_source/the_key_to_islam_local_date_source.dart';
 import '../models/the_key_to_islam_model.dart';
 
 class TheKeyToIslamRepositoryImp extends TheKeyToIslamRepo {

@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/repository/rasuluallh_repository_repository.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/rasuluallah/rasulullah_videos_controller.dart';
-import '../../../../core/services/archive_service.dart';
-import '../../data/data_source/rasuluallah_local_data_source.dart';
+import '../../data/data_source/local_data_source/rasuluallah_local_data_source.dart';
 import '../../data/repository/rasuluallh_repo_impl.dart';
 
 class RasuluallhVideosBindings extends Bindings {
@@ -11,8 +10,6 @@ class RasuluallhVideosBindings extends Bindings {
     Get.put<RasuluallhLocalDataSource>(
       RasuluallhLocalDataSourceImp(
         sharedPreferencesService: Get.find(),
-        archiveService:
-            Get.put(ArchiveService(sharedPreferencesService: Get.find())),
       ),
     );
     Get.put<RasuluallhRepository>(

@@ -1,8 +1,12 @@
 import 'dart:convert';
-
-import 'package:flutter/services.dart';
+import 'dart:developer';
+import 'dart:io';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/check_offline_files.dart';
+import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
 import 'package:hiwayda_oracion_islamica/features/ui_rone_screen/models/IntermediateSalahModel.dart';
+import 'package:path_provider/path_provider.dart';
 
 /// A controller class for the UiRoneScreen.
 ///
@@ -21,24 +25,36 @@ class UiRoneController extends GetxController {
 
   void loadData() async {
     file = Get.arguments['file'];
-    // print(file);
-    list = (await readJsonFile(file))
+    log(file);
+    list = (await checkOfflineFiles(file)
+            ? await readJsonFile(file)
+            : await loadOnlineFile(file))
         .map<IntermediateSalahModel>(IntermediateSalahModel.fromJson)
         .toList();
-    print(list[0].rakaa);
+    // print(list[0].rakaa);
     isLoading.value = false;
   }
 
-  static Future<List<dynamic>> readJsonFile(String path) async {
-    String data = await rootBundle.loadString(path);
-    final body;
+  Future<List<dynamic>> loadOnlineFile(String path) async {
     try {
-      body = await json.decode(data);
-      print(body[0]);
+      print('remote data');
+      final response = await http
+          .get(Uri.parse('${AppApiRoutes.jsonApi}${Get.arguments['file']}'));
+      final jsonString = utf8.decode(response.bodyBytes);
+      final finalData = await jsonDecode(jsonString);
+      return finalData;
     } catch (e) {
-      print(e.toString());
       return [];
+      // print(e);
     }
-    return body;
+  }
+
+  static Future<List<dynamic>> readJsonFile(String path) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/$path';
+    final file = File(filePath);
+    String jsonString = await file.readAsString();
+    final jsonResponse = json.decode(jsonString);
+    return jsonResponse;
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +38,7 @@ class HadithController extends GetxController
     SunnahItemModel(
         title: 'Las Cuarenta Nawawíes',
         subTitle: 'Los 40 hadices más famosos de las palabras del Profeta.',
-        filePath: 'assets/json/alnawawi.json',
+        filePath: 'alnawawi.json',
         extenstion: 'json'),
     SunnahItemModel(
         title: 'Hadices Qudsíes',
@@ -47,7 +49,7 @@ class HadithController extends GetxController
     SunnahItemModel(
         title: 'Riyad as-Salihin',
         subTitle: 'Un gran número de hadices útiles en varias ramas del Islam.',
-        filePath: 'assets/json/ryadelsalheen.json',
+        filePath: 'ryadelsalheen.json',
         extenstion: 'json'),
     SunnahItemModel(
         title: 'Ar-Rahiq al-Makhtum',
@@ -102,6 +104,7 @@ class HadithController extends GetxController
 
   late StateType stateType;
   Future<void> getSunnah(String path) async {
+    log(path);
     stateType = StateType.loading;
     update();
     GetHadithencHadithesUseCase getHadithencHadithesUseCase =

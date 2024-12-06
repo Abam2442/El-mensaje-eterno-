@@ -64,6 +64,7 @@ dependencies:
   http: any
   pdfx: ^2.8.0
   flutter_compass: ^0.8.0
+  supabase_flutter: ^2.8.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -84,14 +85,11 @@ flutter:
   assets:
     - assets/images/
     - assets/json/
-    - assets/json/quran.json
     - assets/audio/
-    - assets/video/
     - assets/svg/icons/
     - assets/svg/images/
     - assets/svg/
     - assets/books/
-    - assets/Json.zip
     - assets/images/quran.png
 
   fonts:

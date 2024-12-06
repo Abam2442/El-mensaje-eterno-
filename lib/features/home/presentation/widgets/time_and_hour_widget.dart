@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/controller/home_controller.dart';
-import '../../../../core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class TimeAndHourWidget extends StatelessWidget {
@@ -14,7 +13,7 @@ class TimeAndHourWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // HomeController homeController = Get.put(HomeController());
     HomeController controller = Get.find();
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         // Row(

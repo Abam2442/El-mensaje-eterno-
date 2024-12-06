@@ -4,4 +4,5 @@ import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/surah_en
 
 abstract class QuranRepo {
   Future<Either<Failure, List<Surah>>> getSurahs();
+  Future<Either<Failure, List<Surah>>> getData();
 }

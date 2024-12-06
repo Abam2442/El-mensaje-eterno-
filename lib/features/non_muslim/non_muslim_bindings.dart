@@ -9,12 +9,11 @@ class NonMuslimBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<NonMuslimRemoteDataSource>(
-      NonMuslimRemoteDataSourceImpl(apiService: Get.find()),
+      NonMuslimRemoteDataSourceImpl(),
     );
     Get.put<NonMuslimLocalDataSource>(
       NonMuslimLocalDataSourceImpl(
         sharedPreferencesService: Get.find(),
-        archiveService: Get.find(),
       ),
     );
     Get.put<NonMuslimRepo>(

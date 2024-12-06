@@ -25,7 +25,7 @@ class QuranBindings extends Bindings {
       ),
     );
     Get.put<QuranRemoteDataSource>(
-      QuranRemoteDataSourceImpl(apiService: Get.find()),
+      QuranRemoteDataSourceImp(),
     );
     Get.put<QuranLocalDataSource>(
       QuranLocalDataSourceImpl(),

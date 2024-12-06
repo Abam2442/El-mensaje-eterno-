@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/local_data_source/islam_guide_1_local_data_source.dart';
 // import 'package:elresala/features/sites/data/data_source/islam_qa_local_datasorce.dart';
 // import 'package:elresala/features/sites/data/models/islam_qa.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/helpers/get_failure_from_exception.dart';
 import '../../domain/repository/islam_guide_1_repository.dart';
 // import '../data_source/islam_qa_local_datasorce.dart';
-import '../data_source/islam_guide_1_local_data_source.dart';
 import '../models/islam_guide_1_model.dart';
 
 class IslamGuide1RepositoryImp extends IslamGuide1Repository {

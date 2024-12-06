@@ -347,7 +347,7 @@ import 'package:hiwayda_oracion_islamica/core/helper/extensions/string_to_from.d
 import 'package:hiwayda_oracion_islamica/data/local/local_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/model/praying_time_method_selector.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/data/model/praying_time_method_selector.dart';
 import 'package:intl/intl.dart';
 import 'package:location/location.dart';
 
@@ -380,11 +380,17 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
     if (AppPublicVar.coordinates == null) {
       Location location = Location();
       locationData = await location.getLocation();
-      AppPublicVar.coordinates =    Coordinates(locationData.latitude??0, locationData.longitude??0);
+      AppPublicVar.coordinates =
+          Coordinates(locationData.latitude ?? 0, locationData.longitude ?? 0);
     }
-    CalculationParameters params = CalculationMethodSelector.getCalculationMethod(locationData.latitude??0, locationData.longitude??0);
+    CalculationParameters params =
+        CalculationMethodSelector.getCalculationMethod(
+            locationData.latitude ?? 0, locationData.longitude ?? 0);
     params.madhab = Madhab.shafi;
-    prayerTimes = PrayerTimes(coordinates:  AppPublicVar.coordinates!,date:  dateToCalc,calculationParameters:  params,
+    prayerTimes = PrayerTimes(
+        coordinates: AppPublicVar.coordinates!,
+        date: dateToCalc,
+        calculationParameters: params,
         precision: true);
     current = prayerTimes.currentPrayer(date: DateTime.now());
     saveData(AppPublicVar.coordinates!);
@@ -541,9 +547,6 @@ class _PrayerTimesPageState extends State<PrayerTimesPage> {
       ),
     );
   }
-  
- 
-  
 }
 
 class PermissionprayerPage extends StatefulWidget {
@@ -641,5 +644,3 @@ class _PermissionprayerPageState extends State<PermissionprayerPage> {
     );
   }
 }
-
-

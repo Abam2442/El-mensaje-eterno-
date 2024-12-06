@@ -1,8 +1,13 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_palyer_widget.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 
@@ -17,6 +22,7 @@ class VideoIcon extends StatefulWidget {
 
 class _VideoIconState extends State<VideoIcon> {
   late VideoPlayerController videoPlayerController;
+  bool isInitialize = false;
 
   @override
   void initState() {
@@ -26,8 +32,24 @@ class _VideoIconState extends State<VideoIcon> {
 
   Future ini() async {
     if (!widget.videoPath.startsWith('http')) {
-      videoPlayerController = VideoPlayerController.asset(widget.videoPath);
-      await videoPlayerController.initialize();
+      log('[${widget.videoPath}]');
+      final directory = await getApplicationDocumentsDirectory();
+      final filePath = '${directory.path}/Videos/${widget.videoPath}';
+      final file = File(filePath);
+      videoPlayerController = file.existsSync()
+          ? (VideoPlayerController.file(file)
+            ..initialize().then((_) {
+              setState(() {
+                isInitialize = true;
+              });
+            }))
+          : VideoPlayerController.networkUrl(
+              Uri.parse('${AppApiRoutes.videoApi}${widget.videoPath}'))
+        ..initialize().then((_) {
+          setState(() {
+            isInitialize = true;
+          });
+        });
     }
   }
 
@@ -71,7 +93,11 @@ class _VideoIconState extends State<VideoIcon> {
                         // Image radius
                         child: Stack(
                           children: [
-                            VideoPlayer(videoPlayerController),
+                            isInitialize == false
+                                ? const Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : VideoPlayer(videoPlayerController),
                             const Center(
                                 child: Icon(
                               Icons.play_arrow,

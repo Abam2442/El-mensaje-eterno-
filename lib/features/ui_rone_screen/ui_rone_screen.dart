@@ -7,7 +7,7 @@ import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/custom_appbar.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/model/salah_practical_model.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/data/model/salah_practical_model.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_practical_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/custom_image_view.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_palyer_widget.dart';

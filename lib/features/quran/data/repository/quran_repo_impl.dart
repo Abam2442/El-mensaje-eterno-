@@ -25,4 +25,15 @@ class QuranRepoImpl implements QuranRepo {
       return Left(getFailureFromException(e));
     }
   }
+
+  @override
+  Future<Either<Failure, List<Surah>>> getData() async {
+    try {
+      var surahs = await quranRemoteDataSource.getData();
+
+      return Right(surahs);
+    } catch (e) {
+      return Left(getFailureFromException(e));
+    }
+  }
 }

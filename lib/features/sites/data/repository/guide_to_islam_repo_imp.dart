@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/local_data_source/guide_to_islam_local_data_source.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/helpers/get_failure_from_exception.dart';
 import '../../domain/entities/fixed_entities.dart';
 import '../../domain/repository/guide_to_islam_repository.dart';
-import '../data_source/guide_to_islam_local_data_source.dart';
 
 class GuideToIslamRepositoryImp extends GuideToIslamRepository {
   final GuideToIslamLocalDataSource islamLocalDataSource;

@@ -1,35 +1,29 @@
+import 'dart:convert';
+
 import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
-import 'package:hiwayda_oracion_islamica/core/services/api_service.dart';
-import 'package:hiwayda_oracion_islamica/features/main/data/model/pair_model.dart';
+import 'package:http/http.dart' as http;
+import 'package:hiwayda_oracion_islamica/features/quran/data/models/surah_model.dart';
+// import '';
 
 abstract class QuranRemoteDataSource {
-  // TODO This is example
-  Future<List<PairModel>> getCategoriesAsPair({required int repositoryId});
+  Future<List<SurahModel>> getData();
 }
 
-class QuranRemoteDataSourceImpl extends QuranRemoteDataSource {
-  final ApiService apiService;
-
-  QuranRemoteDataSourceImpl({required this.apiService});
-
-  // TODO This is example
+class QuranRemoteDataSourceImp extends QuranRemoteDataSource {
   @override
-  Future<List<PairModel>> getCategoriesAsPair(
-      {required int repositoryId}) async {
+  Future<List<SurahModel>> getData() async {
     try {
-      Map<String, dynamic> mapData = await apiService.get(
-        subUrl: AppApiRoutes.getCategoriesAsPair,
-        parameters: {
-          'repository_id': repositoryId.toString(),
-        },
-      );
-      final List<PairModel> expenses = mapData['data']
-          .map<PairModel>(
-            (item) => PairModel.fromJson(item),
+      // log(14444);
+      // print('remotesfasdf');
+      final response =
+          await http.get(Uri.parse('${AppApiRoutes.jsonApi}quran.json'));
+      final jsonString = utf8.decode(response.bodyBytes);
+      final finalData = jsonDecode(jsonString);
+      return finalData
+          .map<SurahModel>(
+            (surah) => SurahModel.fromJson(surah),
           )
           .toList();
-
-      return Future.value(expenses);
     } catch (e) {
       rethrow;
     }

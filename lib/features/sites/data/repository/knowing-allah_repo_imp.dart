@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/local_data_source/knowing_allah_local_data_source.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/data/models/knowing_allah_model.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 // import 'package:elresala/features/sites/data/data_source/islam_qa_local_datasorce.dart';
@@ -6,7 +7,6 @@ import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_en
 import '../../../../core/errors/failures.dart';
 import '../../../../core/helpers/get_failure_from_exception.dart';
 import '../../domain/repository/knowing_allah_repository.dart';
-import '../data_source/knowing_allah_local_data_source.dart';
 
 class KnowingAllahRepositoryImp extends KnowingAllahRepository {
   final KnowingAllahLocalDataSource knowingAllahLocalDataSource;

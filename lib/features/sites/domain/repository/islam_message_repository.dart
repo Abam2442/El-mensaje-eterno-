@@ -9,4 +9,10 @@ abstract class IslamMessageRepository {
   Future<Either<Failure, List<MediaEntity>>> getAudio();
   Future<Either<Failure, List<MediaEntity>>> getVideos();
   Future<Either<Failure, List<MediaEntity>>> getQuranVideos();
+  Future<Either<Failure, List<IslamMessageArticalEntities>>>
+      getOnlineArticales();
+  Future<Either<Failure, List<MediaCategoryEntity>>> getOnlineBooks();
+  Future<Either<Failure, List<MediaEntity>>> getOnlineAudios();
+  Future<Either<Failure, List<MediaEntity>>> getOnlineVideos();
+  Future<Either<Failure, List<MediaEntity>>> getOnlineQuranVideos();
 }

@@ -1,11 +1,11 @@
 import 'dart:convert';
+import 'dart:io';
 
-import 'package:flutter/services.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
-import 'package:hiwayda_oracion_islamica/core/services/archive_service.dart';
 import 'package:hiwayda_oracion_islamica/core/services/shared_preferences_service.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/model/sunnah_data_model.dart';
+import 'package:path_provider/path_provider.dart';
 
 abstract class HadithLocalDataSource {
   Future<List<SunnahHadithModel>> getHadithes();
@@ -14,26 +14,25 @@ abstract class HadithLocalDataSource {
 
 class HadithLocalDataSourceImpl extends HadithLocalDataSource {
   final SharedPreferencesService sharedPreferencesService;
-  final ArchiveService archiveService;
 
   HadithLocalDataSourceImpl({
     required this.sharedPreferencesService,
-    required this.archiveService,
   });
 
   @override
   Future<List<SunnahHadithModel>> getHadithes() async {
     try {
-      String? fileContent = await archiveService.readFile(name: AppKeys.hadith);
-
+      final directory = await getApplicationDocumentsDirectory();
+      final filePath = '${directory.path}/${AppKeys.hadith}';
+      final file = File(filePath);
+      String jsonString = await file.readAsString();
       List<SunnahHadithModel> sunnahHadithes = [];
-      if (fileContent != null) {
-        var jsonData = await json.decode(fileContent) as Map<String, dynamic>;
+      if (jsonString.isNotEmpty) {
+        var jsonData = await json.decode(jsonString) as Map<String, dynamic>;
         sunnahHadithes = jsonData.entries
             .map((entry) => SunnahHadithModel.fromJson(entry.value, entry.key))
             .toList();
       }
-      print({sunnahHadithes});
       return sunnahHadithes;
     } catch (e) {
       rethrow;
@@ -43,8 +42,11 @@ class HadithLocalDataSourceImpl extends HadithLocalDataSource {
   @override
   Future<List<SunnahDataModel>> getSunnah(String path) async {
     try {
-      String file = await rootBundle.loadString(path);
-      List data = json.decode(file);
+      final directory = await getApplicationDocumentsDirectory();
+      final filePath = '${directory.path}/${AppKeys.hadith}';
+      final file = File(filePath);
+      String jsonString = await file.readAsString();
+      List data = json.decode(jsonString);
       final ref =
           data.map((element) => SunnahDataModel.fromjson(element)).toList();
       return ref;

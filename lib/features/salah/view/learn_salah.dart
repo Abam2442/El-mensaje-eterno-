@@ -6,18 +6,20 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/salah_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/Qibla/qibla_compass.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/tahara_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_page.dart';
 
 import '../../home/presentation/widgets/section_item_homeP_page_widget.dart';
-import 'prayer_times_page.dart';
 
 class LearnSalah extends StatelessWidget {
   const LearnSalah({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Get.put(SalahController());
+    SalahBindings().dependencies();
     return Scaffold(
       appBar: AppBar(
         title: const Text(

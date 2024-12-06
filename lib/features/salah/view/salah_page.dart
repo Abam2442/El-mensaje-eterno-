@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/widgets/section_item_homeP_page_widget.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/salah_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/lessons_details_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/practical_learn_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_importance_page.dart';
@@ -17,6 +17,7 @@ class SalahPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SalahController controller = SalahController.instance;
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -60,9 +61,8 @@ class SalahPage extends StatelessWidget {
                           AppRoutes.routeTo(
                               context,
                               LessonsDetailsPage(
-                                list:
-                                    AppPublicVar.taharaLessons[1].lessonDetail,
-                                title: AppPublicVar.taharaLessons[1].title,
+                                list: controller.lessonTahara[1].lessonDetail,
+                                title: controller.lessonTahara[1].title,
                                 icon: AppSvgs.salahrokoa,
                               ));
                         },
@@ -180,9 +180,8 @@ Esa es la clave de las letras especiales utilizadas en los vídeos ilustrativos.
                           AppRoutes.routeTo(
                               context,
                               LessonsDetailsPage(
-                                list:
-                                    AppPublicVar.taharaLessons[3].lessonDetail,
-                                title: AppPublicVar.taharaLessons[3].title,
+                                list: controller.lessonTahara[3].lessonDetail,
+                                title: controller.lessonTahara[3].title,
                                 icon: AppSvgs.salahrokoa,
                               ));
                         },

@@ -4,4 +4,5 @@ import 'package:hiwayda_oracion_islamica/features/non_muslim/data/models/course_
 
 abstract class NonMuslimRepo {
   Future<Either<Failure, List<NonMuslimModel>>> getCourses();
+  Future<Either<Failure, List<NonMuslimModel>>> getOnlineData();
 }

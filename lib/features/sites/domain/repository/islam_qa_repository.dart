@@ -5,4 +5,5 @@ import '../../data/models/islam_qa.dart';
 
 abstract class IslamQARepository {
   Future<Either<Failure, List<Islamqa>>> getArtical();
+  Future<Either<Failure, List<Islamqa>>> getOnlineArtical();
 }

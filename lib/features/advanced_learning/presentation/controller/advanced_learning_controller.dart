@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
 
 import '../../../../core/constants/app_pages_routes.dart';
 
@@ -126,6 +127,9 @@ class AdvancedLearningController extends GetxController {
         "copyRight":
             'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
         "link": 'http://www.pbuh.us',
+        "fileName": AppKeys.muhammadTheMessengerOfGod,
+        "sectionName": 'Muhammad-the-messenger-of-God',
+        "isSites": true,
         "description": "sobre el profeta Muhammad ﷺ",
         "targetScreen": AppPagesRoutes.muhammadTheMessangerOfGod,
       },
@@ -142,6 +146,9 @@ class AdvancedLearningController extends GetxController {
         "copyRight":
             'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original ',
         "link": 'http://www.jesusandquran.com',
+        "sectionName": 'Jesus-in-quran',
+        "isSites": true,
+        "fileName": AppKeys.jesusQuran,
         "description": "sobre profeta Jesús la paz sea con él",
         "targetScreen": AppPagesRoutes.jesusInQuran,
       },
@@ -186,6 +193,9 @@ class AdvancedLearningController extends GetxController {
             'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original ',
         "link": 'https://www.the-faith.com',
         "description": "sobre nuestra creencia",
+        "sectionName": 'islamfaith',
+        "isSites": true,
+        "fileName": AppKeys.islamFaith,
         "targetScreen": AppPagesRoutes.islamFaith,
       },
       {
@@ -211,6 +221,9 @@ class AdvancedLearningController extends GetxController {
         "link": 'http://themessageofislam.org',
         "description": "Una explicación del Islam",
         "targetScreen": AppPagesRoutes.messageOfIslam,
+        "sectionName": 'message-of-islam',
+        "isSites": true,
+        "fileName": AppKeys.messageOfIslam,
       },
       {
         "title": "Universo Islámico",
@@ -218,6 +231,9 @@ class AdvancedLearningController extends GetxController {
             'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
         "link": 'http://islamuniverse.org',
         "description": "Una explicación del Islam",
+        "sectionName": 'islam-universe',
+        "isSites": true,
+        "fileName": AppKeys.islamUniverse,
         "targetScreen": AppPagesRoutes.islamUniverse,
       },
       {
@@ -235,6 +251,9 @@ class AdvancedLearningController extends GetxController {
         "link": 'http://islam-port.com',
         "description": "Una explicación del Islam",
         "targetScreen": AppPagesRoutes.islamPort,
+        "sectionName": 'islam-port',
+        "isSites": true,
+        "fileName": AppKeys.islamPort,
       },
 
       // {
@@ -251,6 +270,9 @@ class AdvancedLearningController extends GetxController {
             'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
         "link": '',
         "description": "La verdad sobre el Islam",
+        "sectionName": 'islam-Religion-of-peace',
+        "isSites": true,
+        "fileName": AppKeys.islamReligionOfPeace,
         "targetScreen": AppPagesRoutes.islamReligionOfPace,
       },
       {
@@ -260,6 +282,9 @@ class AdvancedLearningController extends GetxController {
         "link": 'http://www.humanrightsinislam.com',
         "description": "La verdad sobre el Islam",
         "targetScreen": AppPagesRoutes.huminRight,
+        "sectionName": 'Spanish',
+        "isSites": true,
+        "fileName": AppKeys.humanRights,
       },
       {
         "title": "la mujer en el Islam",
@@ -268,6 +293,9 @@ class AdvancedLearningController extends GetxController {
         "link": 'http://www.womeninislam.ws',
         "description": "La verdad sobre el Islam",
         "targetScreen": AppPagesRoutes.womenInIslam,
+        "sectionName": 'women-in-islam',
+        "isSites": true,
+        "fileName": AppKeys.womanInIslam,
       },
       {
         "title": "Romance en el Islam",
@@ -276,6 +304,9 @@ class AdvancedLearningController extends GetxController {
         "link": 'http://www.romanceinislam.com',
         "description": "Entre el hombre y su mujer",
         "targetScreen": AppPagesRoutes.romanceInIslam,
+        "sectionName": 'romance-in-islam',
+        "isSites": true,
+        "fileName": AppKeys.romanceInIslam,
       },
       {
         "title": "Amor en el Islam",
@@ -284,6 +315,9 @@ class AdvancedLearningController extends GetxController {
         "link": 'http://loveinislam.ws',
         "description": "Entre el hombre y su mujer",
         "targetScreen": AppPagesRoutes.loveInIslam,
+        "sectionName": 'love-in-islam',
+        "isSites": true,
+        "fileName": AppKeys.loveInIslam,
       },
       {
         "title": "inovación (Bidaa) en la adoración",
@@ -292,6 +326,9 @@ class AdvancedLearningController extends GetxController {
         "link": 'http://www.bidaainislam.com',
         "description": "Compromiso con la ley de Dios sin cambios",
         "targetScreen": AppPagesRoutes.bidaaInIslam,
+        "sectionName": 'bidaa-in-islam',
+        "isSites": true,
+        "fileName": AppKeys.bidaaInIslam,
       },
       {
         "title": "El Principio y el fin",
@@ -299,6 +336,9 @@ class AdvancedLearningController extends GetxController {
             'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
         "link": 'http://www.thisistruth.org',
         "description": "El principio y el fin de la Vida",
+        "fileName": AppKeys.beginningAndEnd,
+        'sectionName': 'beginning-and-end',
+        "isSites": true,
         "targetScreen": AppPagesRoutes.beginningAndEnd,
       },
       {
@@ -308,6 +348,9 @@ class AdvancedLearningController extends GetxController {
         "link": 'http://www.athkar.ws',
         "description": "Una explicación del Islam",
         "targetScreen": AppPagesRoutes.hisnulMumin,
+        "sectionName": 'Spanish',
+        "isSites": true,
+        "fileName": AppKeys.hisnulmumin,
       },
       {
         "title": "los primeros pasos",
@@ -316,6 +359,9 @@ class AdvancedLearningController extends GetxController {
         "link": 'https://www.learningislam.com',
         "description": "Una explicación del Islam",
         "targetScreen": AppPagesRoutes.firstSteps,
+        "sectionName": '1st-steps',
+        "isSites": true,
+        "fileName": AppKeys.firstSteps,
       },
       {
         "title": "Aprende el Islam",
@@ -595,11 +641,11 @@ class AdvancedLearningController extends GetxController {
 
   void search(String query) {
     searchResult.clear();
-    page.forEach((item) {
-      item.forEach((items) {
+    for (var item in page) {
+      for (var items in item) {
         items['title'].contains(query) ? searchResult.add(items) : null;
-      });
-    });
+      }
+    }
     print(searchResult);
   }
 

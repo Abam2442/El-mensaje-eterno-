@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/custom_appbar.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/primary_shimmer.dart';
 import 'package:hiwayda_oracion_islamica/features/faith/controller/faith_controller.dart';
@@ -13,7 +14,7 @@ class FaithScreen extends GetView<FaithController> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: Obx(() => controller.isLoading.value
+      child: Obx(() => controller.getLessonsState.value == StateType.loading
           ? Scaffold(
               appBar: CustomAppbar(title: Get.arguments['title'], tabs: const [
                 Tab(

@@ -3,7 +3,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/model/wudu_practical_model.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/data/model/wudu_practical_model.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/audio_icon.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_icon.dart';
 
@@ -31,7 +31,8 @@ class _WuduPracticalPageState extends State<WuduPracticalPage> {
   }
 
   void getData() async {
-    wuduPracticalStep = await WuduStepsFromJson.getData(context, widget.jsonFile);
+    wuduPracticalStep =
+        await WuduStepsFromJson.getData(context, widget.jsonFile);
     setState(() {
       isLoading = false;
     });
@@ -106,7 +107,8 @@ class StepPage extends StatelessWidget {
 }
 
 class TopicPage extends StatefulWidget {
-  const TopicPage({required this.topic, required this.index, Key? key}) : super(key: key);
+  const TopicPage({required this.topic, required this.index, Key? key})
+      : super(key: key);
   final NestedTopics topic;
   final int index;
 
@@ -172,7 +174,10 @@ class _TopicPageState extends State<TopicPage> {
             ],
           ),
         if (widget.topic.audio != '0' && widget.topic.transliteration != '0')
-          AudioIcon(audioPath: widget.topic.audio, transliteration: widget.topic.transliteration, index: widget.index),
+          AudioIcon(
+              audioPath: widget.topic.audio,
+              transliteration: widget.topic.transliteration,
+              index: widget.index),
         10.hSize,
         if (widget.topic.video != '0') VideoIcon(videoPath: widget.topic.video),
 

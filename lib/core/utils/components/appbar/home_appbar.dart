@@ -6,6 +6,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/features/about/about_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/about/view/about_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/download_screen/download_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/question/question_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/copy_right_page.dart';
 import 'package:hiwayda_oracion_islamica/features/search/search_screen.dart';
@@ -35,6 +36,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           icon: const Icon(Icons.search),
           onPressed: () => Get.to(() => const SearchScreen()),
+        ),
+        IconButton(
+          icon: const Icon(Icons.download),
+          onPressed: () => Get.to(() => const DownloadScreen()),
         )
       ],
       elevation: 0,

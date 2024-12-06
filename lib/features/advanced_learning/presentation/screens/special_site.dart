@@ -5,6 +5,8 @@ import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/widgets/item%20_card.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/controller/non_muslim_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/screens/non_muslim_topic_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/sites_bindings.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/sites_main_screen.dart';
 
 class SpecialSite extends StatelessWidget {
   const SpecialSite({super.key});
@@ -25,7 +27,7 @@ class SpecialSite extends StatelessWidget {
               return InkWell(
                 onTap: () {
                   if (controller.selectedPart == 0) {
-                    // final cc = Get.put(NonMuslimController());
+                    // Get.put(NonMuslimController());
                     // print(cc.hadithes);
 
                     Get.to(
@@ -41,7 +43,21 @@ class SpecialSite extends StatelessWidget {
                     );
                   } else {
                     if (controller.page[controller.selectedPart][index]
-                        ['targetScreen'] is String) {
+                            ['isSites'] !=
+                        null) {
+                      Get.to(
+                          () => SitesMainScreen(
+                              fileName: controller.page[controller.selectedPart]
+                                  [index]['fileName'],
+                              sectionName:
+                                  controller.page[controller.selectedPart]
+                                      [index]['sectionName']),
+                          binding: SitesBindings());
+                    } else if (controller.page[controller.selectedPart][index]
+                            ['targetScreen'] is String &&
+                        controller.page[controller.selectedPart][index]
+                                ['isSites'] ==
+                            null) {
                       Get.toNamed(
                         controller.page[controller.selectedPart][index]
                             ['targetScreen'],

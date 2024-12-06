@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controller/bidaa_controller.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/sites_controller.dart';
 import '../widget/app_bar_custom.dart';
 import '../widget/artical_custom.dart';
 import '../widget/inkwell_custom.dart';
@@ -10,10 +11,11 @@ class BidaaInIslamScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(BidaaInIslamControllerImp());
+    Get.put(SitesController(AppKeys.bidaaInIslam, 'bidaa-in-islam'));
+    // Get.put(BidaaInIslamControllerImp());
     return Scaffold(
       appBar: const AppBarCustom(title: 'Bidaa in islam').customAppBar(context),
-      body: GetBuilder<BidaaInIslamControllerImp>(
+      body: GetBuilder<SitesController>(
           builder: (controller) => Container(
               margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
               child: ListView.builder(

@@ -6,4 +6,7 @@ import 'package:hiwayda_oracion_islamica/features/hadith/presentation/model/sunn
 abstract class HadithRepo {
   Future<Either<Failure, List<SunnahHadithModel>>> getHadithes();
   Future<Either<Failure, List<SunnahDataModel>>> getSunnah(String path);
+  Future<Either<Failure, List<SunnahHadithModel>>> getOnlineHadithData();
+  Future<Either<Failure, List<SunnahDataModel>>> getOnlineSunnahData(
+      String path);
 }

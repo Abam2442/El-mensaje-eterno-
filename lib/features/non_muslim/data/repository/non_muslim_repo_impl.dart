@@ -25,4 +25,14 @@ class NonMuslimRepoImpl implements NonMuslimRepo {
       return Left(getFailureFromException(e));
     }
   }
+
+  @override
+  Future<Either<Failure, List<NonMuslimModel>>> getOnlineData() async {
+    try {
+      final hadithes = await nonMuslimRemoteDataSource.getOnlineData();
+      return Right(hadithes);
+    } catch (e) {
+      return Left(getFailureFromException(e));
+    }
+  }
 }
