@@ -34,6 +34,8 @@ class IslamReligionControllerImp extends GetxController {
   }
 
   Future<void> getArtical() async {
+    getArticalsState = StateType.loading;
+    update();
     IslamReligionUseCase islamReligionUseCase =
         IslamReligionUseCase(Get.find());
     var result = await islamReligionUseCase();

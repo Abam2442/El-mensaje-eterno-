@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/remote_data_source/guide_to_islam_remote_data_source.dart';
 import '../../data/data_source/local_data_source/guide_to_islam_local_data_source.dart';
 import '../../data/repository/guide_to_islam_repo_imp.dart';
 import '../../domain/repository/guide_to_islam_repository.dart';
@@ -8,14 +9,12 @@ class GuideToIslamBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<GuideToIslamLocalDataSource>(
-      GuideToIslamLocalDataSourceImpl(
-        sharedPreferencesService: Get.find(),
-      ),
+      GuideToIslamLocalDataSourceImpl(),
     );
     Get.put<GuideToIslamRepository>(
       GuideToIslamRepositoryImp(
-        islamLocalDataSource: Get.find(),
-      ),
+          islamLocalDataSource: Get.find(),
+          Get.put(GuideToIslamRemoteDataSourceImpl())),
     );
 
     Get.put(GuideToIslamControllerImp());

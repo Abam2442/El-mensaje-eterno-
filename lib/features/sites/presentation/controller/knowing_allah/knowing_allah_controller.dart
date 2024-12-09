@@ -32,6 +32,8 @@ class KnowingAllahControllerImp extends GetxController {
   }
 
   Future<void> getArtical() async {
+    getArticalsState = StateType.loading;
+    update();
     await Future.delayed(const Duration(milliseconds: 200));
     KnowingAllahUseCase knowingAllahUseCase = KnowingAllahUseCase(Get.find());
     var result = await knowingAllahUseCase();

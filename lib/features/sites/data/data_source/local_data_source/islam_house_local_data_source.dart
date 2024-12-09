@@ -1,8 +1,7 @@
-import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_assets_data.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/fixed_entities.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
-import '../../../../../core/constants/app_keys.dart';
-import '../../../../../core/services/shared_preferences_service.dart';
-import '../../../domain/entities/fixed_entities.dart';
 
 abstract class IslamHouseLocalDataSource {
   Future<List<FixedEntities>> getContect();
@@ -13,22 +12,17 @@ abstract class IslamHouseLocalDataSource {
 }
 
 class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
-  final SharedPreferencesService sharedPreferencesService;
+  // final SharedPreferencesService sharedPreferencesService;
 
-  IslamHouseLocalDataSourceImpl({
-    required this.sharedPreferencesService,
-  });
+  // IslamHouseLocalDataSourceImpl({
+  //   // required this.sharedPreferencesService,
+  // });
 
   @override
   Future<List<FixedEntities>> getContect() async {
     try {
-      // String? islamHouseJson =
-      // await archiveService.readFile(name: AppKeys.islamHouse);
-      final jsonData = await getOfflineData(AppKeys.islamHouse);
-
       List<FixedEntities> articals = [];
-      // if (islamHouseJson != null) {
-      // var jsonData = json.decode(islamHouseJson);
+      final jsonData = await getAssetsData(AppKeys.islamHouse);
 
       jsonData['islam-house']['Articles'].forEach((key, value) {
         articals.add(FixedEntities(
@@ -36,7 +30,6 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
           content: value,
         ));
       });
-      // }
 
       return Future.value(articals);
     } catch (e) {
@@ -51,7 +44,7 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
       // String? json =
       //
       // await archiveService.readFile(name: AppKeys.islamHouseBooks);
-      final jsonData = await getOfflineData(AppKeys.islamHouseBooks);
+      final jsonData = await getAssetsData(AppKeys.islamHouseBooks);
 
       // if (json != null) {
       // Map<String, dynamic> decoded = jsonDecode(json);
@@ -72,7 +65,7 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
       List<MediaEntity> result = [];
       // String? json =
       // await archiveService.readFile(name: AppKeys.islamHouseVideos);
-      final jsonData = await getOfflineData(AppKeys.islamHouseVideos);
+      final jsonData = await getAssetsData(AppKeys.islamHouseVideos);
 
       // if (json != null) {
       // Map<String, dynamic> decoded = jsonDecode(json);
@@ -92,7 +85,7 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
     try {
       List<MediaEntity> result = [];
       // String? json =
-      final jsonData = await getOfflineData(AppKeys.islamHouseAudios);
+      final jsonData = await getAssetsData(AppKeys.islamHouseAudios);
 
       // await archiveService.readFile(name: AppKeys.islamHouseAudios);
       // if (json != null) {
@@ -112,7 +105,7 @@ class IslamHouseLocalDataSourceImpl extends IslamHouseLocalDataSource {
   Future<List<FixedEntities>> getFatwa() async {
     try {
       List<FixedEntities> result = [];
-      final jsonData = await getOfflineData(AppKeys.islamHouseFatwa);
+      final jsonData = await getAssetsData(AppKeys.islamHouseFatwa);
 
       // String? json =
       // await archiveService.readFile(name: AppKeys.islamHouseFatwa);

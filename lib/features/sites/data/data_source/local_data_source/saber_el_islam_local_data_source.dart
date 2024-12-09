@@ -1,30 +1,17 @@
-import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
-
-import '../../../../../core/constants/app_keys.dart';
-import '../../../../../core/services/shared_preferences_service.dart';
-import '../../models/saber_el_islam_model.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_assets_data.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/data/models/saber_el_islam_model.dart';
 
 abstract class SaberElIslamLocalDataSource {
   Future<List<SaberElIslamModel>> getArtical();
 }
 
 class SaberElIslamLocalDataSourceImp extends SaberElIslamLocalDataSource {
-  final SharedPreferencesService sharedPreferencesService;
-
-  SaberElIslamLocalDataSourceImp({
-    required this.sharedPreferencesService,
-  });
   @override
   Future<List<SaberElIslamModel>> getArtical() async {
-    // Get.find<Logger>()
-    //     .i("Start `getArtical` in |SaberElIslamLocalDataSourceImp|");
-    // String? fileContent =
-    // await archiveService.readFile(name: AppKeys.saberElIslam);
-    final jsonData = await getOfflineData(AppKeys.saberElIslam);
+    final jsonData = await getAssetsData(AppKeys.saberElIslam);
 
     List<SaberElIslamModel> articals = [];
-    // if (fileContent != null) {
-    // Map jsonData = json.decode(fileContent);
     jsonData.forEach((key, value) {
       List<SEIArtical> subArticals = [];
       value['المقالات'].forEach((key, value) {
@@ -35,9 +22,6 @@ class SaberElIslamLocalDataSourceImp extends SaberElIslamLocalDataSource {
       articals.add(SaberElIslamModel(
           articals: subArticals, link: value['الرابط'], name: key));
     });
-    // }
-    // Get.find<Logger>()
-    //     .w("End `getArtical` in |SaberElIslamLocalDataSourceImp|");
     return Future.value(articals);
   }
 }

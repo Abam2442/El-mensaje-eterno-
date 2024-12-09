@@ -8,14 +8,10 @@ class GuideToIslamVideosBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<GuideToIslamLocalDataSource>(
-      GuideToIslamLocalDataSourceImpl(
-        sharedPreferencesService: Get.find(),
-      ),
+      GuideToIslamLocalDataSourceImpl(),
     );
     Get.put<GuideToIslamRepository>(
-      GuideToIslamRepositoryImp(
-        islamLocalDataSource: Get.find(),
-      ),
+      GuideToIslamRepositoryImp(islamLocalDataSource: Get.find(), null),
     );
 
     Get.put(GuideToIslamVideosControllerImp());

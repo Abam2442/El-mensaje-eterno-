@@ -8,9 +8,7 @@ class LearningIslamBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<LearningIslamLocalDataSource>(
-      LearningIslamLocalDataSourceImpl(
-        sharedPreferencesService: Get.find(),
-      ),
+      LearningIslamLocalDataSourceImpl(),
     );
     Get.put<LearningIslamRepository>(
       LearningIslamRepositoryImp(

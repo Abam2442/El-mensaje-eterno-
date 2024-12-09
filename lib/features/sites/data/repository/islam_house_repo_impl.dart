@@ -14,7 +14,7 @@ class IslamHouseRepositoryImp extends IslamHouseRepository {
 
   @override
   Future<Either<Failure, List<FixedEntities>>> getContent() async {
-    await islamHouseLocalDataSource.getContect();
+    // await islamHouseLocalDataSource.getContect();
     try {
       var content = await islamHouseLocalDataSource.getContect();
 

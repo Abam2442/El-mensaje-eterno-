@@ -9,9 +9,7 @@ class SaberElIslamBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<SaberElIslamLocalDataSource>(
-      SaberElIslamLocalDataSourceImp(
-        sharedPreferencesService: Get.find(),
-      ),
+      SaberElIslamLocalDataSourceImp(),
     );
     Get.put<SaberElIslamRepository>(
       SaberElIslamRepositoryImp(

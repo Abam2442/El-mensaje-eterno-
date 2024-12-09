@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/local_data_source/guide_to_islam_local_data_source.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/remote_data_source/guide_to_islam_remote_data_source.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/helpers/get_failure_from_exception.dart';
@@ -8,7 +9,9 @@ import '../../domain/repository/guide_to_islam_repository.dart';
 
 class GuideToIslamRepositoryImp extends GuideToIslamRepository {
   final GuideToIslamLocalDataSource islamLocalDataSource;
-  GuideToIslamRepositoryImp({
+  final GuideToIslamRemoteDataSource? _dataSource;
+  GuideToIslamRepositoryImp(
+    this._dataSource, {
     required this.islamLocalDataSource,
   });
 
@@ -51,6 +54,16 @@ class GuideToIslamRepositoryImp extends GuideToIslamRepository {
       var content = await islamLocalDataSource.getVideos();
 
       return Right(content);
+    } catch (e) {
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<FixedEntities>>> getOnlineContent() async {
+    try {
+      final respone = await _dataSource!.getOnlineContect();
+      return Right(respone);
     } catch (e) {
       return Left(getFailureFromException(e));
     }

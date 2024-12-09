@@ -42,6 +42,9 @@ class IslamLandControllerImp extends GetxController {
   }
 
   Future<void> getContent() async {
+    getVideosState = StateType.loading;
+    update();
+
     IslamLandUseCase islamLandUseCase = IslamLandUseCase(Get.find());
     var result = await islamLandUseCase.call();
     result.fold(
@@ -65,7 +68,7 @@ class IslamLandControllerImp extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    await getContent();
     searchController = TextEditingController();
+    await getContent();
   }
 }

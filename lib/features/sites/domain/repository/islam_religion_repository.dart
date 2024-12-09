@@ -4,4 +4,5 @@ import '../entities/islam_religion_entities.dart';
 
 abstract class IslamReligionRepository {
   Future<Either<Failure, List<IslamReligionEntities>>> getContent();
+  Future<Either<Failure, List<IslamReligionEntities>>> getOnlineContent();
 }

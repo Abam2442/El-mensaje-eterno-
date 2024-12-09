@@ -1,4 +1,4 @@
-import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_assets_data.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 
 import '../../../../../core/constants/app_keys.dart';
@@ -27,7 +27,7 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
     List<KnowingAllahSubCategoryModel> articles = [];
     // if (fileContent != null) {
     // Map jsonData = json.decode(fileContent);
-    final jsonData = await getOfflineData(AppKeys.knowingAllah);
+    final jsonData = await getAssetsData(AppKeys.knowingAllah);
 
     jsonData['knowing-Allah']['Articles'].forEach((key, value) {
       List<FixedEntities> subCatigory = [];
@@ -59,7 +59,7 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
       //     await archiveService.readFile(name: AppKeys.knowingAllahBooks);
       // if (json != null) {
       // Map<String, dynamic> decoded = jsonDecode(json);
-      final jsonData = await getOfflineData(AppKeys.knowingAllahBooks);
+      final jsonData = await getAssetsData(AppKeys.knowingAllahBooks);
 
       (jsonData['knowing-Allah']['Books'] as Map).forEach((name, url) {
         result.add(MediaEntity(name: name, url: url));
@@ -79,7 +79,7 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
       //     await archiveService.readFile(name: AppKeys.knowingAllahAudios);
       // if (json != null) {
       //   Map<String, dynamic> decoded = jsonDecode(json);
-      final jsonData = await getOfflineData(AppKeys.knowingAllahAudios);
+      final jsonData = await getAssetsData(AppKeys.knowingAllahAudios);
 
       (jsonData['knowing-Allah']['Audios'] as Map).forEach((name, url) {
         result.add(MediaEntity(name: name, url: url));
@@ -99,7 +99,7 @@ class KnowingAllahLocalDataSourceImp extends KnowingAllahLocalDataSource {
       //     await archiveService.readFile(name: AppKeys.knowingAllahVideos);
       // if (json != null) {
       //   Map<String, dynamic> decoded = jsonDecode(json);
-      final jsonData = await getOfflineData(AppKeys.knowingAllahVideos);
+      final jsonData = await getAssetsData(AppKeys.knowingAllahVideos);
 
       (jsonData['knowing-Allah']['Videos'] as Map).forEach((category, dataMap) {
         List<MediaEntity> data = [];

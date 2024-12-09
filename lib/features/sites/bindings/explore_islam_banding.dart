@@ -8,9 +8,7 @@ class ExploreIslamBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<ExploreIslamLocalDataSource>(
-      ExploreIslamLocalDataSourceImp(
-        sharedPreferencesService: Get.find(),
-      ),
+      ExploreIslamLocalDataSourceImp(),
     );
     Get.put<FixedRepository>(
       ExploreIslamRepositoryImp(

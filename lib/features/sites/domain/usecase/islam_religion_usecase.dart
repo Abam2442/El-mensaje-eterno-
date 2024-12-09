@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/check_offline_files.dart';
 import '../../../../core/errors/failures.dart';
 
 import '../entities/islam_religion_entities.dart';
@@ -11,7 +13,8 @@ class IslamReligionUseCase {
   );
 
   Future<Either<Failure, List<IslamReligionEntities>>> call() async {
-    
-    return islamReligionRepository.getContent();
+    return await checkOfflineFiles(AppKeys.islamReligion)
+        ? await islamReligionRepository.getContent()
+        : await islamReligionRepository.getOnlineContent();
   }
 }

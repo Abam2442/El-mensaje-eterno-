@@ -9,8 +9,8 @@ class IslamHouseVideosBindings extends Bindings {
   dependencies() async {
     Get.put<IslamHouseLocalDataSource>(
       IslamHouseLocalDataSourceImpl(
-        sharedPreferencesService: Get.find(),
-      ),
+          // sharedPreferencesService: Get.find(),
+          ),
     );
     Get.put<IslamHouseRepository>(
       IslamHouseRepositoryImp(

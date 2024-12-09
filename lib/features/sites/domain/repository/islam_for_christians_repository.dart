@@ -4,4 +4,5 @@ import '../entities/islam_for_christians_entities.dart';
 
 abstract class IslamForChristiansRepository {
   Future<Either<Failure, List<IslamForChristiansEntities>>> getContent();
+  Future<Either<Failure, List<IslamForChristiansEntities>>> getOnlineContent();
 }

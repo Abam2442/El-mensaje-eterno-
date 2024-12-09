@@ -8,9 +8,7 @@ class JesusMuslimBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<JesusMuslimLocalDataSource>(
-      JesusMuslimLocalDataSourceImp(
-        sharedPreferencesService: Get.find(),
-      ),
+      JesusMuslimLocalDataSourceImp(),
     );
     Get.put<JesusMuslimRepository>(
       JesusMuslimRepositoryImp(

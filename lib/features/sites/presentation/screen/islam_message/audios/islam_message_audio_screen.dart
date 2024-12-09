@@ -5,8 +5,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/view_or_download_inkwell.dart';
 import '../../../widget/app_bar_custom.dart';
 
-class IslamMessageAudiosMainScreen
-    extends GetView<IslamMessageAudiosControllerImp> {
+class IslamMessageAudiosMainScreen extends StatelessWidget {
   const IslamMessageAudiosMainScreen({
     super.key,
   });

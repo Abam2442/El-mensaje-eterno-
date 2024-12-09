@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/local_data_source/islam_religion_local_data_source.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/remote_data_source/islam_religion_remote_data_source.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/helpers/get_failure_from_exception.dart';
 import '../../domain/entities/islam_religion_entities.dart';
@@ -7,14 +8,28 @@ import '../../domain/repository/islam_religion_repository.dart';
 
 class IslamReligionRepositoryImp extends IslamReligionRepository {
   final IslamReligionLocalDataSource islamReligionLocalDataSource;
-  IslamReligionRepositoryImp({
+  final IslamReligionRemoteDataSource _islamReligionRemoteDataSource;
+  IslamReligionRepositoryImp(
+    this._islamReligionRemoteDataSource, {
     required this.islamReligionLocalDataSource,
   });
   @override
   Future<Either<Failure, List<IslamReligionEntities>>> getContent() async {
-    await islamReligionLocalDataSource.getContent();
+    // await islamReligionLocalDataSource.getContent();
     try {
       var artical = await islamReligionLocalDataSource.getContent();
+
+      return Right(artical);
+    } catch (e) {
+      return Left(getFailureFromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<IslamReligionEntities>>>
+      getOnlineContent() async {
+    try {
+      var artical = await _islamReligionRemoteDataSource.getOnlineContent();
 
       return Right(artical);
     } catch (e) {

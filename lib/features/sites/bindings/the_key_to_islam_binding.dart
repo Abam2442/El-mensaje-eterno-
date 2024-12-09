@@ -8,9 +8,7 @@ class TheKeyToIslamBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<TheKeyToIslamLocalDataSource>(
-      TheKeyToIslamLocalDataSourceImp(
-        sharedPreferencesService: Get.find(),
-      ),
+      TheKeyToIslamLocalDataSourceImp(),
     );
     Get.put<TheKeyToIslamRepo>(
       TheKeyToIslamRepositoryImp(
