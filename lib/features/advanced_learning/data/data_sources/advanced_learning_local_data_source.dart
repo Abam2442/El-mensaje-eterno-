@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:hiwayda_oracion_islamica/core/services/shared_preferences_service.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/data/models/surah_model.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -10,12 +9,6 @@ abstract class AdvancedLearningLocalDataSource {
 
 class AdvancedLearningLocalDataSourceImpl
     extends AdvancedLearningLocalDataSource {
-  final SharedPreferencesService sharedPreferencesService;
-
-  AdvancedLearningLocalDataSourceImpl({
-    required this.sharedPreferencesService,
-  });
-
   @override
   Future<List<SurahModel>> getSurahs() async {
     try {

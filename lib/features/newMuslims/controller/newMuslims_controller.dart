@@ -1,11 +1,9 @@
-import 'dart:convert';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/functions/check_offline_files.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_online_data.dart';
 import 'package:hiwayda_oracion_islamica/features/newMuslims/model/category_Sp_model.dart';
 import '../model/NewMuslimsModel.dart';
-import 'package:http/http.dart' as http;
 
 class NewMuslimsController extends GetxController {
   static NewMuslimsController get instance => Get.find<NewMuslimsController>();
@@ -15,7 +13,7 @@ class NewMuslimsController extends GetxController {
   void onInit() async {
     await checkOfflineFiles('Sp-newmuslimscourse.json')
         ? (loadJsonFile(), loadJsonFileCategory())
-        : await getOnlineData();
+        : await getOnlineData0();
 
     super.onInit();
   }
@@ -23,41 +21,32 @@ class NewMuslimsController extends GetxController {
   late NewMuslimsModel newMuslimsModel;
   List<CategorySpModel> categorySpModel = [];
 
-  Future<void> getOnlineData() async {
+  Future<void> getOnlineData0() async {
     try {
-      final response = await http
-          .get(Uri.parse('${AppApiRoutes.jsonApi}Sp-newmuslimscourse.json'));
-
-      final responseCategory = await http
-          .get(Uri.parse('${AppApiRoutes.jsonApi}sp-newmuslim-category.json'));
-      final jsonString = jsonDecode(utf8.decode(response.bodyBytes));
+      final jsonString = await getOnlineData('Sp-newmuslimscourse.json');
       final jsonStringCategory =
-          jsonDecode(utf8.decode(responseCategory.bodyBytes));
+          await getOnlineData('sp-newmuslim-category.json');
       jsonStringCategory['data'].forEach((v) {
         categorySpModel.add(CategorySpModel.fromJson(v));
       });
       newMuslimsModel = NewMuslimsModel.fromJson(jsonString);
       isLoading.value = false;
+      isLoading1.value = false;
       update();
-      print(newMuslimsModel);
     } catch (e) {
       print(e);
     }
   }
 
   Future<void> loadJsonFile() async {
-    String data =
-        await rootBundle.loadString('assets/json/Sp-newmuslimscourse.json');
-    // print(data);
-    newMuslimsModel = NewMuslimsModel.fromJson(await json.decode(data));
+    final data = await getOfflineData('Sp-newmuslimscourse.json');
+    newMuslimsModel = NewMuslimsModel.fromJson(data);
     isLoading.value = false;
   }
 
   Future<void> loadJsonFileCategory() async {
-    String data =
-        await rootBundle.loadString('assets/json/sp-newmuslim-category.json');
-    var jsondata = jsonDecode(data);
-    jsondata['data'].forEach((v) {
+    final data = await getOfflineData('sp-newmuslim-category.json');
+    data['data'].forEach((v) {
       categorySpModel.add(CategorySpModel.fromJson(v));
     });
     isLoading1.value = false;

@@ -6,11 +6,11 @@ import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dar
 import 'package:flutter/material.dart';
 
 class AudioIcon extends StatelessWidget {
-  String audioPath;
-  String? transliteration;
-  int? index;
+  final String audioPath;
+  final String? transliteration;
+  final int? index;
 
-  AudioIcon(
+  const AudioIcon(
       {required this.audioPath, this.transliteration, this.index, Key? key})
       : super(key: key);
 
@@ -45,9 +45,7 @@ class AudioIcon extends StatelessWidget {
                     },
                     child: const Icon(Icons.stop)),
               ],
-            )
-
-          )
+            ))
         : Container(
             width: context.width * 0.9,
             decoration: BoxDecoration(
@@ -76,13 +74,13 @@ class AudioIcon extends StatelessWidget {
                         flex: 1,
                         child: InkWell(
                             onTap: () {
-                              if (!AppPublicVar
-                                  .assetsAudioPlayer.playing) {
-                                AppPublicVar.assetsAudioPlayer.setAsset(audioPath);
-                        AppPublicVar.assetsAudioPlayer.play();
+                              if (!AppPublicVar.assetsAudioPlayer.playing) {
+                                AppPublicVar.assetsAudioPlayer
+                                    .setAsset(audioPath);
+                                AppPublicVar.assetsAudioPlayer.play();
                                 // .open(Audio(
                                 //  audioPath,
-                                // )); 
+                                // ));
                               }
                             },
                             child: const Icon(

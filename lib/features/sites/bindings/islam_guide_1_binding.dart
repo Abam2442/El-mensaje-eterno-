@@ -9,7 +9,7 @@ class IslamGuide1Bindings extends Bindings {
   dependencies() async {
     Get.put<IslamGuide1LocalDataSource>(
       IslamGuide1LocalDataSourceImpl(
-          // sharedPreferencesService: Get.find(),
+          //
           ),
     );
     Get.put<IslamGuide1Repository>(

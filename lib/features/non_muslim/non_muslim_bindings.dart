@@ -12,9 +12,7 @@ class NonMuslimBindings extends Bindings {
       NonMuslimRemoteDataSourceImpl(),
     );
     Get.put<NonMuslimLocalDataSource>(
-      NonMuslimLocalDataSourceImpl(
-        sharedPreferencesService: Get.find(),
-      ),
+      NonMuslimLocalDataSourceImpl(),
     );
     Get.put<NonMuslimRepo>(
       NonMuslimRepoImpl(

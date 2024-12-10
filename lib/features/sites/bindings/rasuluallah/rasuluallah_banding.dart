@@ -10,7 +10,7 @@ class RasuluallhBindings extends Bindings {
   dependencies() async {
     Get.put<RasuluallhLocalDataSource>(
       RasuluallhLocalDataSourceImp(
-          // sharedPreferencesService: Get.find(),
+          //
           ),
     );
     Get.put<RasuluallhRepository>(

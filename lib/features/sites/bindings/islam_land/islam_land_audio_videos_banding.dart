@@ -9,9 +9,7 @@ class IslamLandVideosBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<IslamLandLocalDataSource>(
-      IslamLandLocalDataSourceImpl(
-        sharedPreferencesService: Get.find(),
-      ),
+      IslamLandLocalDataSourceImpl(),
     );
     Get.put<IslamLandRepository>(
       IslamLandRepositoryImp(

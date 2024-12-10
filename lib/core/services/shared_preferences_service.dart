@@ -31,25 +31,25 @@ class SharedPreferencesService extends GetxService {
     Get.find<Logger>().i(
       "Start `setData` in |SharedPreferencesService| ~~key~~ $key, ~~value~~ $value",
     );
-    bool isSetDone = false;
+
     if (value is int) {
-      isSetDone = await pref.setInt(key, value);
+      await pref.setInt(key, value);
       return Future.value(unit);
     }
     if (value is double) {
-      isSetDone = await pref.setDouble(key, value);
+      await pref.setDouble(key, value);
       return Future.value(unit);
     }
     if (value is bool) {
-      isSetDone = await pref.setBool(key, value);
+      await pref.setBool(key, value);
       return Future.value(unit);
     }
     if (value is String) {
-      isSetDone = await pref.setString(key, value);
+      await pref.setString(key, value);
       return Future.value(unit);
     }
     if (value == null) {
-      isSetDone = await pref.remove(key);
+      await pref.remove(key);
       return Future.value(unit);
     }
     return Future.value(unit);
@@ -57,7 +57,7 @@ class SharedPreferencesService extends GetxService {
 
   Future<Unit> clear() async {
     Get.find<Logger>().i("Start `clear` in |SharedPreferencesService|");
-    final clear = await pref.clear();
+    await pref.clear();
     return Future.value(unit);
   }
 }

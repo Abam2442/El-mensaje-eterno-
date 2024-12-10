@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
-import 'package:hiwayda_oracion_islamica/core/services/shared_preferences_service.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/data/models/course_model.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -12,12 +11,6 @@ abstract class NonMuslimLocalDataSource {
 }
 
 class NonMuslimLocalDataSourceImpl extends NonMuslimLocalDataSource {
-  final SharedPreferencesService sharedPreferencesService;
-
-  NonMuslimLocalDataSourceImpl({
-    required this.sharedPreferencesService,
-  });
-
   @override
   Future<List<NonMuslimModel>> getCourses() async {
     try {

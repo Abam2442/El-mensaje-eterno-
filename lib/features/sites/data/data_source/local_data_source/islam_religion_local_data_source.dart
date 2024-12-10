@@ -1,8 +1,6 @@
-
 import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
 
 import '../../../../../core/constants/app_keys.dart';
-import '../../../../../core/services/shared_preferences_service.dart';
 import '../../../domain/entities/fixed_entities.dart';
 import '../../../domain/entities/islam_for_christians_entities.dart';
 import '../../../domain/entities/islam_religion_entities.dart';
@@ -12,21 +10,12 @@ abstract class IslamReligionLocalDataSource {
 }
 
 class IslamReligionLocalDataSourceImp extends IslamReligionLocalDataSource {
-  final SharedPreferencesService sharedPreferencesService;
-
-  IslamReligionLocalDataSourceImp({
-    required this.sharedPreferencesService,
-  });
   @override
   Future<List<IslamReligionEntities>> getContent() async {
-    // String? fileContent =
-    // await archiveService.readFile(name: AppKeys.islamReligion);
     final jsonData = await getOfflineData(AppKeys.islamReligion);
 
     List<IslamReligionEntities> articals = [];
-    // if (fileContent != null) {
-    // Map jsonData = json.decode(fileContent);
-//
+
     jsonData['islam-Religion'].forEach((key, value) {
       List<IslamForChristiansEntities> catigory = [];
 
@@ -45,7 +34,6 @@ class IslamReligionLocalDataSourceImp extends IslamReligionLocalDataSource {
         catigory: catigory,
       ));
     });
-    // }
 
     return Future.value(articals);
   }

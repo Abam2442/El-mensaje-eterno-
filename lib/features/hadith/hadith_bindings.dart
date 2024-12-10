@@ -9,9 +9,7 @@ class HadithBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<HadithLocalDataSource>(
-      HadithLocalDataSourceImpl(
-        sharedPreferencesService: Get.find(),
-      ),
+      HadithLocalDataSourceImpl(),
     );
     Get.put<HadithRemoteDataSource>(HadithRemoteDataSourceImpl());
     Get.put<HadithRepo>(

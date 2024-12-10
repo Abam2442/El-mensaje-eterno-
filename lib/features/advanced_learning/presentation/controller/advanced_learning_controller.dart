@@ -293,7 +293,7 @@ class AdvancedLearningController extends GetxController {
         "link": 'http://www.womeninislam.ws',
         "description": "La verdad sobre el Islam",
         "targetScreen": AppPagesRoutes.womenInIslam,
-        "sectionName": 'women-in-islam',
+        "sectionName": 'woman-in-islam',
         "isSites": true,
         "fileName": AppKeys.womanInIslam,
       },

@@ -5,11 +5,15 @@ import 'package:hiwayda_oracion_islamica/core/helper/functions/show_snackbar.dar
 import 'package:url_launcher/url_launcher.dart';
 
 class CallMe extends StatelessWidget {
-  String message;
-  String whatsapp;
-  String messenger;
+  final String message;
+  final String whatsapp;
+  final String messenger;
 
-  CallMe({super.key, required this.whatsapp, required this.messenger, required this.message});
+  const CallMe(
+      {super.key,
+      required this.whatsapp,
+      required this.messenger,
+      required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +24,18 @@ class CallMe extends StatelessWidget {
           onTap: () async {
             lunch(whatsapp + message);
           },
-          child: SizedBox(height: 50, width: 50, child: Image.asset(AppImages.whatsapp)),
+          child: SizedBox(
+              height: 50, width: 50, child: Image.asset(AppImages.whatsapp)),
         ),
         10.hSize,
         InkWell(
           onTap: () async {
             lunch(messenger + message);
           },
-          child: SizedBox(height: 40, width: 40, child: Image.asset(AppImages.facebookMessenger)),
+          child: SizedBox(
+              height: 40,
+              width: 40,
+              child: Image.asset(AppImages.facebookMessenger)),
         ),
       ],
     );
@@ -42,7 +50,7 @@ class CallMe extends StatelessWidget {
       }*/
     } catch (e) {
       print('erorrrrrrrrrrrrrrrrrrr $e');
-      showSnackbar('e $e');
+      // showSnackbar('e $e');
     }
   }
 }

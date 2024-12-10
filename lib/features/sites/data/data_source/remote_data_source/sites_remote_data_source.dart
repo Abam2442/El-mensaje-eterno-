@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
 import 'package:http/http.dart' as http;
@@ -21,7 +22,8 @@ class SitesRemoteDataSourceImpl extends SitesRemoteDataSource {
       final response =
           await http.get(Uri.parse('${AppApiRoutes.jsonApi}$fileName'));
       final jsonString = utf8.decode(response.bodyBytes);
-      final finalData = json.decode(jsonString);
+      final finalData = await json.decode(jsonString);
+      // print(finalData);
       finalData[sectionName].forEach((key, value) {
         articals.add(FixedEntities(
           name: key,
@@ -30,6 +32,7 @@ class SitesRemoteDataSourceImpl extends SitesRemoteDataSource {
       });
       return articals;
     } catch (e) {
+      log(e.toString());
       rethrow;
     }
   }

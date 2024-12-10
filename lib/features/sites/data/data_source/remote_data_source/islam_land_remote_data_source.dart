@@ -1,7 +1,7 @@
 import 'dart:convert';
-
 import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_online_data.dart';
 import 'package:http/http.dart' as http;
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/fixed_entities.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/islam_land_entities.dart';
@@ -73,10 +73,7 @@ class IslamLandRemoteDataSourceImpl extends IslamLandRemoteDataSource {
   Future<Map<String, List<MediaEntity>>> getOnlineBooks() async {
     try {
       Map<String, List<MediaEntity>> result = {};
-      final response = await http
-          .get(Uri.parse('${AppApiRoutes.jsonApi}${AppKeys.islamLandAudios}'));
-      final jsonString = utf8.decode(response.bodyBytes);
-      final finalData = json.decode(jsonString);
+      final finalData = await getOnlineData(AppKeys.islamLandBooks);
       finalData.forEach((bookCategory, value) {
         result[bookCategory] = [];
         for (Map booksMap in value) {

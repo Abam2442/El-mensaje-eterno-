@@ -10,7 +10,7 @@ class IslamForChristiansBindings extends Bindings {
   dependencies() async {
     Get.put<IslamForChristiansLocalDataSource>(
       IslamForChristiansLocalDataSourceImp(
-          // sharedPreferencesService: Get.find(),
+          //
           ),
     );
     Get.put<IslamForChristiansRepository>(

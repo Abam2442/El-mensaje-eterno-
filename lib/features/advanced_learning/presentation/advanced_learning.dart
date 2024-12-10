@@ -16,7 +16,7 @@
 //     );
 //     Get.put<NonMuslimLocalDataSource>(
 //       NonMuslimLocalDataSourceImpl(
-//         sharedPreferencesService: Get.find(),
+//         
 //         
 //       ),
 //     );

@@ -10,9 +10,7 @@ class IslamQABindings extends Bindings {
   @override
   dependencies() async {
     Get.put<IslamqaLocalDataSource>(
-      IslamQALocalDataSourceImpl(
-        sharedPreferencesService: Get.find(),
-      ),
+      IslamQALocalDataSourceImpl(),
     );
     Get.put<IslamQARepository>(
       IslamQARepositoryImp(

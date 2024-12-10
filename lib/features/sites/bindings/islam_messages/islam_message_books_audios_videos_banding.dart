@@ -9,9 +9,7 @@ class IslamMessageVideosBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<IslamMessageLocalDataSource>(
-      IslamMessageLocalDataSourceImpl(
-        sharedPreferencesService: Get.find(),
-      ),
+      IslamMessageLocalDataSourceImpl(),
     );
     Get.put<IslamMessageRepository>(
       IslamMessageRepositoryImp(

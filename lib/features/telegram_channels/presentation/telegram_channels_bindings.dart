@@ -9,9 +9,7 @@ class TelegramChannelsBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<TelegramChannelsModelLocalDataSource>(
-      TelegramChannelsModelLocalDataSourceImpl(
-        sharedPreferencesService: Get.find(),
-      ),
+      TelegramChannelsModelLocalDataSourceImpl(),
     );
     Get.put<TelegramChannelsRepo>(TelegramChannelsRepoImpl(
       telegramChannelsModelLocalDataSource: Get.find(),

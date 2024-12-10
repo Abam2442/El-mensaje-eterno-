@@ -15,17 +15,14 @@ import 'package:video_player/video_player.dart';
 import 'controller/ui_rone_controller.dart';
 
 class UiRoneScreen extends StatelessWidget {
-  UiRoneScreen({Key? key, required this.title})
-      : super(
-          key: key,
-        );
-  UiRoneController controller = Get.put(UiRoneController());
-  PageController pageController = PageController();
-  late VideoPlayerController videoPlayerController;
   final String title;
+
+  const UiRoneScreen({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
+    UiRoneController controller = Get.put(UiRoneController());
+    PageController pageController = PageController();
     return SafeArea(
       child: Scaffold(
         appBar: SalahAppbar(title: title),
@@ -331,6 +328,7 @@ class UiRoneScreen extends StatelessWidget {
     required String videoPath,
     required String image,
   }) {
+    late VideoPlayerController videoPlayerController;
     return Container(
       margin: 5.vEdge,
       child: Row(

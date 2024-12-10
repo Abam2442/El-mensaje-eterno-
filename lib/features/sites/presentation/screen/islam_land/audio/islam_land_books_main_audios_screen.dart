@@ -4,7 +4,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/media_files_list_view.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/view_or_download_inkwell.dart';
 
-class IslamLandAudioMainScreen extends GetView<IslamLandAudioControllerImp> {
+class IslamLandAudioMainScreen extends StatelessWidget {
   const IslamLandAudioMainScreen({super.key});
 
   @override

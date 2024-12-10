@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
@@ -15,6 +16,7 @@ class HadithRemoteDataSourceImpl extends HadithRemoteDataSource {
   @override
   Future<List<SunnahHadithModel>> getOnlineHadithData() async {
     try {
+      log('online Hadith');
       final response =
           await http.get(Uri.parse('${AppApiRoutes.jsonApi}${AppKeys.hadith}'));
       final jsonString = utf8.decode(response.bodyBytes);

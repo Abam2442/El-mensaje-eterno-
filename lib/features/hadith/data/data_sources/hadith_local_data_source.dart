@@ -1,8 +1,8 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
-import 'package:hiwayda_oracion_islamica/core/services/shared_preferences_service.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/model/sunnah_data_model.dart';
 import 'package:path_provider/path_provider.dart';
@@ -13,15 +13,10 @@ abstract class HadithLocalDataSource {
 }
 
 class HadithLocalDataSourceImpl extends HadithLocalDataSource {
-  final SharedPreferencesService sharedPreferencesService;
-
-  HadithLocalDataSourceImpl({
-    required this.sharedPreferencesService,
-  });
-
   @override
   Future<List<SunnahHadithModel>> getHadithes() async {
     try {
+      log('offline');
       final directory = await getApplicationDocumentsDirectory();
       final filePath = '${directory.path}/${AppKeys.hadith}';
       final file = File(filePath);

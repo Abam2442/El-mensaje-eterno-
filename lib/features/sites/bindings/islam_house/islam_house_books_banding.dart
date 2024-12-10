@@ -9,7 +9,7 @@ class IslamHouseBooksBindings extends Bindings {
   dependencies() async {
     Get.put<IslamHouseLocalDataSource>(
       IslamHouseLocalDataSourceImpl(
-          // sharedPreferencesService: Get.find(),
+          //
           ),
     );
     Get.put<IslamHouseRepository>(

@@ -8,9 +8,7 @@ class TerminologyBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<TerminologyLocalDataSource>(
-      TerminologyLocalDataSourceImp(
-        sharedPreferencesService: Get.find(),
-      ),
+      TerminologyLocalDataSourceImp(),
     );
     Get.put<FixedRepository>(
       TerminologyRepositoryImp(

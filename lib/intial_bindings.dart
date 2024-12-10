@@ -12,10 +12,10 @@ import 'core/services/shared_preferences_service.dart';
 class InitialBindings extends Bindings {
   @override
   dependencies() async {
+    Get.put(SharedPreferencesService(pref: Get.find()));
     Get.put(Logger());
     Get.put(EasyLoaderService());
 
-    Get.put(SharedPreferencesService(pref: Get.find()));
     // Get.put(ArchiveService(sharedPreferencesService: Get.find()));
     Get.put(InternetConnectionChecker());
     Get.put<NetworkInfo>(NetworkInfoImpl(Get.find()));

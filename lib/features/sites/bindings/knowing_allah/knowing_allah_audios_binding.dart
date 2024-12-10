@@ -9,9 +9,7 @@ class KnowingAllahAudiosBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<KnowingAllahLocalDataSource>(
-      KnowingAllahLocalDataSourceImp(
-        sharedPreferencesService: Get.find(),
-      ),
+      KnowingAllahLocalDataSourceImp(),
     );
     Get.put<KnowingAllahRepository>(
       KnowingAllahRepositoryImp(

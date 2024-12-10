@@ -9,9 +9,7 @@ class IslamReligionBindings extends Bindings {
   @override
   dependencies() async {
     Get.put<IslamReligionLocalDataSource>(
-      IslamReligionLocalDataSourceImp(
-        sharedPreferencesService: Get.find(),
-      ),
+      IslamReligionLocalDataSourceImp(),
     );
     Get.put<IslamReligionRepository>(
       IslamReligionRepositoryImp(

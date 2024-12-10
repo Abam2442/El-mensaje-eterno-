@@ -1,6 +1,5 @@
-
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_assets_data.dart';
 import 'package:hiwayda_oracion_islamica/core/services/shared_preferences_service.dart';
 
 import '../models/azkar_model/azkar_model.dart';
@@ -15,17 +14,11 @@ abstract class AzkarDoaaLocalDataSource {
 }
 
 class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
-  final SharedPreferencesService sharedPreferencesService;
-
-  AzkarDoaaLocalDataSourceImpl({
-    required this.sharedPreferencesService,
-  });
-
   @override
   Future<List<AzkarModel>> getAzkar() async {
     try {
       List<AzkarModel> azkar = [];
-      final jsonData = await getOfflineData(AppKeys.azkarDua);
+      final jsonData = await getAssetsData(AppKeys.azkarDua);
 
       azkar = jsonData['azkar']
           .map<AzkarModel>(
@@ -43,7 +36,7 @@ class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
   Future<List<DoaaModel>> getDoaas() async {
     try {
       late List<DoaaModel> doaas = [];
-      final jsonData = await getOfflineData(AppKeys.alduaa);
+      final jsonData = await getAssetsData(AppKeys.alduaa);
 
       jsonData['Es'].forEach((element) {
         doaas.add(DoaaModel(
@@ -65,7 +58,7 @@ class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
       List<DayAndNightSonan> nightAndDaySonan = [];
       List<TimedSonan> timedSonan = [];
       List<NotTimedSonan> unTimedSonan = [];
-      final jsonData = await getOfflineData(AppKeys.sonan);
+      final jsonData = await getAssetsData(AppKeys.sonan);
       jsonData['Es']['أذكار اليوم والليلة'].forEach((element) {
         List<DayAndNightSonanSubCat> dayAndNightSonanSubCat = [];
         element['الأذكار'].forEach((a) {

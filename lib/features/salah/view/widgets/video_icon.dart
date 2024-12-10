@@ -12,9 +12,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoIcon extends StatefulWidget {
-  String videoPath;
+  final String videoPath;
 
-  VideoIcon({required this.videoPath, Key? key}) : super(key: key);
+  const VideoIcon({required this.videoPath, Key? key}) : super(key: key);
 
   @override
   State<VideoIcon> createState() => _VideoIconState();
@@ -36,20 +36,25 @@ class _VideoIconState extends State<VideoIcon> {
       final directory = await getApplicationDocumentsDirectory();
       final filePath = '${directory.path}/Videos/${widget.videoPath}';
       final file = File(filePath);
-      videoPlayerController = file.existsSync()
-          ? (VideoPlayerController.file(file)
-            ..initialize().then((_) {
-              setState(() {
-                isInitialize = true;
-              });
-            }))
-          : VideoPlayerController.networkUrl(
-              Uri.parse('${AppApiRoutes.videoApi}${widget.videoPath}'))
-        ..initialize().then((_) {
-          setState(() {
-            isInitialize = true;
+      if (file.existsSync()) {
+        log('assswrsssss');
+        videoPlayerController = VideoPlayerController.file(file)
+          ..initialize().then((_) {
+            setState(() {
+              isInitialize = true;
+            });
           });
-        });
+      } else {
+        log('558');
+
+        videoPlayerController = VideoPlayerController.networkUrl(
+            Uri.parse('${AppApiRoutes.videoApi}${widget.videoPath}'))
+          ..initialize().then((_) {
+            setState(() {
+              isInitialize = true;
+            });
+          });
+      }
     }
   }
 

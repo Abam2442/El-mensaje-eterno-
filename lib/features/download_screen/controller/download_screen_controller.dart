@@ -2,7 +2,8 @@ import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
+import 'package:hiwayda_oracion_islamica/features/download_screen/download_status.dart';
 import 'package:http/http.dart' as http;
 import 'package:hiwayda_oracion_islamica/core/helper/functions/check_offline_files.dart';
 import 'package:path_provider/path_provider.dart';
@@ -11,7 +12,10 @@ import 'package:hiwayda_oracion_islamica/features/download_screen/model/sections
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class DownloadScreenController extends GetxController {
-  late StateType stateType;
+  // late StateType stateType;
+  int totalFiles = 0;
+  int downloadedFiles = 0;
+  late DownloadStatus downloadStatus;
   Map<String, bool> sectionTwoFiles = {
     'ALFAJR-intermediate.json': false,
     'asr.json': false,
@@ -30,6 +34,42 @@ class DownloadScreenController extends GetxController {
     'Sp-newmuslimscourse.json': false,
     'Sp-pillers.json': false
   };
+  Map<String, bool> sectionThreeFiles = {
+    'Hadiths.json': false,
+    'Muslim.json': false,
+    'Bokhary.json': false,
+    'alnawawi.json': false,
+    'ryadelsalheen.json': false
+  };
+  Map<String, bool> sectionFourFiles = {
+    AppKeys.nonMuslims: false,
+    AppKeys.islamLand: false,
+    AppKeys.islamReligion: false,
+    AppKeys.islamMessage: false,
+    AppKeys.knowingAllah: false,
+    AppKeys.rasuluAllah: false,
+    AppKeys.muhammadTheMessengerOfGod: false,
+    AppKeys.jesusQuran: false,
+    AppKeys.islamForChristians: false,
+    AppKeys.guideToIslam: false,
+    AppKeys.islamFaith: false,
+    AppKeys.theKeyToIslam1: false,
+    AppKeys.theKeyToIslam2: false,
+    AppKeys.messageOfIslam: false,
+    AppKeys.islamPort: false,
+    AppKeys.islamReligionOfPeace: false,
+    AppKeys.islamUniverse: false,
+    AppKeys.humanRights: false,
+    AppKeys.womanInIslam: false,
+    AppKeys.romanceInIslam: false,
+    AppKeys.loveInIslam: false,
+    AppKeys.bidaaInIslam: false,
+    AppKeys.beginningAndEnd: false,
+    AppKeys.hisnulmumin: false,
+    AppKeys.firstSteps: false,
+    AppKeys.telegram: false,
+    'data-1.json': false,
+  };
 
   Future<void> downloadFiles(int index) async {
     switch (index) {
@@ -43,12 +83,20 @@ class DownloadScreenController extends GetxController {
           await downloadSectionTwo();
           await downloadSectionTwoVideos();
         }
+        break;
+      case 2:
+        {
+          await downloadSectionThree();
+        }
     }
   }
 
   Future<void> downloadSectionOne() async {
     try {
-      stateType = StateType.loading;
+      downloadStatus = DownloadStatus.downloading;
+      totalFiles = 1;
+      downloadedFiles = 0;
+
       update();
       final response = await http.get(
         Uri.parse('${AppApiRoutes.jsonApi}quran.json'),
@@ -57,34 +105,28 @@ class DownloadScreenController extends GetxController {
         final directory = await getApplicationDocumentsDirectory();
         final file = File('${directory.path}/quran.json');
         await file.writeAsBytes(response.bodyBytes);
+        downloadedFiles++;
+        downloadStatus = DownloadStatus.success;
+
         checkAllFiles();
-
-        stateType = StateType.success;
         update();
-        print('File downloaded to ${file.path}');
       } else {
-        stateType = StateType.offline;
-
         update();
-        print('Failed to download file');
       }
     } catch (e) {
       print(e);
     }
   }
 
-  int totalFiles = 81;
-  int downloadedFiles = 0;
   Future<void> downloadSectionTwo() async {
-    log('${sectionTwoFiles.keys.toList()}');
     try {
-      stateType = StateType.loading;
+      downloadStatus = DownloadStatus.downloading;
+      downloadedFiles = 0;
+
+      totalFiles = 81;
       update();
 
       List<String> keys = sectionTwoFiles.keys.toList();
-      // int totalFiles = keys.length;
-      // int downloadedFiles = 0;
-      // double progress = 0;
 
       for (int i = 0; i < keys.length; i++) {
         final response = await http.get(
@@ -94,19 +136,15 @@ class DownloadScreenController extends GetxController {
           final directory = await getApplicationDocumentsDirectory();
           final file = File('${directory.path}/${keys[i]}');
           await file.writeAsBytes(response.bodyBytes);
-          // print('File downloaded to ${file.path}');
 
           downloadedFiles++;
-          // progress = downloadedFiles / totalFiles * 100;
-          // print(progress);
-          print(downloadedFiles);
-          update(); // Update the UI with the new progress
+          update();
         } else {
           print('Failed to download file');
         }
       }
 
-      stateType = StateType.success;
+      downloadStatus = DownloadStatus.success;
       update();
       // update();
     } catch (e) {
@@ -115,6 +153,8 @@ class DownloadScreenController extends GetxController {
   }
 
   Future<void> downloadSectionTwoVideos() async {
+    downloadStatus = DownloadStatus.downloading;
+    update();
     final List<String> filePaths = [];
     final items = await Supabase.instance.client.storage.from('Videos').list();
 
@@ -123,7 +163,6 @@ class DownloadScreenController extends GetxController {
       filePaths.add(path);
     }
 
-    // totalFiles = filePaths.length;
     update();
     for (final filePath in filePaths) {
       final Uint8List fileBytes = await Supabase.instance.client.storage
@@ -141,7 +180,32 @@ class DownloadScreenController extends GetxController {
       await file.writeAsBytes(fileBytes);
     }
     checkAllFiles();
+    downloadStatus = DownloadStatus.success;
     update();
+  }
+
+  Future<void> downloadSectionThree() async {
+    try {
+      downloadedFiles = 0;
+      totalFiles = 5;
+      downloadStatus = DownloadStatus.downloading;
+      update();
+      for (var item in sectionThreeFiles.keys) {
+        final storage =
+            await Supabase.instance.client.storage.from('Json').download(item);
+        final directory = await getApplicationDocumentsDirectory();
+        final file = File('${directory.path}/$item');
+        file.writeAsBytesSync(storage);
+        downloadedFiles++;
+        update();
+      }
+      checkAllFiles();
+      downloadStatus = DownloadStatus.success;
+
+      update();
+    } catch (e) {
+      log(e.toString());
+    }
   }
 
   List<SectionsModel> sectionData = [
@@ -154,18 +218,36 @@ class DownloadScreenController extends GetxController {
         subTitle: 'Videos And all Texts',
         isDownload: false),
     SectionsModel(
-        title: 'Hadith Section', subTitle: 'All Hadith', isDownload: false),
+      title: 'Hadith Section',
+      subTitle: 'All Hadith',
+      isDownload: false,
+    ),
+    SectionsModel(
+      title: 'Section Four',
+      subTitle: 'All Texts',
+      isDownload: false,
+    ),
   ];
 
   Future<void> checkAllFiles() async {
     try {
-      stateType = StateType.loading;
+      downloadStatus = DownloadStatus.checking;
       update();
 
       /// Section one File check
       await checkOfflineFiles('quran.json')
           ? sectionData[0].isDownload = true
           : sectionData[0].isDownload = false;
+
+      ///Section Three Check Files
+      for (var item in sectionThreeFiles.keys) {
+        await checkOfflineFiles(item)
+            ? sectionThreeFiles[item] = true
+            : sectionThreeFiles[item] = false;
+      }
+      if (sectionThreeFiles.values.every((value) => value)) {
+        sectionData[2].isDownload = true;
+      }
 
       ///Section Two Files check
       List<String> keys = sectionTwoFiles.keys.toList();
@@ -188,11 +270,7 @@ class DownloadScreenController extends GetxController {
         print('Json Not Downloaded');
       }
 
-      // sectionTwoFiles.values.every((value) => value == true) == true
-      //     ? sectionData[1].isDownload = true
-      //     : print('File Not Found');
-
-      stateType = StateType.success;
+      downloadStatus = DownloadStatus.init;
       update();
     } catch (e) {
       print({e});
@@ -201,11 +279,13 @@ class DownloadScreenController extends GetxController {
 
   @override
   void onInit() async {
-    final directory = await getApplicationDocumentsDirectory();
-    final videosDirectory = Directory('${directory.path}/Videos');
-    print(videosDirectory.existsSync());
-
     await checkAllFiles();
+    downloadStatus = DownloadStatus.init;
+    update();
+    // final directory = await getApplicationDocumentsDirectory();
+    // final videosDirectory = Directory('${directory.path}/Videos');
+    // print(videosDirectory.existsSync());
+
     super.onInit();
   }
 }

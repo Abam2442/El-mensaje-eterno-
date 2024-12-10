@@ -4,4 +4,5 @@ import '../entities/islam_web_entities.dart';
 
 abstract class IslamWebRepository {
   Future<Either<Failure, List<IslamWebEntities>>> getArtical();
+  Future<Either<Failure, List<IslamWebEntities>>> getOnlineArtical();
 }

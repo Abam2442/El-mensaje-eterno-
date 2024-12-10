@@ -11,9 +11,7 @@ class AzkarDoaaBindings extends Bindings {
     //   AzkarDoaaRemoteDataSourceImpl(apiService: Get.find()),
     // );
     Get.put<AzkarDoaaLocalDataSource>(
-      AzkarDoaaLocalDataSourceImpl(
-        sharedPreferencesService: Get.find(),
-      ),
+      AzkarDoaaLocalDataSourceImpl(),
     );
     Get.put<AzkarDoaaRepo>(
       AzkarDoaaRepoImpl(

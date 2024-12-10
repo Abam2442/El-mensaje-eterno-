@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/controller/advanced_learning_controller.dart';
@@ -45,6 +47,8 @@ class SpecialSite extends StatelessWidget {
                     if (controller.page[controller.selectedPart][index]
                             ['isSites'] !=
                         null) {
+                      log(controller.page[controller.selectedPart][index]
+                          ['fileName']);
                       Get.to(
                           () => SitesMainScreen(
                               fileName: controller.page[controller.selectedPart]

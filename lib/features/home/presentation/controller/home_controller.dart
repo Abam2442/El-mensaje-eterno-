@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -9,10 +8,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_pages_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/controller/test_model.dart';
 import 'package:intl/intl.dart';
-// import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
-
-import '../../../../data/local/local_data.dart';
 
 class HomeController extends GetxController {
   static HomeController get instance => Get.find<HomeController>();
@@ -267,10 +263,10 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  void saveData(Coordinates coordinates) async {
-    await LocalData.setString(
-        'prayerTime', '${coordinates.latitude}:${coordinates.longitude}');
-  }
+  // void saveData(Coordinates coordinates) async {
+  //   await LocalData.setString(
+  //       'prayerTime', '${coordinates.latitude}:${coordinates.longitude}');
+  // }
 }
 
 class HomeCardData {
