@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../controller/explore_islam_controller.dart';
 import '../widget/app_bar_custom.dart';
 import '../widget/artical_custom.dart';

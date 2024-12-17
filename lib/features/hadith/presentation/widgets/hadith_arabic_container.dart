@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
 
 import '../../../../core/constants/app_assets.dart';
@@ -24,7 +23,7 @@ class HadithArabicContainer extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: AppColors.kGreenColor,
+        color: AppColors.kPrimaryColor,
       ),
       alignment: Alignment.center,
       child: Row(
@@ -38,11 +37,11 @@ class HadithArabicContainer extends StatelessWidget {
             },
             child: SvgPicture.asset(
               AppAssets.kCopyIcon,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
           SizedBox(
-            width: context.width * 0.7,
+            width: context.width * 0.8,
             child: Container(
               // padding: const EdgeInsets.only(right: 12),
               constraints: BoxConstraints(

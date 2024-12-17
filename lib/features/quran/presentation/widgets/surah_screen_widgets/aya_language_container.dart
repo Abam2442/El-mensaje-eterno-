@@ -21,29 +21,8 @@ class AyaLanguageContainer extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                  child: Text(
-                mafsir,
-                style: Styles.textStyle24Green,
-              )),
-              InkWell(
-                  onTap: () async {
-                    var data = ClipboardData(text: ayaNonArabic);
-                    await Clipboard.setData(data);
-                    //
-                  },
-                  child: const Icon(Icons.copy)),
-            ],
-          ),
-          const SizedBox(
-            height: 12,
-          ),
           Container(
-            padding: const EdgeInsets.only(left: 12),
+            // padding: const EdgeInsets.only(left: 12),
             constraints:
                 BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width - 50),
             child: AyaText(
@@ -54,10 +33,25 @@ class AyaLanguageContainer extends StatelessWidget {
                 ayaNumberStyle: Styles.textStyleQuranPageNumber
                     .copyWith(color: AppColors.kGreenColor)),
           ),
-          const Divider(
-            height: 20,
-            thickness: 2,
-          )
+          const SizedBox(height: 12),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                  child: Text(
+                mafsir,
+                style: Styles.textStyle14primary,
+              )),
+              InkWell(
+                  onTap: () async {
+                    var data = ClipboardData(text: ayaNonArabic);
+                    await Clipboard.setData(data);
+                    //
+                  },
+                  child: const Icon(Icons.copy)),
+            ],
+          ),
         ],
       ),
     );

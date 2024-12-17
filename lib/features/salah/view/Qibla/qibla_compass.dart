@@ -42,7 +42,7 @@ class _QiblaCompassState extends State<QiblaCompass> {
           padding: 10.aEdge,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(topLeft: Radius.circular(100)),
-            color: AppColors.kGreenColor,
+            color: AppColors.kPrimaryColor,
           ),
           child: LayoutBuilder(builder: (context, constraint) {
             final height = constraint.maxHeight;
@@ -63,7 +63,8 @@ class _QiblaCompassState extends State<QiblaCompass> {
                       children: [
                         Text(
                           'Qibla',
-                          style: AppTextStyles.h2,
+                          style: AppTextStyles.h2
+                              .copyWith(color: AppColors.kGoldenColor),
                         ),
                         30.hSize,
                         StreamBuilder<CompassEvent>(
@@ -82,7 +83,9 @@ class _QiblaCompassState extends State<QiblaCompass> {
                                         : 'Gire el dispositivo hasta que la flecha cambie a verde.'
                                     //'قم بتدوير الجهاز حتى يتغير السهم للأخضر'
                                     ,
-                                    style: AppTextStyles.h4,
+                                    style: AppTextStyles.h4.copyWith(
+                                      color: AppColors.kGoldenColor,
+                                    ),
                                   ),
                                   Transform.rotate(
                                     angle: compass,
@@ -123,7 +126,9 @@ class _QiblaCompassState extends State<QiblaCompass> {
                         Text(
                           'Dirección qibla desde el norte ${degree.round()}\u00B0' //'اتجاه القبلة من الشمال'
                           ,
-                          style: AppTextStyles.h4,
+                          style: AppTextStyles.h4.copyWith(
+                            color: AppColors.kGoldenColor,
+                          ),
                         ),
                       ],
                     ),
