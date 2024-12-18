@@ -1,20 +1,23 @@
+import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
-
-import '../../../../../core/constants/app_keys.dart';
-
-import '../../../domain/entities/fixed_entities.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/fixed_entities.dart';
 
 abstract class TerminologyLocalDataSource {
-  Future<List<FixedEntities>> getArtical();
+  Future<List<CategoryFixedEntity>> getArtical();
 }
 
 class TerminologyLocalDataSourceImp extends TerminologyLocalDataSource {
   @override
-  Future<List<FixedEntities>> getArtical() async {
-    List<FixedEntities> articals = [];
+  Future<List<CategoryFixedEntity>> getArtical() async {
     final jsonData = await getOfflineData(AppKeys.terminology);
-    jsonData['terminology'].forEach((key, value) {
-      articals.add(FixedEntities(name: key, content: value));
+    List<CategoryFixedEntity> articals = [];
+    jsonData.forEach((key, value) {
+      List<FixedEntities> categoryFixedEntityData = [];
+      value.forEach((key, value) => categoryFixedEntityData
+          .add(FixedEntities(name: key, content: value)));
+
+      articals.add(
+          CategoryFixedEntity(category: key, data: categoryFixedEntityData));
     });
     return Future.value(articals);
   }

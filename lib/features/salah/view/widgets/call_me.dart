@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/functions/show_snackbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CallMe extends StatelessWidget {

@@ -88,6 +88,11 @@ class DownloadScreenController extends GetxController {
         {
           await downloadSectionThree();
         }
+        break;
+      case 3:
+        {
+          await downloadSectionFour();
+        }
     }
   }
 
@@ -208,6 +213,30 @@ class DownloadScreenController extends GetxController {
     }
   }
 
+  Future<void> downloadSectionFour() async {
+    try {
+      totalFiles = sectionFourFiles.length;
+      downloadStatus = DownloadStatus.downloading;
+      downloadedFiles = 0;
+      update();
+      for (var item in sectionFourFiles.keys) {
+        final storage =
+            await Supabase.instance.client.storage.from('Json').download(item);
+        final directory = await getApplicationDocumentsDirectory();
+        final file = File('${directory.path}/$item');
+        file.writeAsBytesSync(storage);
+        downloadedFiles++;
+        update();
+      }
+      checkAllFiles();
+      downloadStatus = DownloadStatus.success;
+
+      update();
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
   List<SectionsModel> sectionData = [
     SectionsModel(
         title: 'Quran Section',
@@ -247,6 +276,16 @@ class DownloadScreenController extends GetxController {
       }
       if (sectionThreeFiles.values.every((value) => value)) {
         sectionData[2].isDownload = true;
+      }
+
+      ///Section Four Files check
+      for (var item in sectionFourFiles.keys) {
+        await checkOfflineFiles(item)
+            ? sectionFourFiles[item] = true
+            : sectionFourFiles[item] = false;
+      }
+      if (sectionFourFiles.values.every((value) => value)) {
+        sectionData[3].isDownload = true;
       }
 
       ///Section Two Files check

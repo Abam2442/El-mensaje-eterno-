@@ -57,6 +57,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/learning_islam_
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_audios_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_video_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/terminology_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/explore_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/articals/guid_to_islam_artical.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/audios/audios.dart';
@@ -91,6 +92,7 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/lear
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Artical/artical_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Audio/rasul_uallah_audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Video/video_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminology/terminolgy_screen.dart';
 // import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminolgy_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/the_key_to_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/learn_salah.dart';
@@ -651,12 +653,12 @@ abstract class AppPagesRoutes {
     //   binding: BidaaInIslamBindings(),
     //   transition: Transition.cupertino,
     // ),
-    // GetPage(
-    //   name: terminology,
-    //   page: () => const TerminologyScreen(),
-    //   binding: TerminologyBindings(),
-    //   transition: Transition.cupertino,
-    // ),
+    GetPage(
+      name: terminology,
+      page: () => const TerminologyScreen(),
+      binding: TerminologyBindings(),
+      transition: Transition.cupertino,
+    ),
     // GetPage(
     //   name: advanced_learning,
     //   page: () => const AdvancedSites(),

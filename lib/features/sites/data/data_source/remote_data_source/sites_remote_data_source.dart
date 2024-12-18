@@ -23,7 +23,7 @@ class SitesRemoteDataSourceImpl extends SitesRemoteDataSource {
           await http.get(Uri.parse('${AppApiRoutes.jsonApi}$fileName'));
       final jsonString = utf8.decode(response.bodyBytes);
       final finalData = await json.decode(jsonString);
-      // print(finalData);
+      print(finalData);
       finalData[sectionName].forEach((key, value) {
         articals.add(FixedEntities(
           name: key,

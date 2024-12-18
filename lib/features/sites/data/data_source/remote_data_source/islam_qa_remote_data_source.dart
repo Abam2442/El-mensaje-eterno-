@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
@@ -18,13 +19,15 @@ class IslamQaRemoteDataSourceImpl extends IslamQaRemoteDataSource {
           .get(Uri.parse('${AppApiRoutes.jsonApi}${AppKeys.islamQA}'));
       final jsonString = utf8.decode(response.bodyBytes);
       final finalData = json.decode(jsonString);
-      articals = finalData['islamqa']
+      print(finalData);
+      articals = finalData['Español']
           .map<Islamqa>(
             (artical) => Islamqa.fromJson(artical),
           )
           .toList();
       return articals;
     } catch (e) {
+      log(e.toString());
       rethrow;
     }
   }
