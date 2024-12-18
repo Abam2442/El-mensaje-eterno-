@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/surah_controller.dart';
 
 class AyaWordsWidget extends StatefulWidget {
@@ -48,8 +48,8 @@ class _MyWidgetState extends State<AyaWordsWidget> {
                         borderRadius: BorderRadius.circular(8)),
                     child: Text(
                       words[index],
-                      style: Styles.textStyle18Black
-                          .copyWith(fontSize: 22, fontWeight: FontWeight.w900),
+                      style: GoogleFonts.amiriQuran(
+                          fontSize: 22, fontWeight: FontWeight.w900),
                     ),
                   ),
                 )));

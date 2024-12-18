@@ -53,7 +53,7 @@ class NonMuslimTopicsScreen extends GetView<NonMuslimController> {
                       );
                     },
                     child: Card(
-                      color: AppColors.kGreenColor,
+                      color: AppColors.kPrimaryColor,
                       child: ListTile(
                         leading: const Padding(
                           padding: EdgeInsets.only(left: 20),

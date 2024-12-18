@@ -1,10 +1,11 @@
-import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
-import 'package:hiwayda_oracion_islamica/core/services/easy_loader_service.dart';
-import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
-import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/hadith_arabic_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+import 'package:hiwayda_oracion_islamica/core/services/easy_loader_service.dart';
+import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/hadith_arabic_container.dart';
 
 class BookHadithContainer extends StatelessWidget {
   final Map<String, dynamic> hadith;
@@ -42,6 +43,7 @@ class BookHadithContainer extends StatelessWidget {
                 },
                 child: SvgPicture.asset(
                   AppAssets.kCopyIcon,
+                  color: AppColors.kPrimaryColor,
                 ),
               ),
             ],

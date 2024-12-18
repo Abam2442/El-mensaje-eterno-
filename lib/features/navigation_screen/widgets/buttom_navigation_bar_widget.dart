@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/features/navigation_screen/controller/navigation_controller.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
@@ -22,6 +24,14 @@ class BottomNavigationBarWidget extends StatelessWidget {
       child: TabBar(
         dividerHeight: 0,
         dividerColor: Colors.transparent,
+        labelStyle: TextStyle(
+          fontSize: 12.sp,
+          color: AppColors.kGoldenColor,
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontSize: 12.sp,
+          color: AppColors.kWhiteColor,
+        ),
         tabs: [
           ...List.generate(
             controller.tabBarData.length,
@@ -31,6 +41,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 controller.tabBarData[index].image,
                 width: 23,
               ),
+              iconMargin: const EdgeInsets.only(bottom: 5),
             ),
           )
         ],

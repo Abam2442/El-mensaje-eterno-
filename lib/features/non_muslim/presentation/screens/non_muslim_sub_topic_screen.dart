@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/utils/components/appbar/build_sliver_appbar.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/data/models/course_model.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/controller/non_muslim_controller.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/artical_custom.dart';
 
 class NonMuslimSubTopicsScreen extends GetView<NonMuslimController> {
@@ -40,7 +40,7 @@ class NonMuslimSubTopicsScreen extends GetView<NonMuslimController> {
                 itemCount: topic.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    color: AppColors.kGreenColor,
+                    color: AppColors.kPrimaryColor,
                     child: ListTile(
                       onTap: () {
                         Get.to(

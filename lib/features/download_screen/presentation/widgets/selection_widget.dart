@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/download_screen/controller/download_screen_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/download_screen/download_status.dart';
@@ -20,7 +21,7 @@ class SelectionWidget extends StatelessWidget {
                   subtitle: Text(controller.sectionData[index].subTitle),
                   // onTap: () => controller.downloadSectionTwoVideos(),
                   trailing: SizedBox(
-                    width: 88,
+                    width: 100.w,
                     child: Row(
                       children: [
                         if (controller.sectionData[index].isDownload)

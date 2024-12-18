@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/splash/screen/splash_page.dart';
-import 'package:flutter/material.dart';
 import 'package:hiwayda_oracion_islamica/ys_material_app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

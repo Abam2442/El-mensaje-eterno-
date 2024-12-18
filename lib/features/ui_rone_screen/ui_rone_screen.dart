@@ -12,6 +12,7 @@ import 'package:hiwayda_oracion_islamica/features/salah/view/salah_practical_pag
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/custom_image_view.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_palyer_widget.dart';
 import 'package:video_player/video_player.dart';
+
 import 'controller/ui_rone_controller.dart';
 
 class UiRoneScreen extends StatelessWidget {
@@ -50,7 +51,7 @@ class UiRoneScreen extends StatelessWidget {
                               padding: 5.aEdge,
                               decoration: BoxDecoration(
                                 borderRadius: 20.cBorder,
-                                color: AppColors.kGreenColor,
+                                color: AppColors.kPrimaryColor,
                               ),
                               child: Row(
                                 children: [
@@ -66,6 +67,7 @@ class UiRoneScreen extends StatelessWidget {
                                   const Text(
                                     ' De ',
                                     style: TextStyle(
+                                      color: AppColors.kGoldenColor,
                                       fontSize: 20,
                                     ),
                                   ),
@@ -342,15 +344,18 @@ class UiRoneScreen extends StatelessWidget {
                 vertical: 40.v,
               ),
               decoration: BoxDecoration(
-                  color: AppColors.kGoldenColor, borderRadius: 20.cBorder),
+                  color: AppColors.kPrimaryColor, borderRadius: 20.cBorder),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text(text, style: Styles.textStyle18Black),
+                    child: Text(text, style: Styles.textStyle18Golden),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.spatial_audio),
+                    icon: const Icon(
+                      Icons.spatial_audio,
+                      color: AppColors.kGoldenColor,
+                    ),
                     onPressed: () {
                       if (!AppPublicVar.assetsAudioPlayer.playing) {
                         AppPublicVar.assetsAudioPlayer.setAsset(audioPath);
