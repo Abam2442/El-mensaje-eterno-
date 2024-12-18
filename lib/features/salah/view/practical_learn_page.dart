@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
@@ -8,8 +10,6 @@ import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/advanced_salah_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_practical_page.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hiwayda_oracion_islamica/features/ui_rone_screen/ui_rone_screen.dart';
 
 class PracticalLearnPage extends StatefulWidget {
@@ -93,6 +93,7 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                 ItsOptions(
                                   label: 'FAJR',
                                   image: AppSvgs.fajr,
+                                  color: AppColors.white,
                                   onTap: () {
                                     switch (widget.level) {
                                       case 0:
@@ -100,13 +101,20 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                             jsonFile: AppJsons.fajr));
                                         break;
                                       case 1:
-                                        Get.to(() => UiRoneScreen(title: 'Salat Fajr'),
+                                        Get.to(
+                                            () => const UiRoneScreen(
+                                                title: 'Salat Fajr'),
                                             arguments: {
                                               'file': AppJsons.fajrIntermediate
                                             });
                                         break;
                                       case 2:
-                                        Get.to(()=> const AdvancedSalahPage(title: 'Salat Fajr',imgList:[AppImages.advancedFajr, AppImages.advancedFajr1]));
+                                        Get.to(() => const AdvancedSalahPage(
+                                                title: 'Salat Fajr',
+                                                imgList: [
+                                                  AppImages.advancedFajr,
+                                                  AppImages.advancedFajr1
+                                                ]));
                                         break;
                                     }
                                   },
@@ -121,16 +129,22 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                             jsonFile: AppJsons.duhr));
                                         break;
                                       case 1:
-                                        Get.to(() => UiRoneScreen(title: 'Salat Duhr'),
+                                        Get.to(
+                                            () => const UiRoneScreen(
+                                                title: 'Salat Duhr'),
                                             arguments: {
                                               'file': AppJsons.ishaIntermediate
                                             });
                                         break;
                                       case 2:
-                                        Get.to(()=> const AdvancedSalahPage(title: 'Salat Duhr',imgList:
-                                        [AppImages.advancedDAI1, AppImages.advancedDAI2,
-                                          AppImages.advancedDAI3, AppImages.advancedDAI4,
-                                        ]));
+                                        Get.to(() => const AdvancedSalahPage(
+                                                title: 'Salat Duhr',
+                                                imgList: [
+                                                  AppImages.advancedDAI1,
+                                                  AppImages.advancedDAI2,
+                                                  AppImages.advancedDAI3,
+                                                  AppImages.advancedDAI4,
+                                                ]));
                                         break;
                                     }
                                   },
@@ -145,16 +159,22 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                             jsonFile: AppJsons.asr));
                                         break;
                                       case 1:
-                                        Get.to(() => UiRoneScreen(title: 'Salat Asr'),
+                                        Get.to(
+                                            () => const UiRoneScreen(
+                                                title: 'Salat Asr'),
                                             arguments: {
                                               'file': AppJsons.ishaIntermediate
                                             });
                                         break;
                                       case 2:
-                                        Get.to(()=> const AdvancedSalahPage(title: 'Salat Asr',imgList:
-                                        [AppImages.advancedDAI1, AppImages.advancedDAI2,
-                                          AppImages.advancedDAI3, AppImages.advancedDAI4,
-                                        ]));
+                                        Get.to(() => const AdvancedSalahPage(
+                                                title: 'Salat Asr',
+                                                imgList: [
+                                                  AppImages.advancedDAI1,
+                                                  AppImages.advancedDAI2,
+                                                  AppImages.advancedDAI3,
+                                                  AppImages.advancedDAI4,
+                                                ]));
                                         break;
                                     }
                                   },
@@ -169,18 +189,23 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                             jsonFile: AppJsons.magrib));
                                         break;
                                       case 1:
-                                        Get.to(() => UiRoneScreen(title: 'Salat Magrib',),
+                                        Get.to(
+                                            () => const UiRoneScreen(
+                                                  title: 'Salat Magrib',
+                                                ),
                                             arguments: {
                                               'file':
                                                   AppJsons.maghribIntermediate
                                             });
                                         break;
                                       case 2:
-                                        Get.to(()=> const AdvancedSalahPage(
-                                          title: 'Salat Magrib',
-                                            imgList: [AppImages.advancedMagh1, AppImages.advancedMagh2,
-                                          AppImages.advancedMagh3
-                                        ]));
+                                        Get.to(() => const AdvancedSalahPage(
+                                                title: 'Salat Magrib',
+                                                imgList: [
+                                                  AppImages.advancedMagh1,
+                                                  AppImages.advancedMagh2,
+                                                  AppImages.advancedMagh3
+                                                ]));
                                         break;
                                     }
                                   },
@@ -195,16 +220,22 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
                                             jsonFile: AppJsons.isha));
                                         break;
                                       case 1:
-                                        Get.to(() => UiRoneScreen(title: 'Salat Isha'),
+                                        Get.to(
+                                            () => const UiRoneScreen(
+                                                title: 'Salat Isha'),
                                             arguments: {
                                               'file': AppJsons.ishaIntermediate
                                             });
                                         break;
                                       case 2:
-                                        Get.to(()=> const AdvancedSalahPage(title: 'Salat Isha',imgList:
-                                        [AppImages.advancedDAI1, AppImages.advancedDAI2,
-                                          AppImages.advancedDAI3, AppImages.advancedDAI4,
-                                        ]));
+                                        Get.to(() => const AdvancedSalahPage(
+                                                title: 'Salat Isha',
+                                                imgList: [
+                                                  AppImages.advancedDAI1,
+                                                  AppImages.advancedDAI2,
+                                                  AppImages.advancedDAI3,
+                                                  AppImages.advancedDAI4,
+                                                ]));
                                         break;
                                     }
                                   },
@@ -232,15 +263,17 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
 }
 
 class ItsOptions extends StatelessWidget {
-  const ItsOptions({
+  ItsOptions({
     super.key,
     required this.label,
     required this.image,
+    this.color,
     this.onTap,
   });
 
   final String label;
   final String image;
+  Color? color;
   final void Function()? onTap;
 
   @override
@@ -255,13 +288,16 @@ class ItsOptions extends StatelessWidget {
           width: 10,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: AppColors.kGreenColor,
+            color: AppColors.kPrimaryColor,
           ),
           //padding: 16.vhEdge,
           child: Column(
             children: [
               Expanded(
-                child: SvgPicture.asset(image),
+                child: SvgPicture.asset(
+                  image,
+                  color: color,
+                ),
               ),
               FittedBox(
                 child: Text(

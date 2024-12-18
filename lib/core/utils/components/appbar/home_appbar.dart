@@ -34,11 +34,17 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         const CustomPopupMenuButton(),
         IconButton(
-          icon: const Icon(Icons.search),
+          icon: const Icon(
+            Icons.search,
+            color: AppColors.kWhiteColor,
+          ),
           onPressed: () => Get.to(() => const SearchScreen()),
         ),
         IconButton(
-          icon: const Icon(Icons.download),
+          icon: const Icon(
+            Icons.download,
+            color: AppColors.kWhiteColor,
+          ),
           onPressed: () => Get.to(() => const DownloadScreen()),
         )
       ],
@@ -80,14 +86,14 @@ class CustomPopupMenuButton extends StatelessWidget {
       ),
       offset: const Offset(0, 30),
       elevation: 0,
-      color: AppColors.kGreenColor,
+      color: AppColors.kGoldenColor,
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Transform.flip(
           flipX: true,
           child: SvgPicture.asset(
             AppAssets.menuIcon,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ),
@@ -107,7 +113,7 @@ class CustomPopupMenuButton extends StatelessWidget {
             child: Center(
               child: FaIcon(
                 icon,
-                color: AppColors.kWhiteColor,
+                color: AppColors.kPrimaryColor,
               ),
             ),
           ),

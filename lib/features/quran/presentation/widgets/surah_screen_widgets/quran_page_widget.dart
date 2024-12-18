@@ -1,9 +1,9 @@
-import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
-import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
-import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/ayah_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/ayah_entity.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/surah_controller.dart';
 
 class QuranPageWidget extends StatelessWidget {
@@ -24,7 +24,7 @@ class QuranPageWidget extends StatelessWidget {
           color: surrahController.currentRandomVerse.value == number
               ? const Color.fromARGB(255, 193, 188, 188)
               : surrahController.currentVerse.value == number
-                  ? AppColors.kGreenColor
+                  ? AppColors.kPrimaryColor
                   : const Color.fromARGB(255, 134, 131, 131),
           padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
           child: Row(
@@ -80,7 +80,7 @@ class QuranPageWidget extends StatelessWidget {
                               text: surrahController.getAyaCopyText(ayah));
                           await Clipboard.setData(data);
                         },
-                        child: const Icon(Icons.copy),
+                        child: const Icon(Icons.copy, color: AppColors.white),
                       ),
               ),
             ],

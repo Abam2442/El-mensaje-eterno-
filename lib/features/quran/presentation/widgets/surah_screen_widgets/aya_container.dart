@@ -1,11 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/domain/entities/ayah_entity.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/surah_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/surah_screen_widgets/aya_language_container.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/surah_screen_widgets/aya_text.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/surah_screen_widgets/quran_page_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class AyaContainer extends StatelessWidget {
   final Ayah ayah;
@@ -41,7 +42,8 @@ class AyaContainer extends StatelessWidget {
               child: Column(
                 children: [
                   AyaArabicText(aya: ayah.arabic, ayaNumber: number),
-                  const Divider(),
+                  // const Divider(),
+                  SizedBox(height: 8.h),
                   GetX<QuranController>(
                     builder: (controller) => Column(
                         children: controller.selectedTafsirs
