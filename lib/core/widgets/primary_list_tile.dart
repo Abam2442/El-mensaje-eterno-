@@ -23,26 +23,27 @@ class PrimaryListTile extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(8),
           color: AppColors.kPrimaryColor,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
-              '$itemNumber',
-              style: const TextStyle(
-                color: AppColors.kWhiteColor,
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
+            CircleAvatar(
+              backgroundColor: AppColors.kGoldenColor,
+              child: Text(
+                '$itemNumber',
+                style: const TextStyle(
+                  color: AppColors.kPrimaryColor,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-            const SizedBox(
-              width: 20,
-            ),
+            const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

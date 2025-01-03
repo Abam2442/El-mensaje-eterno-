@@ -1,8 +1,9 @@
 // ignore_for_file: camel_case_types
 
+import 'package:flutter/material.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
-import 'package:flutter/material.dart';
+
 import 'pub_up_custom.dart';
 
 class ItemCard extends StatelessWidget {

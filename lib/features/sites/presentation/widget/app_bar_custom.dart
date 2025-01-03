@@ -14,6 +14,9 @@ class AppBarCustom {
       backgroundColor: AppColors.kPrimaryColor,
       centerTitle: true,
       actions: actions,
+      iconTheme: const IconThemeData(
+        color: AppColors.kGoldenColor,
+      ),
       // leading: !Navigator.canPop(context)
       //     ? null
       //     : DirectionAware(

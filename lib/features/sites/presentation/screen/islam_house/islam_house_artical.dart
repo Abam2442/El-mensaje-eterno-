@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../../controller/islam_house/islam_house_controller.dart';
 import '../../widget/app_bar_custom.dart';
 import '../../widget/inkwell_custom.dart';
@@ -14,6 +16,7 @@ class IslamHouseArticalScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(IslamHouseControllerImp());
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: const AppBarCustom(title: "Islam House Artical")
           .customAppBar(context),
       body: GetBuilder<IslamHouseControllerImp>(

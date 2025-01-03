@@ -22,6 +22,7 @@ class ListViewCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: AppBarCustom(title: "", actions: [
         IconButton(
             onPressed: () async {
@@ -43,7 +44,7 @@ class ListViewCustom extends StatelessWidget {
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.kGoldenColor),
+                  color: AppColors.kPrimaryColor),
             ),
           ),
           Padding(
@@ -61,7 +62,7 @@ class ListViewCustom extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.kGoldenColor)),
+                    color: AppColors.kPrimaryColor)),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

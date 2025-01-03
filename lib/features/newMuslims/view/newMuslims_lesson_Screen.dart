@@ -17,11 +17,16 @@ class NewMuslimsLessonScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          iconTheme: const IconThemeData(
+            color: AppColors.kGoldenColor,
+          ),
+          backgroundColor: AppColors.kPrimaryColor,
           title: Text(
-              '${newMuslimsController.newMuslimsModel.courses![courseIndex].lessons![lessonIndex].header}'),
+              '${newMuslimsController.newMuslimsModel.courses![courseIndex].lessons![lessonIndex].header}',
+              style: const TextStyle(color: AppColors.kGoldenColor)),
         ),
         body: Container(
-          color: AppColors.kPrimaryColor,
+          color: AppColors.background,
           child: Padding(
               padding: 10.aEdge,
               child: ListView.builder(

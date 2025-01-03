@@ -1,6 +1,7 @@
 // import 'package:elresala/features/advanced_learning/presentation/widgets/item%20_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/search_field_widget.dart';
 
@@ -14,6 +15,7 @@ class IslamGuide1Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: const AppBarCustom(title: 'Islam Guide 1').customAppBar(context),
       body: GetBuilder<IslamGuide1ControllerImp>(
         builder: (c) {

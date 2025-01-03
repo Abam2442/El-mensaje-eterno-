@@ -4,6 +4,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/functions/copy_clipboard.dart';
 import 'package:hiwayda_oracion_islamica/features/islamicCenters/model/islamic_centers_model.dart';
 import 'package:hiwayda_oracion_islamica/features/islamicCenters/view/countries_Screen.dart';
+
 import '../../../core/widgets/custom_listTile.dart';
 import '../controller/islamic_center_controller.dart';
 
@@ -16,10 +17,19 @@ class IslamicCenterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kPrimaryColor,
+      backgroundColor: AppColors.background,
       appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: AppColors.kGoldenColor,
+        ),
+        backgroundColor: AppColors.kPrimaryColor,
         title: const Center(
-          child: Text('Islamic Centers'),
+          child: Text(
+            'Islamic Centers',
+            style: TextStyle(
+              color: AppColors.kGoldenColor,
+            ),
+          ),
         ),
       ),
       body: Obx(

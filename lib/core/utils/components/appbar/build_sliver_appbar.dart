@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../constants/app_colors.dart';
 import '../../../styles/text_styles.dart';
 
@@ -33,6 +34,13 @@ class _SliverAppBarWidgetState extends State<SliverAppBarWidget> {
       automaticallyImplyLeading: false,
       backgroundColor: widget.backgroundColor,
       centerTitle: true,
+      leading: IconButton(
+        onPressed: () => Navigator.of(context).pop(),
+        icon: const Icon(
+          Icons.arrow_back_ios_rounded,
+          color: AppColors.kGoldenColor,
+        ),
+      ),
       title: Text(
         appBarTitle,
         style: Styles.textStyle18Godlen,

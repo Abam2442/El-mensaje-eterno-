@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 
 class SearchFieldWidget extends StatelessWidget {
   final void Function(String)? onSubmitted;
@@ -26,11 +27,14 @@ class SearchFieldWidget extends StatelessWidget {
           onFieldSubmitted: onSubmitted,
           decoration: InputDecoration(
             hintText: text,
+            hintStyle: const TextStyle(
+              color: AppColors.kGoldenColor,
+            ),
             filled: true,
-            fillColor: const Color.fromARGB(255, 226, 226, 226),
+            fillColor: AppColors.kPrimaryColor,
             border: OutlineInputBorder(
               borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(8),
             ),
           ),
         ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_jsons.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
@@ -21,12 +20,13 @@ class TaharaPage extends StatelessWidget {
     final SalahController controller = SalahController.instance;
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Aprender Purificacion',
-            style: Styles.textStyle20Black,
-          ),
           iconTheme: const IconThemeData(
             color: AppColors.kGoldenColor,
+          ),
+          backgroundColor: AppColors.kPrimaryColor,
+          title: const Text(
+            'Aprender Purificacion',
+            style: Styles.textStyle20Golden,
           ),
           actions: [
             IconButton(
@@ -39,7 +39,6 @@ class TaharaPage extends StatelessWidget {
               ),
             )
           ],
-          backgroundColor: AppColors.kWhiteColor,
         ),
         backgroundColor: AppColors.kWhiteColor,
         body: SafeArea(

@@ -1,11 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/utils/components/appbar/build_sliver_appbar.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/data/models/course_model.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/controller/non_muslim_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/non_muslim/presentation/screens/non_muslim_sub_topic_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/controller/quran_controller.dart';
 
 class NonMuslimTopicsScreen extends GetView<NonMuslimController> {
@@ -32,7 +32,7 @@ class NonMuslimTopicsScreen extends GetView<NonMuslimController> {
               height: MediaQuery.of(context).size.height - 100,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
+                color: AppColors.background,
               ),
               child: ListView.builder(
                 padding: const EdgeInsets.all(

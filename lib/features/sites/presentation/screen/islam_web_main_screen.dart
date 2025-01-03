@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 // import 'package:flutter_svg/svg.dart';
 // import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 // import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
@@ -20,6 +21,7 @@ class IslamWebMainScreen extends GetView<IslamWebControllerImp> {
   Widget build(BuildContext context) {
     //Get.put(IslamWebControllerImp());
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: const AppBarCustom(title: "Islam Web", actions: [
         // IconButton(
         //     onPressed: () async {

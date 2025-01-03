@@ -3,6 +3,7 @@
 // import 'package:elresala/features/sites/presentation/controller/the_key_to_islam_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
 
 import '../controller/the_key_to_islam_controller.dart';
@@ -15,6 +16,7 @@ class TheKeyToIslamScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar:
           const AppBarCustom(title: 'the key to islam').customAppBar(context),
       body: GetBuilder<TheKeyToIslamControllerImp>(

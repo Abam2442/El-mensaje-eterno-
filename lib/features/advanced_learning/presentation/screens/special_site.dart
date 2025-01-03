@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/controller/advanced_learning_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/screens/advanced_site_media_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/widgets/item%20_card.dart';
@@ -17,6 +18,15 @@ class SpecialSite extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<AdvancedLearningController>();
     return Scaffold(
+      backgroundColor: AppColors.background,
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: AppColors.kGoldenColor,
+        ),
+        backgroundColor: AppColors.kPrimaryColor,
+        title: Text(controller.titlePart[controller.selectedPart],
+            style: const TextStyle(color: AppColors.kGoldenColor)),
+      ),
       body: SafeArea(
         child: Directionality(
           textDirection: TextDirection.ltr,

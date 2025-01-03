@@ -16,7 +16,7 @@ class PilersCourseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.kPrimaryColor,
+      color: AppColors.background,
       child: Padding(
         padding: 10.aEdge,
         child: ListView.builder(

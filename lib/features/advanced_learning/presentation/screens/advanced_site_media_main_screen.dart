@@ -15,7 +15,16 @@ class AdvancedSiteMediaMainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kPrimaryColor,
+      backgroundColor: AppColors.background,
+      appBar: AppBar(
+        title: Text(page['title'],
+            style: const TextStyle(color: AppColors.kGoldenColor)),
+        centerTitle: true,
+        backgroundColor: AppColors.kPrimaryColor,
+        iconTheme: const IconThemeData(
+          color: AppColors.kGoldenColor,
+        ),
+      ),
       body: ListView(
         children: [
           GetBuilder<AdvancedLearningController>(
@@ -29,7 +38,7 @@ class AdvancedSiteMediaMainScreen extends StatelessWidget {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: Colors.white,
+                        // color: Colors,
                       ),
                       child: ListView.builder(
                         shrinkWrap: true,

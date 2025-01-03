@@ -4,9 +4,9 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/features/mooamalat/controller/mooamalat_controller.dart';
 
+import '../../../core/widgets/custom_listTile.dart';
 import 'description_screen.dart';
 import 'mooamalat_lesson_Screen.dart';
-import '../../../core/widgets/custom_listTile.dart';
 
 class MooamalatCourseScreen extends StatelessWidget {
   MooamalatCourseScreen({required this.index, super.key});
@@ -15,7 +15,7 @@ class MooamalatCourseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.kPrimaryColor,
+      color: AppColors.background,
       child: Padding(
           padding: 10.aEdge,
           child: Column(

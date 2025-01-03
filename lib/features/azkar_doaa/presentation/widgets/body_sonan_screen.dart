@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 
 import '../../../sites/presentation/widget/inkwell_custom.dart';
 import 'day_night_sonan_screen.dart';
@@ -12,6 +13,19 @@ class BodySonanScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: AppColors.kGoldenColor,
+        ),
+        backgroundColor: AppColors.kPrimaryColor,
+        title: const Text(
+          'Sunna',
+          style: TextStyle(
+            color: AppColors.kGoldenColor,
+          ),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.only(top: 20),
         child: Column(

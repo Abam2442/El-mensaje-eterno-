@@ -20,8 +20,14 @@ class NewMuslimsNestedTopicsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: AppColors.kGoldenColor,
+        ),
+        backgroundColor: AppColors.kPrimaryColor,
         title: Text(
-            '${newMuslimsController.newMuslimsModel.courses![courseIndex].lessons![lessonIndex].nestedTopics![nestedTopicsIndex].title}'),
+          '${newMuslimsController.newMuslimsModel.courses![courseIndex].lessons![lessonIndex].nestedTopics![nestedTopicsIndex].title}',
+          style: Styles.textStyle20Golden,
+        ),
         actions: [
           CopyButton(
               text: newMuslimsController

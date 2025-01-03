@@ -16,7 +16,7 @@ class FaithCourseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     FaithController faithController = Get.find();
     return Container(
-      color: AppColors.white,
+      color: AppColors.background,
       child: Padding(
           padding: 10.aEdge,
           child: Column(

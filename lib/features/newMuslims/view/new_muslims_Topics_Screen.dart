@@ -22,7 +22,14 @@ class NewMuslimsTopicsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        iconTheme: const IconThemeData(
+          color: AppColors.kGoldenColor,
+        ),
+        backgroundColor: AppColors.kPrimaryColor,
+        title: Text(
+          title,
+          style: Styles.textStyle20Golden,
+        ),
         actions: [
           CopyButton(
               text: newMuslimsController

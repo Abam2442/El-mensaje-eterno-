@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/item%20_card.dart';
 
 import '../../../sites/presentation/widget/app_bar_custom.dart';
@@ -12,6 +13,7 @@ class TimedSonanScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: const AppBarCustom(title: 'Súplicas específicas')
           .customAppBar(context),
       body: GetBuilder<AzkarDoaaController>(builder: (c) {

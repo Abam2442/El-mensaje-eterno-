@@ -21,7 +21,7 @@ abstract class AppAssets {
   static const String json = "assets/Json.zip";
   static const String hadith = "$rootSVGIcon/hadith.svg";
   static const String prayer = "$rootSVGIcon/prayer.svg";
-  static const String azkar = "$rootSVGIcon/azkar.svg";
+  static const String azkar = "assets/svg/azkar.svg";
   static const String dua = "$rootSVGIcon/dua.svg";
   static const String calender = "$rootSVGIcon/calender.svg";
   static const String profileDefault = "$rootSVG/profile_default.svg";
@@ -66,7 +66,6 @@ abstract class AppAssets {
   static const String rootSvgImages = 'assets/svg/images';
   static const String kSoudisIcon = '$rootSvgImages/soudis.png';
   static const String choseImage = '$rootSvgImages/chose_image.svg';
-
 
 // UI ROne images
   static String imgRectangle1 = '$rootImages/img_rectangle_1.png';

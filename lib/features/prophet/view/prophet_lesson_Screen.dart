@@ -16,8 +16,14 @@ class ProphetLessonScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          iconTheme: const IconThemeData(
+            color: AppColors.kGoldenColor,
+          ),
+          backgroundColor: AppColors.kPrimaryColor,
           title: Text(
-              '${prophetController.prophetModel.courses![courseIndex].lessons![lessonIndex].title}'),
+            '${prophetController.prophetModel.courses![courseIndex].lessons![lessonIndex].title}',
+            style: Styles.textStyle20Golden,
+          ),
           actions: [
             CopyButton(
                 text: prophetController.prophetModel.courses![courseIndex]

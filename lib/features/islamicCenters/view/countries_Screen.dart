@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
+
 import '../../../core/widgets/custom_listTile.dart';
 import '../controller/islamic_center_controller.dart';
 import 'description_screen.dart';
@@ -14,11 +15,19 @@ class CountriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: AppColors.kGoldenColor,
+        ),
+        backgroundColor: AppColors.kPrimaryColor,
         title: Text(
-            '${islamicCenterController.islamicCenterModel.countries![countryIndex].countryName}'),
+          '${islamicCenterController.islamicCenterModel.countries![countryIndex].countryName}',
+          style: const TextStyle(
+            color: AppColors.kGoldenColor,
+          ),
+        ),
       ),
       body: Container(
-        color: AppColors.kPrimaryColor,
+        color: AppColors.background,
         child: Padding(
             padding: 20.aEdge,
             child: ListView.builder(

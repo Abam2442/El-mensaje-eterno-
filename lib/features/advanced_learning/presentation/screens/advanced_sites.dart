@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/controller/advanced_learning_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/screens/special_site.dart';
 import 'package:hiwayda_oracion_islamica/features/advanced_learning/presentation/widgets/item%20_card.dart';
@@ -20,8 +21,8 @@ class AdvancedSites extends StatelessWidget {
             SvgPicture.asset(
               AppAssets.azkar,
               height: 300,
-              color: Colors.white,
             ),
+            SizedBox(height: 20.h),
             Container(
               decoration: const BoxDecoration(
                 color: Color(0xFFbac2b9),

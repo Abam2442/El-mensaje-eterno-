@@ -8,8 +8,8 @@ import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/salah_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/Qibla/qibla_compass.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/view/tahara_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_page.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/tahara_page.dart';
 
 import '../../home/presentation/widgets/section_item_homeP_page_widget.dart';
 
@@ -81,20 +81,13 @@ class LearnSalah extends StatelessWidget {
                     ),
                   ),*/
                 2.hSize,
-                const Text(
-                  'Aprender Salah',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
               ],
             ),
             Expanded(
               child: Container(
                 width: context.width,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.background,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 padding: 8.aEdge,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/app_bar_custom.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/view_or_download_inkwell.dart';
@@ -41,6 +42,7 @@ class MediaFilesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: AppBarCustom(title: title).customAppBar(context),
       body: Column(
         children: [

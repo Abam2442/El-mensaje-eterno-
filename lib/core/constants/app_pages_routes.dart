@@ -10,6 +10,8 @@ import 'package:hiwayda_oracion_islamica/features/faith/view/faith_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/hadith_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/screens/hadith_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/islamicCenters/view/islamic_center_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/kids/kids_bindings.dart';
+import 'package:hiwayda_oracion_islamica/features/kids/view/kids_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/mooamalat/mooamalat_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/mooamalat/view/mooamalat_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/newLife/newLife_bindings.dart';
@@ -26,6 +28,7 @@ import 'package:hiwayda_oracion_islamica/features/prophet/view/prophet_screen.da
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/screens/quran_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/screens/surah_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/quran_bindings.dart';
+import 'package:hiwayda_oracion_islamica/features/salah/view/learn_salah.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/explore_islam_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/guid_to_islam_books_audios_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/guid_to_islam_books_binding.dart';
@@ -75,9 +78,9 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/isla
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/fatwa/islam_land_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/islam_land_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/video/islam_land_books_main_audios_screen%20copy.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/articals/islam_message_artical_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/audios/islam_message_audio_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/books/islam_message_main_books_screen.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/articals/islam_message_artical_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/videos/islam_message_quran__videos_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/videos/islam_message_videos_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_qa_home_screen.dart';
@@ -93,7 +96,6 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasu
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Video/video_screen.dart';
 // import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminolgy_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/the_key_to_islam_screen.dart';
-import 'package:hiwayda_oracion_islamica/features/salah/view/learn_salah.dart';
 import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation/screens/telegram_channels_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/telegram_channels/presentation/telegram_channels_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/youtubechannels/presentation/screens/details_channels_screen.dart';
@@ -204,6 +206,7 @@ abstract class AppPagesRoutes {
   static const String knowingAllahVideos = "/knowing_allah_videos";
   static const String saberElIslam = "/saber_el_islam";
   static const String detailsChannelsScreen = "/DetailsChannelsScreen";
+  static const String kidsScreen = "/kidsScreen";
   static List<GetPage<dynamic>> appPages = [
     GetPage(
       name: mainScreen,
@@ -220,6 +223,12 @@ abstract class AppPagesRoutes {
       name: azkarBodtScreen,
       page: () => const BodyAzkarScreen(),
       binding: AzkarDoaaBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: kidsScreen,
+      page: () => const KidsScreen(),
+      binding: KidsBindings(),
       transition: Transition.cupertino,
     ),
     GetPage(

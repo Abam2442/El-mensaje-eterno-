@@ -16,8 +16,14 @@ class PilersLessonScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          iconTheme: const IconThemeData(
+            color: AppColors.kGoldenColor,
+          ),
+          backgroundColor: AppColors.kPrimaryColor,
           title: Text(
-              '${pilersController.pilersModel.courses![courseIndex].lessons![lessonIndex].title}'),
+            '${pilersController.pilersModel.courses![courseIndex].lessons![lessonIndex].title}',
+            style: Styles.textStyle20Golden,
+          ),
           actions: [
             CopyButton(
                 text: pilersController.pilersModel.courses![courseIndex]

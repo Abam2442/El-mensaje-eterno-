@@ -13,7 +13,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       iconTheme: const IconThemeData(
-        color: AppColors.kGoldenColor, //change your color here
+        color: AppColors.kGoldenColor,
       ),
       backgroundColor: AppColors.kPrimaryColor,
       title: Row(
@@ -32,6 +32,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
         dividerColor: AppColors.kGoldenColor,
         labelColor: AppColors.kGoldenColor,
         indicatorColor: AppColors.kGreenColor,
+        unselectedLabelColor: AppColors.white,
         isScrollable: true,
         tabs: tabs,
       ),

@@ -34,7 +34,7 @@ class SectionItemHomePageWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+        margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: AppColors.kPrimaryColor,
@@ -66,7 +66,8 @@ class SectionItemHomePageWidget extends StatelessWidget {
                 children: [
                   Text(
                     sectionName,
-                    style: Styles.textStyle20Golden,
+                    style: Styles.textStyle20Golden
+                        .copyWith(color: AppColors.kWhiteColor),
                   ),
                   sectionSubtitle != ''
                       ? Text(

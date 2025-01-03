@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/controller/islam_house/islam_house_books_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/view_or_download_inkwell.dart';
+
 import '../../widget/app_bar_custom.dart';
 
 class IslamHouseBooksMainScreen extends StatelessWidget {
@@ -10,6 +12,7 @@ class IslamHouseBooksMainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar:
           const AppBarCustom(title: "Islam House Books").customAppBar(context),
       body: GetBuilder<IslamHouseBooksControllerImp>(builder: (controller) {

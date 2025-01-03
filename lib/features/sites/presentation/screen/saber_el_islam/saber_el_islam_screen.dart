@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/search_field_widget.dart';
 
 import '../../controller/saber_el_islam_controller.dart';
@@ -14,6 +15,7 @@ class SaberElIslamScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(SaberElIslamControllerImp());
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: const AppBarCustom(title: 'Saber El Islam').customAppBar(context),
       body: GetBuilder<SaberElIslamControllerImp>(builder: (controller) {
         if (controller.articals.isEmpty) {

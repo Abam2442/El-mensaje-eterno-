@@ -4,6 +4,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/custom_appbar.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/primary_shimmer.dart';
 import 'package:hiwayda_oracion_islamica/features/newMuslims/controller/newMuslims_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/newMuslims/view/new_muslims_category_screen.dart';
 
@@ -32,9 +33,25 @@ class NewMuslimsCourseScreen extends StatelessWidget {
           ]),
           body: TabBarView(children: [
             Obx(() => newMuslimsController.isLoading.value
-                ? const Center(child: CircularProgressIndicator())
+                ? ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 10),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) => PrimaryShimmer.rectangle(
+                      height: Get.height * 0.09,
+                      color: AppColors.kGreenColor,
+                      border: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 15,
+                    ),
+                    itemCount: 8,
+                  )
                 : Container(
-                    color: AppColors.kPrimaryColor,
+                    color: AppColors.background,
                     child: Padding(
                         padding: 10.aEdge,
                         child: SingleChildScrollView(
@@ -70,7 +87,7 @@ class NewMuslimsCourseScreen extends StatelessWidget {
             Obx(() => newMuslimsController.isLoading1.value
                 ? const Center(child: CircularProgressIndicator())
                 : Container(
-                    color: AppColors.kPrimaryColor,
+                    color: AppColors.background,
                     child: Padding(
                         padding: 10.aEdge,
                         child: SingleChildScrollView(

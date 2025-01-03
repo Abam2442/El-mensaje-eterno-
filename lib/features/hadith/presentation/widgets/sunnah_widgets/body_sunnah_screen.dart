@@ -1,5 +1,6 @@
-import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller/hadith_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
+import 'package:hiwayda_oracion_islamica/features/hadith/presentation/controller/hadith_controller.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/widgets/sunnah_widgets/custom_item_card.dart';
 
 class BodySunnahScreen extends StatelessWidget {
@@ -9,13 +10,25 @@ class BodySunnahScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final HadithController controller = HadithController.instance;
     return Scaffold(
+      backgroundColor: AppColors.background,
+      appBar: AppBar(
+        title: const Text('Sunnah',
+            style: TextStyle(color: AppColors.kGoldenColor)),
+        iconTheme: const IconThemeData(
+          color: AppColors.kGoldenColor,
+        ),
+        backgroundColor: AppColors.kPrimaryColor,
+      ),
       body: ListView.builder(
           itemCount: controller.sunnahData.length,
           itemBuilder: (context, index) {
-            return CustomItemCard(
-              titleSite: controller.sunnahData[index].title,
-              subtitle: controller.sunnahData[index].subTitle,
-              onPress: () async => await controller.selectSection(index),
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2.0),
+              child: CustomItemCard(
+                titleSite: controller.sunnahData[index].title,
+                subtitle: controller.sunnahData[index].subTitle,
+                onPress: () async => await controller.selectSection(index),
+              ),
             );
           }),
     );

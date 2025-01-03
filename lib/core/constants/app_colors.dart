@@ -14,6 +14,7 @@ class AppColors {
     900: Color(0xFF062B74),
   });
 
+  static const Color background = Color(0xFFbac2b9);
   static const Color primary = Color(0xFF2196F3);
   static const Color primary10 = Color(0xFFA6E5FD);
   static const Color primary20 = Color(0xFFF1F7FC);

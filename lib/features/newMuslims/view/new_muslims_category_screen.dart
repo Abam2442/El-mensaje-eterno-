@@ -19,10 +19,19 @@ class NewMuslimsCategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(title),
+          iconTheme: const IconThemeData(
+            color: AppColors.kGoldenColor,
+          ),
+          backgroundColor: AppColors.kPrimaryColor,
+          title: Text(
+            title,
+            style: const TextStyle(
+              color: AppColors.kGoldenColor,
+            ),
+          ),
         ),
         body: Container(
-          color: AppColors.kPrimaryColor,
+          color: AppColors.background,
           child: Padding(
               padding: 10.aEdge,
               child: ListView.builder(

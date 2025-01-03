@@ -19,7 +19,7 @@ class ContainerCustom extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-      margin: const EdgeInsets.only(top: 15, right: 15, left: 15),
+      margin: const EdgeInsets.only(top: 10, right: 5, left: 5),
       decoration: BoxDecoration(
           color: AppColors.kPrimaryColor,
           border: Border.all(color: AppColors.kGreenColor),

@@ -16,8 +16,14 @@ class NewLifeLessonScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          iconTheme: const IconThemeData(
+            color: AppColors.kGoldenColor,
+          ),
+          backgroundColor: AppColors.kPrimaryColor,
           title: Text(
-              '${newLifeController.newLifeModel.courses![courseIndex].lessons![lessonIndex].title}'),
+            '${newLifeController.newLifeModel.courses![courseIndex].lessons![lessonIndex].title}',
+            style: Styles.textStyle20Golden,
+          ),
           actions: [
             CopyButton(
                 text: newLifeController.newLifeModel.courses![courseIndex]

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
@@ -22,7 +21,7 @@ class SalahPage extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             'Aprender Oracion',
-            style: Styles.textStyle20Black,
+            style: Styles.textStyle20Golden,
           ),
           iconTheme: const IconThemeData(
             color: AppColors.kGoldenColor,
@@ -38,7 +37,7 @@ class SalahPage extends StatelessWidget {
               ),
             )
           ],
-          backgroundColor: AppColors.kWhiteColor,
+          backgroundColor: AppColors.kPrimaryColor,
         ),
         backgroundColor: AppColors.kWhiteColor,
         body: SafeArea(
