@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/salah_importance_page.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_palyer_widget.dart';
@@ -5,8 +7,6 @@ import 'package:video_player/video_player.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/styles/text_styles.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class SectionItemHomePageWidget extends StatelessWidget {
   SectionItemHomePageWidget({
@@ -37,7 +37,7 @@ class SectionItemHomePageWidget extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: AppColors.kGreenColor,
+          color: AppColors.kPrimaryColor,
           borderRadius: BorderRadius.circular(20),
         ),
         child: IntrinsicHeight(

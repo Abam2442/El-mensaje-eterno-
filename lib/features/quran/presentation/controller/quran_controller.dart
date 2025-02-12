@@ -35,7 +35,30 @@ class QuranController extends GetxController {
     getSurahsState = StateType.loading;
     update();
     GetSurahsUseCase getSurahsUseCase = GetSurahsUseCase(Get.find());
+    // GetOnlineSurahsUseCase getOnlineSurahsUseCase =
+    //     GetOnlineSurahsUseCase(quranRepo: Get.find());
+    // var onlineData = await getOnlineSurahsUseCase();
     var result = await getSurahsUseCase();
+
+    // onlineData.fold(
+    //   (l) async {
+    //     getSurahsState = getStateFromFailure(l);
+    //     validationMessage = l.message;
+    //
+    //     update();
+    //     await Future.delayed(const Duration(milliseconds: 50));
+    //     getSurahsState = StateType.init;
+    //   },
+    //   (r) {
+    //     getSurahsState = StateType.success;
+    //     surahs = r;
+    //
+
+    //     print(surahs);
+    //     // log(surahs[0].ayat[0].noorinternationallatin);
+    //     update();
+    //   },
+    // );
     result.fold(
       (l) async {
         getSurahsState = getStateFromFailure(l);
@@ -48,10 +71,9 @@ class QuranController extends GetxController {
       (r) {
         getSurahsState = StateType.success;
         surahs = r;
-        log('success');
 
         print(surahs);
-        // log(surahs[0].ayat[0].noorinternationallatin);
+        //
         update();
       },
     );

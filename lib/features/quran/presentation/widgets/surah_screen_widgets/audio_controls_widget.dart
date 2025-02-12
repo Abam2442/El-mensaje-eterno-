@@ -15,7 +15,7 @@ class QuranAudioControlsWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: const BoxDecoration(
-          color: AppColors.kGreenColor,
+          color: AppColors.kPrimaryColor,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(12), topRight: Radius.circular(12))),
       child: Column(

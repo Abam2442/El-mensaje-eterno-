@@ -21,7 +21,7 @@ class PrayTimeWidgetSectionHomeScreen extends StatelessWidget {
                 style: Styles.textStyle18Golden,
               ),
               controller.timingsData.timings.isEmpty
-                  ? Center(
+                  ? const Center(
                       child: CircularProgressIndicator(),
                     )
                   : Row(
