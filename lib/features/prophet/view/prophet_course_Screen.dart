@@ -11,7 +11,7 @@ import 'prophet_lesson_Screen.dart';
 class ProphetCourseScreen extends StatelessWidget {
   ProphetCourseScreen({required this.index, super.key});
   final int index;
-  ProphetController prophetController = Get.find();
+  final ProphetController prophetController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Container(

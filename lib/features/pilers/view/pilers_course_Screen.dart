@@ -11,7 +11,7 @@ class PilersCourseScreen extends StatelessWidget {
   PilersCourseScreen({required this.index, super.key});
 
   final int index;
-  PilersController pilersController = Get.find();
+  final PilersController pilersController = Get.find();
 
   @override
   Widget build(BuildContext context) {

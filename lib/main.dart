@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'El Mensaje Eterno',
       home:const SplashPage(),
       theme: ThemeData(
-        scaffoldBackgroundColor:AppColors.kPrimaryColor ,
+        scaffoldBackgroundColor:AppColors.kscandryGreen ,
       ),
     );
   }
