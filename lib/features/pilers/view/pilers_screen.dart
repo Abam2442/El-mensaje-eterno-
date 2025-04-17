@@ -45,7 +45,7 @@ class PilersScreen extends GetView<PilersController> {
                 title: Get.arguments['title'],
                 tabs: controller.tabs,
               ),
-              backgroundColor: AppColors.kWhiteColor,
+              backgroundColor: AppColors.kscandryGreen,
               body: TabBarView(
                 children: [
                   PilersCourseScreen(index: 0),

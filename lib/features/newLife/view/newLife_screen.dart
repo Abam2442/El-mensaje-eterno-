@@ -44,7 +44,7 @@ class NewLifeScreen extends GetView<NewLifeController> {
                 title: Get.arguments['title'],
                 tabs: controller.tabs,
               ),
-              backgroundColor: AppColors.kWhiteColor,
+              backgroundColor: AppColors.kscandryGreen,
               body: TabBarView(
                 children: [
                   NewLifeCourseScreen(index: 0),

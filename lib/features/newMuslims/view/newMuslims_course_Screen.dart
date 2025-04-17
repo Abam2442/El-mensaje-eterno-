@@ -20,7 +20,7 @@ class NewMuslimsCourseScreen extends StatelessWidget {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
-          backgroundColor: AppColors.kWhiteColor,
+          backgroundColor: AppColors.kscandryGreen,
           appBar:
               const CustomAppbar(title: 'Curso para el nuevo musulmán', tabs: [
             Tab(
@@ -34,69 +34,59 @@ class NewMuslimsCourseScreen extends StatelessWidget {
             Obx(() => newMuslimsController.isLoading.value
                 ? const Center(child: CircularProgressIndicator())
                 : Container(
-                    color: AppColors.kPrimaryColor,
+                    color: AppColors.kscandryGreen,
                     child: Padding(
                         padding: 10.aEdge,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              Text(
-                                  '${newMuslimsController.newMuslimsModel.courses![index].description}',
-                                  style: Styles.textStyle20Black,
-                                  textAlign: TextAlign.center),
-                              SizedBox(
-                                height: context.height * 0.8,
-                                child: ListView.builder(
-                                    itemCount: newMuslimsController
-                                        .newMuslimsModel
-                                        .courses![index]
-                                        .lessons!
-                                        .length,
-                                    itemBuilder: (context, i) => CustomListTile(
-                                          index: i,
-                                          title:
-                                              '${newMuslimsController.newMuslimsModel.courses![index].lessons![i].header}',
-                                          onTap: () {
-                                            Get.to(() => NewMuslimsLessonScreen(
-                                                courseIndex: index,
-                                                lessonIndex: i));
-                                          },
-                                        )),
-                              )
-                            ],
-                          ),
+                        child: ListView(
+                          children: [
+                            // Text(
+                            //     '${newMuslimsController.newMuslimsModel.courses![index].description}',
+                            //     style: Styles.textStyle20Black,
+                            //     textAlign: TextAlign.center),
+                            ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: newMuslimsController.newMuslimsModel
+                                    .courses![index].lessons!.length,
+                                itemBuilder: (context, i) => CustomListTile(
+                                      index: i,
+                                      title:
+                                          '${newMuslimsController.newMuslimsModel.courses![index].lessons![i].header}',
+                                      onTap: () {
+                                        Get.to(() => NewMuslimsLessonScreen(
+                                            courseIndex: index,
+                                            lessonIndex: i));
+                                      },
+                                    ))
+                          ],
                         )),
                   )),
             Obx(() => newMuslimsController.isLoading1.value
                 ? const Center(child: CircularProgressIndicator())
                 : Container(
-                    color: AppColors.kPrimaryColor,
+                    color: AppColors.kscandryGreen,
                     child: Padding(
                         padding: 10.aEdge,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: context.height * 0.8,
-                                child: ListView.builder(
-                                    itemCount: newMuslimsController
-                                        .categorySpModel.length,
-                                    itemBuilder: (context, i) => CustomListTile(
-                                          index: i,
-                                          title:
-                                              '${newMuslimsController.categorySpModel[i].name}',
-                                          onTap: () {
-                                            Get.to(() =>
-                                                NewMuslimsCategoryScreen(
-                                                  CategoryIndex: i,
-                                                  title: newMuslimsController
-                                                      .categorySpModel[i].name!,
-                                                ));
-                                          },
-                                        )),
-                              )
-                            ],
-                          ),
+                        child: ListView(
+                          children: [
+                            ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount:
+                                    newMuslimsController.categorySpModel.length,
+                                itemBuilder: (context, i) => CustomListTile(
+                                      index: i,
+                                      title:
+                                          '${newMuslimsController.categorySpModel[i].name}',
+                                      onTap: () {
+                                        Get.to(() => NewMuslimsCategoryScreen(
+                                              CategoryIndex: i,
+                                              title: newMuslimsController
+                                                  .categorySpModel[i].name!,
+                                            ));
+                                      },
+                                    ))
+                          ],
                         )),
                   ))
           ]),

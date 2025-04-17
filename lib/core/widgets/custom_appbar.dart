@@ -5,35 +5,39 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppbar({required this.title, required this.tabs, super.key});
+  const CustomAppbar({required this.title,  this.tabs, super.key,this.height});
 
   final String title;
-  final List<Tab> tabs;
+  final List<Tab>? tabs;
+  final double? height ;
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      iconTheme: const IconThemeData(
-        color: AppColors.kGoldenColor, //change your color here
-      ),
-      backgroundColor: AppColors.kPrimaryColor,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-              child: Text(
-            title,
-            style: Styles.textStyle18Godlen
-                .copyWith(overflow: TextOverflow.ellipsis),
-          )),
-          SvgPicture.asset(AppAssets.logoApp)
-        ],
-      ),
-      bottom: TabBar(
-        dividerColor: AppColors.kGoldenColor,
-        labelColor: AppColors.kGoldenColor,
-        indicatorColor: AppColors.kGreenColor,
-        isScrollable: true,
-        tabs: tabs,
+    return SizedBox(
+      height: height,
+      child: AppBar(
+        iconTheme: const IconThemeData(
+          color: AppColors.kGoldenColor, //change your color here
+        ),
+        backgroundColor: AppColors.kPrimaryColor,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+                child: Text(
+              title,
+              style: Styles.textStyle18Godlen
+                  .copyWith(overflow: TextOverflow.ellipsis),
+            )),
+            SvgPicture.asset(AppAssets.logoApp)
+          ],
+        ),
+        bottom:tabs==null?null: TabBar(
+          dividerColor: AppColors.kGoldenColor,
+          labelColor: AppColors.kGoldenColor,
+          indicatorColor: AppColors.kGreenColor,
+          isScrollable: true,
+          tabs: tabs!,
+        ),
       ),
     );
   }
