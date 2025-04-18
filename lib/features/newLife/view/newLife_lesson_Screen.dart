@@ -11,11 +11,12 @@ class NewLifeLessonScreen extends StatelessWidget {
       {required this.courseIndex, required this.lessonIndex, super.key});
   final int courseIndex;
   final int lessonIndex;
-  NewLifeController newLifeController = Get.find();
+  final NewLifeController newLifeController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: AppColors.kscandryGreen,
           title: Text(
               '${newLifeController.newLifeModel.courses![courseIndex].lessons![lessonIndex].title}'),
           actions: [

@@ -11,11 +11,12 @@ class ProphetLessonScreen extends StatelessWidget {
       {required this.courseIndex, required this.lessonIndex, super.key});
   final int courseIndex;
   final int lessonIndex;
-  ProphetController prophetController = Get.find();
+  final ProphetController prophetController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: AppColors.kscandryGreen,
           title: Text(
               '${prophetController.prophetModel.courses![courseIndex].lessons![lessonIndex].title}'),
           actions: [

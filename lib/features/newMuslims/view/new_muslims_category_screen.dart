@@ -10,11 +10,11 @@ import '../../../core/widgets/custom_listTile.dart';
 
 class NewMuslimsCategoryScreen extends StatelessWidget {
   NewMuslimsCategoryScreen(
-      {required this.CategoryIndex, super.key, required this.title});
-  final int CategoryIndex;
+      {required this.categoryIndex, super.key, required this.title});
+  final int categoryIndex;
   final String title;
 
-  NewMuslimsController newMuslimsController = Get.find();
+  final NewMuslimsController newMuslimsController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,33 +27,33 @@ class NewMuslimsCategoryScreen extends StatelessWidget {
               padding: 10.aEdge,
               child: ListView.builder(
                   itemCount: newMuslimsController
-                      .categorySpModel[CategoryIndex].value!.length,
+                      .categorySpModel[categoryIndex].value!.length,
                   itemBuilder: (context, i) => CustomListTile(
                         index: i,
                         title:
-                            '${newMuslimsController.categorySpModel[CategoryIndex].value![i].name}',
+                            '${newMuslimsController.categorySpModel[categoryIndex].value![i].name}',
                         onTap: () {
                           if (newMuslimsController
-                                  .categorySpModel[CategoryIndex]
+                                  .categorySpModel[categoryIndex]
                                   .value![i]
                                   .video ==
                               null) {
                             Get.to(() => NewMuslimsTopicsScreen(
-                                  CategoryIndex: CategoryIndex,
+                                  CategoryIndex: categoryIndex,
                                   Index: i,
                                   title: newMuslimsController
-                                      .categorySpModel[CategoryIndex]
+                                      .categorySpModel[categoryIndex]
                                       .value![i]
                                       .name!,
                                 ));
                           } else {
                             Get.to(() => WebViweScreen(
                                   title: newMuslimsController
-                                      .categorySpModel[CategoryIndex]
+                                      .categorySpModel[categoryIndex]
                                       .value![i]
                                       .name!,
                                   Urlweb: newMuslimsController
-                                      .categorySpModel[CategoryIndex]
+                                      .categorySpModel[categoryIndex]
                                       .value![i]
                                       .video!,
                                 ));

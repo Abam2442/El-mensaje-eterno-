@@ -80,7 +80,7 @@ class NewMuslimsCourseScreen extends StatelessWidget {
                                           '${newMuslimsController.categorySpModel[i].name}',
                                       onTap: () {
                                         Get.to(() => NewMuslimsCategoryScreen(
-                                              CategoryIndex: i,
+                                              categoryIndex: i,
                                               title: newMuslimsController
                                                   .categorySpModel[i].name!,
                                             ));

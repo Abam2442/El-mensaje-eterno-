@@ -11,11 +11,12 @@ class MooamalatLessonScreen extends StatelessWidget {
       {required this.courseIndex, required this.lessonIndex, super.key});
   final int courseIndex;
   final int lessonIndex;
-  MooamalatController mooamalatController = Get.find();
+  final MooamalatController mooamalatController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: AppColors.kscandryGreen,
           title: Text(
               '${mooamalatController.mooamalatModel.courses![courseIndex].lessons![lessonIndex].title}'),
           actions: [

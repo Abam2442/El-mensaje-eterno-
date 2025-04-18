@@ -23,7 +23,7 @@ class TaharaPage extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             'Aprender Purificacion',
-            style: Styles.textStyle20Black,
+            style: Styles.textStyle20Golden,
           ),
           iconTheme: const IconThemeData(
             color: AppColors.kGoldenColor,
@@ -39,9 +39,9 @@ class TaharaPage extends StatelessWidget {
               ),
             )
           ],
-          backgroundColor: AppColors.kWhiteColor,
+          backgroundColor: AppColors.kPrimaryColor,
         ),
-        backgroundColor: AppColors.kWhiteColor,
+        backgroundColor: AppColors.kscandryGreen,
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
