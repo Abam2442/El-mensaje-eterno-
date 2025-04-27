@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
@@ -21,42 +22,38 @@ class _VideoIconState extends State<VideoIcon> {
 
   @override
   void initState() {
+    log('lol ${widget.videoPath}');
     ini();
     super.initState();
   }
 
   ini() {
-      videoPlayerController =
-        VideoPlayerController.asset(widget.videoPath)
+    if (!widget.videoPath.startsWith('http')) {
+      if (widget.videoPath.startsWith('assets')) {
+      log('assets video path: ${widget.videoPath}');
+        videoPlayerController = VideoPlayerController.asset(widget.videoPath)
           ..initialize().then((_) {
             setState(() {
               isInitialize = true;
             });
           });
-     //TODO this code was used to play video from the network or local file wen we aply supabase
-    // if (!widget.videoPath.startsWith('http')) {
-    //   log('[${widget.videoPath}]');
-    //   final filePath = widget.videoPath;
-    //   final file = File(filePath);
-    //   if (file.existsSync()) {
-    //     log('assswrsssss');
-    //     videoPlayerController = VideoPlayerController.file(file)
-    //       ..initialize().then((_) {
-    //         setState(() {
-    //           isInitialize = true;
-    //         });
-    //       });
-    //   } else {
-    //     log('558');
-    //     videoPlayerController = VideoPlayerController.networkUrl(
-    //         Uri.parse('${AppApiRoutes.videoApi}${widget.videoPath.substring(13)}'))
-    //       ..initialize().then((_) {
-    //         setState(() {
-    //           isInitialize = true;
-    //         });
-    //       });
-    //   }
-    // }
+      } else {
+      log('assets video path: assets/video/${widget.videoPath}');
+         videoPlayerController = VideoPlayerController.asset("assets/video/${widget.videoPath}")
+          ..initialize().then((_) {
+            setState(() {
+              isInitialize = true;
+            });
+          });}
+    } else {
+      log('network video path: ${widget.videoPath}');
+      videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(widget.videoPath))
+        ..initialize().then((_) {
+          setState(() {
+            isInitialize = true;
+          });
+        });
+    }
   }
 
   @override
@@ -73,6 +70,7 @@ class _VideoIconState extends State<VideoIcon> {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () async {
+          log('video : ${widget.videoPath}');
           if (widget.videoPath.startsWith('http')) {
             Uri uri = Uri.parse(widget.videoPath);
             if (!await launchUrl(uri)) {

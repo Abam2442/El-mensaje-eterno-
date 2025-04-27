@@ -5,7 +5,6 @@ import 'package:hiwayda_oracion_islamica/core/helper/functions/check_offline_fil
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_strings.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
@@ -175,11 +174,6 @@ class _SalahPracticalPageState extends State<SalahPracticalPage> {
                         }),
                       ),
                     ),
-                    /*DotsIndicator(
-                      length: pageCount,
-                      pageController: _pageController,
-                      selectedPage: selectedPage,
-                    )*/
                   ],
                 ),
               ),
@@ -304,7 +298,7 @@ class _SalahPracticalPageState extends State<SalahPracticalPage> {
                       'Para las mujeres, ¿cómo usar el Hijab (el velo) 🧕?',
                       style: AppTextStyles.h5,
                     ),
-                    Center(
+                    const Center(
                         child: VideoIcon(
                             videoPath:
                                 'https://youtu.be/mj2nI1amAWg?si=-JYpZP3Db1qkR16B')),
@@ -316,7 +310,7 @@ class _SalahPracticalPageState extends State<SalahPracticalPage> {
                       firstPageData['description8'],
                       style: AppTextStyles.h5,
                     ),
-                    CallMe(
+                    const CallMe(
                         whatsapp: AppStrings.whatsappUrl,
                         messenger: AppStrings.messengerUrl,
                         message: '')
@@ -407,14 +401,6 @@ class _SalahPracticalPageState extends State<SalahPracticalPage> {
         ));
   }
 
-  /*Widget buildLessons(List<SalahPracticalStep> fajrSteps) {
-    return ListView.builder(
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        itemCount: fajrSteps.length,
-        itemBuilder: (context, index) =>
-            StepPage(salahPracticalStep: fajrSteps[index]));
-  }*/
 }
 
 class StepPage extends StatelessWidget {
@@ -486,77 +472,57 @@ class StepPage extends StatelessWidget {
   }
 }
 
-class TopicPage extends StatefulWidget {
+class TopicPage extends StatelessWidget {
   const TopicPage({required this.topic, required this.index, Key? key})
       : super(key: key);
   final Topic topic;
   final int index;
 
   @override
-  State<TopicPage> createState() => _TopicPageState();
-}
-
-class _TopicPageState extends State<TopicPage> {
-  //AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    if (AppPublicVar.assetsAudioPlayer.playing) {
-      AppPublicVar.assetsAudioPlayer.stop();
-    }
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         AudioIcon(
-            audioPath: widget.topic.audioTopic,
-            transliteration: widget.topic.transliteration,
-            index: widget.index),
+            audioPath: topic.audioTopic,
+            transliteration: topic.transliteration,
+            index: index),
         15.hSize,
-        Text(widget.topic.body, style: AppTextStyles.h5),
+        Text(topic.body, style: AppTextStyles.h5),
         15.hSize,
-        Text(widget.topic.translation, style: AppTextStyles.h5),
+        Text(topic.translation, style: AppTextStyles.h5),
         15.hSize,
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          if (widget.topic.videoTopic != '0')
-            VideoIcon(videoPath: widget.topic.videoTopic),
+          if (topic.videoTopic != '0')
+            VideoIcon(videoPath: topic.videoTopic),
           10.wSize,
           CallMe(
               whatsapp: AppStrings.whatsappUrl,
               messenger: AppStrings.messengerUrl,
-              message: widget.topic.body),
+              message: topic.body),
         ]),
         15.hSize,
         Row(
           children: [
-            if (widget.topic.descriptiontopic != '0')
+            if (topic.descriptiontopic != '0')
               Expanded(
-                  child: Text(widget.topic.descriptiontopic,
+                  child: Text(topic.descriptiontopic,
                       style: AppTextStyles.h5)),
-            if (widget.topic.descriptiontopicaudio != null &&
-                widget.topic.descriptiontopicaudio != '0')
-              AudioIcon(audioPath: widget.topic.descriptiontopicaudio!),
+            if (topic.descriptiontopicaudio != null &&
+                topic.descriptiontopicaudio != '0')
+              AudioIcon(audioPath: topic.descriptiontopicaudio!),
           ],
         ),
         Row(
           children: [
-            if (widget.topic.fin != null)
+            if (topic.fin != null)
               Expanded(
                 child: Container(
                     decoration: BoxDecoration(
                         borderRadius: 10.cBorder, color: Colors.redAccent),
-                    child: Text(widget.topic.fin!, style: AppTextStyles.h5)),
+                    child: Text(topic.fin!, style: AppTextStyles.h5)),
               ),
-            if (widget.topic.finaudio != null)
-              AudioIcon(audioPath: widget.topic.finaudio!),
+            if (topic.finaudio != null)
+              AudioIcon(audioPath: topic.finaudio!),
           ],
         ),
         50.hSize
