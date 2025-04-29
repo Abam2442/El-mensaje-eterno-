@@ -81,8 +81,6 @@ class _CustomPaginatorState<T> extends State<CustomPaginator<T>> {
           NumberPaginator(
             numberPages: widget.data.length ~/ 20,
             onPageChange: _onPageChanged,
-            showPrevButton: false,
-            showNextButton: false,
           ),
         Expanded(
           child: ListView.builder(

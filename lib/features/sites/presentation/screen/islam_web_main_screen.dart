@@ -45,8 +45,6 @@ class IslamWebMainScreen extends GetView<IslamWebControllerImp> {
                         initialPage: controller.pageIndex,
                         numberPages: controller.data.length ~/ 20,
                         onPageChange: controller.onPageChanged,
-                        showPrevButton: false,
-                        showNextButton: false,
                       ),
                       Expanded(
                         child: Padding(

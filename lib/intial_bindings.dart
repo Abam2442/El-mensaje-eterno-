@@ -15,7 +15,7 @@ class InitialBindings extends Bindings {
     Get.put(SharedPreferencesService(pref: Get.find()));
     Get.put(Logger());
     Get.put(EasyLoaderService());
-    Get.put(InternetConnectionChecker());
+    Get.put(InternetConnectionChecker.createInstance());
     Get.put<NetworkInfo>(NetworkInfoImpl(Get.find()));
     Get.put(
       ApiService(

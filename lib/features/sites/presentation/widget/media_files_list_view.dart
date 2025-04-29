@@ -115,8 +115,6 @@ class __PaginatorListBuilderState extends State<_PaginatorListBuilder> {
           NumberPaginator(
             numberPages: widget.data.length ~/ 20,
             onPageChange: _onPageChanged,
-            showPrevButton: false,
-            showNextButton: false,
           ),
           _MediaFilesListViewWidgetList(
             currentPageData: _currentPageData,

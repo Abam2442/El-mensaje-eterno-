@@ -14,7 +14,7 @@ import 'package:http/http.dart' as http;
 class QuranBindings extends Bindings {
   @override
   dependencies() async {
-    Get.put(InternetConnectionChecker());
+    Get.put(InternetConnectionChecker.createInstance());
     Get.put(SharedPreferencesService(pref: Get.find()));
 
     Get.put<NetworkInfo>(NetworkInfoImpl(Get.find()));
