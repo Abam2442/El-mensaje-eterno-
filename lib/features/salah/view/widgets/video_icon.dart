@@ -6,12 +6,11 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_palyer_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:video_player/video_player.dart';
 
 class VideoIcon extends StatefulWidget {
   final String videoPath;
 
-  const VideoIcon({required this.videoPath, Key? key}) : super(key: key);
+  const VideoIcon({required this.videoPath, super.key});
 
   @override
   State<VideoIcon> createState() => _VideoIconState();
@@ -71,7 +70,6 @@ class _VideoIconState extends State<VideoIcon> {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () async {
-          log('video01 : ${widget.videoPath}');
           if (customVideoPlayerController == null) {
             Uri uri = Uri.parse(widget.videoPath);
             if (!await launchUrl(uri)) {

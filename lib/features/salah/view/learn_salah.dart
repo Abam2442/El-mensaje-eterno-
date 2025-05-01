@@ -5,7 +5,6 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/widgets/custom_appbar.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/salah_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/Qibla/qibla_compass.dart';

@@ -13,7 +13,7 @@ import 'package:hiwayda_oracion_islamica/features/salah/view/salah_practical_pag
 import 'package:hiwayda_oracion_islamica/features/ui_rone_screen/ui_rone_screen.dart';
 
 class PracticalLearnPage extends StatefulWidget {
-  const PracticalLearnPage({Key? key, required this.level}) : super(key: key);
+  const PracticalLearnPage({super.key, required this.level});
   final int level;
 
   @override
@@ -263,7 +263,7 @@ class _PracticalLearnPageState extends State<PracticalLearnPage> {
 }
 
 class ItsOptions extends StatelessWidget {
-  ItsOptions({
+ const ItsOptions({
     super.key,
     required this.label,
     required this.image,
@@ -273,7 +273,7 @@ class ItsOptions extends StatelessWidget {
 
   final String label;
   final String image;
-  Color? color;
+ final Color? color;
   final void Function()? onTap;
 
   @override

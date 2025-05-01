@@ -9,16 +9,16 @@ import 'package:hiwayda_oracion_islamica/features/salah/view/lesson_details_page
 import '../../../../core/styles/text_styles.dart';
 
 class LessonsDetailsPage extends StatelessWidget {
-  LessonsDetailsPage(
+  const LessonsDetailsPage(
       {super.key,
       required this.list,
       this.list2,
       required this.title,
       required this.icon});
-  String icon;
-  String title;
-  List<LessonDetail> list;
-  List<LessonDetail>? list2;
+  final String icon;
+  final String title;
+  final List<LessonDetail> list;
+  final List<LessonDetail>? list2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

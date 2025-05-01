@@ -19,9 +19,9 @@ import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 import '../../../core/styles/text_styles.dart';
 
 class SalahPracticalPage extends StatefulWidget {
-  String jsonFile;
+  final String jsonFile;
 
-  SalahPracticalPage({required this.jsonFile, Key? key}) : super(key: key);
+  const SalahPracticalPage({required this.jsonFile, super.key});
 
   @override
   State<SalahPracticalPage> createState() => _SalahPracticalPageState();
@@ -400,12 +400,11 @@ class _SalahPracticalPageState extends State<SalahPracticalPage> {
           ],
         ));
   }
-
 }
 
 class StepPage extends StatelessWidget {
-  StepPage({required this.salahPracticalStep, Key? key}) : super(key: key);
-  SalahPracticalModel salahPracticalStep;
+  const StepPage({required this.salahPracticalStep, super.key});
+  final SalahPracticalModel salahPracticalStep;
 
   @override
   Widget build(BuildContext context) {
@@ -492,8 +491,7 @@ class TopicPage extends StatelessWidget {
         Text(topic.translation, style: AppTextStyles.h5),
         15.hSize,
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          if (topic.videoTopic != '0')
-            VideoIcon(videoPath: topic.videoTopic),
+          if (topic.videoTopic != '0') VideoIcon(videoPath: topic.videoTopic),
           10.wSize,
           CallMe(
               whatsapp: AppStrings.whatsappUrl,
@@ -505,8 +503,7 @@ class TopicPage extends StatelessWidget {
           children: [
             if (topic.descriptiontopic != '0')
               Expanded(
-                  child: Text(topic.descriptiontopic,
-                      style: AppTextStyles.h5)),
+                  child: Text(topic.descriptiontopic, style: AppTextStyles.h5)),
             if (topic.descriptiontopicaudio != null &&
                 topic.descriptiontopicaudio != '0')
               AudioIcon(audioPath: topic.descriptiontopicaudio!),
@@ -521,8 +518,7 @@ class TopicPage extends StatelessWidget {
                         borderRadius: 10.cBorder, color: Colors.redAccent),
                     child: Text(topic.fin!, style: AppTextStyles.h5)),
               ),
-            if (topic.finaudio != null)
-              AudioIcon(audioPath: topic.finaudio!),
+            if (topic.finaudio != null) AudioIcon(audioPath: topic.finaudio!),
           ],
         ),
         50.hSize
@@ -532,11 +528,11 @@ class TopicPage extends StatelessWidget {
 }
 
 class swap extends StatefulWidget {
-  SalahPracticalModel salahPracticalStep;
+  final SalahPracticalModel salahPracticalStep;
 
   @override
   State<swap> createState() => _swapState();
-  swap(this.salahPracticalStep, {super.key});
+  const swap(this.salahPracticalStep, {super.key});
 }
 
 class _swapState extends State<swap> {
