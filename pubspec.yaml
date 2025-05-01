@@ -19,6 +19,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_archive: null
+  archive: ^3.3.0
   flutter_compass: ^0.8.0
   flutter_easyloading: ^3.0.5
   flutter_launcher_icons: ^0.14.3
@@ -83,3 +84,5 @@ flutter:
     - assets/books/
     - assets/images/quran.png
     - assets/video/
+    - assets/
+    - assets/Json.zip
