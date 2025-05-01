@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
 import 'package:hiwayda_oracion_islamica/features/home/presentation/controller/home_controller.dart';
-
 import '../../../../core/constants/app_assets.dart';
 import '../../../../features/home/presentation/widgets/pray_time_widget_item.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,6 @@ class PrayTimeWidgetSectionHomeScreen extends StatelessWidget {
   const PrayTimeWidgetSectionHomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    // final HomeController controller = Get.find();
     return GetBuilder<HomeController>(
         init: Get.find<HomeController>(),
         builder: (controller) {

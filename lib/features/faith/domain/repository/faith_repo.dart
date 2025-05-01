@@ -4,5 +4,4 @@ import 'package:hiwayda_oracion_islamica/features/faith/data/model/faithModel.da
 
 abstract class FaithRepo {
   Future<Either<Failure, FaithModel>> getOfflineData();
-  Future<Either<Failure, FaithModel>> getOnlineData();
 }

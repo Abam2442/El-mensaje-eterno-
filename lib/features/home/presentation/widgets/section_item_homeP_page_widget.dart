@@ -1,3 +1,4 @@
+import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -29,8 +30,13 @@ class SectionItemHomePageWidget extends StatelessWidget {
   bool? isInfo;
   @override
   Widget build(BuildContext context) {
-    final VideoPlayerController controller =
-        VideoPlayerController.asset('assets/video/v1.mp4');
+    final CustomVideoPlayerController controller =
+        CustomVideoPlayerController(
+      context: context,
+      videoPlayerController: 
+        VideoPlayerController.asset('assets/video/v1.mp4')
+        ..initialize(),
+    );
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -127,7 +133,7 @@ class SectionItemHomePageWidget extends StatelessWidget {
                                         ? IconButton(
                                             onPressed: () async {
                                               // controller = VideoPlayerController.asset(videoPath);
-                                              await controller.initialize();
+                                              await controller.videoPlayerController.initialize();
                                               await Get.generalDialog(
                                                   pageBuilder: (_, __, ___) {
                                                 return VideoPlayerWidget(

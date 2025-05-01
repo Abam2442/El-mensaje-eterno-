@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/core/helpers/get_state_from_failure.dart';
 import 'package:hiwayda_oracion_islamica/features/faith/data/model/faithModel.dart';
+import 'package:hiwayda_oracion_islamica/features/faith/data/repository/faith_repo_impl.dart';
 import 'package:hiwayda_oracion_islamica/features/faith/domain/usecases/faith_use_case.dart';
 
 class FaithController extends GetxController
@@ -33,7 +34,7 @@ class FaithController extends GetxController
   Future<void> getData() async {
     getLessonsState.value = StateType.loading;
     update();
-    FaithUseCase getAzkarsUseCase = FaithUseCase(Get.find());
+    FaithUseCase getAzkarsUseCase = FaithUseCase(Get.find<FaithRepoImpl>());
     var result = await getAzkarsUseCase();
     result.fold(
       (l) async {
@@ -47,10 +48,4 @@ class FaithController extends GetxController
       },
     );
   }
-
-  // Future<void> loadJsonFile() async {
-  //   String data = await rootBundle.loadString('assets/json/Sp-faith.json');
-  //   faithModel = FaithModel.fromJson(await json.decode(data));
-  //   isLoading.value = false;
-  // }
 }

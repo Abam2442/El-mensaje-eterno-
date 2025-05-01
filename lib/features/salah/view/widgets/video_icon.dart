@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
@@ -17,7 +18,7 @@ class VideoIcon extends StatefulWidget {
 }
 
 class _VideoIconState extends State<VideoIcon> {
-  VideoPlayerController? videoPlayerController;
+  CustomVideoPlayerController? customVideoPlayerController;
   bool isInitialize = false;
 
   @override
@@ -28,7 +29,9 @@ class _VideoIconState extends State<VideoIcon> {
   }
 
   ini() {
+          log('video00 : ${widget.videoPath}');
     if (!widget.videoPath.startsWith('http')) {
+      VideoPlayerController videoPlayerController;
       if (widget.videoPath.startsWith('assets')) {
         log('assets video path: ${widget.videoPath}');
         videoPlayerController = VideoPlayerController.asset(widget.videoPath)
@@ -47,6 +50,10 @@ class _VideoIconState extends State<VideoIcon> {
                 });
               });
       }
+      customVideoPlayerController = CustomVideoPlayerController(
+        context: context,
+        videoPlayerController: videoPlayerController,
+      );
     } else {
       log('network video path: ${widget.videoPath}');
     }
@@ -54,10 +61,8 @@ class _VideoIconState extends State<VideoIcon> {
 
   @override
   void dispose() {
-    //print('videoPlayerController disposed ${widget.videoPath}');
-    if (videoPlayerController != null) {
-      videoPlayerController!.pause();
-      videoPlayerController!.dispose();
+    if (customVideoPlayerController != null) {
+      customVideoPlayerController!.dispose();
     }
     super.dispose();
   }
@@ -66,8 +71,8 @@ class _VideoIconState extends State<VideoIcon> {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () async {
-          log('video : ${widget.videoPath}');
-          if (videoPlayerController == null) {
+          log('video01 : ${widget.videoPath}');
+          if (customVideoPlayerController == null) {
             Uri uri = Uri.parse(widget.videoPath);
             if (!await launchUrl(uri)) {
               throw Exception('Could not launch $uri');
@@ -76,14 +81,15 @@ class _VideoIconState extends State<VideoIcon> {
             showGeneralDialog(
                 context: context,
                 pageBuilder: (_, __, ___) {
-                  return VideoPlayerWidget(controller: videoPlayerController!);
+                  return VideoPlayerWidget(
+                      controller: customVideoPlayerController!);
                 });
           }
         },
         child: SizedBox(
             width: 200,
             height: 200,
-            child: (videoPlayerController == null)
+            child: (customVideoPlayerController == null)
                 ? Image.asset(AppImages.youtube)
                 : ClipRRect(
                     borderRadius: BorderRadius.circular(20),
@@ -97,7 +103,8 @@ class _VideoIconState extends State<VideoIcon> {
                                 ? const Center(
                                     child: CircularProgressIndicator(),
                                   )
-                                : VideoPlayer(videoPlayerController!),
+                                : VideoPlayer(customVideoPlayerController!
+                                    .videoPlayerController),
                             const Center(
                                 child: Icon(
                               Icons.play_arrow,
