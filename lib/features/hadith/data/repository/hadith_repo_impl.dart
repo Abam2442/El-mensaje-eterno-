@@ -25,7 +25,7 @@ class HadithRepoImpl implements HadithRepo {
       List<SunnahHadithModel> sunnahHadithes =
           await hadithLocalDataSource.getHadithes();
       Get.find<Logger>()
-          .w("End `getHadithes` in |HadithRepoImpl| $sunnahHadithes");
+          .w("End `getHadithes` in |HadithRepoImpl| lol $sunnahHadithes");
       return Right(sunnahHadithes);
     } catch (e) {
       Get.find<Logger>().e(
@@ -45,40 +45,4 @@ class HadithRepoImpl implements HadithRepo {
     }
   }
 
-  @override
-  Future<Either<Failure, List<SunnahHadithModel>>> getOnlineHadithData() async {
-    try {
-      List<SunnahHadithModel> sunnahData =
-          await hadithRemoteDataSource.getOnlineHadithData();
-      return Right(sunnahData);
-    } catch (e) {
-      return Left(getFailureFromException(e));
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<SunnahDataModel>>> getOnlineSunnahData(
-      String path) async {
-    try {
-      List<SunnahDataModel> sunnahData =
-          await hadithRemoteDataSource.getOnlineSunnahData(path);
-      return Right(sunnahData);
-    } catch (e) {
-      return Left(getFailureFromException(e));
-    }
-  }
-
-  // @override
-  // Future<Either<Failure, HaditencHadithModel>> getHadithencHadithes() async {
-  //   try {
-  //     Get.find<Logger>().i("Start `getHadithes` in |HadithRepoImpl|");
-  //     var hadithes = await hadithLocalDataSource.getHadithencHadithes();
-  //     Get.find<Logger>().w("End `getHadithes` in |HadithRepoImpl| $hadithes");
-  //     return Right(hadithes);
-  //   } catch (e) {
-  //     Get.find<Logger>().e(
-  //         "End `getHadithes` in |HadithRepoImpl| Exception: ${e.runtimeType}");
-  //     return Left(getFailureFromException(e));
-  //   }
-  // }
 }
