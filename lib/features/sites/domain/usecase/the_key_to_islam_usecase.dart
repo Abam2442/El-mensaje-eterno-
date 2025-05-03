@@ -10,7 +10,6 @@ class TheKeyToIslamUseCase {
     this.theKeyToIslamRepo,
   );
   Future<Either<Failure, List<TheKeyToIslamfirst>>> call() async {
-    
     return theKeyToIslamRepo.getArtical();
   }
 }
