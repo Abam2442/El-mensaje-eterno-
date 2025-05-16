@@ -31,32 +31,18 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/guid_to_islam_books_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/guid_to_islam_videos_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_for_christian_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_audios_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_fatwa_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_videos_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_audio_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_audio_fatwa_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_audio_videos_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_books_audios_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_books_audios_quran_videos_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_books_audios_videos_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_religion_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_web_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/jesus_muslim_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah/knowing_allah_audios_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah/knowing_allah_binding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah/knowing_allah_books_binding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah/knowing_allah_videos_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/learning_islam_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_audios_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_banding.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_video_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/terminology_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/explore_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/articals/guid_to_islam_artical.dart';
@@ -97,6 +83,10 @@ import '../../features/sites/bindings/the_key_to_islam_binding.dart';
 import '../../features/sites/presentation/screen/saber_el_islam/saber_el_islam_screen.dart';
 import '../../features/sites/presentation/screen/the_key_to_islam_2_screen.dart';
 
+ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/audios/audios.dart';
+ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/books/books.dart';
+ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/videos/videos.dart';
+
 abstract class AppPagesRoutes {
   // Tabs Screens
   static const String mainScreen = "/";
@@ -104,7 +94,6 @@ abstract class AppPagesRoutes {
   static const String learnSalahPage = "/LearnSalahPage";
   static const String azkarBodtScreen = "/azkar_body_screen";
   static const String doaaBodyScreen = "/doaa_body_screen";
-
   static const String quranScreen = "/quranScreen";
   static const String faithScreen = "/faithScreen";
   static const String learnSalah = "/learnSalah";
@@ -190,6 +179,24 @@ abstract class AppPagesRoutes {
   static const String saberElIslam = "/saber_el_islam";
   static const String detailsChannelsScreen = "/DetailsChannelsScreen";
   static List<GetPage<dynamic>> appPages = [
+     GetPage(
+       name: guideToIslamBooks,
+       page: () => const GudidToIslamBooksScreen(),
+       binding: GuideToIslamBooksBindings(),
+       transition: Transition.cupertino,
+     ),
+     GetPage(
+       name: guideToIslamAudios,
+       page: () => const GudidToIslamAudiosScreen(),
+       binding: GuideToIslamAudiosBindings(),
+       transition: Transition.cupertino,
+     ),
+     GetPage(
+       name: guideToIslamVideos,
+       page: () => const GudidToIslamVideosScreen(),
+       binding: GuideToIslamVideosBindings(),
+       transition: Transition.cupertino,
+     ),
     GetPage(
       name: mainScreen,
       page: () => const LearnSalahPage(),

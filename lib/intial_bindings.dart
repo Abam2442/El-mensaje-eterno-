@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/services/api_service.dart';
+import 'package:hiwayda_oracion_islamica/core/services/download_services.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:logger/logger.dart';
@@ -16,10 +17,12 @@ class InitialBindings extends Bindings {
     Get.put(InternetConnectionChecker.createInstance());
     Get.put<NetworkInfo>(NetworkInfoImpl(Get.find()));
     Get.put(
-       ApiService(
-         client: http.Client(),
-         networkInfo: Get.find(),
-       ),
-     );
+      ApiService(
+        client: http.Client(),
+        networkInfo: Get.find(),
+      ),
+    );
+
+    Get.lazyPut(() => DownloadServices());
   }
 }

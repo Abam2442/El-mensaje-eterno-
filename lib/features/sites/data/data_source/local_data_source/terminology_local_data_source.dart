@@ -21,10 +21,10 @@ class TerminologyLocalDataSourceImp extends TerminologyLocalDataSource {
       final String extractedDir = await extractZip(
           zipPath: 'assets/Json.zip',
           destinationDir: await getTemporaryDirectory()
-              .then((dir) => '${dir.path}/${AppKeys.terminology}'));
+              .then((dir) => '${dir.path}/extracted_json'));
 
       // Load the JSON file from the extracted directory
-      final String jsonFilePath = '$extractedDir/${AppKeys.nonMuslims}';
+      final String jsonFilePath = '$extractedDir/${AppKeys.terminology}';
       final File jsonFile = File(jsonFilePath);
 
       if (!await jsonFile.exists()) {
