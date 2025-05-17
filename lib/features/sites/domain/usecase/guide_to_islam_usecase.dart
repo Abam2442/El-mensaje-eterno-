@@ -1,6 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/functions/check_offline_files.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import '../../../../core/errors/failures.dart';
 import '../entities/fixed_entities.dart';
@@ -13,9 +11,7 @@ class GuideToIslamUseCase {
   );
 
   Future<Either<Failure, List<FixedEntities>>> callContent() async {
-    return await checkOfflineFiles(AppKeys.guideToIslam)
-        ? await islamRepository.getContent()
-        : await islamRepository.getOnlineContent();
+    return await islamRepository.getContent();
   }
 
   Future<Either<Failure, List<MediaEntity>>> getBooks() async {

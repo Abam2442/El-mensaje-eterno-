@@ -1,9 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/functions/get_ziped_data.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/fixed_entities.dart';
 import 'package:path_provider/path_provider.dart';
