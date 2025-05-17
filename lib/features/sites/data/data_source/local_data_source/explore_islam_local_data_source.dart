@@ -1,5 +1,6 @@
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/functions/get_assets_data.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/data/models/explore_islam_model.dart';
 
 abstract class ExploreIslamLocalDataSource {
@@ -11,7 +12,7 @@ class ExploreIslamLocalDataSourceImp extends ExploreIslamLocalDataSource {
   Future<List<ExploreIslamModel>> getArtical() async {
     try {
       List<ExploreIslamModel> articals = [];
-      final jsonData = await getAssetsData(AppKeys.exploreIslam);
+      final jsonData = await getOfflineData(AppKeys.exploreIslam);
       articals = jsonData['explore-islam']
           .map<ExploreIslamModel>(
             (artical) => ExploreIslamModel.fromJson(artical),
