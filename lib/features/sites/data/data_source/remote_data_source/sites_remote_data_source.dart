@@ -1,8 +1,5 @@
-import 'dart:convert';
 import 'dart:developer';
-
-import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
-import 'package:http/http.dart' as http;
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/fixed_entities.dart';
 
 abstract class SitesRemoteDataSource {
@@ -20,11 +17,8 @@ class SitesRemoteDataSourceImpl extends SitesRemoteDataSource {
       List<FixedEntities> articals = [];
 
       final response =
-          await http.get(Uri.parse('${AppApiRoutes.jsonApi}$fileName'));
-      final jsonString = utf8.decode(response.bodyBytes);
-      final finalData = await json.decode(jsonString);
-      print(finalData);
-      finalData[sectionName].forEach((key, value) {
+          await getOfflineData(fileName);
+      response[sectionName].forEach((key, value) {
         articals.add(FixedEntities(
           name: key,
           content: value,

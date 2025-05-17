@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
-
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/services/easy_loader_service.dart';
 import '../../../../core/styles/text_styles.dart';

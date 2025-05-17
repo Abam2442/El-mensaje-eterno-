@@ -1,14 +1,9 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/functions/check_offline_files.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_assets_data.dart';
 import 'package:hiwayda_oracion_islamica/features/pilers/model/pilersModel.dart';
-import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
 
 class PilersController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -21,9 +16,7 @@ class PilersController extends GetxController
   @override
   void onInit() async {
     super.onInit();
-    await checkOfflineFiles('Sp-pillers.json')
-        ? await loadJsonFile()
-        : await loadOnlineFile();
+    await loadOfflineFile();
     tabs = [
       Tab(
         text: pilersModel.courses![0].title!,
@@ -38,11 +31,11 @@ class PilersController extends GetxController
 
   late PilersModel pilersModel;
 
-  Future<void> loadOnlineFile() async {
+  Future<void> loadOfflineFile() async {
     try {
-      print('remote data');
+      print('Sp-pillers.json');
       final response =
-          await http.get(Uri.parse('${AppApiRoutes.jsonApi}Sp-pillers.json'));
+          await getAssetsData('Sp-pillers.json');
       final jsonString = utf8.decode(response.bodyBytes);
       final finalData = await jsonDecode(jsonString);
       pilersModel = PilersModel.fromJson(finalData);
@@ -52,13 +45,4 @@ class PilersController extends GetxController
     }
   }
 
-  Future<void> loadJsonFile() async {
-    final directory = await getApplicationDocumentsDirectory();
-    final filePath = '${directory.path}/Sp-pillers.json';
-    final file = File(filePath);
-    String jsonString = await file.readAsString();
-    final jsonResponse = await json.decode(jsonString);
-    pilersModel = PilersModel.fromJson(jsonResponse);
-    isLoading.value = false;
-  }
 }

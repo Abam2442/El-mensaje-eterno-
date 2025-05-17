@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/functions/check_offline_files.dart';
-import 'package:http/http.dart' as http;
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_assets_data.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_routes.dart';
@@ -52,11 +50,9 @@ class _SalahPracticalPageState extends State<SalahPracticalPage> {
     super.initState();
   }
 
-  Future<List<dynamic>> getOnlineData() async {
+  Future<List<dynamic>> getOfflineData() async {
     try {
-      log('remote Data');
-      final response = await http
-          .get(Uri.parse('${AppApiRoutes.jsonApi}${widget.jsonFile}'));
+      final response = await getAssetsData(widget.jsonFile);
       final jsonString = utf8.decode(response.bodyBytes);
       final finalData = json.decode(jsonString);
       return finalData;
@@ -67,9 +63,7 @@ class _SalahPracticalPageState extends State<SalahPracticalPage> {
 
   void getData() async {
     log(widget.jsonFile);
-    List<dynamic> body = await checkOfflineFiles(widget.jsonFile)
-        ? await SalahStepsFromJson.getData(widget.jsonFile)
-        : await getOnlineData();
+    List<dynamic> body =  await getOfflineData();
     firstPageData = body[0];
     secondPageData = body[1];
     lastPageData = body.last;

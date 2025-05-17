@@ -1,7 +1,5 @@
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/functions/get_assets_data.dart';
-import 'package:hiwayda_oracion_islamica/core/services/shared_preferences_service.dart';
-
 import '../models/azkar_model/azkar_model.dart';
 import '../models/doaa_model/doaa_model.dart';
 import '../models/sonan_model.dart';

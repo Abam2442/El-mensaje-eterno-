@@ -4,5 +4,4 @@ import 'package:hiwayda_oracion_islamica/features/youtubechannels/data/models/yo
 
 abstract class YoutubeChannelsRepo {
   Future<Either<Failure, List<YoutubeModel>>> getChannels();
-  Future<Either<Failure, List<YoutubeModel>>> getOnlineChannels();
 }

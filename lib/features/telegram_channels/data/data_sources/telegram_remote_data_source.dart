@@ -1,23 +1,18 @@
 import 'dart:convert';
-
-import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
-import 'package:http/http.dart' as http;
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
 import 'package:hiwayda_oracion_islamica/features/telegram_channels/data/models/telegram_channels_model.dart';
 
 abstract class TelegramRemoteDataSource {
-  Future<TelegramChannels> getOnlineChannels();
+  Future<TelegramChannels> getOfflineChannels();
 }
 
 class TelegramRemoteDataSourceImpl extends TelegramRemoteDataSource {
   @override
-  Future<TelegramChannels> getOnlineChannels() async {
+  Future<TelegramChannels> getOfflineChannels() async {
     try {
-      final response = await http
-          .get(Uri.parse('${AppApiRoutes.jsonApi}${AppKeys.telegram}'));
-      final jsonString = utf8.decode(response.bodyBytes);
-      final finalData = json.decode(jsonString);
-      TelegramChannels channelsModel = TelegramChannels.fromJson(finalData);
+      final response = await getOfflineData(AppKeys.telegram);
+      TelegramChannels channelsModel = TelegramChannels.fromJson(response);
 
       return channelsModel;
     } catch (e) {
