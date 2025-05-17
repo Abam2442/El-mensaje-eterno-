@@ -12,10 +12,4 @@ abstract class IslamLandRepository {
   Future<Either<Failure, List<MediaEntity>>> getVideos();
   Future<Either<Failure, List<MediaEntity>>> getOnlineFatwa();
 
-  Future<Either<Failure, List<List<FixedEntities>>>> getOnlineContent();
-  Future<Either<Failure, Map<String, List<MediaEntity>>>> getOnlineBooks();
-  Future<Either<Failure, List<IslamLandFatwaEntities>>> getNetOfflineFatwa();
-  Future<Either<Failure, List<MediaEntity>>> getOnlineAudio();
-  Future<Either<Failure, List<MediaEntity>>> getOnlineVideos();
-  Future<Either<Failure, List<MediaEntity>>> getNetOnlineFatwa();
 }
