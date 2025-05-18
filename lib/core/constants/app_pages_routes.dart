@@ -31,18 +31,32 @@ import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/guid_to_islam_books_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/guide_to_islam/guid_to_islam_videos_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_for_christian_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_audios_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_fatwa_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_house/islam_house_videos_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_audio_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_audio_fatwa_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_audio_videos_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_land/islam_land_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_books_audios_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_books_audios_quran_videos_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_books_audios_videos_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_messages/islam_message_books_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_religion_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/islam_web_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/jesus_muslim_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah/knowing_allah_audios_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah/knowing_allah_binding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah/knowing_allah_books_binding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/knowing_allah/knowing_allah_videos_binding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/learning_islam_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_audios_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_banding.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/bindings/rasuluallah/rasuluallah_video_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/bindings/terminology_banding.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/explore_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/giude_to_islam/articals/guid_to_islam_artical.dart';
@@ -50,17 +64,31 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/isla
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_for_christians/islam_for_christians_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_guide_1/islam_guide_1_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_artical.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_audios_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_books_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_fatwa.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_house/islam_house_videos.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/audios/islam_land_books_main_audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/books/islam_land_books_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/fatwa/islam_land_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/islam_land_main_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_land/videos/islam_land_video_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/articals/islam_message_artical_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/audios/islam_land_books_main_audios_screen%20copy.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/books/islam_message_main_books_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/video/islam_message_quran__videos_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_message/video/islam_message_videos_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_qa_home_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/islam_web_main_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/jesus_is_muslim/jesus_muslim_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Artical/artical_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Book/book_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/Video/video_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/knowing_allah/audios/audios_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/learning_islam/learning_islam_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Artical/artical_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Audio/rasul_uallah_audios_screen.dart';
+import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/rasul_uallah/Video/video_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminology/terminolgy_screen.dart';
 // import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/terminolgy_screen.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/screen/the_key_to_islam_screen.dart';
@@ -197,6 +225,90 @@ abstract class AppPagesRoutes {
        binding: GuideToIslamVideosBindings(),
        transition: Transition.cupertino,
      ),
+      GetPage(
+      name: knowingAllahBooks,
+      page: () => const KnowingAllahBookScreen(),
+      binding: KnowingAllahBooksBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: knowingAllahAudios,
+      page: () => const KnowingAllahAudiosScreen(),
+      binding: KnowingAllahAudiosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: knowingAllahVideos,
+      page: () => const KnowingAllahVideoScreen(),
+      binding: KnowingAllahVideosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamHouseBooks,
+      page: () => const IslamHouseBooksMainScreen(),
+      binding: IslamHouseBooksBindings(),
+      transition: Transition.cupertino,
+    ),
+      GetPage(
+      name: islamHouseVideos,
+      page: () => const IslamHouseVideos(),
+      binding: IslamHouseVideosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamHouseAudios,
+      page: () => const IslamHouseAudios(),
+      binding: IslamHouseAudiosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamMessageBooks,
+      page: () => const IslamMessageBooksMainScreen(),
+      binding: IslamMessageBooksBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamMessageAudios,
+      page: () => const IslamMessageAudiosMainScreen(),
+      binding: IslamMessageAudiosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamMessageVideos,
+      page: () => const IslamMessageVideosMainScreen(),
+      binding: IslamMessageVideosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamMessageQuranVideos,
+      page: () => const IslamMessageQuranVideosMainScreen(),
+      binding: IslamMessageQuranVideosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamLandAudio,
+      page: () => const IslamLandAudioMainScreen(),
+      binding: IslamLandAudioBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: islamLandVideos,
+      page: () => const IslamLandVideosMainScreen(),
+      binding: IslamLandVideosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: rasulullahAudios,
+      page: () => const RasuluallahAudiosScreen(),
+      binding: RasuluallhAudiosBindings(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: rasulullahVideos,
+      page: () => const RasulutallahVideosScreen(),
+      binding: RasuluallhVideosBindings(),
+      transition: Transition.cupertino,
+    ),
     GetPage(
       name: mainScreen,
       page: () => const LearnSalahPage(),

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/data/models/books_list_model.dart'
     as models;
@@ -34,8 +36,9 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
 
   @override
   Future<List<MediaEntity>> getAudio() async {
-    try {
+    log('islamMessageAudios');
       List<MediaEntity> audios = [];
+    try {
 
       final jsonData = await getOfflineData(AppKeys.islamMessageAudios);
 
