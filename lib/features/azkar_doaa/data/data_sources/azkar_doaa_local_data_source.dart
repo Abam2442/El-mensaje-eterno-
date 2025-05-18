@@ -1,5 +1,5 @@
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/functions/get_assets_data.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
 import '../models/azkar_model/azkar_model.dart';
 import '../models/doaa_model/doaa_model.dart';
 import '../models/sonan_model.dart';
@@ -16,7 +16,7 @@ class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
   Future<List<AzkarModel>> getAzkar() async {
     try {
       List<AzkarModel> azkar = [];
-      final jsonData = await getAssetsData(AppKeys.azkarDua);
+      final jsonData = await getOfflineData(AppKeys.azkarDua);
 
       azkar = jsonData['azkar']
           .map<AzkarModel>(
@@ -34,7 +34,7 @@ class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
   Future<List<DoaaModel>> getDoaas() async {
     try {
       late List<DoaaModel> doaas = [];
-      final jsonData = await getAssetsData(AppKeys.alduaa);
+      final jsonData = await getOfflineData(AppKeys.alduaa);
 
       jsonData['Es'].forEach((element) {
         doaas.add(DoaaModel(
@@ -56,7 +56,7 @@ class AzkarDoaaLocalDataSourceImpl extends AzkarDoaaLocalDataSource {
       List<DayAndNightSonan> nightAndDaySonan = [];
       List<TimedSonan> timedSonan = [];
       List<NotTimedSonan> unTimedSonan = [];
-      final jsonData = await getAssetsData(AppKeys.sonan);
+      final jsonData = await getOfflineData(AppKeys.sonan);
       jsonData['Es']['أذكار اليوم والليلة'].forEach((element) {
         List<DayAndNightSonanSubCat> dayAndNightSonanSubCat = [];
         element['الأذكار'].forEach((a) {
