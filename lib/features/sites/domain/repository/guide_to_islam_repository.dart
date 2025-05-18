@@ -5,7 +5,6 @@ import '../entities/fixed_entities.dart';
 
 abstract class GuideToIslamRepository {
   Future<Either<Failure, List<FixedEntities>>> getContent();
-  Future<Either<Failure, List<FixedEntities>>> getOnlineContent();
 
   Future<Either<Failure, List<MediaEntity>>> getBooks();
   Future<Either<Failure, List<MediaEntity>>> getAudios();

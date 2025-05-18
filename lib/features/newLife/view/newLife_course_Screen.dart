@@ -11,11 +11,11 @@ import '../../../core/widgets/custom_listTile.dart';
 class NewLifeCourseScreen extends StatelessWidget {
   NewLifeCourseScreen({required this.index, super.key});
   final int index;
-  NewLifeController newLifeController = Get.find();
+  final NewLifeController newLifeController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.kPrimaryColor,
+      color: AppColors.kscandryGreen,
       child: Padding(
           padding: 10.aEdge,
           child: Column(

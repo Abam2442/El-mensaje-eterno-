@@ -4,5 +4,4 @@ import 'package:hiwayda_oracion_islamica/features/salah/data/model/tahara_lesson
 
 abstract class SalahRepo {
   Future<Either<Failure, List<TaharaLessonModel>>> getOfflineData();
-  Future<Either<Failure, List<TaharaLessonModel>>> getOnlineData();
 }

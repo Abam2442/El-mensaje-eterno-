@@ -7,7 +7,4 @@ abstract class RasuluallhRepository {
   Future<Either<Failure, List<CategoryFixedEntity>>> getContent();
   Future<Either<Failure, List<MediaEntity>>> getAudios();
   Future<Either<Failure, List<MediaCategoryEntity>>> getVideos();
-  Future<Either<Failure, List<CategoryFixedEntity>>> getOnlineContent();
-  Future<Either<Failure, List<MediaEntity>>> getOnlineAudios();
-  Future<Either<Failure, List<MediaCategoryEntity>>> getOnlineVideos();
 }

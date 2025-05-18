@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/remote_data_source/terminology_remote_data_source.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/repository/terminology_repo.dart';
 import '../data/data_source/local_data_source/terminology_local_data_source.dart';
 import '../data/repository/terminology_repo_impl.dart';
@@ -13,8 +12,7 @@ class TerminologyBindings extends Bindings {
     );
     Get.put<FixedCategoryRepository>(
       TerminologyRepositoryImp(
-          terminologyLocalDataSource: Get.find(),
-          Get.put(TerminologyRemoteDataSourceImpl())),
+          terminologyLocalDataSource: Get.find(),),
     );
 
     Get.put(TerminologyControllerImp());

@@ -15,7 +15,9 @@ class FaithLessonScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     FaithController faithController = Get.find();
     return Scaffold(
+      backgroundColor: AppColors.kPrimaryColor,
       appBar: AppBar(
+          backgroundColor: AppColors.kscandryGreen,
           title: Text(
             '${faithController.faithModel.courses![courseIndex].lessons![lessonIndex].title}',
             overflow: TextOverflow.ellipsis,

@@ -44,7 +44,6 @@ class ProphetScreen extends GetView<ProphetController> {
                 title: Get.arguments['title'],
                 tabs: controller.tabs,
               ),
-              backgroundColor: AppColors.kWhiteColor,
               body: TabBarView(
                 children: [
                   ProphetCourseScreen(index: 0),

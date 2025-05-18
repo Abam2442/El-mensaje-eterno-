@@ -9,7 +9,7 @@ plugins {
 android {
     namespace= "com.mensaje.eterno"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "25.1.8937393"
+    ndkVersion = "26.1.10909125"
     compileOptions {
         sourceCompatibility= JavaVersion.VERSION_1_8
         targetCompatibility= JavaVersion.VERSION_1_8

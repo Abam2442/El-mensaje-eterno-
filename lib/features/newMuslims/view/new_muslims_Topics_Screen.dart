@@ -17,7 +17,7 @@ class NewMuslimsTopicsScreen extends StatelessWidget {
   final int Index;
   final String title;
 
-  NewMuslimsController newMuslimsController = Get.find();
+  final NewMuslimsController newMuslimsController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

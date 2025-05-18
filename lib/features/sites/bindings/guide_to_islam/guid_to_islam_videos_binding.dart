@@ -11,7 +11,7 @@ class GuideToIslamVideosBindings extends Bindings {
       GuideToIslamLocalDataSourceImpl(),
     );
     Get.put<GuideToIslamRepository>(
-      GuideToIslamRepositoryImp(islamLocalDataSource: Get.find(), null),
+      GuideToIslamRepositoryImp(islamLocalDataSource: Get.find(), ),
     );
 
     Get.put(GuideToIslamVideosControllerImp());

@@ -1,69 +1,67 @@
 import 'dart:developer';
-import 'dart:io';
-
+import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_api_routes.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_palyer_widget.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:video_player/video_player.dart';
 
 class VideoIcon extends StatefulWidget {
   final String videoPath;
 
-  const VideoIcon({required this.videoPath, Key? key}) : super(key: key);
+  const VideoIcon({required this.videoPath, super.key});
 
   @override
   State<VideoIcon> createState() => _VideoIconState();
 }
 
 class _VideoIconState extends State<VideoIcon> {
-  late VideoPlayerController videoPlayerController;
+  CustomVideoPlayerController? customVideoPlayerController;
   bool isInitialize = false;
 
   @override
   void initState() {
+    log('lol ${widget.videoPath}');
     ini();
     super.initState();
   }
 
-  Future ini() async {
+  ini() {
+          log('video00 : ${widget.videoPath}');
     if (!widget.videoPath.startsWith('http')) {
-      log('[${widget.videoPath}]');
-      final directory = await getApplicationDocumentsDirectory();
-      final filePath = '${directory.path}/Videos/${widget.videoPath}';
-      final file = File(filePath);
-      if (file.existsSync()) {
-        log('assswrsssss');
-        videoPlayerController = VideoPlayerController.file(file)
+      VideoPlayerController videoPlayerController;
+      if (widget.videoPath.startsWith('assets')) {
+        log('assets video path: ${widget.videoPath}');
+        videoPlayerController = VideoPlayerController.asset(widget.videoPath)
           ..initialize().then((_) {
             setState(() {
               isInitialize = true;
             });
           });
       } else {
-        log('558');
-
-        videoPlayerController = VideoPlayerController.networkUrl(
-            Uri.parse('${AppApiRoutes.videoApi}${widget.videoPath}'))
-          ..initialize().then((_) {
-            setState(() {
-              isInitialize = true;
-            });
-          });
+        log('assets video path: assets/video/${widget.videoPath}');
+        videoPlayerController =
+            VideoPlayerController.asset("assets/video/${widget.videoPath}")
+              ..initialize().then((_) {
+                setState(() {
+                  isInitialize = true;
+                });
+              });
       }
+      customVideoPlayerController = CustomVideoPlayerController(
+        context: context,
+        videoPlayerController: videoPlayerController,
+      );
+    } else {
+      log('network video path: ${widget.videoPath}');
     }
   }
 
   @override
   void dispose() {
-    //print('videoPlayerController disposed ${widget.videoPath}');
-    if (!widget.videoPath.startsWith('http')) {
-      videoPlayerController.pause();
-      videoPlayerController.dispose();
+    if (customVideoPlayerController != null) {
+      customVideoPlayerController!.dispose();
     }
     super.dispose();
   }
@@ -72,7 +70,7 @@ class _VideoIconState extends State<VideoIcon> {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () async {
-          if (widget.videoPath.startsWith('http')) {
+          if (customVideoPlayerController == null) {
             Uri uri = Uri.parse(widget.videoPath);
             if (!await launchUrl(uri)) {
               throw Exception('Could not launch $uri');
@@ -81,14 +79,15 @@ class _VideoIconState extends State<VideoIcon> {
             showGeneralDialog(
                 context: context,
                 pageBuilder: (_, __, ___) {
-                  return VideoPlayerWidget(controller: videoPlayerController);
+                  return VideoPlayerWidget(
+                      controller: customVideoPlayerController!);
                 });
           }
         },
         child: SizedBox(
             width: 200,
             height: 200,
-            child: (widget.videoPath.startsWith('http'))
+            child: (customVideoPlayerController == null)
                 ? Image.asset(AppImages.youtube)
                 : ClipRRect(
                     borderRadius: BorderRadius.circular(20),
@@ -102,7 +101,8 @@ class _VideoIconState extends State<VideoIcon> {
                                 ? const Center(
                                     child: CircularProgressIndicator(),
                                   )
-                                : VideoPlayer(videoPlayerController),
+                                : VideoPlayer(customVideoPlayerController!
+                                    .videoPlayerController),
                             const Center(
                                 child: Icon(
                               Icons.play_arrow,

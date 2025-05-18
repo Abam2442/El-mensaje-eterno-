@@ -39,4 +39,6 @@ class AppColors {
   static const Color kBlackColor = Color(0xff222222);
   static const Color kWhiteColor = Color(0xffE9EDDF);
   static const Color kBlueColor = Color(0xff2A2C41);
-}
+  static const Color kscandryGreen =Color(0xFFbac2b9);
+  static const Color kscandryDarkGreen =Color.fromARGB(255, 58, 60, 58);
+} 

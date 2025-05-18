@@ -1,3 +1,4 @@
+import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
@@ -330,7 +331,7 @@ class UiRoneScreen extends StatelessWidget {
     required String videoPath,
     required String image,
   }) {
-    late VideoPlayerController videoPlayerController;
+    late CustomVideoPlayerController videoPlayerController;
     return Container(
       margin: 5.vEdge,
       child: Row(
@@ -372,8 +373,10 @@ class UiRoneScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.remove_red_eye),
             onPressed: () async {
-              videoPlayerController = VideoPlayerController.asset(videoPath);
-              await videoPlayerController.initialize();
+              videoPlayerController = CustomVideoPlayerController(
+                context: context,
+                videoPlayerController: VideoPlayerController.asset(videoPath)..initialize(),
+              );
               await Get.generalDialog(pageBuilder: (_, __, ___) {
                 return VideoPlayerWidget(controller: videoPlayerController);
               });

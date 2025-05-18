@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/remote_data_source/knowing_allah_remote_data_source.dart';
 import '../../data/data_source/local_data_source/knowing_allah_local_data_source.dart';
 import '../../data/repository/knowing-allah_repo_imp.dart';
 import '../../domain/repository/knowing_allah_repository.dart';
@@ -13,8 +12,7 @@ class KnowingAllahBindings extends Bindings {
     );
     Get.put<KnowingAllahRepository>(
       KnowingAllahRepositoryImp(
-          knowingAllahLocalDataSource: Get.find(),
-          Get.put(KnowingAllahRemoteDataSourceImpl())),
+          knowingAllahLocalDataSource: Get.find(),),
     );
 
     Get.put(KnowingAllahControllerImp());

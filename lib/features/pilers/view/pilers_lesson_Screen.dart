@@ -16,6 +16,7 @@ class PilersLessonScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: AppColors.kscandryGreen,
           title: Text(
               '${pilersController.pilersModel.courses![courseIndex].lessons![lessonIndex].title}'),
           actions: [

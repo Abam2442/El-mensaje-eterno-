@@ -45,7 +45,6 @@ class MooamalatScreen extends GetView<MooamalatController> {
                 title: Get.arguments['title'],
                 tabs: controller.tabs,
               ),
-              backgroundColor: AppColors.kWhiteColor,
               body: TabBarView(
                 children: [
                   MooamalatCourseScreen(index: 0),

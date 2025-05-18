@@ -5,7 +5,7 @@ import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_svgs.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_text_styles.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
-import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
+import 'package:hiwayda_oracion_islamica/core/widgets/custom_appbar.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/salah_bindings.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/Qibla/qibla_compass.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/tahara_page.dart';
@@ -21,15 +21,9 @@ class LearnSalah extends StatelessWidget {
     // Get.put(SalahController());
     SalahBindings().dependencies();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Aprender el salah',
-          style: Styles.textStyle20Golden,
-        ),
-        iconTheme: const IconThemeData(
-          color: AppColors.kGoldenColor,
-        ),
-        backgroundColor: AppColors.kPrimaryColor,
+      appBar: const CustomAppbar(
+        title: 'Aprender el salah',
+        height: 80,
       ),
       backgroundColor: AppColors.kPrimaryColor,
       body: SafeArea(
@@ -50,13 +44,13 @@ class LearnSalah extends StatelessWidget {
                           ),
                     ),
                     borderRadius: BorderRadius.circular(15),
-                    // color: AppColors.kWhiteColor.withOpacity(0.6),
                   ),
                   width: context.width,
                   child: Container(
+                    padding: 5.aEdge,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: AppColors.kWhiteColor.withOpacity(0.1)),
+                        borderRadius: BorderRadius.circular(12),
+                        color: AppColors.kWhiteColor.withValues(alpha: 0.2)),
                     child: Text(
                       'De Abdallah Ibn Masúd que dijo:\n\n'
                       '“Pregunté al Mensajero de Allah ﷺ : “¿Cuál es la obra más amada por Allah?”\n'
@@ -94,7 +88,7 @@ class LearnSalah extends StatelessWidget {
               child: Container(
                 width: context.width,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.kscandryGreen,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 padding: 8.aEdge,

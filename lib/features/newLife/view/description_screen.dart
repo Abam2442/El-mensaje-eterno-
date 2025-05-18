@@ -10,6 +10,7 @@ class DescriptionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.kscandryGreen,
         title: const Center(
           child: Text('Description'),
         ),

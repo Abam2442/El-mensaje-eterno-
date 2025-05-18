@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hiwayda_oracion_islamica/core/widgets/dialogs/download_dialogs.dart';
 import 'fancy_dialog.dart';
 
 class MessageDialog extends StatelessWidget {
@@ -46,14 +45,7 @@ class MessageDialog extends StatelessWidget {
           ),
           Row(
             children: [
-              Expanded(
-                child: DialogButton(
-                  onTap: () => Get.back(),
-                  color:
-                      (type == MessageType.SUCCESS) ? Colors.green : Colors.red,
-                  text: "OK",
-                ),
-              ),
+             
               if (actions != null && actions!.isNotEmpty) ...[
                 const SizedBox(
                   width: 10,

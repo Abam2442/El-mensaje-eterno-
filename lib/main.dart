@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/features/splash/screen/splash_page.dart';
 import 'package:hiwayda_oracion_islamica/ys_material_app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,9 +23,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const YsMaterialApp(
+    return  YsMaterialApp(
       title: 'El Mensaje Eterno',
-      home: SplashPage(),
+      home:const SplashPage(),
+      theme: ThemeData(
+        scaffoldBackgroundColor:AppColors.kscandryGreen ,
+      ),
     );
   }
 }

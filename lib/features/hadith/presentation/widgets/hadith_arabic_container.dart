@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
-import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
-
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/services/easy_loader_service.dart';
 import '../../../../core/styles/text_styles.dart';
@@ -18,8 +16,8 @@ class HadithArabicContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      padding: const EdgeInsets.all(10),
+      margin: EdgeInsets.symmetric(horizontal: MediaQuery.sizeOf(context).width * 0.04),
+      padding: EdgeInsets.all(MediaQuery.sizeOf(context).width * 0.02),
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -41,7 +39,7 @@ class HadithArabicContainer extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: context.width * 0.8,
+            width: MediaQuery.sizeOf(context).width * 0.8,
             child: Container(
               // padding: const EdgeInsets.only(right: 12),
               constraints: BoxConstraints(

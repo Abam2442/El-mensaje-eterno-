@@ -11,11 +11,11 @@ import '../../../core/widgets/custom_listTile.dart';
 class MooamalatCourseScreen extends StatelessWidget {
   MooamalatCourseScreen({required this.index, super.key});
   final int index;
-  MooamalatController mooamalatController = Get.find();
+  final MooamalatController mooamalatController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.kPrimaryColor,
+      color: AppColors.kscandryGreen,
       child: Padding(
           padding: 10.aEdge,
           child: Column(

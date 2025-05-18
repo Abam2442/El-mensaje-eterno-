@@ -11,12 +11,12 @@ class PilersCourseScreen extends StatelessWidget {
   PilersCourseScreen({required this.index, super.key});
 
   final int index;
-  PilersController pilersController = Get.find();
+  final PilersController pilersController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.kPrimaryColor,
+      color: AppColors.kscandryGreen,
       child: Padding(
         padding: 10.aEdge,
         child: ListView.builder(

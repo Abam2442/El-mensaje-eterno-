@@ -33,12 +33,12 @@ class RasuluallhLocalDataSourceImp extends RasuluallhLocalDataSource {
       List<MediaEntity> audios = [];
 
       final jsonData = await getOfflineData(AppKeys.rasuluAllahAudios);
-
-      ((jsonData['RasuluAllah']['Audios']) as Map).forEach(
+      ((jsonData['RasuluAllah']['Audios']['Audios']) as Map).forEach(
         (key, value) {
-          audios.add(MediaEntity(url: key, name: value));
+          audios.add(MediaEntity(url: value, name: key));
         },
       );
+
       return Future.value(audios);
     } catch (e) {
       rethrow;

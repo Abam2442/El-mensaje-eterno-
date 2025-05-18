@@ -10,10 +10,8 @@ import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_icon.
 import '../../../core/styles/text_styles.dart';
 
 class WuduPracticalPage extends StatefulWidget {
-  String jsonFile;
-
-  WuduPracticalPage({required this.jsonFile, Key? key}) : super(key: key);
-
+const  WuduPracticalPage({required this.jsonFile, Key? key}) : super(key: key);
+final String jsonFile;
   @override
   State<WuduPracticalPage> createState() => _WuduPracticalPageState();
 }
@@ -64,8 +62,8 @@ class _WuduPracticalPageState extends State<WuduPracticalPage> {
 }
 
 class StepPage extends StatelessWidget {
-  StepPage({required this.wuduPracticalStep, Key? key}) : super(key: key);
-  WuduPracticalModel wuduPracticalStep;
+ const StepPage({required this.wuduPracticalStep, Key? key}) : super(key: key);
+ final WuduPracticalModel wuduPracticalStep;
 
   @override
   Widget build(BuildContext context) {
@@ -147,19 +145,21 @@ class _TopicPageState extends State<TopicPage> {
         if (widget.topic.body != '0') Text(widget.topic.body),
         15.hSize,
         if (widget.topic.translation != '0') Text(widget.topic.translation),
-        /*if (widget.topic.image != '0')
-          Padding(
-          padding: 20.vhEdge,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            // Image border
-            child: SizedBox.fromSize(
-                child: Image.asset(
-                  widget.topic.image,
-                  fit: BoxFit.fill,
-                )),
-          ),
-        ),*/
+        //TODO images was deleted from json file we will add it later
+        
+        // if (widget.topic.image != '0'&& widget.topic.image != null)
+        //   Padding(
+        //   padding: 20.vhEdge,
+        //   child: ClipRRect(
+        //     borderRadius: BorderRadius.circular(20),
+        //     // Image border
+        //     child: SizedBox.fromSize(
+        //         child: Image.asset(
+        //           widget.topic.image,
+        //           fit: BoxFit.fill,
+        //         )),
+        //   ),
+        // ),
         15.hSize,
         if (widget.topic.description != '0')
           Row(

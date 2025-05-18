@@ -4,5 +4,4 @@ import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/fixed_en
 
 abstract class FixedCategoryRepository {
   Future<Either<Failure, List<CategoryFixedEntity>>> getCategoryArtical();
-  Future<Either<Failure, List<CategoryFixedEntity>>> getOnlineCategoryArtical();
 }

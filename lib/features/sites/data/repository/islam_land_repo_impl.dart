@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/local_data_source/islam_land_local_data_source.dart';
-import 'package:hiwayda_oracion_islamica/features/sites/data/data_source/remote_data_source/islam_land_remote_data_source.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/domain/entities/media_entity.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/helpers/get_failure_from_exception.dart';
@@ -10,9 +9,7 @@ import '../../domain/repository/islam_land_repository.dart';
 
 class IslamLandRepositoryImp extends IslamLandRepository {
   final IslamLandLocalDataSource islamLandLocalDataSource;
-  final IslamLandRemoteDataSource _islamLandRemoteDataSource;
-  IslamLandRepositoryImp(
-    this._islamLandRemoteDataSource, {
+  IslamLandRepositoryImp({
     required this.islamLandLocalDataSource,
   });
 
@@ -83,66 +80,5 @@ class IslamLandRepositoryImp extends IslamLandRepository {
       return Left(getFailureFromException(e));
     }
   }
-
-  @override
-  Future<Either<Failure, List<IslamLandFatwaEntities>>>
-      getNetOfflineFatwa() async {
-    try {
-      var response = await _islamLandRemoteDataSource.getNetOfflineFatwa();
-      return Right(response);
-    } catch (e) {
-      return Left(getFailureFromException(e));
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<MediaEntity>>> getNetOnlineFatwa() async {
-    try {
-      var response = await _islamLandRemoteDataSource.getNetFatwa();
-      return Right(response);
-    } catch (e) {
-      return Left(getFailureFromException(e));
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<MediaEntity>>> getOnlineAudio() async {
-    try {
-      var response = await _islamLandRemoteDataSource.getOnlineAudio();
-      return Right(response);
-    } catch (e) {
-      return Left(getFailureFromException(e));
-    }
-  }
-
-  @override
-  Future<Either<Failure, Map<String, List<MediaEntity>>>>
-      getOnlineBooks() async {
-    try {
-      var response = await _islamLandRemoteDataSource.getOnlineBooks();
-      return Right(response);
-    } catch (e) {
-      return Left(getFailureFromException(e));
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<List<FixedEntities>>>> getOnlineContent() async {
-    try {
-      var response = await _islamLandRemoteDataSource.getOnlineContent();
-      return Right(response);
-    } catch (e) {
-      return Left(getFailureFromException(e));
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<MediaEntity>>> getOnlineVideos() async {
-    try {
-      var response = await _islamLandRemoteDataSource.getOnlineVideos();
-      return Right(response);
-    } catch (e) {
-      return Left(getFailureFromException(e));
-    }
-  }
+  
 }

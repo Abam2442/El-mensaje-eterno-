@@ -6,7 +6,6 @@ import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/app_
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/inkwell_custom.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/media_files_list_view.dart';
 import 'package:hiwayda_oracion_islamica/features/sites/presentation/widget/view_or_download_inkwell.dart';
-
 class IslamLandFatwaMainScreen extends StatelessWidget {
   const IslamLandFatwaMainScreen({super.key});
 

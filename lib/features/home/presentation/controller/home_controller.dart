@@ -18,11 +18,8 @@ class HomeController extends GetxController {
   var todayDate = DateTime.now();
   late var formattedDate;
   final String apiLink = 'https://api.aladhan.com/v1/timings';
-  // Location location = new Location();
   String locationMessage = "Getting location...";
   TestModel timingsData = TestModel(hijriDate: '', timings: {});
-
-  // late LocationData _locationData;
   Future<void> getData() async {
     try {
       final data = await http.get(Uri.parse(
