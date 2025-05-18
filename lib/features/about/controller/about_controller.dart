@@ -10,6 +10,12 @@ class AboutController extends GetxController {
         linkedin: 'https://www.linkedin.com/in/osamaaabdalmalik/',
         whatsapp: 'https://wa.me/963996697253'),
     DeveloperModel(
+        name: 'Eng. fady mohammed',
+        whatsapp: 'https://wa.me/+201550375681',
+        facebook: 'https://www.facebook.com/fady.m0/?locale=ar_AR',
+        gmail: 'mo4fady@gmail.com',
+        linkedin: 'https://www.linkedin.com/in/fady-mohamed-442823278/'),
+    DeveloperModel(
         name: 'Eng. Mahmoud Elhelw',
         gmail: 'professort47@gmail.com',
         facebook: 'https://www.facebook.com/',
@@ -21,6 +27,12 @@ class AboutController extends GetxController {
         facebook: 'https://www.facebook.com/mhmoud313',
         linkedin: 'linkedin.com/in/MahmoudSoufan',
         whatsapp: 'https://wa.me/963993879192'),
+    DeveloperModel(
+        name: 'Eng. fady mohammed',
+        whatsapp: 'https://wa.me/+201550375681',
+        facebook: 'https://www.facebook.com/fady.m0/?locale=ar_AR',
+        gmail: 'mo4fady@gmail.com',
+        linkedin: 'https://www.linkedin.com/in/fady-mohamed-442823278/'),
     DeveloperModel(
         name: 'Eng. Rami',
         whatsapp: '',
