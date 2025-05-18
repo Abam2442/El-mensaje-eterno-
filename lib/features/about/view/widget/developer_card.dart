@@ -77,9 +77,8 @@ class DeveloperCard extends StatelessWidget {
       onTap: () async {
         var path = address;
         if (path != '') {
-          Uri uri = Uri.parse(path);
-          if (await canLaunchUrl(uri)) {
-            await launchUrl(uri);
+          Uri uri = Uri.parse(address);
+          if (await launchUrl(uri)) {
           } else {
             throw 'Could not launch $path';
           }
