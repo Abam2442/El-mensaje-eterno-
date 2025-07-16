@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_images.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/videos_url.dart';
 import 'package:hiwayda_oracion_islamica/features/salah/view/widgets/video_palyer_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -32,17 +33,22 @@ class _VideoIconState extends State<VideoIcon> {
     if (!widget.videoPath.startsWith('http')) {
       VideoPlayerController videoPlayerController;
       if (widget.videoPath.startsWith('assets')) {
-        log('assets video path: ${widget.videoPath}');
-        videoPlayerController = VideoPlayerController.asset(widget.videoPath)
+        log('drive video path: ${widget.videoPath}');
+        String videoName = widget.videoPath.replaceFirst('assets/video/', '').replaceAll('.mp4', '').toLowerCase();
+        log('videoName: $videoName');
+        log('videoUrl: ${VideosUrl.getUrlByName(videoName)}');
+        videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(VideosUrl.getUrlByName(videoName) ?? ''))
           ..initialize().then((_) {
             setState(() {
               isInitialize = true;
             });
           });
       } else {
-        log('assets video path: assets/video/${widget.videoPath}');
-        videoPlayerController =
-            VideoPlayerController.asset("assets/video/${widget.videoPath}")
+        log('drive video path: ${widget.videoPath}');
+        String videoName = widget.videoPath.replaceAll('.mp4', '').toLowerCase();
+        log('videoName: $videoName');
+        log('videoUrl: ${VideosUrl.getUrlByName(videoName)}');
+        videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(VideosUrl.getUrlByName(videoName) ?? ''))
               ..initialize().then((_) {
                 setState(() {
                   isInitialize = true;
