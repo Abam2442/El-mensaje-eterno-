@@ -35,9 +35,7 @@ class MooamalatController extends GetxController
     try {
       final response =
           await getAssetsData('Sp-moomlat.json');
-      final jsonString = utf8.decode(response.bodyBytes);
-      final finalData = await jsonDecode(jsonString);
-      mooamalatModel = MooamalatModel.fromJson(finalData);
+      mooamalatModel = MooamalatModel.fromJson(response);
       isLoading.value = false;
     } catch (e) {
       print(e);

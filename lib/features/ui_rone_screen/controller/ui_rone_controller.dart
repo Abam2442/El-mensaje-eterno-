@@ -32,9 +32,7 @@ class UiRoneController extends GetxController {
   Future<List<dynamic>> loadOfflineFile(String path) async {
     try {
       final response =await getOfflineData(Get.arguments['file']);
-      final jsonString = utf8.decode(response.bodyBytes);
-      final finalData = await jsonDecode(jsonString);
-      return finalData;
+      return response as List<dynamic>;
     } catch (e) {
       return [];
       // print(e);

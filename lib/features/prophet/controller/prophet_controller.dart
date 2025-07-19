@@ -31,8 +31,7 @@ class ProphetController extends GetxController
   Future<void> loadOfflineFile() async {
     try {
       final jsonString =await getAssetsData('Sp-biographyofprophet.json');
-      final finalData = await jsonDecode(jsonString);
-      prophetModel = ProphetModel.fromJson(finalData);
+      prophetModel = ProphetModel.fromJson(jsonString);
       isLoading.value = false;
     } catch (e) {
       print(e);

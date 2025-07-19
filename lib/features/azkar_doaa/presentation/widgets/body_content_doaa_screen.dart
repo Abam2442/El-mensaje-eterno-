@@ -43,16 +43,6 @@ class BodyContentDoaaScreen extends GetView<AzkarDoaaController> {
                               style: Styles.textStyle14Golden,
                             ),
                           ),
-                          // Padding(
-                          //   padding: const EdgeInsets.symmetric(
-                          //     horizontal: 13,
-                          //     vertical: 8,
-                          //   ),
-                          //   child: Text(
-                          //     doaa,
-                          //     style: Styles.textStyle18Godlen,
-                          //   ),
-                          // ),
                           const SizedBox(height: 12),
                           Column(
                             children: [
@@ -71,7 +61,7 @@ class BodyContentDoaaScreen extends GetView<AzkarDoaaController> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width: 300,
+                                      width: 270.w,
                                       child: Container(
                                         constraints: BoxConstraints(
                                             maxWidth: MediaQuery.sizeOf(context)
