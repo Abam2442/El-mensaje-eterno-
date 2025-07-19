@@ -61,7 +61,7 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
 
       final jsonData = await getOfflineData(AppKeys.islamMessageQuranVideos);
 
-      videos = (jsonData)
+      videos = (jsonData as List<dynamic>)
           .map<MediaEntity>(
             (map) => MediaEntity(name: map.keys.first, url: map.values.first),
           )
@@ -100,7 +100,7 @@ class IslamMessageLocalDataSourceImpl extends IslamMessageLocalDataSource {
 
       final jsonData = await getOfflineData(AppKeys.islamMessageVideos);
 
-      videos = (jsonData)
+      videos = (jsonData['islam-message']['videos'])
           .map<MediaEntity>(
             (map) => MediaEntity(name: map.keys.first, url: map.values.first),
           )

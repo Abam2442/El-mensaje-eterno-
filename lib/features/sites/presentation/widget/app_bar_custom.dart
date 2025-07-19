@@ -27,6 +27,10 @@ class AppBarCustom {
       //           ),
       //         ),
       //       ),
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back, color: AppColors.kGoldenColor),
+        onPressed: () => Navigator.of(context).pop(),
+      ),
       title: Text(
         title,
         style: const TextStyle(

@@ -29,11 +29,7 @@ class QuranLocalDataSourceImpl extends QuranLocalDataSource {
         log('JSON file not found at: $jsonFilePath');
         return [];
       }
-
-      // Read the JSON data from the extracted file
       final String assetData = await jsonFile.readAsString();
-
-      // Parse the JSON string
       final jsonResponse = json.decode(assetData);
       surahs = jsonResponse
           .map<SurahModel>(

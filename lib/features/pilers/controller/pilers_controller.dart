@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
@@ -34,15 +33,11 @@ class PilersController extends GetxController
   Future<void> loadOfflineFile() async {
     try {
       print('Sp-pillers.json');
-      final response =
-          await getAssetsData('Sp-pillers.json');
-      final jsonString = utf8.decode(response.bodyBytes);
-      final finalData = await jsonDecode(jsonString);
+      final finalData = await getAssetsData('Sp-pillers.json');
       pilersModel = PilersModel.fromJson(finalData);
       isLoading.value = false;
     } catch (e) {
       print(e);
     }
   }
-
 }

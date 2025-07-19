@@ -1,6 +1,4 @@
-import 'dart:convert';
-import 'dart:developer';
-import 'package:hiwayda_oracion_islamica/core/helper/functions/get_offline_data.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_assets_data.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/features/ui_rone_screen/models/IntermediateSalahModel.dart';
 
@@ -21,8 +19,7 @@ class UiRoneController extends GetxController {
 
   void loadData() async {
     file = Get.arguments['file'];
-    log(file);
-    list = ( await loadOfflineFile(file))
+    list = (await loadOfflineFile(file))
         .map<IntermediateSalahModel>(IntermediateSalahModel.fromJson)
         .toList();
     // print(list[0].rakaa);
@@ -31,15 +28,11 @@ class UiRoneController extends GetxController {
 
   Future<List<dynamic>> loadOfflineFile(String path) async {
     try {
-      final response =await getOfflineData(Get.arguments['file']);
-      final jsonString = utf8.decode(response.bodyBytes);
-      final finalData = await jsonDecode(jsonString);
-      return finalData;
+      final response = await getAssetsData(path);
+      return response as List<dynamic>;
     } catch (e) {
       return [];
       // print(e);
     }
   }
-
-  
 }

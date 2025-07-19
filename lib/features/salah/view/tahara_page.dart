@@ -52,10 +52,6 @@ class TaharaPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // SizedBox(
-                      //   height: Get.height*0.05,
-                      //   child: Text('Aprender Purificacion',style: Styles.textStyle20Golden),
-                      // ),
                       5.hSize,
 
                       SectionItemHomePageWidget(

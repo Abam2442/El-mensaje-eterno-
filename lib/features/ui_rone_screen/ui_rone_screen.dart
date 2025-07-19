@@ -25,300 +25,303 @@ class UiRoneScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     UiRoneController controller = Get.put(UiRoneController());
     PageController pageController = PageController();
-    return SafeArea(
-      child: Scaffold(
-        appBar: SalahAppbar(title: title),
-        backgroundColor: AppColors.yLightGreyColor,
-        body: Obx(
-          () => controller.isLoading.value
-              ? Container()
-              : Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 50,
-                        width: Get.width,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextButton(
-                              onPressed: () => pageController.previousPage(
-                                  duration: const Duration(microseconds: 500),
-                                  curve: Curves.bounceIn),
-                              child: const Text('Back'),
-                            ),
-                            Container(
-                              padding: 5.aEdge,
-                              decoration: BoxDecoration(
-                                borderRadius: 20.cBorder,
-                                color: AppColors.kPrimaryColor,
+    return Container(
+      color: AppColors.kPrimaryColor,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: SalahAppbar(title: title),
+          backgroundColor: AppColors.yLightGreyColor,
+          body: Obx(
+            () => controller.isLoading.value
+                ? Container()
+                : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 50,
+                          width: Get.width,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton(
+                                onPressed: () => pageController.previousPage(
+                                    duration: const Duration(microseconds: 500),
+                                    curve: Curves.bounceIn),
+                                child: const Text('Back'),
                               ),
-                              child: Row(
-                                children: [
-                                  Obx(
-                                    () => Text(
-                                      ' ${controller.currentPos.value}',
-                                      style: const TextStyle(
+                              Container(
+                                padding: 5.aEdge,
+                                decoration: BoxDecoration(
+                                  borderRadius: 20.cBorder,
+                                  color: AppColors.kPrimaryColor,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Obx(
+                                      () => Text(
+                                        ' ${controller.currentPos.value}',
+                                        style: const TextStyle(
+                                          color: AppColors.kGoldenColor,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                    const Text(
+                                      ' De ',
+                                      style: TextStyle(
                                         color: AppColors.kGoldenColor,
                                         fontSize: 20,
                                       ),
                                     ),
-                                  ),
-                                  const Text(
-                                    ' De ',
-                                    style: TextStyle(
-                                      color: AppColors.kGoldenColor,
-                                      fontSize: 20,
+                                    Text(
+                                      ' ${controller.list.length}',
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                      ),
                                     ),
+                                  ],
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () => pageController.nextPage(
+                                    duration: const Duration(microseconds: 500),
+                                    curve: Curves.bounceIn),
+                                child: const Text('Next'),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: PageView.builder(
+                            itemCount: controller.list.length,
+                            onPageChanged: (page) {
+                              controller.currentPos.value = page + 1;
+                            },
+                            controller: pageController,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                          controller.list[index].rakaa.toString(),
+                                          style: Styles.textStyle18Green),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
                                   ),
                                   Text(
-                                    ' ${controller.list.length}',
-                                    style: const TextStyle(
-                                      fontSize: 20,
-                                    ),
+                                    controller.list[index].stepNumber.toString(),
+                                    style: Styles.textStyle14Black,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Container(
+                                            width: 269.h,
+                                            margin: EdgeInsets.only(left: 9.h),
+                                            child: Text(
+                                              controller.list[index].stepName
+                                                  .toString(),
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                              textAlign: TextAlign.center,
+                                              style: Styles.textStyle18Black,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 205.v,
+                                            width: 278.h,
+                                            child: Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Column(
+                                                      children: [
+                                                        controller
+                                                                    .list[index]
+                                                                    .images
+                                                                    ?.main
+                                                                    ?.mainimage1 !=
+                                                                null
+                                                            ? CustomImageView(
+                                                                imagePath: controller
+                                                                    .list[index]
+                                                                    .images!
+                                                                    .main!
+                                                                    .mainimage1!,
+                                                                height: 150,
+                                                                // width: 100,
+                                                                radius:
+                                                                    20.cBorder,
+                                                              )
+                                                            : const Text(
+                                                                'jkasksjka'),
+                                                        Container(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  horizontal:
+                                                                      5.h),
+                                                          decoration: BoxDecoration(
+                                                              color: AppColors
+                                                                  .kPrimaryColor,
+                                                              borderRadius:
+                                                                  10.cBorder),
+                                                          child: Text(
+                                                            "1".tr,
+                                                            style: Styles
+                                                                .textStyle14White,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    // if ()
+                                                    controller
+                                                                .list[index]
+                                                                .images
+                                                                ?.main
+                                                                ?.mainimage2 !=
+                                                            null
+                                                        ? Column(
+                                                            children: [
+                                                              CustomImageView(
+                                                                imagePath: controller
+                                                                    .list[index]
+                                                                    .images!
+                                                                    .main!
+                                                                    .mainimage2!,
+                                                                height: 150,
+                                                                width: 100,
+                                                                radius:
+                                                                    20.cBorder,
+                                                                alignment:
+                                                                    Alignment
+                                                                        .center,
+                                                              ),
+                                                              Container(
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal:
+                                                                            5.h),
+                                                                decoration: BoxDecoration(
+                                                                    color: AppColors
+                                                                        .kPrimaryColor,
+                                                                    borderRadius:
+                                                                        10.cBorder),
+                                                                child: Text(
+                                                                  "2".tr,
+                                                                  style: Styles
+                                                                      .textStyle14White,
+                                                                ),
+                                                              )
+                                                            ],
+                                                          )
+                                                        : const SizedBox()
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          IconButton(
+                                            icon: const Icon(
+                                                Icons.remove_red_eye_outlined),
+                                            onPressed: () {
+                                              Get.defaultDialog(
+                                                  title: 'galería',
+                                                  content:
+                                                      swap(SalahPracticalModel(
+                                                    video: controller
+                                                        .list[index].images!.video
+                                                        .toString(),
+                                                    image: controller
+                                                        .list[index].images!.image
+                                                        .toString(),
+                                                    image2: controller.list[index]
+                                                        .images!.image2
+                                                        .toString(),
+                                                    image3: controller.list[index]
+                                                        .images!.image3
+                                                        .toString(),
+                                                    image4: controller.list[index]
+                                                        .images!.image4
+                                                        .toString(),
+                                                    image5: controller.list[index]
+                                                        .images!.image5
+                                                        .toString(),
+                                                    image6: controller.list[index]
+                                                        .images!.image6
+                                                        .toString(),
+                                                    video2: controller.list[index]
+                                                        .images!.video2
+                                                        .toString(),
+                                                    rakaa: '',
+                                                    stepName: '',
+                                                    description: '',
+                                                    descriptionaudio: '',
+                                                    topics: [],
+                                                  )));
+                                            },
+                                          ),
+                                          SizedBox(height: 32.v),
+                                          IconButton(
+                                            icon: const Icon(Icons.info),
+                                            onPressed: () {
+                                              Get.defaultDialog(
+                                                title: 'descripción',
+                                                content: SingleChildScrollView(
+                                                  child: Text(
+                                                    controller.list[index].images!
+                                                        .description
+                                                        .toString(),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  Expanded(
+                                    child: ListView.builder(
+                                        itemCount:
+                                            controller.list[index].topics!.length,
+                                        itemBuilder: (context, i) => _buildTopic(
+                                              context,
+                                              text: controller.list[index]
+                                                  .topics![i].transliteration
+                                                  .toString(),
+                                              audioPath: controller
+                                                  .list[index].topics![i].audio
+                                                  .toString(),
+                                              videoPath: controller
+                                                  .list[index].topics![i].video
+                                                  .toString(),
+                                              image: AppAssets
+                                                  .imgUserSpeakSvgrepoCom,
+                                            )),
                                   ),
                                 ],
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () => pageController.nextPage(
-                                  duration: const Duration(microseconds: 500),
-                                  curve: Curves.bounceIn),
-                              child: const Text('Next'),
-                            ),
-                          ],
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: PageView.builder(
-                          itemCount: controller.list.length,
-                          onPageChanged: (page) {
-                            controller.currentPos.value = page + 1;
-                          },
-                          controller: pageController,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                        controller.list[index].rakaa.toString(),
-                                        style: Styles.textStyle18Green),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  controller.list[index].stepNumber.toString(),
-                                  style: Styles.textStyle14Black,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Container(
-                                          width: 269.h,
-                                          margin: EdgeInsets.only(left: 9.h),
-                                          child: Text(
-                                            controller.list[index].stepName
-                                                .toString(),
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.center,
-                                            style: Styles.textStyle18Black,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 205.v,
-                                          width: 278.h,
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                children: [
-                                                  Column(
-                                                    children: [
-                                                      controller
-                                                                  .list[index]
-                                                                  .images
-                                                                  ?.main
-                                                                  ?.mainimage1 !=
-                                                              null
-                                                          ? CustomImageView(
-                                                              imagePath: controller
-                                                                  .list[index]
-                                                                  .images!
-                                                                  .main!
-                                                                  .mainimage1!,
-                                                              height: 150,
-                                                              // width: 100,
-                                                              radius:
-                                                                  20.cBorder,
-                                                            )
-                                                          : const Text(
-                                                              'jkasksjka'),
-                                                      Container(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                                horizontal:
-                                                                    5.h),
-                                                        decoration: BoxDecoration(
-                                                            color: AppColors
-                                                                .kPrimaryColor,
-                                                            borderRadius:
-                                                                10.cBorder),
-                                                        child: Text(
-                                                          "1".tr,
-                                                          style: Styles
-                                                              .textStyle14White,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  // if ()
-                                                  controller
-                                                              .list[index]
-                                                              .images
-                                                              ?.main
-                                                              ?.mainimage2 !=
-                                                          null
-                                                      ? Column(
-                                                          children: [
-                                                            CustomImageView(
-                                                              imagePath: controller
-                                                                  .list[index]
-                                                                  .images!
-                                                                  .main!
-                                                                  .mainimage2!,
-                                                              height: 150,
-                                                              width: 100,
-                                                              radius:
-                                                                  20.cBorder,
-                                                              alignment:
-                                                                  Alignment
-                                                                      .center,
-                                                            ),
-                                                            Container(
-                                                              padding: EdgeInsets
-                                                                  .symmetric(
-                                                                      horizontal:
-                                                                          5.h),
-                                                              decoration: BoxDecoration(
-                                                                  color: AppColors
-                                                                      .kPrimaryColor,
-                                                                  borderRadius:
-                                                                      10.cBorder),
-                                                              child: Text(
-                                                                "2".tr,
-                                                                style: Styles
-                                                                    .textStyle14White,
-                                                              ),
-                                                            )
-                                                          ],
-                                                        )
-                                                      : const SizedBox()
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Column(
-                                      children: [
-                                        IconButton(
-                                          icon: const Icon(
-                                              Icons.remove_red_eye_outlined),
-                                          onPressed: () {
-                                            Get.defaultDialog(
-                                                title: 'galería',
-                                                content:
-                                                    swap(SalahPracticalModel(
-                                                  video: controller
-                                                      .list[index].images!.video
-                                                      .toString(),
-                                                  image: controller
-                                                      .list[index].images!.image
-                                                      .toString(),
-                                                  image2: controller.list[index]
-                                                      .images!.image2
-                                                      .toString(),
-                                                  image3: controller.list[index]
-                                                      .images!.image3
-                                                      .toString(),
-                                                  image4: controller.list[index]
-                                                      .images!.image4
-                                                      .toString(),
-                                                  image5: controller.list[index]
-                                                      .images!.image5
-                                                      .toString(),
-                                                  image6: controller.list[index]
-                                                      .images!.image6
-                                                      .toString(),
-                                                  video2: controller.list[index]
-                                                      .images!.video2
-                                                      .toString(),
-                                                  rakaa: '',
-                                                  stepName: '',
-                                                  description: '',
-                                                  descriptionaudio: '',
-                                                  topics: [],
-                                                )));
-                                          },
-                                        ),
-                                        SizedBox(height: 32.v),
-                                        IconButton(
-                                          icon: const Icon(Icons.info),
-                                          onPressed: () {
-                                            Get.defaultDialog(
-                                              title: 'descripción',
-                                              content: SingleChildScrollView(
-                                                child: Text(
-                                                  controller.list[index].images!
-                                                      .description
-                                                      .toString(),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                Expanded(
-                                  child: ListView.builder(
-                                      itemCount:
-                                          controller.list[index].topics!.length,
-                                      itemBuilder: (context, i) => _buildTopic(
-                                            context,
-                                            text: controller.list[index]
-                                                .topics![i].transliteration
-                                                .toString(),
-                                            audioPath: controller
-                                                .list[index].topics![i].audio
-                                                .toString(),
-                                            videoPath: controller
-                                                .list[index].topics![i].video
-                                                .toString(),
-                                            image: AppAssets
-                                                .imgUserSpeakSvgrepoCom,
-                                          )),
-                                ),
-                              ],
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
+          ),
         ),
       ),
     );

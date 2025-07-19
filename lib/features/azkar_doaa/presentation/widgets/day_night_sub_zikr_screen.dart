@@ -81,7 +81,7 @@ class BodySonanDayNightSubZikrScreen extends GetView<AzkarDoaaController> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   SizedBox(
-                                    width: 300,
+                                    width: 270.w,
                                     child: Container(
                                       constraints: BoxConstraints(
                                           maxWidth:

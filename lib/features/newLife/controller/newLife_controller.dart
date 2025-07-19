@@ -35,9 +35,7 @@ class NewLifeController extends GetxController
       print('Sp-newlife.json');
       final response =
           await getAssetsData('Sp-newlife.json');
-      final jsonString = utf8.decode(response.bodyBytes);
-      final finalData = await jsonDecode(jsonString);
-      newLifeModel = NewLifeModel.fromJson(finalData);
+      newLifeModel = NewLifeModel.fromJson(response);
       isLoading.value = false;
     } catch (e) {
       print(e);

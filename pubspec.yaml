@@ -83,6 +83,5 @@ flutter:
     - assets/svg/
     - assets/books/
     - assets/images/quran.png
-    - assets/video/
     - assets/
     - assets/Json.zip

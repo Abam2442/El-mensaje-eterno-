@@ -53,9 +53,7 @@ class _SalahPracticalPageState extends State<SalahPracticalPage> {
   Future<List<dynamic>> getOfflineData() async {
     try {
       final response = await getAssetsData(widget.jsonFile);
-      final jsonString = utf8.decode(response.bodyBytes);
-      final finalData = json.decode(jsonString);
-      return finalData;
+      return response as List<dynamic>;
     } catch (e) {
       return [];
     }
