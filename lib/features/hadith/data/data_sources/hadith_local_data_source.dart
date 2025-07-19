@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:hiwayda_oracion_islamica/core/constants/app_keys.dart';
+import 'package:hiwayda_oracion_islamica/core/helper/functions/get_assets_data.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/functions/get_ziped_data.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/model/sunnah_data_model.dart';
@@ -73,12 +74,8 @@ class HadithLocalDataSourceImpl extends HadithLocalDataSource {
   @override
   Future<List<SunnahDataModel>> getSunnah(String path) async {
     try {
-      final directory = await getApplicationDocumentsDirectory();
-      final filePath = '${directory.path}/${AppKeys.hadith}';
-      final file = File(filePath);
-      String jsonString = await file.readAsString();
-      List data = json.decode(jsonString);
-      final ref =
+      final List<dynamic> data = await getAssetsData(path);
+      final List<SunnahDataModel> ref =
           data.map((element) => SunnahDataModel.fromjson(element)).toList();
       return ref;
     } catch (e) {
