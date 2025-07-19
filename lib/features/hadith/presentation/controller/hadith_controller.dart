@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:hiwayda_oracion_islamica/core/constants/app_enums.dart';
 import 'package:hiwayda_oracion_islamica/features/hadith/data/models/hadith_model.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +107,7 @@ class HadithController extends GetxController
     stateType = StateType.loading;
     update();
     GetHadithencHadithesUseCase getHadithencHadithesUseCase =
-        GetHadithencHadithesUseCase(hadithRepo: Get.find());
+        GetHadithencHadithesUseCase(Get.find());
 
     var result = await getHadithencHadithesUseCase(path);
     result.fold(

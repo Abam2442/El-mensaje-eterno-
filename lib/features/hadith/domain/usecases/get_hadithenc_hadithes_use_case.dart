@@ -4,12 +4,11 @@ import 'package:hiwayda_oracion_islamica/features/hadith/domain/repository/hadit
 import 'package:hiwayda_oracion_islamica/features/hadith/presentation/model/sunnah_data_model.dart';
 
 class GetHadithencHadithesUseCase {
-  final HadithRepo _hadithRepo;
+  final HadithRepo hadithRepo;
 
-  GetHadithencHadithesUseCase({required HadithRepo hadithRepo})
-      : _hadithRepo = hadithRepo;
+  GetHadithencHadithesUseCase(this.hadithRepo);
 
   Future<Either<Failure, List<SunnahDataModel>>> call(String path) async {
-    return await _hadithRepo.getSunnah(path);
+    return await hadithRepo.getSunnah(path);
   }
 }

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class _SunnahPdfDataScreenState extends State<SunnahPdfDataScreen> {
   
 
   Future<void> _loadPdf() async {
+    log('Loading PDF from: ${widget.path}');
     try {
       // Load PDF asset as bytes
       final data = await DefaultAssetBundle.of(context).load(widget.path);
