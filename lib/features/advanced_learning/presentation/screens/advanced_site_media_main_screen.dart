@@ -29,7 +29,7 @@ class AdvancedSiteMediaMainScreen extends StatelessWidget {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: Colors.white,
+                        color: AppColors.kscandryGreen,
                       ),
                       child: ListView.builder(
                         shrinkWrap: true,
