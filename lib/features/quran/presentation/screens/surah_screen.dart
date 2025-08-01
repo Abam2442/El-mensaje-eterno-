@@ -9,18 +9,44 @@ import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/sur
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/surah_screen_widgets/basmala_image.dart';
 import 'package:hiwayda_oracion_islamica/features/quran/presentation/widgets/surah_screen_widgets/tafsirs_picker_widget.dart';
 
-class SurahScreen extends StatelessWidget {
+class SurahScreen extends StatefulWidget {
   const SurahScreen({super.key, this.ayaNumber});
 
   final int? ayaNumber;
 
   @override
-  Widget build(BuildContext context) {
-    Get.put(AudioService());
-    var quranController = Get.find<QuranController>();
-    final SurahController surrahController =
-        Get.put(SurahController(ayaNumber: ayaNumber));
+  State<SurahScreen> createState() => _SurahScreenState();
+}
 
+class _SurahScreenState extends State<SurahScreen> {
+  late final QuranController quranController;
+  late final SurahController surrahController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (!Get.isRegistered<AudioService>()) {
+      Get.put(AudioService());
+    }
+
+    quranController = Get.find<QuranController>();
+
+    surrahController = Get.put(SurahController(ayaNumber: widget.ayaNumber));
+  }
+
+  @override
+  void dispose() {
+    surrahController.scrollController.dispose();
+    surrahController.audioService.stop();
+
+    Get.delete<SurahController>();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.kWhiteColor,

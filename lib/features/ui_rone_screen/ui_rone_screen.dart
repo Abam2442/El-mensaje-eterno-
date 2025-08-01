@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/videos_url.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
@@ -318,9 +319,7 @@ class UiRoneScreen extends StatelessWidget {
                                     child: ListView.builder(
                                         itemCount: controller
                                             .list[index].topics!.length,
-                                        itemBuilder: (context, i) =>
-                                            _buildTopic(
-                                              context,
+                                        itemBuilder: (context, i) => BuildTopic(
                                               text: controller.list[index]
                                                   .topics![i].transliteration
                                                   .toString(),
@@ -348,14 +347,67 @@ class UiRoneScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTopic(
-    BuildContext context, {
-    required String text,
-    required String audioPath,
-    required String videoPath,
-    required String image,
-  }) {
-    late CustomVideoPlayerController videoPlayerController;
+  GestureDetector navigateToPage(IconData icon, Function() controllerFunction) {
+    return GestureDetector(
+      onTap: controllerFunction,
+      child: Container(
+        padding: 5.vEdge,
+        decoration: BoxDecoration(
+          borderRadius: 5.cBorder,
+          color: AppColors.kGreenColor,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(
+            icon,
+            color: AppColors.kGoldenColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BuildTopic extends StatefulWidget {
+  const BuildTopic(
+      {super.key,
+      required this.text,
+      required this.audioPath,
+      required this.videoPath,
+      required this.image});
+  final String text;
+  final String audioPath;
+  final String videoPath;
+  final String image;
+  @override
+  State<BuildTopic> createState() => _BuildTopicState();
+}
+
+class _BuildTopicState extends State<BuildTopic> {
+  bool init = false;
+  late CustomVideoPlayerController videoController;
+  @override
+  void initState() {
+    super.initState();
+    String videoName = widget.videoPath
+        .replaceFirst('assets/video/', '')
+        .replaceAll('.mp4', '')
+        .toLowerCase();
+    log('videoName: $videoName');
+    log(VideosUrl.getUrlByName(videoName) ?? '');
+    videoController = CustomVideoPlayerController(
+        context: context,
+        videoPlayerController: VideoPlayerController.networkUrl(
+            Uri.parse(VideosUrl.getUrlByName(videoName) ?? ''))
+          ..initialize().then((_) {
+            setState(() {
+              init = true;
+            });
+          }));
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: 5.vEdge,
       child: Row(
@@ -374,7 +426,7 @@ class UiRoneScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text(text, style: Styles.textStyle18Golden),
+                    child: Text(widget.text, style: Styles.textStyle18Golden),
                   ),
                   IconButton(
                     icon: const Icon(
@@ -382,7 +434,8 @@ class UiRoneScreen extends StatelessWidget {
                       color: AppColors.kGoldenColor,
                     ),
                     onPressed: () async {
-                      await AppPublicVar.assetsAudioPlayer.setAsset(audioPath);
+                      await AppPublicVar.assetsAudioPlayer
+                          .setAsset(widget.audioPath);
                       await AppPublicVar.assetsAudioPlayer.play();
                     },
                   )
@@ -393,38 +446,15 @@ class UiRoneScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.remove_red_eye),
             onPressed: () async {
-              videoPlayerController = CustomVideoPlayerController(
-                context: context,
-                videoPlayerController: VideoPlayerController.asset(videoPath)
-                  ..initialize(),
-              );
-              await Get.generalDialog(pageBuilder: (_, __, ___) {
-                return VideoPlayerWidget(controller: videoPlayerController);
-              });
-              videoPlayerController.dispose();
+              log('video path: ${videoController.videoPlayerController.toString()}');
+              if (init) {
+              showDialog(context: context, builder: (context) => VideoPlayerWidget(controller: videoController));
+              } else {
+                Get.snackbar('Error', 'No video available');
+              }
             },
           )
         ],
-      ),
-    );
-  }
-
-  GestureDetector navigateToPage(IconData icon, Function() controllerFunction) {
-    return GestureDetector(
-      onTap: controllerFunction,
-      child: Container(
-        padding: 5.vEdge,
-        decoration: BoxDecoration(
-          borderRadius: 5.cBorder,
-          color: AppColors.kGreenColor,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Icon(
-            icon,
-            color: AppColors.kGoldenColor,
-          ),
-        ),
       ),
     );
   }

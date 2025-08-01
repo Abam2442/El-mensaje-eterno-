@@ -1,11 +1,11 @@
-//import 'package:assets_audio_player/assets_audio_player.dart';
+// import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
-import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
+// import 'package:just_audio/just_audio.dart';
 
 class AudioIcon extends StatefulWidget {
   final String audioPath;
@@ -25,9 +25,8 @@ class _AudioIconState extends State<AudioIcon> {
   bool isPlaying = false;
   @override
   void initState() {
-    audioPlayer.setAsset(widget.audioPath);
-    audioPlayer.playerStateStream.listen((state) {
-      if (state.processingState == ProcessingState.completed) {
+    audioPlayer.onPlayerStateChanged.listen((state) {
+      if (state == PlayerState.completed || state == PlayerState.disposed) {
         setState(() {
           isPlaying = false;
         });
@@ -38,6 +37,9 @@ class _AudioIconState extends State<AudioIcon> {
 
   @override
   Widget build(BuildContext context) {
+    final assetPath = widget.audioPath.startsWith('assets/audio/')
+        ? widget.audioPath.substring(7)
+        : widget.audioPath;
     return (widget.transliteration == null || widget.transliteration == '0')
         ? Container(
             padding: EdgeInsets.symmetric(vertical: 2.w),
@@ -49,7 +51,9 @@ class _AudioIconState extends State<AudioIcon> {
             child: InkWell(
                 onTap: () async {
                   if (!isPlaying) {
-                    audioPlayer.play();
+                    audioPlayer.play(
+                      AssetSource(assetPath),
+                    );
                   } else {
                     audioPlayer.pause();
                   }
@@ -87,7 +91,10 @@ class _AudioIconState extends State<AudioIcon> {
                       InkWell(
                           onTap: () {
                             if (!isPlaying) {
-                              audioPlayer.play();
+                              //  audioPlayer.setAsset(widget.audioPath);
+                              audioPlayer.play(
+                                AssetSource(assetPath),
+                              );
                             } else {
                               audioPlayer.pause();
                             }
@@ -95,10 +102,9 @@ class _AudioIconState extends State<AudioIcon> {
                               isPlaying = !isPlaying;
                             });
                           },
-                          child:  Icon(
+                          child: Icon(
                             isPlaying ? Icons.pause : Icons.play_arrow,
                           )),
-                   
                     ],
                   )),
             ),
