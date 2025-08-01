@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -106,7 +108,8 @@ class UiRoneScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                          controller.list[index].rakaa.toString(),
+                                          controller.list[index].rakaa
+                                              .toString(),
                                           style: Styles.textStyle18Green),
                                     ],
                                   ),
@@ -114,7 +117,8 @@ class UiRoneScreen extends StatelessWidget {
                                     height: 5,
                                   ),
                                   Text(
-                                    controller.list[index].stepNumber.toString(),
+                                    controller.list[index].stepNumber
+                                        .toString(),
                                     style: Styles.textStyle14Black,
                                   ),
                                   Row(
@@ -243,28 +247,44 @@ class UiRoneScreen extends StatelessWidget {
                                                   content:
                                                       swap(SalahPracticalModel(
                                                     video: controller
-                                                        .list[index].images!.video
+                                                        .list[index]
+                                                        .images!
+                                                        .video
                                                         .toString(),
                                                     image: controller
-                                                        .list[index].images!.image
+                                                        .list[index]
+                                                        .images!
+                                                        .image
                                                         .toString(),
-                                                    image2: controller.list[index]
-                                                        .images!.image2
+                                                    image2: controller
+                                                        .list[index]
+                                                        .images!
+                                                        .image2
                                                         .toString(),
-                                                    image3: controller.list[index]
-                                                        .images!.image3
+                                                    image3: controller
+                                                        .list[index]
+                                                        .images!
+                                                        .image3
                                                         .toString(),
-                                                    image4: controller.list[index]
-                                                        .images!.image4
+                                                    image4: controller
+                                                        .list[index]
+                                                        .images!
+                                                        .image4
                                                         .toString(),
-                                                    image5: controller.list[index]
-                                                        .images!.image5
+                                                    image5: controller
+                                                        .list[index]
+                                                        .images!
+                                                        .image5
                                                         .toString(),
-                                                    image6: controller.list[index]
-                                                        .images!.image6
+                                                    image6: controller
+                                                        .list[index]
+                                                        .images!
+                                                        .image6
                                                         .toString(),
-                                                    video2: controller.list[index]
-                                                        .images!.video2
+                                                    video2: controller
+                                                        .list[index]
+                                                        .images!
+                                                        .video2
                                                         .toString(),
                                                     rakaa: '',
                                                     stepName: '',
@@ -282,8 +302,8 @@ class UiRoneScreen extends StatelessWidget {
                                                 title: 'descripción',
                                                 content: SingleChildScrollView(
                                                   child: Text(
-                                                    controller.list[index].images!
-                                                        .description
+                                                    controller.list[index]
+                                                        .images!.description
                                                         .toString(),
                                                   ),
                                                 ),
@@ -296,9 +316,10 @@ class UiRoneScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: ListView.builder(
-                                        itemCount:
-                                            controller.list[index].topics!.length,
-                                        itemBuilder: (context, i) => _buildTopic(
+                                        itemCount: controller
+                                            .list[index].topics!.length,
+                                        itemBuilder: (context, i) =>
+                                            _buildTopic(
                                               context,
                                               text: controller.list[index]
                                                   .topics![i].transliteration
@@ -360,13 +381,9 @@ class UiRoneScreen extends StatelessWidget {
                       Icons.spatial_audio,
                       color: AppColors.kGoldenColor,
                     ),
-                    onPressed: () {
-                      if (!AppPublicVar.assetsAudioPlayer.playing) {
-                        AppPublicVar.assetsAudioPlayer.setAsset(audioPath);
-                        AppPublicVar.assetsAudioPlayer.play();
-                      } else {
-                        AppPublicVar.assetsAudioPlayer.stop();
-                      }
+                    onPressed: () async {
+                      await AppPublicVar.assetsAudioPlayer.setAsset(audioPath);
+                      await AppPublicVar.assetsAudioPlayer.play();
                     },
                   )
                 ],
@@ -378,7 +395,8 @@ class UiRoneScreen extends StatelessWidget {
             onPressed: () async {
               videoPlayerController = CustomVideoPlayerController(
                 context: context,
-                videoPlayerController: VideoPlayerController.asset(videoPath)..initialize(),
+                videoPlayerController: VideoPlayerController.asset(videoPath)
+                  ..initialize(),
               );
               await Get.generalDialog(pageBuilder: (_, __, ___) {
                 return VideoPlayerWidget(controller: videoPlayerController);

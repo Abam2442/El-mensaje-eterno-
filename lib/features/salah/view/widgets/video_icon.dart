@@ -33,7 +33,6 @@ class _VideoIconState extends State<VideoIcon> {
     if (!widget.videoPath.startsWith('http')) {
       VideoPlayerController videoPlayerController;
       if (widget.videoPath.startsWith('assets')) {
-        log('drive video path: ${widget.videoPath}');
         String videoName = widget.videoPath.replaceFirst('assets/video/', '').replaceAll('.mp4', '').toLowerCase();
         log('videoName: $videoName');
         log('videoUrl: ${VideosUrl.getUrlByName(videoName)}');
@@ -44,7 +43,6 @@ class _VideoIconState extends State<VideoIcon> {
             });
           });
       } else {
-        log('drive video path: ${widget.videoPath}');
         String videoName = widget.videoPath.replaceAll('.mp4', '').toLowerCase();
         log('videoName: $videoName');
         log('videoUrl: ${VideosUrl.getUrlByName(videoName)}');
@@ -77,6 +75,7 @@ class _VideoIconState extends State<VideoIcon> {
     return InkWell(
         onTap: () async {
           if (customVideoPlayerController == null) {
+            log('Launching URL: ${widget.videoPath}');
             Uri uri = Uri.parse(widget.videoPath);
             if (!await launchUrl(uri)) {
               throw Exception('Could not launch $uri');
