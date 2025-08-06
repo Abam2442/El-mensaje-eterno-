@@ -1,0 +1,2 @@
+-keep class com.your.package.** { *; }
+-keep class your.audio.library.package.** { *; }

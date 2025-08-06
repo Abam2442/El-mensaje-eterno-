@@ -319,7 +319,7 @@ class UiRoneScreen extends StatelessWidget {
                                     child: ListView.builder(
                                         itemCount: controller
                                             .list[index].topics!.length,
-                                        itemBuilder: (context, i) => BuildTopic(
+                                        itemBuilder: (context, i) => _BuildTopic(
                                               text: controller.list[index]
                                                   .topics![i].transliteration
                                                   .toString(),
@@ -367,9 +367,8 @@ class UiRoneScreen extends StatelessWidget {
     );
   }
 }
-
-class BuildTopic extends StatefulWidget {
-  const BuildTopic(
+class _BuildTopic extends StatefulWidget {
+  const _BuildTopic(
       {super.key,
       required this.text,
       required this.audioPath,
@@ -380,30 +379,70 @@ class BuildTopic extends StatefulWidget {
   final String videoPath;
   final String image;
   @override
-  State<BuildTopic> createState() => _BuildTopicState();
+  State<_BuildTopic> createState() => _BuildTopicState();
 }
 
-class _BuildTopicState extends State<BuildTopic> {
-  bool init = false;
+class _BuildTopicState extends State<_BuildTopic> {
+  bool isVideoInitialized = false;
   late CustomVideoPlayerController videoController;
+  bool isInitializing = false;
+
   @override
   void initState() {
     super.initState();
-    String videoName = widget.videoPath
-        .replaceFirst('assets/video/', '')
-        .replaceAll('.mp4', '')
-        .toLowerCase();
-    log('videoName: $videoName');
-    log(VideosUrl.getUrlByName(videoName) ?? '');
-    videoController = CustomVideoPlayerController(
+    _initializeVideo();
+  }
+
+  Future<void> _initializeVideo() async {
+    try {
+      String videoName = widget.videoPath
+          .replaceFirst('assets/video/', '')
+          .replaceAll('.mp4', '')
+          .toLowerCase();
+      log('videoName: $videoName');
+      
+      String? videoUrl = VideosUrl.getUrlByName(videoName);
+      log('Video URL: ${videoUrl ?? 'URL not found'}');
+      
+      if (videoUrl == null || videoUrl.isEmpty) {
+        log('Error: Video URL is null or empty');
+        return;
+      }
+
+      final videoPlayerController = VideoPlayerController.networkUrl(
+        Uri.parse(videoUrl)
+      );
+
+      await videoPlayerController.initialize();
+
+      videoController = CustomVideoPlayerController(
         context: context,
-        videoPlayerController: VideoPlayerController.networkUrl(
-            Uri.parse(VideosUrl.getUrlByName(videoName) ?? ''))
-          ..initialize().then((_) {
-            setState(() {
-              init = true;
-            });
-          }));
+        videoPlayerController: videoPlayerController,
+      );
+
+      if (mounted) {
+        setState(() {
+          isVideoInitialized = true;
+        });
+      }
+      
+      log('Video initialized successfully');
+    } catch (e) {
+      log('Error initializing video: $e');
+      if (mounted) {
+        setState(() {
+          isVideoInitialized = false;
+        });
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    if (isVideoInitialized) {
+      videoController.videoPlayerController.dispose();
+    }
+    super.dispose();
   }
 
   @override
@@ -444,15 +483,42 @@ class _BuildTopicState extends State<BuildTopic> {
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.remove_red_eye),
-            onPressed: () async {
-              log('video path: ${videoController.videoPlayerController.toString()}');
-              if (init) {
-              showDialog(context: context, builder: (context) => VideoPlayerWidget(controller: videoController));
-              } else {
-                Get.snackbar('Error', 'No video available');
-              }
-            },
+            icon: Icon(
+              Icons.remove_red_eye,
+              color: isVideoInitialized ? null : Colors.grey,
+            ),
+            onPressed: isVideoInitialized && !isInitializing
+                ? () async {
+                    log('Opening video dialog');
+                    log('Video controller: ${videoController.videoPlayerController}');
+                    showDialog(
+                      context: context,
+                      builder: (context) => VideoPlayerWidget(
+                        controller: videoController,
+                      ),
+                    );
+                  }
+                : isInitializing
+                    ? null
+                    : () {
+                       
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Video failed to load. Please try again.'),
+                          ),
+                        );
+                        
+                        setState(() {
+                          isInitializing = true;
+                        });
+                        _initializeVideo().then((_) {
+                          if (mounted) {
+                            setState(() {
+                              isInitializing = false;
+                            });
+                          }
+                        });
+                      },
           )
         ],
       ),
