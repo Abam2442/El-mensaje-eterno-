@@ -30,12 +30,12 @@ class SectionItemHomePageWidget extends StatelessWidget {
   bool? isInfo;
   @override
   Widget build(BuildContext context) {
-    final CustomVideoPlayerController controller =
-        CustomVideoPlayerController(
+    final CustomVideoPlayerController controller = CustomVideoPlayerController(
       context: context,
-      videoPlayerController: 
-        VideoPlayerController.asset('assets/video/v1.mp4')
-        ..initialize(),
+      videoPlayerController: VideoPlayerController.networkUrl(
+        Uri.parse(
+            'https://res.cloudinary.com/dzdzz2trg/video/upload/v1752881693/v1_kvlxpn.mp4'),
+      )..initialize(),
     );
     return InkWell(
       onTap: onTap,
@@ -133,7 +133,9 @@ class SectionItemHomePageWidget extends StatelessWidget {
                                         ? IconButton(
                                             onPressed: () async {
                                               // controller = VideoPlayerController.asset(videoPath);
-                                              await controller.videoPlayerController.initialize();
+                                              await controller
+                                                  .videoPlayerController
+                                                  .initialize();
                                               await Get.generalDialog(
                                                   pageBuilder: (_, __, ___) {
                                                 return VideoPlayerWidget(

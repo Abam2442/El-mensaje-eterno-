@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_assets.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_colors.dart';
 import 'package:hiwayda_oracion_islamica/core/constants/app_public_var.dart';
+import 'package:hiwayda_oracion_islamica/core/constants/videos_url.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/assetss_widgets.dart';
 import 'package:hiwayda_oracion_islamica/core/helper/extensions/context_size.dart';
 import 'package:hiwayda_oracion_islamica/core/styles/text_styles.dart';
@@ -106,7 +109,8 @@ class UiRoneScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                          controller.list[index].rakaa.toString(),
+                                          controller.list[index].rakaa
+                                              .toString(),
                                           style: Styles.textStyle18Green),
                                     ],
                                   ),
@@ -114,7 +118,8 @@ class UiRoneScreen extends StatelessWidget {
                                     height: 5,
                                   ),
                                   Text(
-                                    controller.list[index].stepNumber.toString(),
+                                    controller.list[index].stepNumber
+                                        .toString(),
                                     style: Styles.textStyle14Black,
                                   ),
                                   Row(
@@ -243,28 +248,44 @@ class UiRoneScreen extends StatelessWidget {
                                                   content:
                                                       swap(SalahPracticalModel(
                                                     video: controller
-                                                        .list[index].images!.video
+                                                        .list[index]
+                                                        .images!
+                                                        .video
                                                         .toString(),
                                                     image: controller
-                                                        .list[index].images!.image
+                                                        .list[index]
+                                                        .images!
+                                                        .image
                                                         .toString(),
-                                                    image2: controller.list[index]
-                                                        .images!.image2
+                                                    image2: controller
+                                                        .list[index]
+                                                        .images!
+                                                        .image2
                                                         .toString(),
-                                                    image3: controller.list[index]
-                                                        .images!.image3
+                                                    image3: controller
+                                                        .list[index]
+                                                        .images!
+                                                        .image3
                                                         .toString(),
-                                                    image4: controller.list[index]
-                                                        .images!.image4
+                                                    image4: controller
+                                                        .list[index]
+                                                        .images!
+                                                        .image4
                                                         .toString(),
-                                                    image5: controller.list[index]
-                                                        .images!.image5
+                                                    image5: controller
+                                                        .list[index]
+                                                        .images!
+                                                        .image5
                                                         .toString(),
-                                                    image6: controller.list[index]
-                                                        .images!.image6
+                                                    image6: controller
+                                                        .list[index]
+                                                        .images!
+                                                        .image6
                                                         .toString(),
-                                                    video2: controller.list[index]
-                                                        .images!.video2
+                                                    video2: controller
+                                                        .list[index]
+                                                        .images!
+                                                        .video2
                                                         .toString(),
                                                     rakaa: '',
                                                     stepName: '',
@@ -282,8 +303,8 @@ class UiRoneScreen extends StatelessWidget {
                                                 title: 'descripción',
                                                 content: SingleChildScrollView(
                                                   child: Text(
-                                                    controller.list[index].images!
-                                                        .description
+                                                    controller.list[index]
+                                                        .images!.description
                                                         .toString(),
                                                   ),
                                                 ),
@@ -296,10 +317,9 @@ class UiRoneScreen extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: ListView.builder(
-                                        itemCount:
-                                            controller.list[index].topics!.length,
-                                        itemBuilder: (context, i) => _buildTopic(
-                                              context,
+                                        itemCount: controller
+                                            .list[index].topics!.length,
+                                        itemBuilder: (context, i) => _BuildTopic(
                                               text: controller.list[index]
                                                   .topics![i].transliteration
                                                   .toString(),
@@ -327,14 +347,106 @@ class UiRoneScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTopic(
-    BuildContext context, {
-    required String text,
-    required String audioPath,
-    required String videoPath,
-    required String image,
-  }) {
-    late CustomVideoPlayerController videoPlayerController;
+  GestureDetector navigateToPage(IconData icon, Function() controllerFunction) {
+    return GestureDetector(
+      onTap: controllerFunction,
+      child: Container(
+        padding: 5.vEdge,
+        decoration: BoxDecoration(
+          borderRadius: 5.cBorder,
+          color: AppColors.kGreenColor,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(
+            icon,
+            color: AppColors.kGoldenColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+class _BuildTopic extends StatefulWidget {
+  const _BuildTopic(
+      {super.key,
+      required this.text,
+      required this.audioPath,
+      required this.videoPath,
+      required this.image});
+  final String text;
+  final String audioPath;
+  final String videoPath;
+  final String image;
+  @override
+  State<_BuildTopic> createState() => _BuildTopicState();
+}
+
+class _BuildTopicState extends State<_BuildTopic> {
+  bool isVideoInitialized = false;
+  late CustomVideoPlayerController videoController;
+  bool isInitializing = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeVideo();
+  }
+
+  Future<void> _initializeVideo() async {
+    try {
+      String videoName = widget.videoPath
+          .replaceFirst('assets/video/', '')
+          .replaceAll('.mp4', '')
+          .toLowerCase();
+      log('videoName: $videoName');
+      
+      String? videoUrl = VideosUrl.getUrlByName(videoName);
+      log('Video URL: ${videoUrl ?? 'URL not found'}');
+      
+      if (videoUrl == null || videoUrl.isEmpty) {
+        log('Error: Video URL is null or empty');
+        return;
+      }
+
+      final videoPlayerController = VideoPlayerController.networkUrl(
+        Uri.parse(videoUrl)
+      );
+
+      await videoPlayerController.initialize();
+
+      videoController = CustomVideoPlayerController(
+        context: context,
+        videoPlayerController: videoPlayerController,
+      );
+
+      if (mounted) {
+        setState(() {
+          isVideoInitialized = true;
+        });
+      }
+      
+      log('Video initialized successfully');
+    } catch (e) {
+      log('Error initializing video: $e');
+      if (mounted) {
+        setState(() {
+          isVideoInitialized = false;
+        });
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    if (isVideoInitialized) {
+      videoController.videoPlayerController.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: 5.vEdge,
       child: Row(
@@ -353,20 +465,17 @@ class UiRoneScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text(text, style: Styles.textStyle18Golden),
+                    child: Text(widget.text, style: Styles.textStyle18Golden),
                   ),
                   IconButton(
                     icon: const Icon(
                       Icons.spatial_audio,
                       color: AppColors.kGoldenColor,
                     ),
-                    onPressed: () {
-                      if (!AppPublicVar.assetsAudioPlayer.playing) {
-                        AppPublicVar.assetsAudioPlayer.setAsset(audioPath);
-                        AppPublicVar.assetsAudioPlayer.play();
-                      } else {
-                        AppPublicVar.assetsAudioPlayer.stop();
-                      }
+                    onPressed: () async {
+                      await AppPublicVar.assetsAudioPlayer
+                          .setAsset(widget.audioPath);
+                      await AppPublicVar.assetsAudioPlayer.play();
                     },
                   )
                 ],
@@ -374,39 +483,44 @@ class UiRoneScreen extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.remove_red_eye),
-            onPressed: () async {
-              videoPlayerController = CustomVideoPlayerController(
-                context: context,
-                videoPlayerController: VideoPlayerController.asset(videoPath)..initialize(),
-              );
-              await Get.generalDialog(pageBuilder: (_, __, ___) {
-                return VideoPlayerWidget(controller: videoPlayerController);
-              });
-              videoPlayerController.dispose();
-            },
+            icon: Icon(
+              Icons.remove_red_eye,
+              color: isVideoInitialized ? null : Colors.grey,
+            ),
+            onPressed: isVideoInitialized && !isInitializing
+                ? () async {
+                    log('Opening video dialog');
+                    log('Video controller: ${videoController.videoPlayerController}');
+                    showDialog(
+                      context: context,
+                      builder: (context) => VideoPlayerWidget(
+                        controller: videoController,
+                      ),
+                    );
+                  }
+                : isInitializing
+                    ? null
+                    : () {
+                       
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Video failed to load. Please try again.'),
+                          ),
+                        );
+                        
+                        setState(() {
+                          isInitializing = true;
+                        });
+                        _initializeVideo().then((_) {
+                          if (mounted) {
+                            setState(() {
+                              isInitializing = false;
+                            });
+                          }
+                        });
+                      },
           )
         ],
-      ),
-    );
-  }
-
-  GestureDetector navigateToPage(IconData icon, Function() controllerFunction) {
-    return GestureDetector(
-      onTap: controllerFunction,
-      child: Container(
-        padding: 5.vEdge,
-        decoration: BoxDecoration(
-          borderRadius: 5.cBorder,
-          color: AppColors.kGreenColor,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Icon(
-            icon,
-            color: AppColors.kGoldenColor,
-          ),
-        ),
       ),
     );
   }

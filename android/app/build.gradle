@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace= "com.mensaje.eterno"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = "26.1.10909125"
     compileOptions {
         sourceCompatibility= JavaVersion.VERSION_1_8
@@ -26,9 +26,9 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = 15
-        versionName = "1.0.1"
+        targetSdk = 34
+        versionCode = 19
+        versionName = "1.0.2"
     }
 
     signingConfigs {
